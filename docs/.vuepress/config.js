@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/xl_blog/', // 这是部署到github相关的配置
+    base: '/vue3-ui/', // 这是部署到github相关的配置
     theme: 'vdoing',
     title: 'Chen\'s blog',
     description: '我的个人网站',
