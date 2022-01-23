@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/missxiaolin/vue3-ui/issues"
   },
-  "homepage": "https://github.com/missxiaolin/vue3-ui#readme"
+  "homepage": "https://github.com/missxiaolin/vue3-ui#readme",
+  "dependencies": {
+    "vuepress": "^1.9.7"
+  }
 }
