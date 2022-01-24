@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import vitePluginVuedoc, { vueDocFiles } from 'vite-plugin-vuedoc';
+import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
 import path from 'path'
 
 
@@ -17,4 +19,13 @@ export default defineConfig({
             { find: '@xl-ui', replacement: resolve(__dirname, './src') }
         ]
     },
+    plugins: [
+        vitePluginVuedoc({}),
+        vue({
+            include: [/\.vue$/, /\.md$/, ...vueDocFiles]
+        }),
+        legacy({
+            targets: ['defaults', 'not IE 11']
+        })
+    ]
 })
