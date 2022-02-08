@@ -9,7 +9,7 @@ const resolve = path.resolve;
 export default defineConfig({
     base: '/',
     server: {
-        port: 2021,
+        port: 2022,
         host: '0.0.0.0',
         proxy: {}
     },
