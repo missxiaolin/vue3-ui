@@ -32,7 +32,6 @@ export default defineComponent({
     Search
   },
   setup() {
-    let version = ref<string>('1.0.0');
     let header = ref<any>(config.header)
     const themeName = computed(() => {
       return function () {
@@ -40,14 +39,8 @@ export default defineComponent({
       };
     });
 
-    const toHome = () => {
-      RefData.getInstance().currentRoute.value = '/';
-    };
-
     return {
       header,
-      version,
-      toHome,
       themeName
     };
   }
