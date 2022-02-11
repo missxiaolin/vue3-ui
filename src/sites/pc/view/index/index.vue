@@ -16,7 +16,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .doc {
   &-content {
     margin-left: 290px;

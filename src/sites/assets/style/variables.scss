@@ -39,10 +39,39 @@ $color-primary: map.get($colors, "primary", "base") !default;
 
 $theme-red-border: #fff;
 $theme-red-word: #fff;
+$theme-red-gradient: linear-gradient(
+  135deg,
+  rgba(250, 44, 25, 1) 0%,
+  rgba(250, 63, 25, 1) 45%,
+  rgba(250, 89, 25, 1) 83%,
+  rgba(250, 100, 25, 1) 100%
+);
+
+$theme-black-footer-word1: #fff;
+$theme-black-footer-word2: #f5f5f5;
+$theme-black-footer-word3: #f5f5f5;
+$theme-black-footer-word4: #808080;
+$theme-black-footer-bg: #1d1d21;
+$theme-black-footer-border: transparent;
+$theme-black-footer-hover: $color-primary;
+$theme-black-theme-border: #666;
+$theme-black-circle: #1a1a1a;
+
+$theme-white-footer-bg: #fff;
+$theme-white-footer-border: #eaf0fb;
+$theme-white-footer-word1: #1a1a1a;
+$theme-white-footer-word2: #666;
+$theme-white-footer-word3: #1d1d21;
+$theme-white-footer-word4: #808080;
+$theme-white-theme-border: #f5f6f7;
+$theme-white-footer-hover: $color-primary;
+$theme-white-circle-border: #e5e5e5;
+$theme-white: #fff;
 $theme-white-word: #455a64;
 $theme-white-actice: $color-primary;
 $theme-white-select-border: #f0f2f5;
 $theme-white-select-word: #666;
 $theme-white-select-bg: #fff;
+$theme-white-circle: #fff;
 
 $doc-header-height: 50px;

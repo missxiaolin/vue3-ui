@@ -1,9 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import Index from '../view/index/index.vue';
+import Main from '../view/main.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
+        path: '/',
+        name: 'main',
+        component: Main,
+    }, {
         path: '/index',
         name: 'index',
         component: Index,
