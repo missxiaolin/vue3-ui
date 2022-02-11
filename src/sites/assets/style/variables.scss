@@ -1,0 +1,48 @@
+@use "sass:math";
+@use "sass:map";
+:root {
+    --em-color-white: #fff;
+}
+
+// types
+$types: primary, success, warning, danger, error, info;
+
+// Color
+$colors: () !default;
+$colors: map.deep-merge(
+    (
+        "white": #ffffff,
+        "black": #1c2128,
+        "primary": (
+            "base": #29c1c2,
+        ),
+        "success": (
+            "base": #21b455,
+        ),
+        "warning": (
+            "base": #ff9c00,
+        ),
+        "danger": (
+            "base": #f56c6c,
+        ),
+        "error": (
+            "base": #f56c6c,
+        ),
+        "info": (
+            "base": #909399,
+        ),
+    ),
+    $colors
+);
+
+$color-primary: map.get($colors, "primary", "base") !default;
+
+$theme-red-border: #fff;
+$theme-red-word: #fff;
+$theme-white-word: #455a64;
+$theme-white-actice: $color-primary;
+$theme-white-select-border: #f0f2f5;
+$theme-white-select-word: #666;
+$theme-white-select-bg: #fff;
+
+$doc-header-height: 50px;
