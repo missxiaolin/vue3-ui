@@ -14,12 +14,6 @@
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">社区</h4>
-        <div class="doc-footer-item">
-            <a class="sub-link" href="#/notice" target="_blank">常见问题</a>
-        </div>
-      </div>
-      <div class="doc-footer-list">
-        <h4 class="doc-footer-title">关于我们</h4>
       </div>
     </div>
   </div>
