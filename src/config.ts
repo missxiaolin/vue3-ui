@@ -14,7 +14,7 @@ const config: any = {
         {
             "name": "component",
             "cName": "组件",
-            "path": "/layout"
+            "path": "/"
         }
     ],
 }
