@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="doc-content-wapper">
     <doc-header></doc-header>
     <div class="doc-content"> 待完善 </div>
     <doc-footer></doc-footer>
