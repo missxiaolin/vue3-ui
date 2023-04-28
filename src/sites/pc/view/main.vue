@@ -1,9 +1,10 @@
 <template>
-  <div class="doc-content-wapper">
-    <doc-header></doc-header>
+  <l-container class="doc-content-wapper">
+    ceshi
+    <!-- <doc-header></doc-header>
     <div class="doc-content"> 待完善 </div>
-    <doc-footer></doc-footer>
-  </div>
+    <doc-footer></doc-footer> -->
+  </l-container>
 </template>
 
 <script lang="ts">

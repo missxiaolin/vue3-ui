@@ -1,9 +1,21 @@
-
 const version = 1.0;
+const INSTALLED_KEY = Symbol('INSTALLED_KEY');
 
+/**
+ * 注册组件
+ * @param components 
+ * @returns 
+ */
 export const makeInstaller = (components: any) => {
-    return {
-        version,
-        ...components
-    }
-}
+  const install = (app: any, options: any = {}) => {
+    if (app[INSTALLED_KEY]) return;
+
+    app[INSTALLED_KEY] = true;
+    components.forEach((c: any) => app.use(c));
+  };
+  return {
+    install,
+    version,
+    ...components
+  };
+};

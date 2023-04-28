@@ -28,7 +28,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to) {
-    console.log(to);
+    // console.log(to);
   }
 });
 router.afterEach((to, from) => {
