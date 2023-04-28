@@ -1,6 +1,8 @@
-import { Container } from '../components/layout/index';
+import { Container, Aside } from '../components/layout/index';
+
 
 
 export default [
-    Container
+    Container,
+    Aside
 ]

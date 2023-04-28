@@ -1,0 +1,10 @@
+@use '../../../theme-chalk/mixins/mixins.scss' as *;
+
+@include b(aside) {
+  --e-aside-width: 300px;
+
+  overflow: auto;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: var(--e-aside-width);
+}
