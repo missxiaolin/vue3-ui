@@ -1,7 +1,7 @@
-@use "sass:math";
-@use "sass:map";
+@use 'sass:math';
+@use 'sass:map';
 :root {
-    --em-color-white: #fff;
+  --em-color-white: #fff;
 }
 
 // types
@@ -10,35 +10,78 @@ $types: primary, success, warning, danger, error, info;
 // Color
 $colors: () !default;
 $colors: map.deep-merge(
-    (
-        "white": #ffffff,
-        "black": #1c2128,
-        "primary": (
-            "base": #29c1c2,
-        ),
-        "success": (
-            "base": #21b455,
-        ),
-        "warning": (
-            "base": #ff9c00,
-        ),
-        "danger": (
-            "base": #f56c6c,
-        ),
-        "error": (
-            "base": #f56c6c,
-        ),
-        "info": (
-            "base": #909399,
-        ),
+  (
+    'white': #ffffff,
+    'black': #1c2128,
+    'primary': (
+      'base': #29c1c2
     ),
-    $colors
+    'success': (
+      'base': #21b455
+    ),
+    'warning': (
+      'base': #ff9c00
+    ),
+    'danger': (
+      'base': #f56c6c
+    ),
+    'error': (
+      'base': #f56c6c
+    ),
+    'info': (
+      'base': #909399
+    )
+  ),
+  $colors
 );
 
-$color-primary: map.get($colors, "primary", "base") !default;
+$color-white: map.get($colors, 'white') !default;
+$color-black: map.get($colors, 'black') !default;
+$color-primary: map.get($colors, 'primary', 'base') !default;
+$color-success: map.get($colors, 'success', 'base') !default;
+$color-warning: map.get($colors, 'warning', 'base') !default;
+$color-danger: map.get($colors, 'danger', 'base') !default;
+$color-error: map.get($colors, 'error', 'base') !default;
+$color-info: map.get($colors, 'info', 'base') !default;
 
-$theme-red-border: #fff;
+// // 标题常规文字
+$title-color: #1a1a1a !default;
+// // 副标题
+$title-color2: #666666 !default;
+// // 次内容
+$text-color: #808080 !default;
+// 特殊禁用色
+$disable-color: #cccccc !default;
+$white: #fff !default;
+$black: #000 !default;
+
+// doc
+$doc-default-color: $color-primary;
+$doc-default-primary-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 39, 40, 1) 45%,
+  rgba(250, 56, 31, 1) 83%,
+  rgba(250, 63, 25, 1) 100%
+);
+
+// clolr
+// 红色
+$theme-red: $color-primary;
 $theme-red-word: #fff;
+$theme-red-border: #fff;
+$theme-red-input: #fff;
+$theme-red-actice: #fff;
+$theme-red-select-border: #f0f2f5;
+$theme-red-select-word: #666;
+$theme-red-select-bg: #fff;
+$theme-red-header-bg: url('../../assets/images/header-bg.png');
+$theme-red-footer-word1: #1a1a1a;
+$theme-red-footer-word2: #666;
+$theme-red-footer-word3: #1d1d21;
+$theme-red-footer-word4: #808080;
+$theme-red-footer-bg: #fff;
+$theme-red-footer-border: #eaf0fb;
 $theme-red-gradient: linear-gradient(
   135deg,
   rgba(250, 44, 25, 1) 0%,
@@ -46,32 +89,76 @@ $theme-red-gradient: linear-gradient(
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
 );
-
-$theme-black-footer-word1: #fff;
-$theme-black-footer-word2: #f5f5f5;
-$theme-black-footer-word3: #f5f5f5;
-$theme-black-footer-word4: #808080;
-$theme-black-footer-bg: #1d1d21;
-$theme-black-footer-border: transparent;
-$theme-black-footer-hover: $color-primary;
-$theme-black-theme-border: #666;
-$theme-black-circle: #1a1a1a;
-
-$theme-white-footer-bg: #fff;
-$theme-white-footer-border: #eaf0fb;
-$theme-white-footer-word1: #1a1a1a;
-$theme-white-footer-word2: #666;
-$theme-white-footer-word3: #1d1d21;
-$theme-white-footer-word4: #808080;
-$theme-white-theme-border: #f5f6f7;
-$theme-white-footer-hover: $color-primary;
-$theme-white-circle-border: #e5e5e5;
+// 白色
 $theme-white: #fff;
 $theme-white-word: #455a64;
+$theme-white-input: #ccc;
+$theme-white-border: #d8d8d8;
 $theme-white-actice: $color-primary;
 $theme-white-select-border: #f0f2f5;
 $theme-white-select-word: #666;
 $theme-white-select-bg: #fff;
+$theme-white-box-border: #f5f5f5;
+$theme-white-footer-word1: #1a1a1a;
+$theme-white-footer-word2: #666;
+$theme-white-footer-word3: #1d1d21;
+$theme-white-footer-word4: #808080;
+$theme-white-footer-hover: $color-primary;
+$theme-white-footer-bg: #fff;
+$theme-white-footer-border: #eaf0fb;
+$theme-white-theme-border: #f5f6f7;
 $theme-white-circle: #fff;
+$theme-white-circle-border: #e5e5e5;
+$theme-white-index-desc: #959fb1;
 
+// 黑色
+$theme-black-word: #ccc;
+$theme-black-input: #ccc;
+$theme-black-border: #d8d8d8;
+$theme-black-actice: #fff;
+$theme-black-select-bg: #1d1d1d;
+$theme-black-select-border: #c1c1c3;
+$theme-black-select-hover: #797a7b;
+$theme-black-select-word: #fff;
+$theme-black-box-border: #6b5554;
+$theme-black-footer-word1: #fff;
+$theme-black-footer-word2: #f5f5f5;
+$theme-black-footer-word3: #f5f5f5;
+$theme-black-footer-word4: #808080;
+$theme-black-footer-hover: $color-primary;
+$theme-black-footer-bg: #1d1d21;
+$theme-black-footer-border: transparent;
+$theme-black-theme-border: #666;
+$theme-black-circle: #1a1a1a;
+// header
+$doc-default-header-color: --em-color-white;
 $doc-header-height: 50px;
+$doc-header-bg: url('../../assets/images/header-bg.png') no-repeat;
+// nav
+$doc-default-nav-bg: --em-color-white;
+$doc-default-nav-color: $title-color;
+// footer
+// $doc-default-header-color: --em-color-white;
+// $doc-footer-height: 73px;
+// home
+$theme-black-content-bg: #060506;
+
+$lui-doc-black: #323233;
+$lui-doc-blue: #29c1c2;
+$lui-doc-purple: #8080ff;
+$lui-doc-fuchsia: #a7419e;
+$lui-doc-red: #fa2400;
+$lui-doc-text-color: #666666;
+$lui-doc-text-light-blue: rgba(69, 90, 100, 0.6);
+$lui-doc-background-color: #f7f8fa;
+$lui-doc-grey: #999;
+$lui-doc-dark-grey: #666;
+$lui-doc-light-grey: #ccc;
+$lui-doc-border-color: #f1f4f8;
+$lui-doc-code-color: #58727e;
+$lui-doc-code-background-color: #f1f4f8;
+$lui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+$lui-doc-padding: 24px;
+$lui-doc-row-max-width: 1680px;
+$lui-doc-nav-width: 220px;
+$lui-doc-border-radius: 20px;

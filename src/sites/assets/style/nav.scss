@@ -1,0 +1,181 @@
+@use './variables.scss' as *;
+
+.doc {
+  &-lui-logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    .logo-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .version {
+      padding-left: 10px;
+      font-size: 14px;
+      color: $doc-default-color;
+    }
+  }
+  &-nav {
+    flex: 1;
+    padding-left: 20px;
+    ol {
+      &.introduce {
+        padding-left: 5px;
+        li {
+          cursor: pointer;
+          &:hover {
+            color: $doc-default-color;
+          }
+        }
+      }
+      li {
+        height: 38px;
+        line-height: 38px;
+        font-size: 15px;
+        overflow: hidden;
+        color: $doc-default-nav-color;
+        font-weight: bold;
+        position: relative;
+
+        &.active {
+          &::before {
+            content: '';
+          }
+        }
+      }
+      > ul {
+        li {
+          cursor: pointer;
+          font-weight: 400;
+          font-size: 13px;
+          &:hover {
+            a {
+              color: $doc-default-color;
+            }
+          }
+          a {
+            padding-left: 10px;
+            display: block;
+            &.router-link-active,
+            &.active {
+              color: $doc-default-color !important;
+              border-right: 3px solid $doc-default-color;
+              background-color: var(--e-color-primary-light-8);
+              border-radius: 3px 0 0 3px;
+            }
+            &.planned {
+              color: var(--e-color-info) !important;
+            }
+
+            &:hover {
+              color: $doc-default-color;
+              &:visited {
+                color: $doc-default-color;
+              }
+            }
+            &:link,
+            &:visited {
+              color: #455a64;
+            }
+
+            height: 100%;
+            b {
+              font-weight: normal;
+              font-size: 12px;
+              i {
+                display: inline-block;
+                transform: scale(0.8);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.skew-title {
+  font-size: 25px;
+}
+.skew-title span {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 30px;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  font-family: 'roboto condensed';
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 30px;
+  -webkit-transform: skewY(-15deg);
+  transform: skewY(-15deg);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  transition: all 0.2s;
+  cursor: default;
+}
+.skew-title span:after,
+.skew-title span:before {
+  display: block;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 30px;
+  position: absolute;
+  background: $color-primary;
+  content: ' ';
+  z-index: -1;
+  transition: all 0.2s;
+}
+.skew-title span:before {
+  background: rgba(255, 255, 255, 1);
+  -webkit-transform: skewY(15deg);
+  transform: skewY(15deg);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.skew-title span:nth-child(even) {
+  background-color: #144c6e;
+  -webkit-transform: skewY(15deg);
+  transform: skewY(15deg);
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  color: #eeeeee;
+}
+.skew-title span:nth-child(even):after {
+  background-color: #144c6e;
+}
+.skew-title span:nth-child(even):before {
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skewY(-15deg);
+  transform: skewY(-15deg);
+}
+.skew-title span.flat {
+  -webkit-transform: skewY(0);
+  transform: skewY(0);
+  color: #fff;
+}
+.skew-title span.flat:before {
+  -webkit-transform: skewY(0);
+  transform: skewY(0);
+}
+.skew-title span.flat:nth-child(even):after {
+  background-color: $color-primary;
+}
+.skew-title span.alt:after {
+  background-color: #b94a2c;
+}
+.skew-title span.alt:nth-child(even):after {
+  background-color: $color-success;
+}
+.skew-title span.alt.flat:nth-child(even):after {
+  background-color: #b94a2c;
+}

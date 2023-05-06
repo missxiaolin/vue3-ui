@@ -1,1 +1,112 @@
 @use './variables.scss' as *;
+.doc-main-content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .doc-home-header {
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    .doc-home-logo {
+      padding-right: 50px;
+      padding-left: 30px;
+      img {
+        height: 18px;
+      }
+    }
+  }
+  .doc-content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    // background-color: #fff;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 70%;
+      height: 0;
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      border-top: calc(100vh - 100px) solid $color-primary;
+      border-left: 0px solid transparent;
+      border-right: 260px solid transparent;
+    }
+    &::after {
+      content: '';
+      width: 430px;
+      height: 430px;
+      display: block;
+      background: url(../images/banner_img.png) no-repeat center center;
+      background-size: 100% auto;
+      position: absolute;
+      z-index: 2;
+      right: 8%;
+      bottom: 12%;
+    }
+    .doc-home-content {
+      position: relative;
+      z-index: 5;
+      width: 80%;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 700;
+      dl {
+        padding-bottom: 150px;
+        dt {
+          font-size: 64px;
+        }
+        dd {
+          font-size: 20px;
+          .doc-home-link {
+            margin-top: 30px;
+            width: 200px;
+            line-height: 44px;
+            display: inline-block;
+            color: #fff;
+            border-radius: 30px;
+            transition: all 300ms;
+            border: 1px solid #fff;
+            &:hover {
+              background-color: rgba($color: #fff, $alpha: 0.8);
+              color: $color-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .doc-svg-content {
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @keyframes bganimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
