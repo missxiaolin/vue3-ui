@@ -20,7 +20,7 @@
       return {
         componentName,
         style: computed(() => {
-          return props.width ? ({ '--e-aside-width': props.width } as CSSProperties) : {};
+          return props.width ? ({ '--l-aside-width': props.width } as CSSProperties) : {};
         })
       };
     }

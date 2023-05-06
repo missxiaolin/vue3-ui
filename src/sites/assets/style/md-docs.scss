@@ -43,23 +43,23 @@
   
   // ------ layout ----
   .md-layout {
-    > .e-container {
+    > .l-container {
       margin-bottom: 20px;
     }
-    .e-header,
+    .l-header,
     .e-footer {
       background-color: #b3c0d1;
       color: #333;
       text-align: center;
       line-height: 50px;
     }
-    .e-aside {
+    .l-aside {
       background-color: #d3dce6;
       color: #333;
       text-align: center;
     }
   
-    .e-main {
+    .l-main {
       background-color: #e9eef3;
       color: #333;
       text-align: center;
@@ -179,8 +179,8 @@
     }
   }
   
-  // ------  md-custom-timeline-header----
-  .md-custom-timeline-header {
+  // ------  md-custom-timelinl-header----
+  .md-custom-timelinl-header {
     font-size: 14px;
     display: flex;
     dt {

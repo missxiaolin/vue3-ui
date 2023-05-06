@@ -1,5 +1,5 @@
 <template>
-  <header class="e-header" :style="style">
+  <header class="l-header" :style="style">
     <slot></slot>
   </header>
 </template>
@@ -23,7 +23,7 @@ export default create({
         () =>
           (props.height
             ? {
-                '--e-header-height': props.height
+                '--l-header-height': props.height
               }
             : {}) as CSSProperties
       )
