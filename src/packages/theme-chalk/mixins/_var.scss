@@ -1,0 +1,9 @@
+@use 'config';
+@use '../common/var' as *;
+
+// set all css var for component by map
+@mixin set-component-css-var($name, $variables) {
+  @each $attribute, $value in $variables {
+    --e-#{$name}-#{$attribute}: #{$value};
+  }
+}

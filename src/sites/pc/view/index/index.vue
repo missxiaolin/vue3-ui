@@ -9,10 +9,10 @@
       </div>
     </l-aside>
     <l-container>
-      <l-header>
+      <l-header class="doc-header-wapper">
         <doc-header></doc-header>
       </l-header>
-      <l-main>
+      <l-main class="doc-main-wapper">
         <div class="doc-content">
           <div class="doc-content-document">
             <router-view />

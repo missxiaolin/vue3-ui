@@ -57,8 +57,9 @@ console.log('guideNav----', guideNav);
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'main',
-    component: Main
+    redirect: '/guide/intro'
+    // name: 'main',
+    // component: Main
   },
   {
     path: '/index',
