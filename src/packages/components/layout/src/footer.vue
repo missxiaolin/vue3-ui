@@ -1,5 +1,5 @@
 <template>
-  <footer class="e-footer" :style="style">
+  <footer class="l-footer" :style="style">
     <slot></slot>
   </footer>
 </template>

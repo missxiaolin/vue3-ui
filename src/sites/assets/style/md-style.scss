@@ -276,7 +276,7 @@ $public-radius: 10px;
     position: relative;
     z-index: 4;
     @extend .bckground-white;
-    overflow: hidden;
+    overflow: scroll;
   }
   .doc-footer-wapper {
     height: 30px;

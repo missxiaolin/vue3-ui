@@ -28,7 +28,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, toRefs } from 'vue';
 import { RefData } from '../../assets/utils/ref';
-import { guideNav } from '../router';
+import { guideNav, componentsNavs } from '../router';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
@@ -50,7 +50,7 @@ export default defineComponent({
     const route = useRoute();
     const nav = computed(() => {
       const { path } = route;
-      return path.includes('guide') ? guideNav : path.includes('components') ? componentsNavs : businessNav;
+      return path.includes('guide') ? guideNav : path.includes('components') ? componentsNavs : [];
     });
     return {
       isActive,

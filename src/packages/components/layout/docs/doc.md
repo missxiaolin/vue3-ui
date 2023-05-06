@@ -31,7 +31,7 @@
     </l-container>
 
     <l-container>
-      <l-header>Header</-header>
+      <l-header>Header</l-header>
       <l-container>
         <l-aside width="200px">Aside</l-aside>
         <l-main>Main</l-main>

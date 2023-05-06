@@ -5,10 +5,17 @@ import Index from '../view/index/index.vue';
 import config from '../../../config';
 
 const docsMds = import.meta.glob('/src/sites/pc/docs/*.md');
+const componentsMds = import.meta.glob('/src/packages/components/**/docs/doc.md');
+const modulesComponents: any = {};
 const modulesDocs: any = {};
 for (const path in docsMds) {
   const name = (/sites\/pc\/docs\/(.*).md/.exec(path) as any[])[1];
   modulesDocs[name] = docsMds[path];
+}
+
+for (const path in componentsMds) {
+  const name = (/packages\/components\/(.*)\/docs\/doc.md/.exec(path) as any[])[1];
+  modulesComponents[name] = componentsMds[path];
 }
 
 /**
@@ -19,6 +26,7 @@ for (const path in docsMds) {
 const routeFormat = (navs: any = [], type = 1) => {
   // md 文件  集合
   const mdTypes: any = {
+    1: modulesComponents,
     2: modulesDocs
   };
   // 获取
@@ -51,7 +59,11 @@ const routeFormat = (navs: any = [], type = 1) => {
 // 业务组件
 export const guideNav: any = routeFormat(config.docs, 2);
 
+// UI组件
+export const componentsNavs: any = routeFormat(config.components);
+
 // console.log('guideNav----', guideNav);
+console.log('componentsNavs----', componentsNavs);
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -63,7 +75,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'index',
     component: Index
   },
-  ...guideNav
+  ...guideNav,
+  ...componentsNavs
 ];
 
 routes.push({

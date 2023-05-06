@@ -10,7 +10,8 @@ const config: any = {
       name: 'guide',
       cName: '指南',
       path: '/guide/intro'
-    }, {
+    },
+    {
       name: 'component',
       cName: '组件',
       path: '/'
@@ -27,26 +28,51 @@ const config: any = {
             name: 'intro',
             cName: '介绍',
             show: true
-          }, {
-            "name": "start",
-            "cName": "快速上手",
-            "show": true
-          }, {
-            "name": "color",
-            "cName": "色彩",
-            "show": true
-          }, {
-            "name": "theme",
-            "cName": "主题定制",
-            "show": true
-          }, {
-            "name": "i18n",
-            "cName": "国际化",
-            "show": true
-          }, {
-            "name": "contributing",
-            "cName": "开发者指南",
-            "show": true
+          },
+          {
+            name: 'start',
+            cName: '快速上手',
+            show: true
+          },
+          {
+            name: 'color',
+            cName: '色彩',
+            show: true
+          },
+          {
+            name: 'theme',
+            cName: '主题定制',
+            show: true
+          },
+          {
+            name: 'i18n',
+            cName: '国际化',
+            show: true
+          },
+          {
+            name: 'contributing',
+            cName: '开发者指南',
+            show: true
+          }
+        ]
+      }
+    ]
+  },
+  components: {
+    baseUrl: '/components/',
+    nav: [
+      {
+        name: '布局组件',
+        enName: 'layout',
+        children: [
+          {
+            name: 'Layout',
+            type: 'component',
+            cName: '布局组件',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       }

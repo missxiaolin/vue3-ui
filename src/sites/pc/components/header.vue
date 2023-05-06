@@ -45,8 +45,6 @@ export default defineComponent({
     const isActive = computed(() => {
       return function (name: string) {
         const { path } = route;
-        console.log(path)
-        console.log(name)
         return path.includes(name);
       };
     });
