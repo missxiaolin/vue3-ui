@@ -7,7 +7,7 @@ const config: any = {
   ],
   header: [
     {
-      name: 'intro,theme,start',
+      name: 'guide',
       cName: '指南',
       path: '/guide/intro'
     }, {

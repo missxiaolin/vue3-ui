@@ -4,7 +4,7 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" v-for="item in header" :key="item.name">
+          <li class="nav-item" v-for="item in header" :key="item.name" :class="{ active: isActive(item.name) }">
             <a :href="item.path">
               {{ item.cName }}
             </a>
@@ -23,6 +23,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import { RefData } from '../../assets/utils/ref'
+import { useRoute } from 'vue-router';
 import config from '../../../config';
 import Search from './Search.vue';
 
@@ -39,14 +40,25 @@ export default defineComponent({
       };
     });
 
+    const route = useRoute();
+
+    const isActive = computed(() => {
+      return function (name: string) {
+        const { path } = route;
+        console.log(path)
+        console.log(name)
+        return path.includes(name);
+      };
+    });
+
     return {
       header,
-      themeName
+      themeName,
+      isActive
     };
   }
 });
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/header.scss';
 </style>

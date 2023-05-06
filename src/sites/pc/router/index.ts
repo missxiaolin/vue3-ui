@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import Index from '../view/index/index.vue';
-import Main from '../view/main.vue';
 
 import config from '../../../config';
 
@@ -52,14 +51,12 @@ const routeFormat = (navs: any = [], type = 1) => {
 // 业务组件
 export const guideNav: any = routeFormat(config.docs, 2);
 
-console.log('guideNav----', guideNav);
+// console.log('guideNav----', guideNav);
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/guide/intro'
-    // name: 'main',
-    // component: Main
   },
   {
     path: '/index',
