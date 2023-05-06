@@ -4,7 +4,7 @@ import router from './router/index';
 import '../assets/style/index.scss'
 
 import UI from '../../packages/main/index';
-import '../../packages/styles/index.scss'
+import '../../packages/main/style'
 
 const app = createApp(App);
 app.use(UI);
