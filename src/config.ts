@@ -14,7 +14,7 @@ const config: any = {
     {
       name: 'component',
       cName: '组件',
-      path: '/'
+      "path": "/components/layout"
     }
   ],
   docs: {
@@ -73,7 +73,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
-          }
+          }, {
+            "name": "Grid",
+            "type": "component",
+            "cName": "栅格",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          },
         ]
       }
     ]

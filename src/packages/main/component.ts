@@ -1,4 +1,5 @@
 import { Container, Aside, Footer, Main, Header } from '../components/layout/index';
+import { Row, Col } from '../components/grid/index'
 
 
 
@@ -7,5 +8,7 @@ export default [
     Aside,
     Footer,
     Main,
-    Header
+    Header,
+    Row,
+    Col
 ]
