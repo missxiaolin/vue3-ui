@@ -10,7 +10,7 @@
     </l-aside>
     <l-container>
       <l-header>
-        <!-- <doc-header></doc-header> -->
+        <doc-header></doc-header>
       </l-header>
       <l-main>
         <div class="doc-content">
@@ -41,7 +41,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .doc {
   &-content {
-    margin-left: 290px;
     display: flex;
     flex-direction: column;
   }
