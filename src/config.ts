@@ -14,7 +14,7 @@ const config: any = {
     {
       name: 'component',
       cName: '组件',
-      "path": "/components/layout"
+      path: '/components/layout'
     }
   ],
   docs: {
@@ -62,6 +62,29 @@ const config: any = {
     baseUrl: '/components/',
     nav: [
       {
+        name: '基础组件',
+        enName: 'base',
+        children: [
+          {
+            name: 'Button',
+            type: 'component',
+            cName: '按钮',
+            desc: '按钮',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }, {
+            "name": "Icon",
+            "type": "component",
+            "cName": "图标",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          }
+        ]
+      },
+      {
         name: '布局组件',
         enName: 'layout',
         children: [
@@ -73,15 +96,16 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
-          }, {
-            "name": "Grid",
-            "type": "component",
-            "cName": "栅格",
-            "desc": "",
-            "show": true,
-            "author": "lin",
-            "progress": "100%"
           },
+          {
+            name: 'Grid',
+            type: 'component',
+            cName: '栅格',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }
         ]
       }
     ]
