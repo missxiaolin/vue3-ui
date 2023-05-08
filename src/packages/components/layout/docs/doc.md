@@ -62,7 +62,7 @@
       <l-container>
         <l-header>Header</l-header>
         <l-main>Main</l-main>
-        <e-footer>Footer</e-footer>
+        <l-footer>Footer</l-footer>
       </l-container>
     </l-container>
   </div>
