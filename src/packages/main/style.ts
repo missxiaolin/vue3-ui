@@ -8,3 +8,4 @@ import '@/packages/components/layout/style/main.scss';
 import '@/packages/components/icon/style/icon.scss';
 import '@/packages/components/grid/style/col.scss';
 import '@/packages/components/grid/style/row.scss';
+import '@/packages/components/button/style/button.scss';

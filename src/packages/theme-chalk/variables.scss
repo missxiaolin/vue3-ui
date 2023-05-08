@@ -15,9 +15,99 @@
     @include set-css-color-type-light('primary', $i);
   }
 
-  // --e-color-#{$type}
-  // --e-color-#{$type}-light-{$i}
+  // --l-color-#{$type}
+  // --l-color-#{$type}-light-{$i}
   @each $type in (primary, success, warning, danger, error, info, gary) {
     @include set-css-color-type($type);
   }
+
+  // --l-text-color-#{$type}
+  @each $type in (primary, regular, secondary, placeholder) {
+    @include set-css-var-type('text-color', $type, $text-color);
+  }
+
+  // --l-border-color-#{$type}
+  @each $type in (base, light, lighter, extra-light) {
+    @include set-css-var-type('border-color', $type, $border-color);
+  }
+
+  // --l-fill-color-#{$type}
+  @each $type in (base, light, lighter, extra-light, dark, darker, blank) {
+    @include set-css-var-type('fill-color', $type, $fill-color);
+  }
+
+  // Background
+  --l-background-color-base: #{$background-color-base};
+  --l-bg-color-base: #{$background-color-base};
+  --l-bg-color: #{$bg-color};
+
+  // Border
+  --l-border-width-base: #{$border-width-base};
+  --l-border-style-base: #{$border-style-base};
+  --l-border-color-hover: #{$border-color-hover};
+  --l-border-base: var(--l-border-width-base) var(--l-border-style-base) var(--l-border-color-base);
+
+  // --l-border-radius-#{$type}
+  @each $type in (base, small, round, circle) {
+    @include set-css-var-type('border-radius', $type, $border-radius);
+  }
+
+  // Box-shadow
+  // --l-box-shadow-#{$type}
+  @each $type in (base, light) {
+    @include set-css-var-type('box-shadow', $type, $box-shadow);
+  }
+
+  // Svg
+  --l-svg-monochrome-grey: #dcdde0;
+
+  // Fill
+  --l-fill-base: var(--l-color-white);
+
+  // Typography
+  @each $type in (extra-large, large, medium, base, small, extra-small) {
+    @include set-css-var-type('font-size', $type, $font-size);
+    @include set-css-var-type('line-height', $type, $line-height);
+  }
+
+  --l-text-underline: #{$text-underline};
+
+  --l-font-weight-primary: 500;
+  --l-font-line-height-primary: 24px;
+  --l-font-color-disabled-base: #bbb;
+
+  // z-index
+  --l-index-normal: 1;
+  --l-index-top: 1000;
+  --l-index-popper: 2000;
+
+  // Disable base
+  --l-disabled-fill-base: var(--l-background-color-base);
+  --l-disabled-color-base: var(--l-text-color-placeholder);
+  --l-disabled-border-base: var(--l-border-color-light);
+
+  // --l-text-color-#{$type}
+  @include set-component-css-var('text-color', $text-color);
+  // --l-border-color-#{$type}
+  @include set-component-css-var('border-color', $border-color);
+  // --l-border-radius-#{$type}
+  @include set-component-css-var('border-radius', $border-radius);
+  // --l-fill-color-#{$type}
+  @include set-component-css-var('fill-color', $fill-color);
+  // Box-shadow
+  // --l-box-shadow-#{$type}
+  @include set-component-css-var('box-shadow', $box-shadow);
+  // --l-status-color-#{$type}
+  @include set-component-css-var('status-color', $status-color);
+  // Disable base
+  @include set-component-css-var('disabled', $disabled);
+  /* Transition
+-------------------------- */
+  // refer to this website to get the bezier motion function detail
+  //  https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
+  --l-transition-duration: #{map.get($transition-duration, 'default')};
+  --l-transition-duration-fast: #{map.get($transition-duration, 'fast')};
+
+  @include set-component-css-var('transition-function', $transition-function);
+  @include set-component-css-var('transition', $transition);
 }

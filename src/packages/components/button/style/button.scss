@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/button' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(button) {
+  @include set-component-css-var('button', $button);
+}
+
+@include b(button) {
+    
+}
