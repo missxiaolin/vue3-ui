@@ -61,3 +61,27 @@ export default defineComponent({
   }
 });
 </script>
+
+
+<style scoped lang="scss">
+.right-title {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 28px;
+  font-size: 18px;
+  color: #29c1c2;
+  text-align: center;
+}
+.navRightAdd {
+  padding-left: 0 !important;
+  padding-right: 10px;
+  ul li a.router-link-active,
+  .doc-nav ol > ul li a.active {
+    border-right: none !important;
+    border-left: 3px solid #29c1c2;
+  }
+  .liRightAdd {
+    padding-left: 20px;
+  }
+}
+</style>
