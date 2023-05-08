@@ -6,11 +6,21 @@ import {
   SetupContext,
   RenderFunction,
   Component,
+  getCurrentInstance
 } from 'vue';
 export function createComponent(name: string) {
   const componentName = 'L' + name;
 
+  const useGlobalConfig = () => {
+    const vm: any = getCurrentInstance();
+    if ('$LUI' in vm.proxy) {
+      return vm.proxy.$EMONSTER;
+    }
+    return {};
+  };
+
   return {
+    useGlobalConfig,
     componentName,
     create: function <
       PropsOptions extends Readonly<ComponentPropsOptions>,
