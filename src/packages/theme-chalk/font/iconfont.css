@@ -1,9 +1,69 @@
 @font-face {
   font-family: "l-font"; /* Project id 4054851 */
-  src: url('iconfont.woff2?t=1683511793676') format('woff2'),
-       url('iconfont.woff?t=1683511793676') format('woff'),
-       url('iconfont.ttf?t=1683511793676') format('truetype'),
-       url('iconfont.svg?t=1683511793676#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1683534366364') format('woff2'),
+       url('iconfont.woff?t=1683534366364') format('woff'),
+       url('iconfont.ttf?t=1683534366364') format('truetype'),
+       url('iconfont.svg?t=1683534366364#iconfont') format('svg');
+}
+
+/* .iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+.l-guanbi:before {
+  content: "\e600";
+}
+
+.l-loading:before {
+  content: "\e644";
+}
+
+.l-zengjia:before {
+  content: "\e889";
+}
+
+.l-shuaxin:before {
+  content: "\e8aa";
+}
+
+.l-icon_loading:before {
+  content: "\eb80";
+}
+
+.l-zuobian:before {
+  content: "\e799";
+}
+
+.l-youbian:before {
+  content: "\e79a";
+}
+
+.l-sousuo:before {
+  content: "\eafe";
+}
+
+.l-xiazai:before {
+  content: "\e647";
+}
+
+.l-cuowuguanbishibai:before {
+  content: "\e75f";
+}
+
+.l-chenggong:before {
+  content: "\e643";
+}
+
+.l-shengyin:before {
+  content: "\e8b8";
+}
+
+.l-loading_line:before {
+  content: "\e763";
 }
 
 .l-caidanlanwode:before {

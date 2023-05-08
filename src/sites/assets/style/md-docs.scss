@@ -78,6 +78,9 @@
 
 // ------------- md-icon-font ---------
 .md-icon-font {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
   .l-row {
     border-left: 1px solid var(--l-color-primary-light-9);
     border-top: 1px solid var(--l-color-primary-light-9);
@@ -90,6 +93,8 @@
       text-align: center;
       align-items: center;
       justify-content: center;
+      padding: 30px 0 30px 0;
+      box-sizing: border-box;
       .l-col-form {
         flex-direction: column;
         height: 90px;
