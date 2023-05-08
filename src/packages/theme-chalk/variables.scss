@@ -1,0 +1,23 @@
+// color
+
+@use 'sass:map';
+
+// CSS3 var
+@use 'common/var' as *;
+@use 'mixins/var' as *;
+
+:root {
+  --l-color-white: #{$color-white};
+  --l-color-black: #{$color-black};
+
+  --l-color-primary: #{$color-primary};
+  @for $i from 1 through 9 {
+    @include set-css-color-type-light('primary', $i);
+  }
+
+  // --e-color-#{$type}
+  // --e-color-#{$type}-light-{$i}
+  @each $type in (primary, success, warning, danger, error, info, gary) {
+    @include set-css-color-type($type);
+  }
+}

@@ -78,14 +78,19 @@
 
 // ------------- md-icon-font ---------
 .md-icon-font {
-  .e-row {
-    border-left: 1px solid var(--e-color-primary-light-9);
-    border-top: 1px solid var(--e-color-primary-light-9);
-    .e-col {
+  .l-row {
+    border-left: 1px solid var(--l-color-primary-light-9);
+    border-top: 1px solid var(--l-color-primary-light-9);
+    .l-col {
       overflow: hidden;
-      border-right: 1px solid var(--e-color-primary-light-9);
-      border-bottom: 1px solid var(--e-color-primary-light-9);
-      .e-col-form {
+      border-right: 1px solid var(--l-color-primary-light-9);
+      border-bottom: 1px solid var(--l-color-primary-light-9);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      .l-col-form {
         flex-direction: column;
         height: 90px;
         align-items: center;
@@ -93,7 +98,7 @@
       }
       .icon-class {
         display: block;
-        color: var(--e-text-color-secondary);
+        color: var(--l-text-color-secondary);
         padding-top: 5px;
       }
     }

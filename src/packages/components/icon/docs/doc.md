@@ -4,8 +4,13 @@
 
 ```vue demo
 <template>
-     <div class="md-icon-font">
-        <l-icon icon="l-caidanlanwode" size="30" color="var(--color-input-text)"></l-icon>
+    <div class="md-icon-font">
+        <l-row :cols="6"  gutter="0">
+            <l-col v-for="icon in iconfont" :key="icon.icon_id">
+                <l-icon :icon="'l-'+icon.font_class" size="30" color="var(--color-input-text)"></l-icon>
+                <div class="icon-class" @click="handleCopy(icon.font_class)">l-{{icon.font_class}}</div>
+            </l-col>
+        </l-row>    
     </div>
 </template>
 <script lang="ts">
@@ -17,11 +22,7 @@ export default {
         const { toClipboard } = useClipboard()
         const handleCopy = async (iconClass) => {
             try {
-                await toClipboard(`l-icon-${iconClass}`)
-                proxy.$message({
-                type: 'success',
-                message: `e-icon-${iconClass} 复制成功`,
-                })
+                await toClipboard(`l-${iconClass}`)
             } catch (e) {
                 console.error(e)
             }
@@ -30,18 +31,18 @@ export default {
             handleCopy,
             iconfont: [
                 {
-                "icon_id": "1141959",
-                "name": "菜单栏_我的",
-                "font_class": "caidanlanwode",
-                "unicode": "e696",
-                "unicode_decimal": 59030
+                    "icon_id": "1141959",
+                    "name": "菜单栏_我的",
+                    "font_class": "caidanlanwode",
+                    "unicode": "e696",
+                    "unicode_decimal": 59030
                 },
                 {
-                "icon_id": "6265251",
-                "name": "菜单栏",
-                "font_class": "list2",
-                "unicode": "e655",
-                "unicode_decimal": 58965
+                    "icon_id": "6265251",
+                    "name": "菜单栏",
+                    "font_class": "list2",
+                    "unicode": "e655",
+                    "unicode_decimal": 58965
                 }
             ],
         }
