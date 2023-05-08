@@ -17,15 +17,15 @@
   line-height: 1em;
 }
 
-.#{$namespace}-icon-loading,
-.#{$namespace}-icon-loading-line {
+.#{$namespace}-loading,
+.#{$namespace}-loading-line {
   animation: rotating 2s linear infinite;
 }
 
-.#{$namespace}-icon--right {
+.#{$namespace}--right {
   margin-left: 5px;
 }
-.#{$namespace}-icon--left {
+.#{$namespace}--left {
   margin-right: 5px;
 }
 

@@ -124,7 +124,7 @@
   @include when(loading) {
     position: relative;
     pointer-events: none;
-    
+        
     &:before {
       pointer-events: none;
       content: '';
