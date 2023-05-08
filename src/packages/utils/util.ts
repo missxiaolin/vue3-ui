@@ -1,5 +1,5 @@
-import { isString } from '@vue/shared';
+import { isString, hasOwn } from '@vue/shared';
 
-export { isString };
+export { isString, hasOwn };
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number';

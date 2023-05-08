@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '../../../theme-chalk/mixins/mixins.scss' as *;
+@use '../../../theme-chalk/mixins/var.scss' as *;
+@use '../../../theme-chalk/common/var.scss' as *;
+
+@include b(col) {
+  --l-col-gutter-width: 6px;
+  --l-rows-grid: 5;
+  --l-col-flex: 1;
+  --l-col-label-width: 70px;
+  display: flex;
+  position: relative;
+  align-items: baseline;
+  margin: var(--l-col-gutter-width);
+  position: relative;
+  width: calc(((100% / var(--l-rows-grid)) * var(--l-col-flex)) - (var(--l-col-gutter-width) * 2));
+  @media screen and (max-width: 1024px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 568px) {
+    &.is-col-wap-label-column {
+      flex-direction: column;
+    }
+  }
+}
