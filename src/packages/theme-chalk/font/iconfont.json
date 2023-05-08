@@ -1,0 +1,23 @@
+{
+  "id": "4054851",
+  "name": "vue3-ui",
+  "font_family": "iconfont",
+  "css_prefix_text": "l-",
+  "description": "github vue ui 项目",
+  "glyphs": [
+    {
+      "icon_id": "1141959",
+      "name": "菜单栏_我的",
+      "font_class": "caidanlanwode",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "6265251",
+      "name": "菜单栏",
+      "font_class": "list2",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    }
+  ]
+}
