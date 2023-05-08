@@ -39,7 +39,8 @@ export default create({
   setup(props, { emit }) {
     const globalConfig = useGlobalConfig();
     const { size, disabled, loading, clickTime, icon } = toRefs(props);
-    const buttonSize = computed(() => size.value || globalConfig.size);
+    let btnSize: any = size
+    const buttonSize = computed(() => btnSize.value || globalConfig.size);
     const buttonType = computed(() => props.type || 'default');
 
     const handleClick = (event: MouseEvent) => {
