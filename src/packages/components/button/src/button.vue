@@ -15,6 +15,7 @@
     :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
+    @click="handleClick"
   >
     <l-icon v-if="leftIcon" class="l-button-icon" :icon="leftIcon"></l-icon>
     <span v-if="$slots.default">
