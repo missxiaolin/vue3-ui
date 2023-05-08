@@ -3,8 +3,6 @@ import { useSizeProp } from '../../../hooks';
 export const buttonTypes = ['default', 'primary', 'success', 'warning', 'info', 'danger', 'text', 'gary', ''] as const;
 export type buttonNativeType = 'button' | 'submit' | 'reset';
 
-console.log(useSizeProp)
-
 export const buttonProps = {
     nativeType: {
       type: String as PropType<buttonNativeType>,

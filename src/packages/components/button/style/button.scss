@@ -45,9 +45,9 @@
 
   &:hover,
   &:focus {
-    color: var(--e-color-primary);
-    border-color: var(--e-color-primary-light-7);
-    background-color: var(--e-color-primary-light-9);
+    color: var(--l-color-primary);
+    border-color: var(--l-color-primary-light-7);
+    background-color: var(--l-color-primary-light-9);
     outline: none;
   }
 
@@ -124,7 +124,7 @@
   @include when(loading) {
     position: relative;
     pointer-events: none;
-
+    
     &:before {
       pointer-events: none;
       content: '';
