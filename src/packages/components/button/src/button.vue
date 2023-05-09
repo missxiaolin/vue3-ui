@@ -4,6 +4,7 @@
       'l-button',
       buttonType ? 'l-button--' + buttonType : '',
       buttonSize ? 'l-button--' + buttonSize : '',
+      iconPosition ? 'l-button--' + iconPosition : '',
       {
         'is-disabled': disabled,
         'is-loading': loading,
@@ -18,7 +19,7 @@
     v-repeat-click:[clickTime]="handleClick"
   >
     <l-icon v-if="leftIcon" class="l-button-icon" :icon="leftIcon"></l-icon>
-    <span v-if="$slots.default">
+    <span v-if="$slots.default" class="l-button-content">
       <slot></slot>
     </span>
   </button>
@@ -43,7 +44,7 @@ export default create({
   props: buttonProps,
   setup(props, { emit }) {
     const globalConfig = useGlobalConfig();
-    const { size, disabled, loading, clickTime, icon } = toRefs(props);
+    const { size, disabled, loading, clickTime, icon, iconPosition } = toRefs(props);
     let btnSize: any = size
     const buttonSize = computed(() => btnSize.value || globalConfig.size);
     const buttonType = computed(() => props.type || 'default');
@@ -64,7 +65,8 @@ export default create({
       disabled,
       clickTime,
       leftIcon,
-      handleClick
+      handleClick,
+      iconPosition
     };
   }
 });

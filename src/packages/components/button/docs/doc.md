@@ -99,7 +99,8 @@ export default {
   <l-row :cols="1">
     <l-col>
       <l-button  type="primary" @click="handleClick" :loading="loading" size="small">点击加载</l-button>
-      <l-button  type="success" @click="handleClick" :loading="true" size="small">加载中</l-button>
+      <l-button  type="success" @click="handleClick" :loading="true" size="small" iconPosition="right">加载中右边</l-button>
+      <l-button  type="success" @click="handleClick" :loading="true" size="small" iconPosition="left">加载中左边</l-button>
       <l-button  type="gary" @click="handleClick" :loading="loading" size="small">加载中</l-button>
     </l-col>
   </l-row>
