@@ -110,7 +110,6 @@ import { ref } from "vue"
 export default {
   setup() {
     let loading = ref(false)
-    console.log('ceshi')
     const handleClick = (event: Event)=> {
       loading.value = true;
       console.log("--- 触发点击 ----")

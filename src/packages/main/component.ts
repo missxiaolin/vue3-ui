@@ -2,7 +2,8 @@ import { Container, Aside, Footer, Main, Header } from '../components/layout/ind
 import { Row, Col } from '../components/grid/index'
 import { Icon } from '../components/icon/index'
 import {
-    Button 
+    Button,
+    ButtonGroup
   } from '../components/button';
 
 
@@ -16,5 +17,6 @@ export default [
     Row,
     Col,
     Icon,
-    Button
+    Button,
+    ButtonGroup
 ]
