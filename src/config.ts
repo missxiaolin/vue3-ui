@@ -120,8 +120,7 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
-          },
-          {
+          }, {
             name: 'Grid',
             type: 'component',
             cName: '栅格',
@@ -129,6 +128,22 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          }, {
+            "name": "Space",
+            "type": "component",
+            "cName": "间距",
+            "desc": "给组件之间提供统一的间距",
+            "show": true,
+            "author": "lyc",
+            "progress": "0%"
+          }, {
+            "name": "Divider",
+            "type": "component",
+            "cName": "分割线",
+            "desc": "",
+            "show": true,
+            "author": "lijuntao",
+            "progress": "0%"
           }
         ]
       }
