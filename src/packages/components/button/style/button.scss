@@ -244,7 +244,7 @@
     }
   }
 
-  &.#{$namespace}button--left {
+  @include m(left) {
     & [class*='#{$namespace}-button-icon'] {
       order: 1;
     }
@@ -252,5 +252,4 @@
       order: 2;
     }
   }
-
 }
