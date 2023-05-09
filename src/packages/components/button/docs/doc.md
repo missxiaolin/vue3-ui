@@ -188,4 +188,5 @@ export default {
 |icon	|图标组件样式名，详情参考[icon](/icon)	| string	|—	|—|
 |autofocus	|是否默认聚焦	|boolean|	—	|false|
 |native-type	|原生 type 属性	|string	|button / submit / reset	|button|
+|iconPosition | 图标左右 | string | 	left / right |right |
 |click-time	| 防爆点击时间	| number	| -	| 500 |
