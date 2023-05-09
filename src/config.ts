@@ -82,6 +82,14 @@ const config: any = {
             "author": "lin",
             "progress": "100%"
           }, {
+            "name": "Ellipsis",
+            "type": "component",
+            "cName": "文本",
+            "desc": "文本省略",
+            "show": true,
+            "author": "lin",
+            "progress": "0%"
+          }, {
             "name": "Icon",
             "type": "component",
             "cName": "图标",

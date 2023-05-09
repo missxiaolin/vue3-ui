@@ -1,0 +1,1 @@
+export { default as Ellipsis } from './src/ellipsis.vue'
