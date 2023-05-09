@@ -74,6 +74,14 @@ const config: any = {
             author: 'lin',
             progress: '100%'
           }, {
+            "name": "Link",
+            "type": "component",
+            "cName": "链接",
+            "desc": "文字超链接",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          }, {
             "name": "Icon",
             "type": "component",
             "cName": "图标",

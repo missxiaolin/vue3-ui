@@ -1,1 +1,5 @@
-export { default as ConfigProvider } from './src/config-provider';
+import { default as ConfigProvider } from './src/config-provider';
+
+export {
+    ConfigProvider
+}

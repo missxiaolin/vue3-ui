@@ -5,6 +5,7 @@ import {
     Button,
     ButtonGroup
   } from '../components/button';
+import { Link } from '../components/link/index'
 
 
 
@@ -18,5 +19,6 @@ export default [
     Col,
     Icon,
     Button,
-    ButtonGroup
+    ButtonGroup,
+    Link
 ]

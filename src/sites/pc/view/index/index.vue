@@ -3,7 +3,6 @@
     <l-aside class="doc-aside-wapper flex flex-cl" width="230px">
       <div class="doc-logo">
         logo
-        <l-button-group>11</l-button-group>
       </div>
       <div class="flex-1">
         <doc-nav></doc-nav>
