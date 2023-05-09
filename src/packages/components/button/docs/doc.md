@@ -149,6 +149,31 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 </template>
 ```
 
+### 防爆点击
+默认时间: 500ms。
+
+```vue demo
+<template>
+  <l-row :cols="1">
+    <l-col>
+      <l-button @click="handleClick" :click-time="2000">2000ms 点击时间</l-button>
+    </l-col>
+  </l-row>
+</template>
+<script lang="ts">
+export default {
+  setup() {
+    const handleClick = (event: Event)=> {
+      console.log('---- 单击时间 ----', new Date().getTime())
+    }
+    return {
+      handleClick
+    };
+  },
+};
+</script>
+```
+
 ### Button 属性
 
 |属性	|说明	|类型	|可选值	|默认值|

@@ -15,7 +15,7 @@
     :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
-    @click="handleClick"
+    v-repeat-click:[clickTime]="handleClick"
   >
     <l-icon v-if="leftIcon" class="l-button-icon" :icon="leftIcon"></l-icon>
     <span v-if="$slots.default">
@@ -30,10 +30,14 @@ import createComponent from '../../../utils/create';
 const { componentName, useGlobalConfig, create } = createComponent('Button');
 import { buttonProps } from './button';
 import { Icon } from '../../icon/index';
+import { RepeatClick } from '../../../directives';
 
 export default create({
   components: {
     [Icon.name]: Icon
+  },
+  directives: {
+    RepeatClick
   },
   emits: ['click'],
   props: buttonProps,
