@@ -1,0 +1,90 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(link) {
+  @include set-component-css-var('link', $link);
+}
+
+@include b(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: var(--l-font-size-base);
+  font-weight: var(--l-link-font-weight);
+  color: var(--l-link-text-color);
+
+  &:hover {
+    color: var(--l-link-hover-text-color);
+  }
+
+  @include when(underline) {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid var(--l-link-text-color);
+    }
+  }
+
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      color: var(--l-link-disabled-font-color);
+      cursor: not-allowed;
+    }
+  }
+
+  & [class*='#{$namespace}-icon-'] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  &.#{$namespace}-link--default {
+    &:after {
+      border-color: var(--l-link-text-color);
+    }
+  }
+
+  @include e(inner) {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @each $type in $types {
+    &.#{$namespace}-link--#{$type} {
+      --l-link-text-color: var(--l-color-#{$type});
+
+      --l-link-hover-text-color: var(--l-color-#{$type}-light-3);
+      --l-link-disabled-font-color: var(--k-color-#{$type}-light-5);
+
+      &:after {
+        border-color: var(--l-link-text-color);
+      }
+
+      &:after {
+        border-color: var(--l-link-text-color);
+      }
+    }
+
+    @include m($type) {
+      --l-link-icon-color: var(--l-color-#{$type});
+      color: var(--l-link-icon-color);
+    }
+  }
+}
