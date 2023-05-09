@@ -5,7 +5,8 @@ import type buttonGroup from './button-group.vue';
 
 export const buttonGroupProps = {
   size: buttonProps.size,
-  type: buttonProps.type
+  type: buttonProps.type,
+  name: buttonProps.name
 } as const;
 export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>;
 

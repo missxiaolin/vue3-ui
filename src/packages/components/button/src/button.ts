@@ -35,6 +35,11 @@ export const buttonProps = {
       type: Number,
       default: 500
     },
+    name: {
+      type: String,
+      values: buttonTypes,
+      default: ''
+    },
     autofocus: Boolean,
     round: Boolean,
     circle: Boolean
