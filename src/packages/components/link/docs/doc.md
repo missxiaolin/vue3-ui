@@ -35,6 +35,89 @@
 
 ```
 
+
+### 禁用状态
+文字链接不可用状态。
+```vue demo
+<template>
+  <l-row :cols="6">
+    <l-col>
+      <l-link href="" target="_blank" disabled>default</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="primary" disabled>primary</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="success" disabled>success</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="warning" disabled>warning</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="danger" disabled>danger</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="info" disabled>info</l-link>
+    </l-col>
+  </l-row>
+</template>
+```
+
+### 文字+图标
+文字+图标。
+```vue demo
+<template>
+  <l-row :cols="6">
+    <l-col>
+      <l-link href="" target="_blank" icon="l-guanbi">default</l-link>
+    </l-col>
+    <l-col>
+      <l-link href="https://www.baidu.com" target="_blank" type="primary" icon="l-loading">primary</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="success" icon="l-youbian" >success</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="warning" icon="l-sousuo">warning</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="danger" icon="l-xiazai" disabled>danger</l-link>
+    </l-col>
+    <l-col>
+      <l-link type="info" icon="l-cuowuguanbishibai" disabled>info</l-link>
+    </l-col>
+
+  </l-row>
+
+</template>
+```
+
+### 图标链接
+有图标无文字的链接。
+```vue demo
+<template>
+  <l-row :cols="6">
+    <l-col>
+      <l-link href="" target="_blank" icon="l-guanbi"></l-link>
+    </l-col>
+    <l-col>
+      <l-link href="https:/www.baidu.com" target="_blank" type="primary" icon="l-loading"></l-link>
+    </l-col>
+    <l-col>
+      <l-link type="success" icon="l-sousuo" ></l-link>
+    </l-col>
+    <l-col>
+    </l-col>
+    <l-col>
+    </l-col>
+    <l-col>
+    </l-col>
+
+  </l-row>
+
+</template>
+```
+
 ### Link 属性
 |属性	|说明	|类型	|可选值	|默认值|
 |---- |----- |------ |---  |---- |
