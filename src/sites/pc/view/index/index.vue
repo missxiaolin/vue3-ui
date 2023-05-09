@@ -2,7 +2,7 @@
   <l-container class="doc-content-wapper">
     <l-aside class="doc-aside-wapper flex flex-cl" width="230px">
       <div class="doc-logo">
-        logo
+        <img class="logo" :src="logo" alt="">
       </div>
       <div class="flex-1">
         <doc-nav></doc-nav>
@@ -27,6 +27,7 @@
 import { defineComponent } from 'vue';
 import Header from '@/sites/pc/components/header.vue';
 import Nav from '@/sites/pc/components/nav.vue';
+import logo from '../../../assets/images/logo.jpeg'
 
 
 export default defineComponent({
@@ -34,6 +35,11 @@ export default defineComponent({
   components: {
     [Header.name]: Header,
     [Nav.name]: Nav
+  },
+  setup() {
+    return {
+      logo
+    }
   }
 });
 </script>
