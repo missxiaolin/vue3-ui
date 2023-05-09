@@ -18,7 +18,8 @@
 }
 
 .#{$namespace}-loading,
-.#{$namespace}-loading-line {
+.#{$namespace}-loading-line,
+.#{$namespace}-icon_loading {
   animation: rotating 2s linear infinite;
 }
 
