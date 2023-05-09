@@ -6,7 +6,6 @@ import {
     ButtonGroup
   } from '../components/button';
 import { Link } from '../components/link/index'
-import { Ellipsis } from '../components/ellipsis/index'
 
 
 
@@ -22,5 +21,4 @@ export default [
     Button,
     ButtonGroup,
     Link,
-    Ellipsis
 ]
