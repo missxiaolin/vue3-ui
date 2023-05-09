@@ -244,13 +244,13 @@
     }
   }
 
-}
+  &.#{$namespace}button--left {
+    & [class*='#{$namespace}-button-icon'] {
+      order: 1;
+    }
+    & [class*='#{$namespace}-button-content'] {
+      order: 2;
+    }
+  }
 
-@include b(button--left) {
-  & [class*='#{$namespace}-button-icon'] {
-    order: 1;
-  }
-  & [class*='#{$namespace}-button-content'] {
-    order: 2;
-  }
 }
