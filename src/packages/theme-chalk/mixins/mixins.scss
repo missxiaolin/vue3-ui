@@ -1,3 +1,5 @@
+@use 'function' as *;
+@use '../common/var' as *;
 @forward 'config';
 @use 'config' as *;
 
