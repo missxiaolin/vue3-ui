@@ -135,7 +135,7 @@ const config: any = {
             "desc": "给组件之间提供统一的间距",
             "show": true,
             "author": "lyc",
-            "progress": "0%"
+            "progress": "100%"
           }, {
             "name": "Divider",
             "type": "component",

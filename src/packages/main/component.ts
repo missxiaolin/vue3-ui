@@ -6,6 +6,7 @@ import {
     ButtonGroup
   } from '../components/button';
 import { Link } from '../components/link/index'
+import { Space } from '../components/space/index'
 
 
 
@@ -21,4 +22,5 @@ export default [
     Button,
     ButtonGroup,
     Link,
+    Space
 ]
