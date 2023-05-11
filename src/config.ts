@@ -143,7 +143,7 @@ const config: any = {
             "desc": "",
             "show": true,
             "author": "lijuntao",
-            "progress": "0%"
+            "progress": "100%"
           }
         ]
       }

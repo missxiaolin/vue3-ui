@@ -7,6 +7,7 @@ import {
   } from '../components/button';
 import { Link } from '../components/link/index'
 import { Space } from '../components/space/index'
+import { Divider } from '../components/divider/index'
 
 
 
@@ -22,5 +23,6 @@ export default [
     Button,
     ButtonGroup,
     Link,
-    Space
+    Space,
+    Divider
 ]
