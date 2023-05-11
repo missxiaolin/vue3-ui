@@ -89,15 +89,17 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "0%"
-          }, {
-            "name": "Gradient",
-            "type": "component",
-            "cName": "渐变文字",
-            "desc": "渐变文字",
-            "show": true,
-            "author": "",
-            "progress": "0%"
-          }, {
+          }, 
+          // {
+          //   "name": "Gradient",
+          //   "type": "component",
+          //   "cName": "渐变文字",
+          //   "desc": "渐变文字",
+          //   "show": true,
+          //   "author": "",
+          //   "progress": "0%"
+          // },
+           {
             "name": "Icon",
             "type": "component",
             "cName": "图标",
