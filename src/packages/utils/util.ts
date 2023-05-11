@@ -1,7 +1,5 @@
-import { isString, hasOwn } from '@vue/shared';
+import { isString, hasOwn, isArray } from '@vue/shared';
 
-export { isString, hasOwn };
+export { isString, hasOwn, isArray };
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number';
-
-export declare const isArray: (arg: any) => arg is any[];
