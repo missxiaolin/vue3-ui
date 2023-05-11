@@ -1,0 +1,38 @@
+<template>
+  <div :class="[ns.b(), ns.m(direction)]" :style="dividerStyle">
+    <div v-if="$slots.default && direction !== 'vertical'" :class="[ns.e('text'), ns.is(contentPosition)]">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { computed } from 'vue';
+import { useNamespace } from '../../../hooks';
+
+import { dividerProps } from './divider';
+import type { CSSProperties } from 'vue';
+
+import createComponent from '../../../utils/create';
+const { create } = createComponent('Divider');
+
+export default create({
+  props: dividerProps,
+
+  setup(props) {
+    const ns = useNamespace('divider');
+    console.log(ns.e('text'))
+
+    const dividerStyle = computed(() => {
+      return {
+        '--l-border-style': props.borderStyle
+      } as CSSProperties;
+    });
+
+    return {
+      ns,
+      dividerStyle
+    };
+  }
+});
+</script>

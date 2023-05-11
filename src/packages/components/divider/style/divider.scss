@@ -1,0 +1,51 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+
+@include b(divider) {
+    position: relative;
+  
+    @include m(horizontal) {
+      display: block;
+      height: 1px;
+      width: 100%;
+      margin: 24px 0;
+      border-top: 1px var(--l-border-color-base) var(--l-border-style);
+    }
+  
+    @include m(vertical) {
+      display: inline-block;
+      width: 1px;
+      height: 1em;
+      margin: 0 8px;
+      vertical-align: middle;
+      position: relative;
+      border-left: 1px var(--l-border-color-base) var(--l-border-style);
+    }
+  
+    @include e(text) {
+      position: absolute;
+      background-color: $color-white;
+      padding: 0 20px;
+      font-weight: 500;
+      color: var(--l-text-color-primary);
+      font-size: 14px;
+  
+      @include when(left) {
+        left: 20px;
+        transform: translateY(-50%);
+      }
+  
+      @include when(center) {
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+  
+      @include when(right) {
+        right: 20px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  
