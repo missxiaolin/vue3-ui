@@ -12,3 +12,4 @@ import '@/packages/components/button/style/button.scss';
 import '@/packages/components/link/style/link.scss';
 import '@/packages/components/space/style/space.scss';
 import '@/packages/components/divider/style/divider.scss';
+import '@/packages/components/ellipsis/style/ellipsis.scss';

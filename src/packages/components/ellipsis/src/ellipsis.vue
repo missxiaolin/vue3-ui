@@ -7,10 +7,12 @@
 <script lang="ts">
 import { computed, toRefs } from 'vue';
 import createComponent from '../../../utils/create';
-const { componentName, useGlobalConfig, create } = createComponent('Button');
+const { componentName, useGlobalConfig, create } = createComponent('Ellipsis');
 
 export default create({
-  setup() {
+  emits: ['clickAction'],
+  setup(props, { emit }) {
+    
     return {
       componentName,
     };
