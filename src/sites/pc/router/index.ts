@@ -63,7 +63,7 @@ export const guideNav: any = routeFormat(config.docs, 2);
 export const componentsNavs: any = routeFormat(config.components);
 
 // console.log('guideNav----', guideNav);
-console.log('componentsNavs----', componentsNavs);
+// console.log('componentsNavs----', componentsNavs);
 
 const routes: Array<RouteRecordRaw> = [
   {
