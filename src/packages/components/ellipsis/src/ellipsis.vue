@@ -20,7 +20,7 @@ export default create({
     const text = ref('');
     const expanded = ref(false);
     const hasAction = ref(false);
-    const root = ref<any>();
+    const root = ref<HTMLElement>();
 
     const { rows, dots, content, expandText, collapseText } = toRefs(props);
 
