@@ -3,9 +3,12 @@
 ### 基础用法
 ```vue demo
 <template>
-    <l-ellipsis 
-    :content="text">
-    </l-ellipsis>
+    <div style="font-size: 14px;">
+      <l-ellipsis 
+      :content="text">
+      </l-ellipsis>
+    </div>
+    
 </template>
 
 <script lang="ts">
@@ -25,11 +28,13 @@ export default {
 
 ```vue demo
 <template>
+  <div style="font-size: 14px;">
     <l-ellipsis 
     :content="text"
     expand-text="展开"
     collapse-text="收起">
     </l-ellipsis>
+  </div>
 </template>
 
 <script lang="ts">
