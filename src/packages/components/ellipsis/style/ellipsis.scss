@@ -4,15 +4,15 @@
 @use '../../../theme-chalk/mixins/var' as *;
 
 @include b(ellipsis) {
-    line-height: 16px;
+    line-height: var(--l-text-ellipsis-line-height);
     white-space: pre-wrap;
     word-break: break-word;
     & [class*='#{$namespace}-ellipsis-span'] {
         cursor: pointer;
-        color: #1989fa;
+        color: var(--l-text-ellipsis-action-color);
 
         &:active {
-            opacity: 0.6;
+            opacity: var(--l-active-opacity);
         }
     }
 }

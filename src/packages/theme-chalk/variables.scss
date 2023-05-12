@@ -86,6 +86,11 @@
   --l-disabled-color-base: var(--l-text-color-placeholder);
   --l-disabled-border-base: var(--l-border-color-light);
 
+  // 文本
+  --l-text-ellipsis-line-height: 1.6;
+  --l-text-ellipsis-action-color: #1989fa;
+  --l-active-opacity: 0.6;
+
   // --l-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);
   // --l-border-color-#{$type}
