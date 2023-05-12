@@ -88,7 +88,7 @@ const config: any = {
             "desc": "文本省略",
             "show": true,
             "author": "lin",
-            "progress": "0%"
+            "progress": "100%"
           }, 
           // {
           //   "name": "Gradient",
