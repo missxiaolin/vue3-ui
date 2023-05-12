@@ -1,14 +1,14 @@
 <template>
-  <div ref="root" class="l-ellipsis">
+  <div ref="root" :class="['l-ellipsis']">
     {{ expanded ? content : text }}
-    <span v-if="hasAction">
+    <span class="l-ellipsis-span" v-if="hasAction" @click="onClickAction">
       {{ expanded ? collapseText : expandText }}
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, toRefs, ref, watch, onMounted } from 'vue';
+import { toRefs, ref, watch, onMounted } from 'vue';
 import createComponent from '../../../utils/create';
 import { EllipsisProps } from './ellipsis';
 const { componentName, create } = createComponent('Ellipsis');
@@ -22,7 +22,7 @@ export default create({
     const hasAction = ref(false);
     const root = ref<any>();
 
-    const { dots, content, expandText, collapseText } = toRefs(props);
+    const { rows, dots, content, expandText, collapseText } = toRefs(props);
 
     const pxToNum = (value: string | null) => {
       if (!value) return 0;
@@ -33,7 +33,7 @@ export default create({
     const calcEllipsised = () => {
       const cloneContainer = () => {
         if (!root.value) return;
-        
+
         const originStyle = window.getComputedStyle(root.value);
         const container = document.createElement('div');
         const styleNames: string[] = Array.prototype.slice.apply(originStyle);
@@ -52,9 +52,6 @@ export default create({
       };
 
       const calcEllipsisText = (container: HTMLDivElement, maxHeight: number) => {
-        
-        
-
         let left = 0;
         let right = content.value.length;
         let res = -1;
@@ -73,11 +70,10 @@ export default create({
       };
 
       const container = cloneContainer();
-      console.log(container)
       if (!container) return;
 
       const { paddingBottom, paddingTop, lineHeight } = container.style;
-      const maxHeight = (Number(props.rows) + 0.5) * pxToNum(lineHeight) + pxToNum(paddingTop) + pxToNum(paddingBottom);
+      const maxHeight = (Number(rows.value) + 0.5) * pxToNum(lineHeight) + pxToNum(paddingTop) + pxToNum(paddingBottom);
       if (maxHeight < container.offsetHeight) {
         hasAction.value = true;
         text.value = calcEllipsisText(container, maxHeight);
@@ -93,8 +89,14 @@ export default create({
 
     watch(() => [content.value, props.rows], calcEllipsised);
 
+    const onClickAction = (event: MouseEvent) => {
+      expanded.value = !expanded.value;
+      emit('clickAction', event);
+    };
+
     return {
       componentName,
+      onClickAction,
       expanded,
       text,
       hasAction,

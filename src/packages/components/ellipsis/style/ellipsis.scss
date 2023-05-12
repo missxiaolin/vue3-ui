@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(ellipsis) {
+    line-height: 16px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    & [class*='#{$namespace}-ellipsis-span'] {
+        cursor: pointer;
+        color: #1989fa;
+
+        &:active {
+            opacity: 0.6;
+        }
+    }
+}
