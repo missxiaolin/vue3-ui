@@ -33,7 +33,7 @@
 // generate css var from existing css var
 // for example:
 // @include css-var-from-global(('button', 'text-color'), ('color', $type))
-// --e-button-text-color: var(--e-color-#{$type});
+// --l-button-text-color: var(--l-color-#{$type});
 @mixin css-var-from-global($var, $gVar) {
   $varName: joinVarName($var);
   $gVarName: joinVarName($gVar);
