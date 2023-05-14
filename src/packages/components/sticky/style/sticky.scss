@@ -1,0 +1,7 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+
+@include b(sticky) {
+  @include m(fixed) {
+    position: fixed;
+  }
+}
