@@ -9,7 +9,7 @@ import { Link } from '../components/link/index'
 import { Space } from '../components/space/index'
 import { Divider } from '../components/divider/index'
 import { Ellipsis } from '../components/ellipsis/index'
-
+import { Sticky } from '../components/sticky/index'
 
 
 export default [
@@ -26,5 +26,6 @@ export default [
     Link,
     Space,
     Divider,
-    Ellipsis
+    Ellipsis,
+    Sticky
 ]

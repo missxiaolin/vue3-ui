@@ -99,8 +99,7 @@ const config: any = {
             "progress": "100%"
           }
         ]
-      },
-      {
+      }, {
         name: '布局组件',
         enName: 'layout',
         children: [
@@ -137,6 +136,20 @@ const config: any = {
             "author": "lijuntao",
             "progress": "100%"
           }
+        ]
+      }, {
+        name: '导航组件',
+        enName: 'navigation',
+        children: [
+          {
+            "name": "Sticky",
+            "type": "component",
+            "cName": "粘性布局",
+            "desc": "",
+            "show": true,
+            "author": "zhusaiji",
+            "progress": "100%"
+          },
         ]
       }
     ]
