@@ -149,6 +149,14 @@ const config: any = {
             "show": true,
             "author": "zhusaiji",
             "progress": "100%"
+          }, {
+            "name": "Anchor",
+            "type": "component",
+            "cName": "锚点",
+            "desc": "锚点 anchor",
+            "show": true,
+            "author": "zql yzz",
+            "progress": "100%"
           },
         ]
       }

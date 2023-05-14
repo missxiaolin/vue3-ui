@@ -14,3 +14,4 @@ import '@/packages/components/space/style/space.scss';
 import '@/packages/components/divider/style/divider.scss';
 import '@/packages/components/ellipsis/style/ellipsis.scss';
 import '@/packages/components/sticky/style/sticky.scss';
+import '@/packages/components/anchor/style/anchor.scss';
