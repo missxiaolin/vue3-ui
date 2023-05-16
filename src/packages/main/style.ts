@@ -15,3 +15,5 @@ import '@/packages/components/divider/style/divider.scss';
 import '@/packages/components/ellipsis/style/ellipsis.scss';
 import '@/packages/components/sticky/style/sticky.scss';
 import '@/packages/components/anchor/style/anchor.scss';
+import '@/packages/components/anchor/style/anchor-link.scss';
+import '@/packages/components/anchor/style/anchor-point.scss';

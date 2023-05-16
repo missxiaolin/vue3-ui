@@ -10,7 +10,7 @@ import { Space } from '../components/space/index'
 import { Divider } from '../components/divider/index'
 import { Ellipsis } from '../components/ellipsis/index'
 import { Sticky } from '../components/sticky/index'
-import { Anchor } from '../components/anchor/index'
+import { Anchor, AnchorLink, AnchorPoint } from '../components/anchor/index'
 
 
 export default [
@@ -29,5 +29,7 @@ export default [
     Divider,
     Ellipsis,
     Sticky,
-    Anchor
+    Anchor,
+    AnchorLink,
+    AnchorPoint
 ]
