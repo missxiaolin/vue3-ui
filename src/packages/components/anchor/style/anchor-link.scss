@@ -1,0 +1,38 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(anchor-link) {
+  padding: 0px 0px 0px 14px;
+  font-weight: var(--l-font-weight-primary);
+  color: var(--l-text-color-regular);
+  font-size: var(--l-font-size-extra-small);
+  line-height: var(--l-font-size-extra-small);
+  &.e-anchor-link-active {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 3px;
+      height: 10px;
+      background-color: var(--l-color-primary);
+      margin-top: 10px;
+    }
+  }
+  a {
+    line-height: 30px;
+    position: relative;
+    color: var(--l-text-color-secondary);
+  }
+  a.e-anchor-link-title-active {
+    color: var(--l-text-color-primary);
+  }
+  @include b(anchor-link) {
+    a::before {
+      content: '•';
+      position: absolute;
+      left: -10px;
+      display: block;
+    }
+  }
+}
