@@ -1,0 +1,8 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(anchor-point) {
+  width: 0;
+  height: 0;
+  display: inline;
+}
