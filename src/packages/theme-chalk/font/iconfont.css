@@ -6,6 +6,7 @@
        url('iconfont.svg?t=1683534366364#iconfont') format('svg');
 }
 
+
 /* .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
@@ -13,6 +14,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
+
+.l-huidaodingbu:before {
+  content: "\e7ed";
+}
 
 .l-guanbi:before {
   content: "\e600";
