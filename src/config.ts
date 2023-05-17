@@ -147,7 +147,7 @@ const config: any = {
             "cName": "粘性布局",
             "desc": "",
             "show": true,
-            "author": "zhusaiji",
+            "author": "xiaolin",
             "progress": "100%"
           }, {
             "name": "Anchor",
@@ -155,7 +155,15 @@ const config: any = {
             "cName": "锚点",
             "desc": "锚点 anchor",
             "show": true,
-            "author": "zql yzz",
+            "author": "xiaolin",
+            "progress": "100%"
+          }, {
+            "name": "BackTop",
+            "type": "component",
+            "cName": "回到顶部",
+            "desc": "",
+            "show": true,
+            "author": "xiaolin",
             "progress": "100%"
           },
         ]

@@ -11,6 +11,7 @@ import { Divider } from '../components/divider/index'
 import { Ellipsis } from '../components/ellipsis/index'
 import { Sticky } from '../components/sticky/index'
 import { Anchor, AnchorLink, AnchorPoint } from '../components/anchor/index'
+import { Backtop } from '../components/backtop/index'
 
 
 export default [
@@ -31,5 +32,6 @@ export default [
     Sticky,
     Anchor,
     AnchorLink,
-    AnchorPoint
+    AnchorPoint,
+    Backtop
 ]
