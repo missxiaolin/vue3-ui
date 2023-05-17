@@ -18,3 +18,4 @@ import '@/packages/components/anchor/style/anchor.scss';
 import '@/packages/components/anchor/style/anchor-link.scss';
 import '@/packages/components/anchor/style/anchor-point.scss';
 import '@/packages/components/backtop/style/backtop.scss';
+import '@/packages/components/scroll/style/scroll.scss';

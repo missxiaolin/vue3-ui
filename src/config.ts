@@ -167,6 +167,19 @@ const config: any = {
             "progress": "100%"
           },
         ]
+      }, {
+        "name": "工具组件",
+        "children": [
+          {
+            "name": "Scroll",
+            "type": "component",
+            "cName": "滚动条",
+            "desc": "滚动条",
+            "show": true,
+            "author": "xiaolin",
+            "progress": "100%"
+          }
+        ]
       }
     ]
   }

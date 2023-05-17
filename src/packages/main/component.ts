@@ -12,6 +12,7 @@ import { Ellipsis } from '../components/ellipsis/index'
 import { Sticky } from '../components/sticky/index'
 import { Anchor, AnchorLink, AnchorPoint } from '../components/anchor/index'
 import { Backtop } from '../components/backtop/index'
+import { Scroll } from '../components/scroll/index'
 
 
 export default [
@@ -33,5 +34,6 @@ export default [
     Anchor,
     AnchorLink,
     AnchorPoint,
-    Backtop
+    Backtop,
+    Scroll
 ]
