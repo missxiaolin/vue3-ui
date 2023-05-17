@@ -1,0 +1,61 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(anchor) {
+  @include set-component-css-var('anchor', $anchor);
+}
+
+@include b(anchor) {
+  // 开始你的表演吧
+  display: flex;
+  justify-content: flex-end;
+  &_content {
+    padding: 11px 14px 11px 0;
+    border-radius: 10px 0px 10px 10px;
+    background: var(--l-color-white);
+    position: relative;
+  }
+  &__bar {
+    height: 42px;
+    padding: 16px 2px;
+    border-radius: 0px 6px 6px 0px;
+    background: var(--l-anchor-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.#{$namespace}-anchor-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: all var(--e-transition-duration);
+  }
+
+  &-enter-from,
+  &-enter-active,
+  &-enter-to,
+  &-leave-from,
+  &-leave-active,
+  &-leave-to {
+    overflow: hidden !important;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    // transform: translateX(100%);
+    opacity: 0;
+  }
+}

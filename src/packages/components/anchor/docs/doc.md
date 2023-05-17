@@ -9,15 +9,17 @@
 ```vue demo
 <template>
     <div style="background: #F5F6F9;padding: 20px;">
-        <l-anchor-link href="#anchor-1231锚点" title="锚点">
-            <l-anchor-link href="#介绍" title="介绍" />
-            <l-anchor-link href="#基础用法" title="基础用法" />
-        </l-anchor-link>
-        <l-anchor-link href="#api" title="API">
-            <l-anchor-link href="#anchor-属性" title="anchor-属性"></l-anchor-link>
-            <l-anchor-link href="#anchor抛出事件" title="anchor抛出事件"></l-anchor-link>
-            <l-anchor-link href="#link-props" title="anchor Link Props"></l-anchor-link>
-        </l-anchor-link>
+        <l-anchor :affix="true" :offsetTop="50" :targetOffset="20" defaultAnchor="anchor-1231锚点"  wrapperClass="my-wrapperClass">
+            <l-anchor-link href="#anchor-1231锚点" title="锚点">
+                <l-anchor-link href="#介绍" title="介绍" />
+                <l-anchor-link href="#基础用法" title="基础用法" />
+            </l-anchor-link>
+            <l-anchor-link href="#api" title="API">
+                <l-anchor-link href="#anchor-属性" title="anchor-属性"></l-anchor-link>
+                <l-anchor-link href="#anchor抛出事件" title="anchor抛出事件"></l-anchor-link>
+                <l-anchor-link href="#link-props" title="anchor Link Props"></l-anchor-link>
+            </l-anchor-link>
+        </l-anchor>
     </div>
 </template>
 ```
