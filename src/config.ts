@@ -165,7 +165,15 @@ const config: any = {
             "show": true,
             "author": "xiaolin",
             "progress": "100%"
-          },
+          }, {
+            "name": "Breadcrumb",
+            "type": "component",
+            "cName": "面包屑",
+            "desc": "面包屑是辅助导航模式，用于识别⻚面在层次结构内的位置，并根据需要向上返回",
+            "show": true,
+            "author": "lin",
+            "progress": "70%"
+          }
         ]
       }, {
         "name": "工具组件",
