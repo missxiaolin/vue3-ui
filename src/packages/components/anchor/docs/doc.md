@@ -25,6 +25,42 @@
 ```
 
 
+### 指定容器
+可指定滚动容器，可与 `l-scroll` 一起用
+
+```vue demo
+<template>
+  <div style="background: #F5F6F9; padding: 20px; display: flex;">
+    <l-scroll scrollId="test-container" :height="500" style="margin-right: 10px;"
+      :scrollWrapStyle="{ scrollBehavior: 'smooth' }">
+      <e-anchor-point href="anchor-1" />
+      <div style="height: 400px;background: red;">anchor1</div>
+      <l-anchor-point href="anchor-2" />
+      <div style="height: 400px;background: yellow;">anchor2</div>
+      <l-anchor-point href="anchor-3" />
+      <div style="height: 400px;background: blue;">anchor3</div>
+      <l-anchor-point href="anchor-4" />
+      <div style="height: 400px;background: pink;">anchor4</div>
+      <l-anchor-point href="anchor-5" />
+      <div style="height: 400px;background: black;">anchor5</div>
+      <l-anchor-point href="anchor-6" />
+      <div style="height: 400px;background: #29c1c2;">anchor6</div>
+    </l-scroll>
+    <l-anchor target="#test-container" :targetOffset="10" defaultAnchor="anchor-1">
+      <l-anchor-link href="#anchor-1" title="anchor1"/>
+      <l-anchor-link href="#anchor-2" title="anchor2"/>
+      <l-anchor-link href="#anchor-3" title="anchor3"/>
+      <l-anchor-link href="#anchor-4" title="anchor4"/>
+      <l-anchor-link href="#anchor-5" title="anchor5"/>
+      <l-anchor-link href="#anchor-6" title="anchor6"/>
+    </l-anchor>
+  </div>
+</template>
+<script></script>
+```
+
+
+
 
 ## API
 
