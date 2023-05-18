@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(breadcrumb) {
+  font-size: 14px;
+  line-height: 1;
+  @include utils-clearfix;
+
+  @include e(separator) {
+    margin: 0 9px;
+    font-weight: bold;
+    color: var(--l-text-color-placeholder);
+
+    &.#{$namespace}-icon {
+      margin: 0 6px;
+      font-weight: normal;
+      svg {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  @include e(item) {
+    float: left;
+    display: flex;
+    align-items: center;
+
+    @include e(inner) {
+      color: var(--l-text-color-regular);
+
+      &.is-link,
+      & a {
+        color: var(--l-text-color-regular);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--l-color-primary);
+          cursor: pointer;
+        }
+      }
+    }
+
+    &:last-child {
+      .#{$namespace}-breadcrumb__inner,
+      .#{$namespace}-breadcrumb__inner a {
+        &,
+        &:hover {
+          font-weight: bolder;
+          color: var(--l-text-color-primary);
+          cursor: text;
+        }
+      }
+
+      .#{$namespace}-breadcrumb__separator {
+        display: none;
+      }
+    }
+  }
+}
