@@ -5,7 +5,7 @@
         <img class="logo" :src="logo" alt="">
       </div>
       <div class="flex-1">
-        <l-scroll>
+        <l-scroll ref="navScrollbarRef" class="doc-sroll-aside-height" :native="true" trigger="none" direction="y">
           <doc-nav></doc-nav>
         </l-scroll>
       </div>
@@ -15,7 +15,7 @@
         <doc-header></doc-header>
       </l-header>
       <l-main class="doc-main-wapper">
-        <l-scroll>
+        <l-scroll  ref="mainScrollbarRef" class="doc-sroll-main-height" trigger="none" direction="y">
           <div class="doc-content">
             <div class="doc-content-document">
               <router-view />
