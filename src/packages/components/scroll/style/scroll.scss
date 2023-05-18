@@ -1,0 +1,137 @@
+@use '../../../theme-chalk/mixins/mixins.scss' as *;
+@use '../../../theme-chalk/mixins/var.scss' as *;
+@use '../../../theme-chalk/common/var.scss' as *;
+
+@include b(scrollbar) {
+  & {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+
+    &.l-scrollbar-hover {
+      .l-scrollbar-bar {
+        opacity: 0;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        .l-scrollbar-bar {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.l-scrollbar-always {
+      .l-scrollbar-bar {
+        opacity: 1;
+      }
+    }
+
+    &.l-scrollbar-none {
+      .l-scrollbar-bar {
+        opacity: 0;
+      }
+    }
+  }
+
+  &-wrap-all {
+    overflow: scroll;
+  }
+  &-wrap-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  &-wrap-y {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &-wrap {
+    height: 100%;
+    -ms-overflow-style: none;
+    // overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+    .l-scrollbar-loading {
+      font-size: 16px;
+      color: var(--l-text-color-secondary);
+      line-height: 16px;
+      text-align: center;
+    }
+    .l-scrollbar-bottom-line {
+      padding: 30px 0;
+      text-align: center;
+      font-size: 16px;
+      color: var(--l-text-color-secondary);
+      line-height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &::before {
+        content: '';
+        display: block;
+        width: 92px;
+        height: 0px;
+        border-top: 1px dashed var(--l-text-color-secondary);
+        margin-right: 28px;
+      }
+      &::after {
+        content: '';
+        display: block;
+        width: 92px;
+        height: 0px;
+        border-top: 1px dashed var(--l-text-color-secondary);
+        margin-left: 28px;
+      }
+      .l-scrollbar-bottom-text {
+        margin: 0 0 0 6px;
+      }
+    }
+  }
+
+  &-bar {
+    position: absolute;
+    z-index: 1;
+    border-radius: 4px;
+    transition: opacity 120ms ease-out;
+
+    &-thumb {
+      width: 0;
+      height: 0;
+      cursor: pointer;
+      border-radius: inherit;
+      background-color: rgba(0, 0, 0, 0.7);
+      transition: 0.3 background-color;
+    }
+
+    &.l-scrollbar-vertical {
+      width: 4px;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      .l-scrollbar-thumb {
+        width: 100%;
+      }
+    }
+
+    &.l-scrollbar-horizontal {
+      height: 4px;
+      left: 0;
+      right: 4px;
+      bottom: 0;
+      .l-scrollbar-thumb {
+        height: 100%;
+      }
+    }
+    .l-scrollbar-thumb {
+      border-radius: 4px;
+    }
+  }
+}
