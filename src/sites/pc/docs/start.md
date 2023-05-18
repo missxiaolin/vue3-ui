@@ -16,9 +16,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 // 注意：这种方式将会导入所有组件
-import EUI from "Lui";
+import UI from "Lui";
 import "lui/dist/style.css";
-createApp(App).use(EUI).mount("#app");
+createApp(App).use(UI).mount("#app");
 ```
 
 #### Vite 构建工具 通过 vite-plugin 使用按需加载
@@ -55,7 +55,7 @@ export default {
   css: {
     preprocessorOptions: {
       scss: {
-        // 配置 eui 全局 scss 变量
+        // 配置 ui 全局 scss 变量
         additionalData: `@import "lui/dist/theme-chalk/variables.scss";`
       }
     }
@@ -77,7 +77,7 @@ npm install babel-plugin-import --save-dev
     [
       "import",
       {
-        "libraryName": "eui",
+        "libraryName": "ui",
         "libraryDirectory": "dist/packages/_es",
         "camel2DashComponentName": false
       },
@@ -98,7 +98,7 @@ createApp(App).use(Button).use(Icon).mount("#app");
 
 #### CDN 安装使用示例
 
-> 可以通过 CDN 的方式引入， 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 EUI。
+> 可以通过 CDN 的方式引入， 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 UI。
 
 ```html
 <!DOCTYPE html>
@@ -110,8 +110,8 @@ createApp(App).use(Button).use(Icon).mount("#app");
     <link rel="stylesheet" href="https://xxx.com/lui@next/dist/style.css" />
     <!-- 引入Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
-    <!-- 引入EUI组件库 -->
-    <script src="https://xxx.com/lui@next/dist/eui.umd.js"></script>
+    <!-- 引入UI组件库 -->
+    <script src="https://xxx.com/lui@next/dist/ui.umd.js"></script>
   </head>
   <body>
     <div id="app">
@@ -126,7 +126,7 @@ createApp(App).use(Button).use(Icon).mount("#app");
         <l-button type="default">默认按钮</l-button>
         `,
       });
-      app.use(eui);
+      app.use(ui);
       app.mount("#app");
     </script>
   </body>
