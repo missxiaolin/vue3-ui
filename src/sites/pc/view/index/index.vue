@@ -5,7 +5,9 @@
         <img class="logo" :src="logo" alt="">
       </div>
       <div class="flex-1">
-        <doc-nav></doc-nav>
+        <l-scroll>
+          <doc-nav></doc-nav>
+        </l-scroll>
       </div>
     </l-aside>
     <l-container>
@@ -13,11 +15,13 @@
         <doc-header></doc-header>
       </l-header>
       <l-main class="doc-main-wapper">
-        <div class="doc-content">
-          <div class="doc-content-document">
-            <router-view />
+        <l-scroll>
+          <div class="doc-content">
+            <div class="doc-content-document">
+              <router-view />
+            </div>
           </div>
-        </div>
+        </l-scroll>
       </l-main>
     </l-container>
   </l-container>
