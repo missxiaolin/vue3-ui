@@ -9,6 +9,50 @@
   </l-loading-bar>
 ```
 
+### 基础用法
+```vue demo
+<template>
+  <l-space>
+    <l-button @click="handleStart">
+      开始
+    </l-button>
+    <l-button :disabled="disabled" @click="handleFinish">
+      结束
+    </l-button>
+    <l-button @click="handleError">
+      报个错
+    </l-button>
+  </l-space>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useLoadingBar } from '../index.ts'
+
+export default defineComponent({
+  setup () {
+    const loadingBar = useLoadingBar()
+    const disabledRef = ref(true)
+    return {
+      disabled: disabledRef,
+      handleStart () {
+        loadingBar.start()
+        disabledRef.value = false
+      },
+      handleFinish () {
+        loadingBar.finish()
+        disabledRef.value = true
+      },
+      handleError () {
+        disabledRef.value = true
+        loadingBar.error()
+      }
+    }
+  }
+})
+</script>
+```
+
 
 ## loading-bar 属性
 
