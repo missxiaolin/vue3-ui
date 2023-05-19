@@ -22,3 +22,4 @@ import '@/packages/components/scroll/style/scroll.scss';
 import '@/packages/components/breadcrumb/style/breadcrumb.scss';
 import '@/packages/components/breadcrumb/style/breadcrumb-item.scss';
 import '@/packages/components/loading-bar/style/loading-bar.scss';
+import '@/packages/components/page-header/style/page-header.scss';

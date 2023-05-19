@@ -15,6 +15,7 @@ import { Backtop } from '../components/backtop/index'
 import { Scroll } from '../components/scroll/index'
 import { Breadcrumb, BreadcrumbItem } from '../components/breadcrumb/index'
 import { LoadingBar } from '../components/loading-bar/index'
+import { PageHeader } from '../components/page-header/index'
 
 
 export default [
@@ -40,5 +41,6 @@ export default [
     Scroll,
     Breadcrumb,
     BreadcrumbItem,
-    LoadingBar
+    LoadingBar,
+    PageHeader
 ]

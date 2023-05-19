@@ -181,6 +181,14 @@ const config: any = {
             "author": "lin",
             "show": true,
             "progress": "100%"
+          }, {
+            "name": "Page-header",
+            "type": "component",
+            "cName": "页头",
+            "desc": "",
+            "author": "lin",
+            "show": true,
+            "progress": "100%"
           },
         ]
       }, {
