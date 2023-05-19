@@ -14,6 +14,7 @@ import { Anchor, AnchorLink, AnchorPoint } from '../components/anchor/index'
 import { Backtop } from '../components/backtop/index'
 import { Scroll } from '../components/scroll/index'
 import { Breadcrumb, BreadcrumbItem } from '../components/breadcrumb/index'
+import { LoadingBar } from '../components/loading-bar/index'
 
 
 export default [
@@ -38,5 +39,6 @@ export default [
     Backtop,
     Scroll,
     Breadcrumb,
-    BreadcrumbItem
+    BreadcrumbItem,
+    LoadingBar
 ]

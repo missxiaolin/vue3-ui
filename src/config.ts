@@ -172,8 +172,16 @@ const config: any = {
             "desc": "面包屑是辅助导航模式，用于识别⻚面在层次结构内的位置，并根据需要向上返回",
             "show": true,
             "author": "lin",
-            "progress": "70%"
-          }
+            "progress": "100%"
+          }, {
+            "name": "Loading-bar",
+            "type": "component",
+            "cName": "加载条",
+            "desc": "",
+            "author": "lin",
+            "show": true,
+            "progress": "100%"
+          },
         ]
       }, {
         "name": "工具组件",
