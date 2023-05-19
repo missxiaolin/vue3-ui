@@ -17,6 +17,7 @@
     align-items: center;
     justify-content: space-between;
     line-height: 24px;
+    color: var(--l-text-color-secondary);
     @include e(left) {
       display: flex;
       align-items: center;
@@ -30,12 +31,12 @@
 
       @include e(icon) {
         font-size: 16px;
-        margin-right: 10px;
+        margin-right: 5px;
         display: flex;
         align-items: center;
 
         .#{$namespace}-icon {
-          font-size: inherit;
+          font-size: 14px;
         }
       }
 

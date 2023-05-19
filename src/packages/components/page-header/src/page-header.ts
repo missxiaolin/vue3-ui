@@ -3,7 +3,7 @@ import { buildProps, definePropType } from '../../../utils/props';
 export const PageHeaderProps = buildProps({
   icon: {
     type: String,
-    default: ''
+    default: 'l-xitongfanhui'
   },
   title: String,
   content: {

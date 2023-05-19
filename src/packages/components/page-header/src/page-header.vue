@@ -6,7 +6,9 @@
     <div :class="ns.e('header')">
       <div :class="ns.e('left')">
         <div :class="ns.e('back')" role="button" tabindex="0" @click="handleClick">
-          <div v-if="icon" :class="ns.e('icon')"> 图标 </div>
+          <div v-if="icon" :class="ns.e('icon')"> 
+            <icon :icon="icon"></icon>
+          </div>
           <div :class="ns.e('title')">
             <slot name="title">返回</slot>
           </div>
@@ -29,8 +31,12 @@ import { toRefs, ref, watch, onMounted, computed } from 'vue';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 const { componentName, create } = createComponent('PageHeader');
+import { Icon } from '../../icon/index';
 
 export default create({
+  components: {
+    Icon
+  },
   props: PageHeaderProps,
   emits: pageHeaderEmits,
   setup(props, { emit }) {
