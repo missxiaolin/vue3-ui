@@ -18,6 +18,7 @@ import { toRefs, ref, nextTick, provide, computed, onMounted } from 'vue';
 import { useNamespace } from '../../../hooks';
 import { loadingBarProps, loadingBarEmits, loadingBarInjectionKey } from './loading-bar';
 import createComponent from '../../../utils/create';
+import { useMounted } from '@vueuse/core';
 
 const { create, componentName } = createComponent('LoadingBar');
 
@@ -28,6 +29,8 @@ export default create({
   setup(props) {
     const ns = useNamespace('loading-bar');
     const { loadingBarStyle, to } = toRefs(props);
+    const loadingBarRef = ref<HTMLElement | null>(null);
+    const isMounted = useMounted();
     const isStart = ref(true); // 是否开启
     const isEnter = ref(false); // 动画是否开启
     const isError = ref(false); // 是否报错
