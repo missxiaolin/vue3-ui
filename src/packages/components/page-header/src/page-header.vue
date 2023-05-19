@@ -10,18 +10,18 @@
             <icon :icon="icon"></icon>
           </div>
           <div :class="ns.e('title')">
-            <slot name="title">返回</slot>
+            <slot name="title">{{title || "返回"}}</slot>
           </div>
         </div>
         <Divider direction="vertical" />
         <div :class="ns.e('content')">
-          <slot name="content">详情页面</slot>
+          <slot name="content">{{ content || "详情页面" }}</slot>
         </div>
       </div>
     </div>
 
-    <div v-if="$slots.default" :class="ns.e('main')">
-      <slot />
+    <div v-if="$slots.main" :class="ns.e('main')">
+      <slot name="main" />
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default create({
   emits: pageHeaderEmits,
   setup(props, { emit }) {
     const ns = useNamespace('page-header');
-    const { icon } = toRefs(props);
+    const { icon, title, content } = toRefs(props);
 
     const kls = computed(() => {
       return [ns.b()];
@@ -59,7 +59,9 @@ export default create({
       ns,
       kls,
       handleClick,
-      icon
+      icon,
+      title,
+      content
     };
   }
 });

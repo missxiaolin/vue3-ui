@@ -4,7 +4,38 @@
 ```vue demo
 <template>
     <div>
-        <l-page-header @back="goBack" content="详情页面">
+        <l-page-header @back="goBack" content="详情页面" title="返回">
+        </l-page-header>
+    </div>
+    
+</template>
+
+<script lang="ts">
+import { ref } from "vue"
+export default {
+  setup() {
+    const goBack = () => {
+        console.log('goBack')
+    }
+    return {
+        goBack
+    }
+  },
+};
+</script>
+```
+
+### 插槽
+```vue demo
+<template>
+    <div>
+        <l-page-header @back="goBack" content="详情页面" title="标题">
+          <template v-slot:breadcrumb>
+            顶部
+          </template>
+          <template v-slot:main>
+            底部
+          </template>
         </l-page-header>
     </div>
     
@@ -43,5 +74,5 @@ export default {
 
 |事件名| 说明|
 | ---- | ---- |
-|title| 标题内容|
-|content| 内容|
+|breadcrumb| 顶部内容|
+|main| 内容|
