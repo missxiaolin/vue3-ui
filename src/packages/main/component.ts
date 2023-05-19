@@ -13,7 +13,7 @@ import { Sticky } from '../components/sticky/index'
 import { Anchor, AnchorLink, AnchorPoint } from '../components/anchor/index'
 import { Backtop } from '../components/backtop/index'
 import { Scroll } from '../components/scroll/index'
-import { Breadcrumb } from '../components/breadcrumb/index'
+import { Breadcrumb, BreadcrumbItem } from '../components/breadcrumb/index'
 
 
 export default [
@@ -37,5 +37,6 @@ export default [
     AnchorPoint,
     Backtop,
     Scroll,
-    Breadcrumb
+    Breadcrumb,
+    BreadcrumbItem
 ]
