@@ -1,5 +1,7 @@
 <template>
-  <router-view></router-view>
+  <l-loading-bar>
+    <router-view></router-view>
+  </l-loading-bar>
 </template>
 
 <script lang="ts">

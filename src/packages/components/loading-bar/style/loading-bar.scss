@@ -1,0 +1,19 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/common/transition' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(loading-bar) {
+  // 开始你的表演吧
+  @include set-component-css-var('loading-bar', $loading-bar);
+}
+
+@include b(loading-bar-container) {
+  z-index: 5999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
