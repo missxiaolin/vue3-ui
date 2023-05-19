@@ -189,6 +189,14 @@ const config: any = {
             "author": "lin",
             "show": true,
             "progress": "100%"
+          }, {
+            "name": "Steps",
+            "type": "component",
+            "cName": "步骤",
+            "desc": "",
+            "author": "lin",
+            "show": true,
+            "progress": "100%"
           },
         ]
       }, {

@@ -23,3 +23,5 @@ import '@/packages/components/breadcrumb/style/breadcrumb.scss';
 import '@/packages/components/breadcrumb/style/breadcrumb-item.scss';
 import '@/packages/components/loading-bar/style/loading-bar.scss';
 import '@/packages/components/page-header/style/page-header.scss';
+import '@/packages/components/steps/style/steps.scss';
+import '@/packages/components/steps/style/step.scss';

@@ -16,6 +16,7 @@ import { Scroll } from '../components/scroll/index'
 import { Breadcrumb, BreadcrumbItem } from '../components/breadcrumb/index'
 import { LoadingBar } from '../components/loading-bar/index'
 import { PageHeader } from '../components/page-header/index'
+import { Steps, Step } from '../components/steps/index'
 
 
 export default [
@@ -42,5 +43,7 @@ export default [
     Breadcrumb,
     BreadcrumbItem,
     LoadingBar,
-    PageHeader
+    PageHeader,
+    Steps,
+    Step
 ]
