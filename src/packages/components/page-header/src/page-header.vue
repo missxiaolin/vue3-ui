@@ -13,6 +13,7 @@
             <slot name="title">返回</slot>
           </div>
         </div>
+        <Divider direction="vertical" />
         <div :class="ns.e('content')">
           <slot name="content">详情页面</slot>
         </div>
@@ -32,10 +33,12 @@ import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 const { componentName, create } = createComponent('PageHeader');
 import { Icon } from '../../icon/index';
+import { Divider } from '../../divider/index'
 
 export default create({
   components: {
-    Icon
+    Icon,
+    Divider
   },
   props: PageHeaderProps,
   emits: pageHeaderEmits,
@@ -48,7 +51,7 @@ export default create({
     });
 
     const handleClick = () => {
-      console.log('点击');
+      emit('back')
     };
 
     return {
