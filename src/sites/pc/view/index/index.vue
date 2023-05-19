@@ -15,7 +15,7 @@
         <doc-header></doc-header>
       </l-header>
       <l-main class="doc-main-wapper">
-        <l-scroll  ref="mainScrollbarRef" class="doc-sroll-main-height" trigger="none" direction="y">
+        <l-scroll  ref="mainScrollbarRef" class="doc-sroll-main-height" :native="true" trigger="none" direction="y">
           <div class="doc-content">
             <div class="doc-content-document">
               <router-view />
