@@ -61,7 +61,7 @@ export default {
 |属性	|说明	|类型	|可选值	|默认值|
 |---- |----- |------ |---  |---- |
 |title	|标题	|string	|-|	|
-|title	|内容	|string	|-|	|
+|content	|内容	|string	|-|	|
 |icon	|图表	|string |—|	|
 
 ## 方法
