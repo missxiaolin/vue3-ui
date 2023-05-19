@@ -10,10 +10,43 @@
 }
 
 @include b(loading-bar-container) {
-  z-index: 5999;
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
+  @include b(loading-bar) {
+    width: 100%;
+    transition: max-width 3s linear, background 0.2s linear;
+    height: 2px;
+    @include e(starting) {
+      background: var(--l-loading-bar-primary-color);
+    }
+    @include e(finishing) {
+      background: var(--l-loading-bar-primary-color);
+      transition: max-width 0.2s linear, background 0.2s linear !important;
+    }
+    @include e(error) {
+      background: var(--l-loading-bar-error-color);
+      transition: max-width 0.2s linear, background 0.2s linear !important;
+    }
+  }
+}
+
+.#{$namespace}-loading-bar-fade {
+  &-enter-active {
+    transition: all var(--l-transition-duration) cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  &-leave-active {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  &-enter-form,
+  &-leave-to {
+    opacity: 0;
+  }
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+  }
 }
