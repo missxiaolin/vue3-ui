@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { PageHeaderProps, pageHeaderEmits } from './page-header';
-import { toRefs, ref, watch, onMounted, computed, useSlots } from 'vue';
+import { toRefs, computed, useSlots } from 'vue';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 const { componentName, create } = createComponent('PageHeader');
