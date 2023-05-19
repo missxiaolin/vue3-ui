@@ -1,5 +1,5 @@
 import { CHANGE_EVENT } from '../../../constants/event';
-import { buildProps, definePropType } from '../../../utils/props';
+import { buildProps } from '../../../utils/props';
 import { isNumber } from '../../../utils/util';
 import type Steps from './steps.vue';
 
