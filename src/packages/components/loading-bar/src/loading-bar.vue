@@ -8,7 +8,7 @@
       @after-leave="handleAfterLeave"
       :css="!transitionDisabledRef"
     >
-      <div class="l-loading-bar-container">
+      <div class="l-loading-bar-container" v-show="isLoading || (!isLoading && isEnter)">
         <div
           ref="loadingBarRef"
           :class="[
