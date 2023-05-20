@@ -119,3 +119,31 @@ export default {
 };
 </script>
 ```
+
+### 简洁风格的步骤条
+```vue demo
+<template>
+    <div>
+        <l-steps :active="1" finish-status="success" simple style="margin-top: 20px">
+            <l-step title="步骤 1" description="描述"></l-step>
+            <l-step title="步骤 2" description="描述"></l-step>
+            <l-step title="步骤 3" description="描述"></l-step>
+        </l-steps>
+
+        <l-steps :active="1" finish-status="success" simple style="margin-top: 20px">
+            <l-step title="步骤 1" description="描述" icon="l-sousuo"></l-step>
+            <l-step title="步骤 2" description="描述" icon="l-xiazai"></l-step>
+            <l-step title="步骤 3" description="描述" icon="l-caidanlanwode"></l-step>
+        </l-steps>
+    </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue"
+export default {
+  setup() {
+    
+  },
+};
+</script>
+```

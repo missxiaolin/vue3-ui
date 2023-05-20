@@ -152,22 +152,27 @@
     @include when(process) {
         font-weight: bold;
         color: #303133;
+        border-color: #303133;
       }
   
       @include when(wait) {
         color:#c0c4cc;
+        border-color: #c0c4cc;
       }
   
       @include when(success) {
         color: #67c23a;
+        border-color: #67c23a;
       }
   
       @include when(error) {
         color: red;
+        border-color: red;
       }
   
       @include when(finish) {
         color: #409eff;
+        border-color: #409eff;
       }
   }
 
@@ -232,6 +237,89 @@
 
     @include when(finish) {
       color: #409eff;
+    }
+  }
+
+  @include when(simple) {
+    display: flex;
+    align-items: center;
+
+    @include e(head) {
+      width: auto;
+      font-size: 0;
+      padding-right: 10px;
+    }
+
+    @include e(icon) {
+      background: transparent;
+      width: 16px;
+      height: 16px;
+      font-size: 12px;
+    //   @include when(text) {
+    //     display: none;
+    //   }
+    }
+
+    @include e(icon-inner) {
+      &[class*='#{$namespace}-icon']:not(.is-status) {
+        font-size: 18px;
+      }
+
+      &.is-status {
+        transform: scale(0.8) translateY(1px);
+      }
+    }
+
+    @include e(main) {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      flex-grow: 1;
+    }
+
+    @include e(title) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include pseudo('not(:last-of-type)') {
+      @include e(title) {
+        max-width: 50%;
+        word-break: break-all;
+      }
+    }
+
+    @include e(arrow) {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height: 15px;
+        width: 1px;
+        background: #303133;
+      }
+
+      &::before {
+        transform: rotate(-45deg) translateY(-4px);
+        transform-origin: 0 0;
+      }
+
+      &::after {
+        transform: rotate(45deg) translateY(4px);
+        transform-origin: 100% 100%;
+      }
+    }
+
+    @include pseudo(last-of-type) {
+      @include e(arrow) {
+        display: none;
+      }
     }
   }
 
