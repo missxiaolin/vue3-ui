@@ -7,6 +7,75 @@
   position: relative;
   flex-shrink: 1;
 
+  @include pseudo(last-of-type) {
+    @include e(line) {
+      display: none;
+    }
+    // 只有未设置 space 的情况下才自适应宽度
+    @include when(flex) {
+      flex-basis: auto !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+
+    @include e((main, description)) {
+      padding-right: 0;
+    }
+  }
+
+  @include when(horizontal) {
+    display: inline-block;
+
+    @include e(line) {
+      height: 2px;
+      top: 11px;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    border-color: inherit;
+    background-color: #c0c4cc;
+  }
+
+  @include e(line-inner) {
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    transition: 0.15s ease-out;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+  }
+
+  @include e(icon) {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #fff;
+    transition: 0.15s ease-out;
+
+    @include when(text) {
+      border-radius: 50%;
+      border: 2px solid;
+      border-color: #e6e6e6;
+      color: #989ba3;
+    }
+
+    @include when(icon) {
+      width: 40px;
+    }
+  }
+
   @include e(head) {
     position: relative;
     width: 100%;
@@ -15,7 +84,7 @@
   @include e(line) {
     position: absolute;
     border-color: inherit;
-    background-color: #c0c4cc;
+    background-color: #e6e6e6;
   }
 
   @include e(main) {
@@ -26,6 +95,7 @@
   @include e(title) {
     font-size: 16px;
     line-height: 38px;
+    color: #989ba3;
   }
 
   @include e(description) {
@@ -34,5 +104,6 @@
     font-size: 12px;
     line-height: 20px;
     font-weight: normal;
+    color: #989ba3;
   }
 }

@@ -6,10 +6,12 @@
         <i :class="ns.e('line-inner')" :style="lineStyle" />
       </div>
       <div :class="[ns.e('icon'), ns.is(icon || $slots.icon ? 'icon' : 'text')]">
-        <slot name="icon">
-          <icon v-if="icon" :class="ns.e('icon-inner')"></icon>
-          <icon v-else-if="currentStatus === 'success'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
-        </slot>
+        <icon v-if="icon" :class="ns.e('icon-inner')"></icon>
+        <icon v-else-if="currentStatus === 'success'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
+        <icon v-else-if="currentStatus === 'error'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
+        <div v-else-if="!isSimple" :class="ns.e('icon-inner')">
+          {{ index + 1 }}
+        </div>
       </div>
     </div>
     <!-- title & description -->
@@ -99,7 +101,7 @@ export default create({
     };
 
     const containerKls = computed(() => {
-      return [ns.b()];
+      return [ns.b(), ns.is(isSimple.value ? 'simple' : parent.props.direction), ns.is('flex', isLast.value && !space.value && !isCenter.value),];
     });
 
     const currentStatus = computed(() => {
@@ -151,7 +153,7 @@ export default create({
       setIndex,
       calcProgress
     });
-    
+
     parent.steps.value = [...parent.steps.value, stepItemState];
     return {
       ns,
@@ -162,7 +164,8 @@ export default create({
       currentStatus,
       title,
       description,
-      icon
+      icon,
+      index
     };
   }
 });
