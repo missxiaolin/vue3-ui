@@ -1,0 +1,14 @@
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(step) {
+  position: relative;
+  flex-shrink: 1;
+
+  @include e(head) {
+    position: relative;
+    width: 100%;
+  }
+}

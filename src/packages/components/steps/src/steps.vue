@@ -5,10 +5,12 @@
 </template>
 
 <script lang="ts">
-import { provide, toRefs, watch } from 'vue';
+import { provide, Ref, toRefs, ref } from 'vue';
 import { StepsProps, StepsEmits } from './steps'
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
+import type { StepItemState } from './step.vue'
+
 const { create } = createComponent('Steps');
 
 export default create({
@@ -16,7 +18,10 @@ export default create({
     emits: StepsEmits,
     setup(props, { emit }) {
         const ns = useNamespace('steps')
+        const steps: Ref<StepItemState[]> = ref([])
         const { simple } = toRefs(props);
+
+        provide('lSteps', { props, steps })
         return {
             ns,
             simple
