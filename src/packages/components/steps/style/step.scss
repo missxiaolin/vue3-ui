@@ -151,35 +151,35 @@
     width: 100%;
     @include when(process) {
         font-weight: bold;
-        color: #303133;
-        border-color: #303133;
+        color: var(--l-color-black);
+        border-color: var(--l-border-color-black);
       }
   
       @include when(wait) {
-        color:#c0c4cc;
-        border-color: #c0c4cc;
+        color: var(--l-color-info);
+        border-color: var(--l-border-color-info);
       }
   
       @include when(success) {
-        color: #67c23a;
-        border-color: #67c23a;
+        color: var(--l-color-success);
+        border-color: var(--l-border-color-success);
       }
   
       @include when(error) {
-        color: red;
-        border-color: red;
+        color: var(--l-color-error);
+        border-color: var(--l-border-color-error);
       }
   
       @include when(finish) {
-        color: #409eff;
-        border-color: #409eff;
+        color: var(--l-color-finish);
+        border-color: var(--l-border-color-finish);
       }
   }
 
   @include e(line) {
     position: absolute;
     border-color: inherit;
-    background-color: #c0c4cc;
+    background-color: var(--l-color-info);
   }
 
   @include e(main) {
@@ -192,23 +192,23 @@
     line-height: 38px;
     @include when(process) {
       font-weight: bold;
-      color: #303133;
+      color: var(--l-color-black);
     }
 
     @include when(wait) {
-      color: #c0c4cc;
+      color: var(--l-color-info);
     }
 
     @include when(success) {
-      color: #67c23a;
+      color: var(--l-color-success);
     }
 
     @include when(error) {
-      color: red;
+      color: var(--l-color-error);
     }
 
     @include when(finish) {
-      color: #409eff;
+      color: var(--l-color-finish);
     }
   }
 
@@ -220,23 +220,23 @@
     font-weight: normal;
     @include when(process) {
       font-weight: bold;
-      color: #303133;
+      color: var(--l-color-black);
     }
 
     @include when(wait) {
-      color: #c0c4cc;
+      color: var(--l-color-info);
     }
 
     @include when(success) {
-      color: #67c23a;
+      color: var(--l-color-success);
     }
 
     @include when(error) {
-      color: red;
+      color: var(--l-color-error);
     }
 
     @include when(finish) {
-      color: #409eff;
+      color: var(--l-color-finish);
     }
   }
 

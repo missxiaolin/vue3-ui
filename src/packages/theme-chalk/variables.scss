@@ -9,6 +9,7 @@
 :root {
   --l-color-white: #{$color-white};
   --l-color-black: #{$color-black};
+  --l-color-finish: #{$color-finish};
 
   --l-color-primary: #{$color-primary};
   @for $i from 1 through 9 {

@@ -9,6 +9,7 @@ $colors: map.deep-merge(
   (
     'white': #ffffff,
     'black': #1c2128,
+    "finish": #409eff,
     'primary': (
       'base': #29c1c2
     ),
@@ -29,13 +30,14 @@ $colors: map.deep-merge(
     ),
     'gary': (
       'base': #eef0f4
-    )
+    ),
   ),
   $colors
 );
 
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
+$color-finish: map.get($colors, 'finish') !default;
 $color-primary: map.get($colors, 'primary', 'base') !default;
 $color-success: map.get($colors, 'success', 'base') !default;
 $color-warning: map.get($colors, 'warning', 'base') !default;
@@ -107,7 +109,16 @@ $border-color: map.merge(
     'base': #e9ecf1,
     'light': #e4e7ed,
     'lighter': #ebeef5,
-    'extra-light': #f2f6fc
+    'extra-light': #f2f6fc,
+    'primary': #29c1c2,
+    'success': #21b455,
+    'warning': #ff9c00,
+    'danger': #f56c6c,
+    'error': #f56c6c,
+    'info': #b3b5bb,
+    'gary': #eef0f4,
+    'finish': #409eff,
+
   ),
   $border-color
 );
