@@ -26,3 +26,4 @@ import '@/packages/components/page-header/style/page-header.scss';
 import '@/packages/components/steps/style/steps.scss';
 import '@/packages/components/steps/style/step.scss';
 import '@/packages/components/badge/style/badge.scss';
+import '@/packages/components/empty/style/empty.scss';

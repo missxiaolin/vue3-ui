@@ -211,6 +211,14 @@ const config: any = {
             "show": true,
             "author": "xiaolin",
             "progress": "100%"
+          }, {
+            "name": "Empty",
+            "type": "component",
+            "cName": "空状态",
+            "desc": "数据为空时候的展示状态",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {

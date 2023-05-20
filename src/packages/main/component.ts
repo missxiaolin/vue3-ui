@@ -18,6 +18,7 @@ import { LoadingBar } from '../components/loading-bar/index'
 import { PageHeader } from '../components/page-header/index'
 import { Steps, Step } from '../components/steps/index'
 import { Badge } from '../components/badge/index'
+import { Empty } from '../components/empty/index'
 
 
 export default [
@@ -47,5 +48,6 @@ export default [
     PageHeader,
     Steps,
     Step,
-    Badge
+    Badge,
+    Empty
 ]
