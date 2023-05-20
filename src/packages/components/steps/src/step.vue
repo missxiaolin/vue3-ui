@@ -6,7 +6,7 @@
         <i :class="ns.e('line-inner')" :style="lineStyle" />
       </div>
       <div :class="[ns.e('icon'), ns.is(icon || $slots.icon ? 'icon' : 'text')]">
-        <icon v-if="icon" :class="ns.e('icon-inner')"></icon>
+        <icon v-if="icon" :class="[ns.e('icon-inner'), icon]"></icon>
         <icon
           v-else-if="currentStatus === 'success'"
           :class="['l-chenggong', ns.e('icon-inner'), ns.is('status')]"
@@ -193,6 +193,10 @@ export default create({
         },
         { immediate: true }
       );
+    });
+
+    onBeforeUnmount(() => {
+      parent.steps.value = parent.steps.value.filter((instance) => instance.uid !== currentInstance?.uid);
     });
     return {
       ns,

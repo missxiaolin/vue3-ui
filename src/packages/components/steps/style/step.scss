@@ -34,6 +34,26 @@
     }
   }
 
+  @include when(center) {
+    @include e(head) {
+      text-align: center;
+    }
+
+    @include e(main) {
+      text-align: center;
+    }
+
+    @include e(description) {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+
+    @include e(line) {
+      left: 50%;
+      right: -50%;
+    }
+  }
+
   @include e(line) {
     position: absolute;
     border-color: inherit;
@@ -115,7 +135,7 @@
       }
   
       @include when(finish) {
-        color: red;
+        color: #409eff;
       }
   }
 
@@ -151,7 +171,7 @@
     }
 
     @include when(finish) {
-      color: red;
+      color: #409eff;
     }
   }
 
@@ -179,7 +199,7 @@
     }
 
     @include when(finish) {
-      color: red;
+      color: #409eff;
     }
   }
 }
