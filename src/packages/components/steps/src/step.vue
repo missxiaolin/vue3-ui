@@ -1,7 +1,17 @@
 <template>
-  <div :class="containerKls">
+  <div :class="containerKls" :style="style">
     <!-- icon & line -->
-    <div :class="[ns.e('head'), ns.is(currentStatus)]"> </div>
+    <div :class="[ns.e('head'), ns.is(currentStatus)]">
+      <div v-if="!isSimple" :class="ns.e('line')">
+        <i :class="ns.e('line-inner')" :style="lineStyle" />
+      </div>
+      <div :class="[ns.e('icon'), ns.is(icon || $slots.icon ? 'icon' : 'text')]">
+        <slot name="icon">
+          <icon v-if="icon" :class="ns.e('icon-inner')"></icon>
+          <icon v-else-if="currentStatus === 'success'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
+        </slot>
+      </div>
+    </div>
     <!-- title & description -->
     <div :class="ns.e('main')">
       <div :class="[ns.e('title'), ns.is(currentStatus)]">
@@ -33,6 +43,8 @@ import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 import { StepProps } from './step';
 const { create } = createComponent('Step');
+import { Icon } from '../../icon/index';
+import { isNumber } from '@vueuse/core';
 
 export interface IStepsProps {
   space: number | string;
@@ -57,12 +69,17 @@ export interface IStepsInject {
 }
 
 export default create({
+  components: {
+    Icon
+  },
   props: StepProps,
   setup(props) {
     const internalStatus = ref('');
+    const lineStyle = ref({});
     const parent = inject('lSteps') as IStepsInject;
     const ns = useNamespace('step');
-    const { title } = toRefs(props)
+    const currentInstance = getCurrentInstance();
+    const { title, description, icon, status } = toRefs(props);
 
     const containerKls = computed(() => {
       return [ns.b()];
@@ -71,11 +88,55 @@ export default create({
     const currentStatus = computed(() => {
       return props.status || internalStatus.value;
     });
+
+    const isSimple = computed(() => {
+      return parent.props.simple;
+    });
+
+    const space = computed(() => {
+      return isSimple.value ? '' : parent.props.space;
+    });
+
+    const stepsCount = computed(() => {
+      return parent.steps.value.length;
+    });
+
+    const isCenter = computed(() => {
+      return parent.props.alignCenter;
+    });
+
+    const isVertical = computed(() => {
+      return parent.props.direction === 'vertical';
+    });
+
+    const isLast = computed(() => {
+      return parent.steps.value[stepsCount.value - 1]?.uid === currentInstance?.uid;
+    });
+
+    const style = computed(() => {
+      const style: CSSProperties = {
+        flexBasis: isNumber(space.value)
+          ? `${space.value}px`
+          : space.value
+          ? space.value
+          : `${100 / (stepsCount.value - (isCenter.value ? 0 : 1))}%`
+      };
+      if (isVertical.value) return style;
+      if (isLast.value) {
+        style.maxWidth = `${100 / stepsCount.value}%`;
+      }
+      return style;
+    });
     return {
       ns,
+      style,
+      lineStyle,
+      isSimple,
       containerKls,
       currentStatus,
-      title
+      title,
+      description,
+      icon
     };
   }
 });
