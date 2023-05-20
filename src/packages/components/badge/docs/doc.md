@@ -27,3 +27,113 @@
     
 </template>
 ```
+
+### 最大值
+你还可以自定义最大值
+
+由`max`属性定义，它接受一个`Number`， 要注意的是，该值当且仅当在 `value` 的值也是 `Number` 时生效。
+
+```vue demo
+<template>
+  <div class="md-badge-content">
+    <l-row :cols="5">
+      <l-col>
+        <l-badge :value="120" :max="99">
+          <l-button size="small">comments</l-button>
+        </l-badge>
+      </l-col>
+      <el-col>
+        <l-badge :value="30" :max="10">
+          <l-button size="small">replies</l-button>
+        </l-badge>
+      </el-col>
+    </l-row>
+  </div>
+</template>
+```
+
+### 自定义显示内容
+你也可以展示除数字以外你想要展示的任何值。
+
+当 `value` 是一个 `String` 类型当时候，你可以展示任何你想展示的内容。
+```vue demo
+<template>
+  <div class="md-badge-content">
+    <l-row :cols="5">
+      <l-col>
+        <l-badge value="new">
+          <l-button size="small">comments</l-button>
+        </l-badge>
+      </l-col>
+      <l-col>
+        <l-badge value="hot">
+          <l-button size="small">replies</l-button>
+        </l-badge>
+      </l-col>
+    </l-row>
+  </div>
+</template>
+```
+
+
+### 小红点
+通过一个小红点标记来告知用户有新内容。
+
+除了数字外，设置is-dot属性 ，它接受一个Boolean 类型作为参数。
+```vue demo
+<template>
+  <div class="md-badge-content">
+    <l-row :cols="5">
+      <l-col>
+        <l-badge is-dot>
+         comments
+        </l-badge>
+      </l-col>
+      <l-col>
+        <l-badge is-dot>
+          <l-icon class="l-sousuo"></l-icon>
+        </l-badge>
+      </l-col>
+    </l-row>
+  </div>
+</template>
+```
+### 类标签使用
+
+
+除了数字外，设置is-tag属性 ，它接受一个Boolean 类型作为参数。
+```vue demo
+<template>
+  <div class="md-badge-content">
+    <l-row :cols="5">
+      <l-col>
+        <l-badge is-tag  :value="0" :max="99"></l-badge>
+      </l-col>
+      <l-col>
+        <l-badge is-tag  :value="30" :max="20"></l-badge>
+      </l-col>
+    </l-row>
+  </div>
+</template>
+```
+
+
+### 属性
+
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+| value	| 显示值	| string / number | 	—	| —| 
+| max	| 最大值，超过最大值会显示 '{max}+'， 当且仅当 value 是 Number 类型 当且仅当 value 是 Number 类型	number	| —	| —| 
+| is-dot	| 小圆点	| boolean	| —	| false| 
+| is-tag	| 类标签方式,非吸顶效果	| boolean	| —	| false| 
+| hidden	| 隐藏 badge	| boolean	| —	| false| 
+| type	| 类型	string	| primary / success / warning / danger / info	| —| 
+
+
+
+### 插槽
+
+| 插槽名 |	说明|
+|---- |-----  |
+| —	| 自定义默认内容 | 
+
