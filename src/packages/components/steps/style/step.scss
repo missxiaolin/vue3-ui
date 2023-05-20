@@ -67,8 +67,7 @@
     @include when(text) {
       border-radius: 50%;
       border: 2px solid;
-      border-color: #e6e6e6;
-      color: #989ba3;
+      border-color: inherit;
     }
 
     @include when(icon) {
@@ -76,15 +75,54 @@
     }
   }
 
+  @include e(icon-inner) {
+    display: inline-block;
+    user-select: none;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+
+    &[class*='#{$namespace}-icon']:not(.is-status) {
+      font-size: 25px;
+      font-weight: normal;
+    }
+
+    // 组件自身表示状态的图标
+    @include when(status) {
+      transform: translateY(1px);
+    }
+  }
+
   @include e(head) {
     position: relative;
     width: 100%;
+    @include when(process) {
+        font-weight: bold;
+        color: #303133;
+      }
+  
+      @include when(wait) {
+        color:#c0c4cc;
+      }
+  
+      @include when(success) {
+        color: #67c23a;
+      }
+  
+      @include when(error) {
+        color: red;
+      }
+  
+      @include when(finish) {
+        color: red;
+      }
   }
 
   @include e(line) {
     position: absolute;
     border-color: inherit;
-    background-color: #e6e6e6;
+    background-color: #c0c4cc;
   }
 
   @include e(main) {
@@ -95,7 +133,26 @@
   @include e(title) {
     font-size: 16px;
     line-height: 38px;
-    color: #989ba3;
+    @include when(process) {
+      font-weight: bold;
+      color: #303133;
+    }
+
+    @include when(wait) {
+      color: #c0c4cc;
+    }
+
+    @include when(success) {
+      color: #67c23a;
+    }
+
+    @include when(error) {
+      color: red;
+    }
+
+    @include when(finish) {
+      color: red;
+    }
   }
 
   @include e(description) {
@@ -104,6 +161,25 @@
     font-size: 12px;
     line-height: 20px;
     font-weight: normal;
-    color: #989ba3;
+    @include when(process) {
+      font-weight: bold;
+      color: #303133;
+    }
+
+    @include when(wait) {
+      color: #c0c4cc;
+    }
+
+    @include when(success) {
+      color: #67c23a;
+    }
+
+    @include when(error) {
+      color: red;
+    }
+
+    @include when(finish) {
+      color: red;
+    }
   }
 }

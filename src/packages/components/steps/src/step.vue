@@ -7,8 +7,14 @@
       </div>
       <div :class="[ns.e('icon'), ns.is(icon || $slots.icon ? 'icon' : 'text')]">
         <icon v-if="icon" :class="ns.e('icon-inner')"></icon>
-        <icon v-else-if="currentStatus === 'success'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
-        <icon v-else-if="currentStatus === 'error'" :class="[ns.e('icon-inner'), ns.is('status')]"></icon>
+        <icon
+          v-else-if="currentStatus === 'success'"
+          :class="['l-chenggong', ns.e('icon-inner'), ns.is('status')]"
+        ></icon>
+        <icon
+          v-else-if="currentStatus === 'error'"
+          :class="['l-cuowuguanbishibai', ns.e('icon-inner'), ns.is('status')]"
+        ></icon>
         <div v-else-if="!isSimple" :class="ns.e('icon-inner')">
           {{ index + 1 }}
         </div>
@@ -101,10 +107,16 @@ export default create({
     };
 
     const containerKls = computed(() => {
-      return [ns.b(), ns.is(isSimple.value ? 'simple' : parent.props.direction), ns.is('flex', isLast.value && !space.value && !isCenter.value),];
+      return [
+        ns.b(),
+        ns.is(isSimple.value ? 'simple' : parent.props.direction),
+        ns.is('flex', isLast.value && !space.value && !isCenter.value),
+        ns.is('center', isCenter.value && !isVertical.value && !isSimple.value)
+      ];
     });
 
     const currentStatus = computed(() => {
+      console.log(props.status || internalStatus.value);
       return props.status || internalStatus.value;
     });
 
@@ -155,6 +167,33 @@ export default create({
     });
 
     parent.steps.value = [...parent.steps.value, stepItemState];
+
+    const prevStatus = computed(() => {
+      const prevStep = parent.steps.value[index.value - 1];
+      return prevStep ? prevStep.currentStatus : 'wait';
+    });
+
+    const updateStatus = (activeIndex: number) => {
+      if (activeIndex > index.value) {
+        internalStatus.value = parent.props.finishStatus;
+      } else if (activeIndex === index.value && prevStatus.value !== 'error') {
+        internalStatus.value = parent.props.processStatus;
+      } else {
+        internalStatus.value = 'wait';
+      }
+      const prevChild = parent.steps.value[index.value - 1];
+      if (prevChild) prevChild.calcProgress(internalStatus.value);
+    };
+
+    onMounted(() => {
+      watch(
+        [() => parent.props.active, () => parent.props.processStatus, () => parent.props.finishStatus],
+        ([active]) => {
+          updateStatus(active);
+        },
+        { immediate: true }
+      );
+    });
     return {
       ns,
       style,
