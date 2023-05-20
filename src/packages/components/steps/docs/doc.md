@@ -147,3 +147,25 @@ export default {
 };
 </script>
 ```
+
+
+### Steps 属性
+
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+|space	|每个 step 的间距，不填写将自适应间距。支持百分比。	|number / string	|- |	|
+|direction	|显示方向	|string	|- |	|
+|active	|设置当前激活步骤	|number |- |	|
+|process-status	|设置当前步骤的状态	|string |- |	|
+|finish-status	|设置结束步骤的状态	|string |- |	|
+|align-center	|进行居中对齐	|boolean |- |	|
+|simple	|是否应用简洁风格	|boolean |- |	|
+
+### Step 属性
+
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+|title	|标题	|string	|- |	|
+|description	|描述性文字	|string	|- |	|
+|icon	|图标	|string |- |	|
+|status	|wait / process / finish / error / success	|string |- |	|
