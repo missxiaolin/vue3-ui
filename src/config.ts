@@ -200,6 +200,20 @@ const config: any = {
           },
         ]
       }, {
+        "name": "数据展示组件",
+        "enName": "exhibition",
+        "children": [
+          {
+            "name": "Badge",
+            "type": "component",
+            "cName": "徽标",
+            "desc": "按钮和图标上的数字或状态标记。",
+            "show": true,
+            "author": "xiaolin",
+            "progress": "100%"
+          },
+        ]
+      }, {
         "name": "工具组件",
         "children": [
           {
