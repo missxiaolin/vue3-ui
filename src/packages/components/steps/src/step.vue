@@ -79,7 +79,24 @@ export default create({
     const parent = inject('lSteps') as IStepsInject;
     const ns = useNamespace('step');
     const currentInstance = getCurrentInstance();
+    const index = ref(-1);
     const { title, description, icon, status } = toRefs(props);
+
+    const setIndex = (val: number) => {
+      index.value = val;
+    };
+
+    const calcProgress = (status: string) => {
+      const isWait = status === 'wait';
+      const style: CSSProperties = {
+        transitionDelay: `${isWait ? '-' : ''}${150 * index.value}ms`
+      };
+      const step = status === parent.props.processStatus || isWait ? 0 : 100;
+
+      style.borderWidth = step && !isSimple.value ? '1px' : 0;
+      style[parent.props.direction === 'vertical' ? 'height' : 'width'] = `${step}%`;
+      lineStyle.value = style;
+    };
 
     const containerKls = computed(() => {
       return [ns.b()];
@@ -127,6 +144,15 @@ export default create({
       }
       return style;
     });
+
+    const stepItemState = reactive({
+      uid: computed(() => currentInstance?.uid),
+      currentStatus,
+      setIndex,
+      calcProgress
+    });
+    
+    parent.steps.value = [...parent.steps.value, stepItemState];
     return {
       ns,
       style,

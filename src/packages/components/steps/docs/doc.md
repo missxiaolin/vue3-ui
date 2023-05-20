@@ -5,9 +5,9 @@
 <template>
     <div>
         <l-steps :active="active" finish-status="success">
-            <l-step title="步骤 1"></l-step>
-            <l-step title="步骤 2"></l-step>
-            <l-step title="步骤 3"></l-step>
+            <l-step title="步骤 1" description="描述"></l-step>
+            <l-step title="步骤 2" description="描述"></l-step>
+            <l-step title="步骤 3" description="描述"></l-step>
         </l-steps>
         <l-button style="margin-top: 12px;" @click="next">下一步</l-button>
     </div>

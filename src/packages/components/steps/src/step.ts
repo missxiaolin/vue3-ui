@@ -1,4 +1,5 @@
 import { buildProps, iconPropType } from '../../../utils/props';
+import type Step from './step.vue'
 
 export const StepProps = buildProps({
   /**
@@ -30,3 +31,5 @@ export const StepProps = buildProps({
     default: ''
   }
 } as const);
+
+export type StepInstance = InstanceType<typeof Step>
