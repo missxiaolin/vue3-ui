@@ -103,9 +103,9 @@ export default {
 <template>
     <div style="height: 400px;">
         <l-steps :active="1" direction="vertical">
-            <l-step title="步骤 1" description="描述" icon="l-sousuo"></l-step>
-            <l-step title="步骤 2" description="描述" icon="l-xiazai"></l-step>
-            <l-step title="步骤 3" description="描述" icon="l-caidanlanwode"></l-step>
+            <l-step title="步骤 1" description="描述"></l-step>
+            <l-step title="步骤 2" description="描述"></l-step>
+            <l-step title="步骤 3" description="描述"></l-step>
         </l-steps>
     </div>
 </template>
