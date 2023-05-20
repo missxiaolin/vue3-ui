@@ -219,7 +219,15 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
-          },
+          }, {
+            "name": "Overlay",
+            "type": "component",
+            "cName": "遮罩",
+            "desc": "遮罩",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          }
         ]
       }, {
         "name": "工具组件",

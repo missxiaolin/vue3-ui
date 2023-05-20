@@ -19,6 +19,7 @@ import { PageHeader } from '../components/page-header/index'
 import { Steps, Step } from '../components/steps/index'
 import { Badge } from '../components/badge/index'
 import { Empty } from '../components/empty/index'
+import { Overlay } from '../components/overlay/index'
 
 
 export default [
@@ -49,5 +50,6 @@ export default [
     Steps,
     Step,
     Badge,
-    Empty
+    Empty,
+    Overlay
 ]
