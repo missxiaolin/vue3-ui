@@ -10,6 +10,7 @@
   --l-color-white: #{$color-white};
   --l-color-black: #{$color-black};
   --l-color-finish: #{$color-finish};
+  --l-overlay-background-color: rgba(0, 0, 0, 0.7);
 
   --l-color-primary: #{$color-primary};
   @for $i from 1 through 9 {

@@ -75,3 +75,35 @@ export const getStyle = function (element: HTMLElement, styleName: any): string 
     return element.style[styleName];
   }
 };
+
+export const win = window;
+
+export const docu = document;
+
+export const body = docu.body;
+
+let count = 0;
+
+const CLSNAME = 'l-overflow-hidden';
+
+export const useLockScroll = (isLock: () => boolean) => {
+  const lock = () => {
+    if (isLock()) {
+      try {
+        !count && body.classList.add(CLSNAME);
+        count++;
+      } catch (error) {}
+    }
+  };
+
+  const unlock = () => {
+    if (isLock() && count) {
+      try {
+        count--;
+        !count && body.classList.remove(CLSNAME);
+      } catch (error) {}
+    }
+  };
+
+  return [lock, unlock];
+};
