@@ -219,6 +219,19 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, 
+        ]
+      }, {
+        "name": "工具组件",
+        "children": [
+          {
+            "name": "Scroll",
+            "type": "component",
+            "cName": "滚动条",
+            "desc": "滚动条",
+            "show": true,
+            "author": "xiaolin",
+            "progress": "100%"
           }, {
             "name": "Overlay",
             "type": "component",
@@ -234,19 +247,6 @@ const config: any = {
             "desc": "水印",
             "show": true,
             "author": "lin",
-            "progress": "100%"
-          }
-        ]
-      }, {
-        "name": "工具组件",
-        "children": [
-          {
-            "name": "Scroll",
-            "type": "component",
-            "cName": "滚动条",
-            "desc": "滚动条",
-            "show": true,
-            "author": "xiaolin",
             "progress": "100%"
           }
         ]
