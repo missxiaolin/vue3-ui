@@ -5,7 +5,7 @@
 <template>
     <div>
         <l-button @click="showTest = !showTest">显示全局文字水印</l-button>
-        <l-watermark v-if="showTest" font-color="#fa2c19" content="l-ui"></l-watermark>
+        <l-watermark :fullPage="true" v-if="showTest" font-color="#fa2c19" content="l-ui"></l-watermark>
         <l-button @click="showImg = !showImg">显示全局图片水印</l-button>
         <l-watermark v-if="showImg" class="mark1" :image-width="50" :image-height="50" :z-index="1" :image="img"></l-watermark>
     </div>

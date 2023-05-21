@@ -9,7 +9,7 @@
   bottom: 0;
   pointer-events: none;
   background-repeat: repeat;
-  &-full-page {
+  @include e(full-page) {
     position: fixed;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[ns.b(), fullPage ? `${ns.b()}-full-page` : '']"
+    :class="[ns.b(), fullPage ? `${ns.b()}__full-page` : '']"
     :style="{
       zIndex,
       backgroundSize: `${gapX + width}px`,
