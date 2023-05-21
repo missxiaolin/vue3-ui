@@ -227,6 +227,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Watermark",
+            "type": "component",
+            "cName": "水印",
+            "desc": "水印",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           }
         ]
       }, {

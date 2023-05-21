@@ -28,3 +28,4 @@ import '@/packages/components/steps/style/step.scss';
 import '@/packages/components/badge/style/badge.scss';
 import '@/packages/components/empty/style/empty.scss';
 import '@/packages/components/overlay/style/overlay.scss';
+import '@/packages/components/watermark/style/watermark.scss';

@@ -20,6 +20,7 @@ import { Steps, Step } from '../components/steps/index'
 import { Badge } from '../components/badge/index'
 import { Empty } from '../components/empty/index'
 import { Overlay } from '../components/overlay/index'
+import { Watermark } from '../components/watermark/index'
 
 
 export default [
@@ -51,5 +52,6 @@ export default [
     Step,
     Badge,
     Empty,
-    Overlay
+    Overlay,
+    Watermark
 ]
