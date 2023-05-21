@@ -1,3 +1,5 @@
+@use '../../../theme-chalk/mixins/mixins.scss' as *;
+
 .overlay-fade-enter-active,
 .overlay-fade-leave-active {
   transition-property: opacity;
@@ -18,6 +20,6 @@
   background: var(--l-overlay-background-color);
 }
 
-.l-overflow-hidden {
+@include b(overflow-hidden) {
   overflow: hidden !important;
 }
