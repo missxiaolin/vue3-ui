@@ -5,47 +5,47 @@ export const WatermarkProps = buildProps({
     type: String,
     default: ''
   },
-  gapY: {
+  gapY: { // 水印之间的垂直间距
     type: Number,
     default: 48
   },
-  gapX: {
+  gapX: { // 水印之间的水平间距
     type: Number,
     default: 24
   },
-  zIndex: {
+  zIndex: { // 追加的水印元素的 z-index
     type: Number,
     default: 2000
   },
-  width: {
+  width: { // 水印的宽度
     type: Number,
     default: 120
   },
-  height: {
+  height: { // 水印的高度
     type: Number,
     default: 64
   },
-  rotate: {
+  rotate: { // 水印绘制时，旋转的角度
     type: Number,
     default: -22
   },
-  image: {
+  image: { // 图片源，建议导出 2 倍或 3 倍图，优先使用图片渲染水印
     type: String,
     default: ''
   },
-  imageWidth: {
+  imageWidth: { // 图片宽度
     type: Number,
     default: 120
   },
-  imageHeight: {
+  imageHeight: { // 图片高度
     type: Number,
     default: 64
   },
-  content: {
+  content: { // 水印文字内容
     type: String,
     default: ''
   },
-  fontColor: {
+  fontColor: { // 水印文字颜色
     type: String,
     default: 'rgba(0,0,0,.15)'
   },
@@ -53,7 +53,7 @@ export const WatermarkProps = buildProps({
     type: String,
     default: 'normal'
   },
-  fontFamily: {
+  fontFamily: { // 水印文字字体
     type: String,
     default: 'PingFang SC'
   },
@@ -61,11 +61,11 @@ export const WatermarkProps = buildProps({
     type: String,
     default: 'normal'
   },
-  fontSize: {
+  fontSize: { // 文字大小
     type: [String, Number],
     default: 14
   },
-  fullPage: {
+  fullPage: { // 是否覆盖整个页面
     type: Boolean,
     default: false
   }

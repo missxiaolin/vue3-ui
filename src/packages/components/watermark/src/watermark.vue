@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[ns.b(), `${ns.b()}-full-page`]"
+    :class="[ns.b(), fullPage ? `${ns.b()}-full-page` : '']"
     :style="{
       zIndex,
       backgroundSize: `${gapX + width}px`,
@@ -26,6 +26,7 @@ export default create({
     const state = reactive({
       base64Url: ''
     });
+    const { fullPage } = toRefs(props)
     const {
       zIndex,
       gapX,
@@ -41,7 +42,7 @@ export default create({
       fontWeight,
       fontColor,
       fontSize,
-      fontFamily
+      fontFamily,
     } = props;
 
     const init = () => {
@@ -52,9 +53,29 @@ export default create({
       const canvasHeight = `${(gapY + height) * ratio}px`;
       const markWidth = width * ratio;
       const markHeight = height * ratio;
+      canvas.setAttribute('width', canvasWidth);
+      canvas.setAttribute('height', canvasHeight);
       if (ctx) {
         // 图片
         if (image) {
+          ctx.translate(markWidth / 2, markHeight / 2);
+          ctx.rotate((Math.PI / 180) * Number(rotate));
+
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.referrerPolicy = 'no-referrer';
+          img.src = image;
+          img.onload = () => {
+            ctx.drawImage(
+              img,
+              (-imageWidth * ratio) / 2,
+              (-imageHeight * ratio) / 2,
+              imageWidth * ratio,
+              imageHeight * ratio
+            );
+            ctx.restore();
+            state.base64Url = canvas.toDataURL();
+          };
           return;
         }
         // 文字
@@ -106,6 +127,7 @@ export default create({
     return {
       componentName,
       ns,
+      fullPage,
       ...toRefs(state)
     };
   }

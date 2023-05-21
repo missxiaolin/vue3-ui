@@ -3,9 +3,37 @@
 ### 基本用法
 ```vue demo
 <template>
-    <l-watermark :fullPage="false" font-color="#fa2c19" content="l-ui">
-           
-    </l-watermark>
+    <div>
+        <l-button @click="showTest = !showTest">显示全局文字水印</l-button>
+        <l-watermark v-if="showTest" font-color="#fa2c19" content="l-ui"></l-watermark>
+        <l-button @click="showImg = !showImg">显示全局图片水印</l-button>
+        <l-watermark v-if="showImg" class="mark1" :image-width="50" :image-height="50" :z-index="1" :image="img"></l-watermark>
+    </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue"
+export default {
+  setup() {
+    const img = ref("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAADiRJREFUeF7tne163CgMhce5rqbbXlnbK2s2k+uK92GecdZxPOaAJSHE6Z92N4DRkV4k8EemC/9QASrwUIGJ2lABKvBYAQLC6KACBwoQEIYHFSAgjAEqUKcAM0idbuw1iAIEZBBH08w6BQhInW7sNYgCBGQQR9PMOgUISJ1u7DWIAgRkEEfTzDoFCEidbuw1iAIEZBBH08w6BQhInW7sNYgCBGQQR9PMOgUISJ1u7DWIAgQkuKO/ffv2I5n49vb2EtxUFfMIiIqs7Qf9/v3773mef61nMs/zT4JS5hsCUqZXF62fn5//Xi6XW+bY/iEkZS4kIGV6uW99BEea/DRNf15fX3+7N8TJBAmIE0dITGOvrNob93q90u+g4BQKFMp7MxSOy+Xycr1ef3q3x8v8CIgXT5yYRwEc6SoEpEBrAlIglsemhEPXKwREV1/V0QvhuPAEq9wdBKRcMxc90g3AaZrScS70h3BAMn1pREDqdGve6/n5eUYnQThQpb62IyD12jXrmbvXsZ4Y4TjnJgJyTj/z3iX7DsJx3j0E5LyGZiOU7DsIh4xbCIiMjiajoKUVHyeRcwcBkdNSdSS0tCIcsm4gILJ6qoxWUFrxLrmwB0IDsrws9PT09OXR73me/1lrOU3Tv8t/v7+/f7xc5OH9CbS0qtl3RNFImIuP4cIAkhy9gLB9UUhIvBs08zz/SX9bgSNVWm30SYvD7vsiJ7Rqos+J+UJduwYkBc89aD+9OQdZLtNIPSjAG4JfSquVNhowoOq9pAXFajFBJ1XSrjtAHEBxpO8HMBJBgWaPVFqtsmdLIA616RGWbgBBg6VkdTBoe1tBa0syMHsYmCF6ia6yintAOgVjL6KKAiOQ3Y/oKtJDFNGCwdwCsmwqlTbcBRKpNM0GR9DscXrhUPHGwaAuARlg9VxcsgvKQPb/f5zq9GMS7gBBz/wrVpKSD6dJH4HmpvsJlMbZA9VJQ6NsZs0JKf1zN4BIrprpcYskVLrhd+Y0aX0TbXVjUSMwPjKKwv2J3bJmuTEqpdE0TctR+2l9am54SoOxjOcCkLNwLEBYfe9ptT/yeqS6jpeXBMNZENAAXBaVOzDVsHh5pqw5IGfg8CKiM2BMgTgC5ywsHvzbFJBaODwIlwuMsysoumKndtYZtGRuS9v7A5epDCvKKq193QyQGjhai2UZGMC1bpnCqqwE5gM16c3vTQApeHz78DgU8oiTRrUr6Hb6aZGw2k9oSVejRavF0RyQUjhaCaMVHGncmlU09fN0uiOhT6kOLew3B6TkPkdEONaBVRogET86XaiB+QthpoAQjv11F8yq5sEhkSWQMUD7b0NZL5pmgJSI0CKVIo7UaoNoE10TRIOPm3eGj6WYAYI+PmG9QmgFfcm4SJkRHZDSvZlVuWkCCBIALdJnSRBrtkVKT6uA0LQTGdtbrKgDUpA6w9bYucAAsutQ2qCQWGRVdUCQ1TEF0Cgr5BYWZAGxCIQcxNY/BxYNkw27KiCI8yOe75cEE6LRiICgWUR7z6oKCJg9hioftvAggTBqdkW06RYQZGUcPXsk+4FFZOgFBCm1NBcQtQwCON6khiwpd860XT5HVPqcFKBTMSDruSSbzrw0dkYTib6ts4gmINnfgKRJvoRzkDEeORDdN0gC8ihra5chiE5n2rTMIiqAIOVV705LDs/ZidiYcz4yBnKTDQX2TCBr9W2ZRVQAAVbFEE+mInbmfi95DhAksFsGkBYU23FzOuV0rp2nOCC5VfU+0eK6utZAzX4gILcp7AU6otURIHcw0Pfiu9YcWQQ0SnZxQJCgQVZFzcCWGhtx2uZanz5rUwtI5Uf1wgOClqMl/m8BSNeOWotbAci6+w2WzO86/6RVYcb4FAcRFiWgzBJ/IkMUEGRF1KoVS1YFybYnIclOJa2KZz+/qrGyZieu0ADRWrrMMgckwkq29T3iOIV4gYaMAgdyapjaSNsrCgiy/5AmHIoSg0YeIZEOFgMZs5fIlVnSNlsDEmb/sefJmq91ZCOiroG7b9zWmfG1F7IQSS7CYoAg+4+I5dWe4xEnSgXMdhzpFVRrnrXjItpKxhkBqfVUpp91NokOxlpuyzJLDBCEbMnUpxTX4sNqgzISGItzugQE2KCH3n8gZEnB0sO3eBE9atsAi7FYrIllEEuqa4X11G/zRfhlansfdr59gzc1KH2U3pO9knMBABG7YWgGiOTGSVJsjtWfAsiBkFQ5LwIIMmEC0l8gep2xZbyJAGKZ8rw6jfOyVcCqpLcCRGzTZOsGXs2rArlDIanTPRFAcpON9oCi16AZaV65mCMgI0UDbf2iAFDWi1QtJhlEimbGCRVYFOgNkMMvmBAQBra0AgAgIvdCpDLIISA84pUOD46HHPVK3AshIIy1LhXoBhBkoswgXcag60lbxd3pDGI1Udfe4uTMFbCKOxNAJGpBcw/wgu4VyN1Nl6hcCIj7MOAEHylAQBgbVOBAAQLC8KACBIQxQAXqFGAGqdONvQZRgIAM4miaWacAAanTjb0GUCDUfRCJ8+gBfE4TCxToBpBkk0WqK9COTQdQgIAM4GSaWK8AAojEExyn76Qzg9Q7mT3rFQgFCF+Yqg8E9txXgIAwMqjAgQLAG4V8J50RNK4Cua+aSH1JR2QPYkXzuOFAy7cKRANE5AV6hgkVWBTIASK177XKIASEsS2qgNW9NxFArE4URBXmYF0rEA4QPm7SdTy6mjyyIEvFm0gGQW4WStWErjzFyTRRAAFE4i56Mk4SkL+Xy2XvNyTdRCQgTWIp5EVzG3SpI15RQHjUGzIWXRoVFRCeZLkMt/4mldugS1YrYiUWUhdKbZz6cylnLKWAdZyJAcKNulQIcJwjBRBApDboonsQAsLAtlDAcv+hAcjhSVa6oCTdFg7hNXwp0DUgwEkWAfEVb13NBimvJDfo4hmkhQFdeZiTPaUAEl/SB0Gim3TuQ075n50zCgDllXiFogEI9yEMdRUFAEBE3iJcT14cEO5DVGJj+EFblFfie5A0IGKI9EZq+OgZQAAkrqT3HyqAcB8yQLQ2MBEor8T3H2qAsMxqEEHBL5l7/kryCV7VPUgaHAGEZVbwiBY0r1V5pZZBWGYJRgeHSt9+zp6Mauw/tAHJGsXHThj9iAKtyitVQFhmIa5nm5wCLcsrVUBYZuVcz58jCrQsrywAYZmFRAHbPFSgZXmlDgjLLEb+GQVal1fqgCBlltb59RnHsK8PBVqXV1aAZMssrSM6H27mLGoUQLKHxeIq/rDiVgyWWTXhwT4esodJBgHLLJXnaBhm/SoAbM5NYkY9gyQXMYv0G6gtZu6lvDLLIJ4MbuFwXrNMAS/llRkg9zIru1nnA4xlgRSxtbfF1KTEYpkVMZR1bPKUPUwzCDfrOgEVaVQwe5hszhddzTIIs0ikUNaxBckeFvc+1taZAsIsohNYUUZFjnatbyqbA8Ij3yjhLGsHEhfW2cN8D7JIiqwUfJlKNgC9j4bEhHX2aAYIslrwyNd7SMvNz+Peo8kmfbkoAkhqyywiF4ReR0JPrlpkj2YZhCdaXsPVfl6es4d7QJhF7APW8ores0dTQJhFLEPR57W8Z48uALlNcpr+vL6+/vbpZs6qRoEeskdzQNAswlKrJgR99+khe7gAJE0COQNnFvEd8CWzQ08xW51crW0xv5O+JyQqGI99S8LQZ1u0tPKyILoAhFnEZzBrzAosrdzcA3MDCJpFvKwsGsETfczesoebPcgSGL2tLtEDWto+ZK/Z4oHEIzvdZJA0yR5XGOkgijoeuvh52Ji726SvJ8RSKx4iPfvUVQZZlVozEiY81UJUatsGrQq8lVaLai4B6XnFaRuO/q7ea2nlGpA0OULiL9hLZ4T60Gv2cHeKtXUAeOrBZ7VKI9egfQQ43ANSUL9evJ1+GMSg20tE8pvLPUjNqVbqw027D2YiZX73gJTsRzzXsj5CV38W6Ka8F191AUhyK7oq9SK8fqjaX6EAjm6yfTeAlNS1hMQ3HD3tF7sBpLDUSs1frtfrT/tQGe+KJZmjt4dNuwIkMiTpWHRB6/39/SX9++3t7fa35z8Fx7ldHsd3B0gNJPM8//EYbAsU8zz/egDBi9e530veNO8fCMC9ZY7Fpi4BqYDE1X2SklX37ihXoNTMv9dyt1tA7idb2d9atV7dWq9iFYG1XZybg1JhQ9d7wa4BqYEkbd4ty5ZUijw9Pf04KKOQCmWvTQ92dA1HEr17QCohUd8wVqy0p0DR3NTX2NI6W9eKue0XApCaPclKCJGVeJUp/kE3rlJOXNuS/i2VIWvAuK26gT70FwaQk5Ck7i/TNP17dMSaIEgNU8m0BOU8zy2ByDF2OyZe2/Uo0yyA3wGrtikSHGFKrHWU1K56uUjjz/MKRIMjJCDJqNIz+rzr9Vusg6tHyHt6fKTEm6FKrK3hJY9AlIgm2fZo1e0B9IhZY+3f0IAI7EskWViPddvvoF+s9wpKdDjCllh7Ue2hbEkBlQ4Bah978QLKCGAsMRQ+g6xhaRFgKZjSHNBsgaasVrZI24Ha26rdUIAsIq+CK/0v6GG7Agd9HBfXZoqCa92aat+DOZv5Su3x1H5IQB5klVJYPu4xpI5nSifpgFju10zTtH5KuGQhMIdcWgOp8YYHZE/IJcD2fmaVFaQcvB0nsm0amhEQDVU5ZhgFCEgYV9IQDQUIiIaqHDOMAgQkjCtpiIYCBERDVY4ZRgECEsaVNERDAQKioSrHDKMAAQnjShqioQAB0VCVY4ZRgICEcSUN0VCAgGioyjHDKEBAwriShmgoQEA0VOWYYRQgIGFcSUM0FCAgGqpyzDAKEJAwrqQhGgr8B1SteV+K/oqxAAAAAElFTkSuQmCC")
+    const showTest = ref(false)
+    const showImg = ref(false)
+    return {
+        img,
+        showTest,
+        showImg
+    }
+  },
+};
+</script>
+```
+
+### 基本用法
+```vue demo
+<template>
+    <div style="width: 100%;height: 300px;display: block;background: #fff;position: relative;">
+        <l-watermark :fullPage="false" font-color="#fa2c19" content="l-ui"></l-watermark>
+    </div>
 </template>
 
 <script lang="ts">
@@ -18,3 +46,4 @@ export default {
 };
 </script>
 ```
+
