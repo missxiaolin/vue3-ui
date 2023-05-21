@@ -7,7 +7,6 @@
       backgroundImage: `url('${base64Url}')`
     }"
   >
-    <slot></slot>
   </div>
 </template>
 
