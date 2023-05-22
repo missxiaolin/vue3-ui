@@ -25,7 +25,7 @@ export const TrendArrowProps = buildProps({
     type: String,
     default: '#333'
   },
-  icon: {
+  icon: { // 图标
     type: String,
     default: ''
   },
