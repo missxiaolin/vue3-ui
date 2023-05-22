@@ -3,6 +3,7 @@
 @include b(trend-arrow) {
   display: flex;
   font-size: 12px;
+  flex-direction: row;
   @include m(span) {
     order: 1;
     margin-right: 5px;
