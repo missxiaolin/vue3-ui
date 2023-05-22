@@ -227,7 +227,15 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
-          }, 
+          }, {
+            "name": "Pagination",
+            "type": "component",
+            "cName": "分页",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "0%"
+          },
         ]
       }, {
         "name": "工具组件",
