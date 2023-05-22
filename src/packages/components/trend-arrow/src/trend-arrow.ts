@@ -21,20 +21,16 @@ export const TrendArrowProps = buildProps({
     type: Boolean,
     default: false
   },
-  syncTextColor: { // 文字颜色是否与箭头同步
-    type: Boolean,
-    default: true
-  },
   textColor: { // 文字颜色
     type: String,
     default: '#333'
   },
-  riseColor: { // 向上箭头颜色
+  icon: {
+    type: String,
+    default: ''
+  },
+  iconColor: { // 向上箭头颜色
     type: String,
     default: '#fa2c19'
-  },
-  dropColor: { // 向下箭头颜色
-    type: String,
-    default: '#64b578'
   }
 } as const);

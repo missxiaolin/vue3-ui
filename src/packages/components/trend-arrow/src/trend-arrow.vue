@@ -11,10 +11,10 @@
       {{ calcRate }}
     </span>
     <slot name="up-icon" v-if="Number(rate) !== 0 && rateTrend">
-      <Icon icon="l-xiangshang1" :class="[ns.m('icon')]" :color="riseColor" />
+      <Icon :icon="icon ? icon : 'l-xiangshang1'" :class="[ns.m('icon')]" :color="iconColor" />
     </slot>
     <slot name="down-icon" v-if="Number(rate) !== 0 && !rateTrend">
-      <Icon icon="l-xiangxia1" :class="[ns.m('icon')]" :color="dropColor" />
+      <Icon :icon="icon ? icon : 'l-xiangxia1'" :class="[ns.m('icon')]" :color="iconColor" />
     </slot>
   </div>
 </template>
@@ -56,9 +56,9 @@ export default create({
     });
 
     const calcStyle = computed(() => {
-      const { dropColor, riseColor, syncTextColor, textColor, rate } = props;
+      const { textColor } = props;
       let style = {
-        color: rate === 0 ? textColor : syncTextColor ? (state.rateTrend ? riseColor : dropColor) : textColor
+        color: textColor
       };
       return style;
     });

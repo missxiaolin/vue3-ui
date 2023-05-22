@@ -4,8 +4,8 @@
 ```vue demo
 <template>
     <div>
-        <l-trend-arrow :sync-text-color="false" :rate="1"></l-trend-arrow>
-        <l-trend-arrow :sync-text-color="false" :rate="-0.2535"></l-trend-arrow>
+        <l-trend-arrow :rate="1"></l-trend-arrow>
+        <l-trend-arrow :rate="-0.2535"></l-trend-arrow>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 ```vue demo
 <template>
     <div>
-        <l-trend-arrow :arrow-left="true" :sync-text-color="false" :rate="1"></l-trend-arrow>
+        <l-trend-arrow :arrow-left="true" :rate="1"></l-trend-arrow>
     </div>
 </template>
 
@@ -86,6 +86,23 @@ export default {
         <l-trend-arrow showSign :rate="0"></l-trend-arrow>
         <l-trend-arrow showSign showZero :rate="0"></l-trend-arrow>
     </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue"
+export default {
+  setup() {
+    return {
+    }
+  },
+};
+</script>
+```
+
+### 设置图标
+```vue demo
+<template>
+    <l-trend-arrow showSign :rate="1" icon="l-zuobian"></l-trend-arrow>
 </template>
 
 <script lang="ts">
