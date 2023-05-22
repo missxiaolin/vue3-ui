@@ -31,6 +31,20 @@ export default {
             handleCopy,
             iconfont: [
                 {
+                "icon_id": "577394",
+                "name": "向上1",
+                "font_class": "xiangshang1",
+                "unicode": "e76d",
+                "unicode_decimal": 59245
+                },
+                {
+                "icon_id": "577398",
+                "name": "向下1",
+                "font_class": "xiangxia1",
+                "unicode": "e771",
+                "unicode_decimal": 59249
+                },
+                {
                 "icon_id": "671296",
                 "name": "系统返回",
                 "font_class": "xitongfanhui",

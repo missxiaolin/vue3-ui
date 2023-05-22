@@ -15,6 +15,14 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-xiangshang1:before {
+  content: "\e76d";
+}
+
+.l-xiangxia1:before {
+  content: "\e771";
+}
+
 .l-xitongfanhui:before {
   content: "\e6b6";
 }

@@ -1,0 +1,19 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+
+@include b(sticky) {
+  display: inline-block;
+  font-size: 12px;
+  &-icon-before {
+    margin-right: 5px;
+  }
+  &-icon-after {
+    margin-left: 5px;
+  }
+  &-rate {
+    vertical-align: middle;
+    display: inline;
+  }
+  .nut-icon {
+    vertical-align: middle;
+  }
+}
