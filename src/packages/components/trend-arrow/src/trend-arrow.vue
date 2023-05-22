@@ -1,17 +1,21 @@
 <template>
-  <div :class="ns.b()">
-    <span v-if="!arrowLeft" class="l-trend-arrow-icon-before l-trend-arrow-rate" :style="calcStyle">
+  <div
+    :class="[
+      ns.b(),
+      {
+        [ns.m('left')]: arrowLeft
+      }
+    ]"
+  >
+    <span :class="[ns.m('span'), ns.m('rate')]" :style="calcStyle">
       {{ calcRate }}
     </span>
     <slot name="up-icon" v-if="Number(rate) !== 0 && rateTrend">
-      <Icon icon="l-xiangshang1" />
+      <Icon icon="l-xiangshang1" :class="[ns.m('icon')]" :color="riseColor" />
     </slot>
     <slot name="down-icon" v-if="Number(rate) !== 0 && !rateTrend">
-      <Icon icon="l-xiangxia1" />
+      <Icon icon="l-xiangxia1" :class="[ns.m('icon')]" :color="dropColor" />
     </slot>
-    <span v-if="arrowLeft" class="l-trend-arrow-icon-after l-trend-arrow-rate" :style="calcStyle">{{
-      calcRate
-    }}</span>
   </div>
 </template>
 

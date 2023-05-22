@@ -19,3 +19,22 @@ export default {
 };
 </script>
 ```
+
+### 设置图标左右
+```vue demo
+<template>
+    <div>
+        <l-trend-arrow :arrow-left="true" :sync-text-color="false" :rate="1"></l-trend-arrow>
+    </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue"
+export default {
+  setup() {
+    return {
+    }
+  },
+};
+</script>
+```

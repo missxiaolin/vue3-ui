@@ -1,19 +1,28 @@
 @use '../../../theme-chalk/mixins/mixins' as *;
 
-@include b(sticky) {
-  display: inline-block;
+@include b(trend-arrow) {
+  display: flex;
   font-size: 12px;
-  &-icon-before {
+  @include m(span) {
+    order: 1;
     margin-right: 5px;
   }
-  &-icon-after {
-    margin-left: 5px;
-  }
-  &-rate {
+  @include m(rate) {
     vertical-align: middle;
     display: inline;
   }
-  .nut-icon {
+  @include m(icon) {
+    order: 2;
     vertical-align: middle;
+  }
+
+  @include m(left) {
+    & [class*='#{$namespace}-trend-arrow--span'] {
+      order: 2;
+      margin-left: 5px;
+    }
+    & [class*='#{$namespace}-trend-arrow--icon'] {
+      order: 1;
+    }
   }
 }
