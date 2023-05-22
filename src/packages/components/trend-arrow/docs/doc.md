@@ -115,3 +115,16 @@ export default {
 };
 </script>
 ```
+
+### 属性
+
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+| rate	| 数值，大于0时箭头向上，小于0时箭头向下	| number	| —	| 0| 
+| digits	| 小数位精度	| number	| top / bottom| 	-| 
+| show-sign| 	是否显示加减号	| boolean| 	—| 	-| 
+| show-zero	| 是否显示 0	| boolean| 	—	| -| 
+| arrow-left	| 是否在数字左侧显示箭头	| boolean| 	—	| -| 
+| text-color	| 文字颜色	| string| 	—	| -| 
+| icon	| 图标	| string| 	—	| -| 
+| icon-color	| 箭头颜色	| string| 	—	| -| 

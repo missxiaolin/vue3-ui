@@ -29,7 +29,7 @@ export const TrendArrowProps = buildProps({
     type: String,
     default: ''
   },
-  iconColor: { // 向上箭头颜色
+  iconColor: { // 箭头颜色
     type: String,
     default: '#fa2c19'
   }
