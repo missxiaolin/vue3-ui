@@ -29,3 +29,4 @@ import '@/packages/components/badge/style/badge.scss';
 import '@/packages/components/empty/style/empty.scss';
 import '@/packages/components/overlay/style/overlay.scss';
 import '@/packages/components/watermark/style/watermark.scss';
+import '@/packages/components/trend-arrow/style/trend-arrow.scss';

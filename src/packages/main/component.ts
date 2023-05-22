@@ -21,6 +21,7 @@ import { Badge } from '../components/badge/index'
 import { Empty } from '../components/empty/index'
 import { Overlay } from '../components/overlay/index'
 import { Watermark } from '../components/watermark/index'
+import { TrendArrow } from '../components/trend-arrow/index'
 
 
 export default [
@@ -53,5 +54,6 @@ export default [
     Badge,
     Empty,
     Overlay,
-    Watermark
+    Watermark,
+    TrendArrow
 ]
