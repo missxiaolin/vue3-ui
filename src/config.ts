@@ -235,6 +235,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "0%"
+          }, {
+            "name": "Collapse",
+            "type": "component",
+            "cName": "折叠面板",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {
