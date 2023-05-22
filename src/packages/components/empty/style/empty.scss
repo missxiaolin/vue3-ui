@@ -1,0 +1,40 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(empty) {
+  @include set-component-css-var('empty', $empty);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  padding: var(--l-empty-padding);
+
+  @include e(image) {
+    width: var(--l-empty-image-width);
+    img {
+      user-select: none;
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      object-fit: contain;
+    }
+  }
+
+  @include e(description) {
+    margin-top: 20px;
+
+    p {
+      margin: 0;
+      font-size: var(--l-font-size-base);
+      color: var(--l-text-color-secondary);
+    }
+  }
+
+  @include e(bottom) {
+    margin-top: var(--l-empty-bottom-margin-top);
+  }
+}
