@@ -219,6 +219,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Trend-arrow",
+            "type": "component",
+            "cName": "趋势箭头",
+            "desc": "趋势箭头",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           }, 
         ]
       }, {
