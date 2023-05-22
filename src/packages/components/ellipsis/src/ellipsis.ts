@@ -1,4 +1,4 @@
-import { buildProps, definePropType } from '../../../utils/props';
+import { buildProps } from '../../../utils/props';
 
 export const EllipsisProps = buildProps({
     rows: {
