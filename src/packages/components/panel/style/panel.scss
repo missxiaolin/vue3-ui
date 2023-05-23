@@ -1,0 +1,59 @@
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(panel) {
+  @include set-component-css-var('panel', $panel);
+}
+
+@include dark(panel) {
+  @include set-component-css-var('panel', $dark-panel);
+}
+
+@include b(panel) {
+  border-radius: var(--l-panel-border-radius);
+  background-color: var(--l-panel-background-color);
+  overflow: hidden;
+  flex: 1;
+  color: var(--l-text-color-primary);
+  transition: var(--l-transition-duration);
+
+  &.is-border {
+    border: 1px solid var(--l-panel-border-color);
+  }
+
+  @include when(always-shadow) {
+    box-shadow: var(--l-box-shadow-light);
+  }
+
+  @include when(hover-shadow) {
+    &:hover,
+    &:focus {
+      box-shadow: var(--l-box-shadow-light);
+    }
+  }
+
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--l-panel-padding) - 2px) var(--l-panel-padding);
+    border-bottom: 1px solid var(--l-panel-border-color);
+    box-sizing: border-box;
+    dt {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    &.#{$namespace}-panel__header__bg {
+      background-color: #eef0f4;
+      border-bottom: 0;
+    }
+    &.#{$namespace}-panel__header__noline {
+      border-bottom: 0;
+    }
+  }
+
+  @include e(body) {
+    padding: var(--l-panel-padding);
+  }
+}

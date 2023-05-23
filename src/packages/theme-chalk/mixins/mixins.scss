@@ -63,3 +63,12 @@
     @content;
   }
 }
+
+// dark
+@mixin dark($block) {
+  .dark {
+    @include b($block) {
+      @content;
+    }
+  }
+}
