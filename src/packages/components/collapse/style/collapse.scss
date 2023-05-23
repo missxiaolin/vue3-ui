@@ -4,12 +4,81 @@
 @use '../../../theme-chalk/common/transition';
 
 @include b(collapse) {
-    @include set-component-css-var('collapse', $collapse);
+  @include set-component-css-var('collapse', $collapse);
 
-    border-top: 1px solid var(--l-collapse-border-color);
-    border-bottom: 1px solid var(--l-collapse-border-color);
+  border-top: 1px solid var(--l-collapse-border-color);
+  border-bottom: 1px solid var(--l-collapse-border-color);
+}
 
-    @include b(collapse-item) {
-        
+@include b(collapse-item) {
+  display: flex;
+  align-items: center;
+  height: var(--l-collapse-header-height);
+  line-height: var(--l-collapse-header-height);
+  background-color: var(--l-collapse-header-background-color);
+  color: var(--l-collapse-header-font-color);
+  cursor: pointer;
+  border-bottom: 1px solid var(--l-collapse-border-color);
+  font-size: var(--l-collapse-header-font-size);
+  font-weight: 500;
+  transition: border-bottom-color var(--l-transition-duration);
+  outline: none;
+  @include e(arrow) {
+    margin-right: 8px;
+    transition: transform var(--l-transition-duration);
+    transform: scale(0.8) rotate(-90deg);
+    &.l-icon {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--l-text-color-primary);
     }
+    @include when(active) {
+      transform: scale(0.8) rotate(0deg);
+      color: var(--l-color-primary);
+    }
+    &.focusing:focus:not(:hover) {
+      color: var(--l-color-primary);
+    }
+    @include when(active) {
+      border-bottom-color: transparent;
+      color: var(--l-color-primary);
+    }
+  }
+  @include e(wrap) {
+    will-change: height;
+    background-color: var(--l-collapse-content-background-color);
+    overflow: hidden;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--l-collapse-border-color);
+  }
+
+  @include e(content) {
+    padding-bottom: 25px;
+    font-size: var(--l-collapse-content-font-size);
+    color: var(--l-collapse-content-font-color);
+    line-height: 1.769230769230769;
+  }
+
+  &:last-child {
+    margin-bottom: -1px;
+  }
+}
+
+@include b(collpse-title-background) {
+  border-top: 0;
+  border-bottom: 0;
+  .#{$namespace}-collapse-item__wrap {
+    border-bottom: 0;
+  }
+  .#{$namespace}-collapse-item__header {
+    border-bottom: 0;
+    padding: 0 10px;
+    &.is-active-bg {
+      background-color: var(--l-background-color-base);
+      border-radius: var(--l-border-radius-base);
+    }
+  }
+  .#{$namespace}-collapse-item__content {
+    padding: 10px;
+  }
 }

@@ -3,6 +3,11 @@ import type { Nullable } from './types';
 import { camelize } from './util';
 
 /* istanbul ignore next */
+const trimArr = function (s: string) {
+  return (s || '').split(' ').filter((item) => !!item.trim());
+};
+
+/* istanbul ignore next */
 export const on = function (
   element: HTMLElement | Document | Window,
   event: string,
@@ -15,9 +20,9 @@ export const on = function (
 };
 
 /**
- * @param el 
- * @param isVertical 
- * @returns 
+ * @param el
+ * @param isVertical
+ * @returns
  */
 export const isScroll = (el: HTMLElement, isVertical?: Nullable<boolean>): RegExpMatchArray | null => {
   if (isServer) return null;
@@ -32,9 +37,9 @@ export const isScroll = (el: HTMLElement, isVertical?: Nullable<boolean>): RegEx
 };
 
 /**
- * @param el 
- * @param isVertical 
- * @returns 
+ * @param el
+ * @param isVertical
+ * @returns
  */
 export const getScrollContainer = (
   el: HTMLElement,
@@ -107,3 +112,35 @@ export const useLockScroll = (isLock: () => boolean) => {
 
   return [lock, unlock];
 };
+
+/* istanbul ignore next */
+export function addClass(el: HTMLElement | Element, cls: string): void {
+  if (!el) return;
+  let className = el.getAttribute('class') || '';
+  const curClass = trimArr(className);
+  const classes = (cls || '').split(' ').filter((item) => !curClass.includes(item) && !!item.trim());
+
+  if (el.classList) {
+    el.classList.add(...classes);
+  } else {
+    className += ` ${classes.join(' ')}`;
+    el.setAttribute('class', className);
+  }
+}
+
+/* istanbul ignore next */
+export function removeClass(el: HTMLElement | Element, cls: string): void {
+  if (!el || !cls) return;
+  const classes = trimArr(cls);
+  let curClass = el.getAttribute('class') || '';
+
+  if (el.classList) {
+    el.classList.remove(...classes);
+    return;
+  }
+  classes.forEach((item) => {
+    curClass = curClass.replace(` ${item} `, ' ');
+  });
+  const className = trimArr(curClass).join(' ');
+  el.setAttribute('class', className);
+}
