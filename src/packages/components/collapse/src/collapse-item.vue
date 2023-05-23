@@ -15,15 +15,17 @@
       :aria-describedby="`l-collapse-content-${id}`"
     >
       <div
-        :id="`e-collapse-head-${id}`"
-        class="e-collapse-item__header"
+        :id="`l-collapse-head-${id}`"
         role="button"
         :tabindex="disabled ? -1 : 0"
-        :class="{
-          focusing: focusing,
-          'is-active-bg': isActiveBg,
-          'is-active': isActive
-        }"
+        :class="[
+          ns.e('header'),
+          {
+            focusing: focusing,
+            'is-active-bg': isActiveBg,
+            'is-active': isActive
+          }
+        ]"
         @click="handleHeaderClick"
         @keyup.space.enter.stop="handleEnterClick"
         @focus="handleFocus"

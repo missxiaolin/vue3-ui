@@ -5,7 +5,7 @@
 
 ```vue demo
 <template>
-  <l-collapse>
+  <l-collapse v-model="activeNames" @change="handleChange">
     <l-collapse-item title="Consistency" name="1">
         <div>
           Consistent with real life: in line with the process and logic of real

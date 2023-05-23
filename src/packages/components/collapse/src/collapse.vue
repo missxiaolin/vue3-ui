@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, provide, reactive, toRef, toRaw } from 'vue';
+import { ref, watch, provide, toRef } from 'vue';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 import { CollapseProps, CollapseEmits } from './collapse';
