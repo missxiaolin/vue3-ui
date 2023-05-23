@@ -31,7 +31,7 @@
         @focus="handleFocus"
         @blur="focusing = false"
       >
-        <icon class="l-icon-caret-bottom l-collapse-item__arrow" :class="{ 'is-active': isActive }"></icon>
+        <icon icon="l-xiangxia1" class="l-icon-caret-bottom l-collapse-item__arrow" :class="{ 'is-active': isActive }"></icon>
         <slot name="title">{{ title }}</slot>
       </div>
     </div>
