@@ -22,7 +22,7 @@ import { Empty } from '../components/empty/index'
 import { Overlay } from '../components/overlay/index'
 import { Watermark } from '../components/watermark/index'
 import { TrendArrow } from '../components/trend-arrow/index'
-import { Collapse } from '../components/collapse/index'
+import { Collapse, CollapseItm } from '../components/collapse/index'
 
 
 export default [
@@ -57,5 +57,6 @@ export default [
     Overlay,
     Watermark,
     TrendArrow,
-    Collapse
+    Collapse,
+    CollapseItm
 ]

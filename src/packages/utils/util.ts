@@ -39,3 +39,9 @@ export function myFixed(num: any, digit: number = 2) {
   num = parseFloat(num);
   return (Math.round((num + Number.EPSILON) * Math.pow(10, digit)) / Math.pow(10, digit)).toFixed(digit);
 }
+
+/**
+ * Generate random number in range [0, 1000]
+ * Maybe replace with [uuid](https://www.npmjs.com/package/uuid)
+ */
+export const generateId = (): number => Math.floor(Math.random() * 10000);

@@ -8,4 +8,8 @@
 
     border-top: 1px solid var(--l-collapse-border-color);
     border-bottom: 1px solid var(--l-collapse-border-color);
+
+    @include b(collapse-item) {
+        
+    }
 }
