@@ -3,19 +3,19 @@ import { buildProps } from '../../../utils/props';
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../../constants/event';
 
 export const CollapseProps = buildProps({
-  accordion: {
+  accordion: { // 是否手风琴模式
     type: Boolean,
     default: false
   },
-  background: {
+  background: { // 背景
     type: Boolean,
     default: false
   },
-  openAway: {
+  openAway: { // 是否一直打开（此属性只适用在手风琴模式）
     type: Boolean,
     default: false
   },
-  modelValue: {
+  modelValue: { // 当前激活的面板(如果是手风琴模式，绑定值类型需要为string，否则为array)
     type: [Array, String, Number] as PropType<string | number | Array<string | number>>,
     default: () => []
   }

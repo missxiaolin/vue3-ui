@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, toRefs } from 'vue';
 import createComponent from '../../../utils/create';
 import { addClass, removeClass } from '../../../utils/dom';
 
