@@ -1,6 +1,1 @@
 @use '../mixins/config' as *;
-
-.collapse-transition {
-  transition: var(--l-transition-duration) height ease-in-out, var(--l-transition-duration) padding-top ease-in-out,
-    var(--l-transition-duration) padding-bottom ease-in-out;
-}
