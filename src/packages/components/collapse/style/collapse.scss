@@ -1,0 +1,11 @@
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/transition';
+
+@include b(collapse) {
+    @include set-component-css-var('collapse', $collapse);
+
+    border-top: 1px solid var(--l-collapse-border-color);
+    border-bottom: 1px solid var(--l-collapse-border-color);
+}
