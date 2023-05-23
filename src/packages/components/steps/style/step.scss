@@ -4,6 +4,7 @@
 @use '../../../theme-chalk/mixins/var' as *;
 
 @include b(step) {
+  @include set-component-css-var('step', $step);
   position: relative;
   flex-shrink: 1;
 
@@ -151,35 +152,35 @@
     width: 100%;
     @include when(process) {
         font-weight: bold;
-        color: var(--l-color-black);
-        border-color: var(--l-border-color-black);
+        color: var(--l-step-process-color);
+        border-color: var(--l-step-process-border-color);
       }
   
       @include when(wait) {
-        color: var(--l-color-info);
-        border-color: var(--l-border-color-info);
+        color: var(--l-step-wait-color);
+        border-color: var(--l-step-wait-border-color);
       }
   
       @include when(success) {
-        color: var(--l-color-success);
-        border-color: var(--l-border-color-success);
+        color: var(--l-step-success-color);
+        border-color: var(--l-step-success-border-color);
       }
   
       @include when(error) {
-        color: var(--l-color-error);
-        border-color: var(--l-border-color-error);
+        color: var(--l-step-error-color);
+        border-color: var(--l-step-error-border-color);
       }
   
       @include when(finish) {
-        color: var(--l-color-finish);
-        border-color: var(--l-border-color-finish);
+        color: var(--l-step-finish-color);
+        border-color: var(--l-step-finish-border-color);
       }
   }
 
   @include e(line) {
     position: absolute;
     border-color: inherit;
-    background-color: var(--l-color-info);
+    background-color: var(--l-step-line-color);
   }
 
   @include e(main) {
@@ -192,23 +193,23 @@
     line-height: 38px;
     @include when(process) {
       font-weight: bold;
-      color: var(--l-color-black);
+      color: var(--l-step-process-color);
     }
 
     @include when(wait) {
-      color: var(--l-color-info);
+      color: var(--l-step-wait-color);
     }
 
     @include when(success) {
-      color: var(--l-color-success);
+      color: var(--l-step-success-color);
     }
 
     @include when(error) {
-      color: var(--l-color-error);
+      color: var(--l-step-error-color);
     }
 
     @include when(finish) {
-      color: var(--l-color-finish);
+      color: var(--l-step-finish-color);
     }
   }
 
@@ -220,23 +221,23 @@
     font-weight: normal;
     @include when(process) {
       font-weight: bold;
-      color: var(--l-color-black);
+      color: var(--l-step-process-color);
     }
 
     @include when(wait) {
-      color: var(--l-color-info);
+      color: var(--l-step-wait-color);
     }
 
     @include when(success) {
-      color: var(--l-color-success);
+      color: var(--l-step-success-color);
     }
 
     @include when(error) {
-      color: var(--l-color-error);
+      color: var(--l-step-error-color);
     }
 
     @include when(finish) {
-      color: var(--l-color-finish);
+      color: var(--l-step-finish-color);
     }
   }
 

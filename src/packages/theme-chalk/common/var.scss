@@ -1276,3 +1276,22 @@ $loading-bar: map.merge(
   ),
   $loading-bar
 );
+
+// step
+$step: () !default;
+$step: map.merge(
+  (
+    'line-color': #b3b5bb,
+    'process-color': #1c2128,
+    'process-border-color': #1c2128,
+    'wait-color': #b3b5bb,
+    'wait-border-color': #b3b5bb,
+    'success-color':#21b455,
+    'success-border-color': #21b455,
+    'error-color': #f56c6c,
+    'error-border-color': #f56c6c,
+    'finish-color': #409eff,
+    'finish-border-color': #409eff,
+  ),
+  $loading-bar
+);
