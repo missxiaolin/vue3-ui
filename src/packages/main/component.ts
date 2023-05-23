@@ -23,6 +23,7 @@ import { Overlay } from '../components/overlay/index'
 import { Watermark } from '../components/watermark/index'
 import { TrendArrow } from '../components/trend-arrow/index'
 import { Collapse, CollapseItem, CollapseTransition } from '../components/collapse/index'
+import { Panel } from '../components/panel/index'
 
 
 export default [
@@ -59,5 +60,6 @@ export default [
     TrendArrow,
     Collapse,
     CollapseItem,
-    CollapseTransition
+    CollapseTransition,
+    Panel
 ]
