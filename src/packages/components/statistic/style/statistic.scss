@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(statistic) {
+  @include set-component-css-var('statistic', $statistic);
+}
+
+@include b(statistic) {
+  --l-statistic-column: column;
+
+  display: inline-block;
+  text-align: center;
+  flex-direction: var(--l-statistic-column);
+  padding: var(--l-statistic-padding);
+  font-weight: var(--l-statistic-font-weight);
+  // color:  var(--e-text-color-regular);
+  color: var(--l-statistic-font-color-regular, map.get($statistic, 'font-color-regular'));
+
+  & + & {
+    // &.#{$namespace}-statistic--line {
+    position: relative;
+    &::after {
+      content: '';
+      width: 0;
+      height: 50%;
+      position: absolute;
+      left: 0;
+      top: 25%;
+      border-left: 1px solid #eee;
+    }
+    // }
+  }
+
+  @include e(data) {
+    font-size: var(--l-statistic-font-size);
+    color: var(--l-statistic-font-color, map.get($statistic, 'font-color'));
+    font-style: var(--l-statistic-font-italic, map.get($statistic, 'font-style'));
+    // padding: 5px 0;
+    font-weight: bolder;
+  }
+  @include e(top) {
+    text-align: left;
+  }
+}
