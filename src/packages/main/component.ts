@@ -26,6 +26,7 @@ import { Collapse, CollapseItem, CollapseTransition } from '../components/collap
 import { Panel } from '../components/panel/index'
 import { Statistic } from '../components/statistic/index'
 import { Timeline } from '../components/timeline/index'
+import { Tabs } from '../components/tabs/index'
 
 
 export default [
@@ -65,5 +66,6 @@ export default [
     CollapseTransition,
     Panel,
     Statistic,
-    Timeline
+    Timeline,
+    Tabs
 ]

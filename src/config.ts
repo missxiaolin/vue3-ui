@@ -267,6 +267,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "0%"
+          }, {
+            "name": "Tabs",
+            "type": "component",
+            "cName": "标签页",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {
