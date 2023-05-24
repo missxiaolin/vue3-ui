@@ -57,7 +57,7 @@ export default create({
 
     const navScroll$: any = ref<HTMLDivElement>();
     const nav$: any = ref<HTMLDivElement>();
-    const eui$ = ref<HTMLDivElement>();
+    const lui$ = ref<HTMLDivElement>();
 
     const sizeName = computed(() => (['top', 'bottom'].includes(rootTabs.props.tabPosition) ? 'width' : 'height'));
     const navStyle = computed<CSSProperties>(() => {
@@ -97,9 +97,9 @@ export default create({
 
     const scrollToActiveTab = () => {
       const nav = nav$.value;
-      if (!scrollable.value || !eui$.value || !navScroll$.value || !nav) return;
+      if (!scrollable.value || !lui$.value || !navScroll$.value || !nav) return;
 
-      const activeTab = eui$.value.querySelector('.is-active');
+      const activeTab = lui$.value.querySelector('.is-active');
       if (!activeTab) return;
 
       const navScroll = navScroll$.value;
@@ -207,7 +207,7 @@ export default create({
       }
     });
 
-    useResizeObserver(eui$, update);
+    useResizeObserver(lui$, update);
 
     onMounted(() => setTimeout(() => scrollToActiveTab(), 0));
     onUpdated(() => update());
@@ -292,7 +292,7 @@ export default create({
       return h(
         'div',
         {
-          ref: eui$,
+          ref: lui$,
           class: ['l-tabs__nav-wrap', scrollable.value ? 'is-scrollable' : '', `is-${rootTabs.props.tabPosition}`]
         },
         [
