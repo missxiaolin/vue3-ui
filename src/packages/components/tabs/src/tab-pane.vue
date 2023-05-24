@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, inject, getCurrentInstance, watch, markRaw, reactive } from 'vue';
+import { ref, computed, inject, getCurrentInstance, watch, markRaw, reactive } from 'vue';
 import createComponent from '../../../utils/create';
 import { eagerComputed } from '@vueuse/core';
 import { useNamespace } from '../../../hooks';

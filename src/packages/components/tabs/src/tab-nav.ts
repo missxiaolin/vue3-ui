@@ -55,8 +55,8 @@ export default create({
     const isFocus = ref(false);
     const focusable = ref(true);
 
-    const navScroll$ = ref<HTMLDivElement>();
-    const nav$ = ref<HTMLDivElement>();
+    const navScroll$: any = ref<HTMLDivElement>();
+    const nav$: any = ref<HTMLDivElement>();
     const eui$ = ref<HTMLDivElement>();
 
     const sizeName = computed(() => (['top', 'bottom'].includes(rootTabs.props.tabPosition) ? 'width' : 'height'));

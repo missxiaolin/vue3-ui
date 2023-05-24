@@ -211,8 +211,7 @@ export default create({
                   if (ev.code === EVENT_CODE.enter) handleTabAdd();
                 }
               },
-              // [h(Icon, { class: 'is-icon-plus' }, { default: () => h(Plus) })]
-              [h(Icon, { class: 'l-icon-plus', size: '12' })]
+              [h(Icon, { class: 'l-zengjia', size: '12' })]
             )
           : null;
 
