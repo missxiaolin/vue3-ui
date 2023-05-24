@@ -1,5 +1,4 @@
 import {
-  defineComponent,
   Fragment,
   getCurrentInstance,
   h,
