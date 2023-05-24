@@ -259,6 +259,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Timeline",
+            "type": "component",
+            "cName": "时间轴",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "0%"
           },
         ]
       }, {

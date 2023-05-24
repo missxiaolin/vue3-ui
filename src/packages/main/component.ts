@@ -25,6 +25,7 @@ import { TrendArrow } from '../components/trend-arrow/index'
 import { Collapse, CollapseItem, CollapseTransition } from '../components/collapse/index'
 import { Panel } from '../components/panel/index'
 import { Statistic } from '../components/statistic/index'
+import { Timeline } from '../components/timeline/index'
 
 
 export default [
@@ -63,5 +64,6 @@ export default [
     CollapseItem,
     CollapseTransition,
     Panel,
-    Statistic
+    Statistic,
+    Timeline
 ]
