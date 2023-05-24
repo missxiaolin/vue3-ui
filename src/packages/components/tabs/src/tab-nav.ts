@@ -1,26 +1,14 @@
-import {
-  defineComponent,
-  ExtractPropTypes,
-  Fragment,
-  getCurrentInstance,
-  h,
-  nextTick,
-  onMounted,
-  onUpdated,
-  provide,
-  ref,
-  renderSlot,
-  watch,
-  inject
-} from 'vue';
+import { h, ref, inject, computed, onUpdated, onMounted, watch, ExtractPropTypes, CSSProperties } from 'vue';
 import { NOOP, capitalize } from '@vue/shared';
 import { useResizeObserver, useDocumentVisibility, useWindowFocus } from '@vueuse/core';
-
 import createComponent from '../../../utils/create';
 import { buildProps, definePropType, mutable } from '../../../utils/props';
 import { TabsPaneContext, tabsRootContextKey } from '../../../tokens/tabs';
+import { EVENT_CODE } from '../../../utils/aria';
 import { throwError } from '../../../utils/error';
-export const tabNavProps = buildProps({
+import TabBar from './tab-bar.vue';
+import { Icon } from '../../icon/index';
+export const TabNavProps = buildProps({
   panes: {
     type: definePropType<TabsPaneContext[]>(Array),
     default: () => mutable([] as const)
@@ -45,25 +33,303 @@ export const tabNavProps = buildProps({
   },
   stretch: Boolean
 } as const);
-
-export type TabNavProps = ExtractPropTypes<typeof tabNavProps>;
+export interface Scrollable {
+  next?: boolean;
+  prev?: number;
+}
+export type TabNavProps = ExtractPropTypes<typeof TabNavProps>;
 
 const { create } = createComponent('TabNav');
 
 export default create({
-  props: tabNavProps,
-  setup(props, { emit, slots, expose }) {
+  props: TabNavProps,
+  setup(props, { expose }) {
     const visibility = useDocumentVisibility();
     const focused = useWindowFocus();
-    const lui$ = ref<HTMLDivElement>();
+
     const rootTabs = inject(tabsRootContextKey);
     if (!rootTabs) throwError('TabNav', `ETabNav must be nested inside ETabs`);
-    
+
+    const scrollable = ref<false | Scrollable>(false);
+    const navOffset = ref(0);
+    const isFocus = ref(false);
+    const focusable = ref(true);
+
+    const navScroll$ = ref<HTMLDivElement>();
+    const nav$ = ref<HTMLDivElement>();
+    const eui$ = ref<HTMLDivElement>();
+
+    const sizeName = computed(() => (['top', 'bottom'].includes(rootTabs.props.tabPosition) ? 'width' : 'height'));
+    const navStyle = computed<CSSProperties>(() => {
+      const dir = sizeName.value === 'width' ? 'X' : 'Y';
+      return {
+        transform: `translate${dir}(-${navOffset.value}px)`
+      };
+    });
+
+    const scrollPrev = () => {
+      if (!navScroll$.value) return;
+
+      const containerSize = navScroll$.value[`offset${capitalize(sizeName.value)}`];
+      const currentOffset = navOffset.value;
+
+      if (!currentOffset) return;
+
+      const newOffset = currentOffset > containerSize ? currentOffset - containerSize : 0;
+
+      navOffset.value = newOffset;
+    };
+
+    const scrollNext = () => {
+      if (!navScroll$.value || !nav$.value) return;
+
+      const navSize = nav$.value[`offset${capitalize(sizeName.value)}`];
+      const containerSize = navScroll$.value[`offset${capitalize(sizeName.value)}`];
+      const currentOffset = navOffset.value;
+
+      if (navSize - currentOffset <= containerSize) return;
+
+      const newOffset =
+        navSize - currentOffset > containerSize * 2 ? currentOffset + containerSize : navSize - containerSize;
+
+      navOffset.value = newOffset;
+    };
+
+    const scrollToActiveTab = () => {
+      const nav = nav$.value;
+      if (!scrollable.value || !eui$.value || !navScroll$.value || !nav) return;
+
+      const activeTab = eui$.value.querySelector('.is-active');
+      if (!activeTab) return;
+
+      const navScroll = navScroll$.value;
+      const isHorizontal = ['top', 'bottom'].includes(rootTabs.props.tabPosition);
+      const activeTabBounding = activeTab.getBoundingClientRect();
+      const navScrollBounding = navScroll.getBoundingClientRect();
+      const maxOffset = isHorizontal
+        ? nav.offsetWidth - navScrollBounding.width
+        : nav.offsetHeight - navScrollBounding.height;
+      const currentOffset = navOffset.value;
+      let newOffset = currentOffset;
+
+      if (isHorizontal) {
+        if (activeTabBounding.left < navScrollBounding.left) {
+          newOffset = currentOffset - (navScrollBounding.left - activeTabBounding.left);
+        }
+        if (activeTabBounding.right > navScrollBounding.right) {
+          newOffset = currentOffset + activeTabBounding.right - navScrollBounding.right;
+        }
+      } else {
+        if (activeTabBounding.top < navScrollBounding.top) {
+          newOffset = currentOffset - (navScrollBounding.top - activeTabBounding.top);
+        }
+        if (activeTabBounding.bottom > navScrollBounding.bottom) {
+          newOffset = currentOffset + (activeTabBounding.bottom - navScrollBounding.bottom);
+        }
+      }
+      newOffset = Math.max(newOffset, 0);
+      navOffset.value = Math.min(newOffset, maxOffset);
+    };
+
+    const update = () => {
+      if (!nav$.value || !navScroll$.value) return;
+
+      const navSize = nav$.value[`offset${capitalize(sizeName.value)}`];
+      const containerSize = navScroll$.value[`offset${capitalize(sizeName.value)}`];
+      const currentOffset = navOffset.value;
+
+      if (containerSize < navSize) {
+        const currentOffset = navOffset.value;
+        scrollable.value = scrollable.value || {};
+        scrollable.value.prev = currentOffset;
+        scrollable.value.next = currentOffset + containerSize < navSize;
+        if (navSize - currentOffset < containerSize) {
+          navOffset.value = navSize - containerSize;
+        }
+      } else {
+        scrollable.value = false;
+        if (currentOffset > 0) {
+          navOffset.value = 0;
+        }
+      }
+    };
+
+    const changeTab = (e: KeyboardEvent) => {
+      const code = e.code;
+
+      const { up, down, left, right } = EVENT_CODE;
+      if (![up, down, left, right].includes(code)) return;
+
+      // 左右上下键更换tab
+      const tabList = Array.from((e.currentTarget as HTMLDivElement).querySelectorAll<HTMLDivElement>('[role=tab]'));
+      const currentIndex = tabList.indexOf(e.target as HTMLDivElement);
+
+      let nextIndex: number;
+      if (code === left || code === up) {
+        // left
+        if (currentIndex === 0) {
+          // first
+          nextIndex = tabList.length - 1;
+        } else {
+          nextIndex = currentIndex - 1;
+        }
+      } else {
+        // right
+        if (currentIndex < tabList.length - 1) {
+          // not last
+          nextIndex = currentIndex + 1;
+        } else {
+          nextIndex = 0;
+        }
+      }
+      tabList[nextIndex].focus(); // 改变焦点元素
+      tabList[nextIndex].click(); // 选中下一个tab
+      setFocus();
+    };
+
+    const setFocus = () => {
+      if (focusable.value) isFocus.value = true;
+    };
+    const removeFocus = () => (isFocus.value = false);
+
+    watch(visibility, (visibility) => {
+      if (visibility === 'hidden') {
+        focusable.value = false;
+      } else if (visibility === 'visible') {
+        setTimeout(() => (focusable.value = true), 50);
+      }
+    });
+    watch(focused, (focused) => {
+      if (focused) {
+        setTimeout(() => (focusable.value = true), 50);
+      } else {
+        focusable.value = false;
+      }
+    });
+
+    useResizeObserver(eui$, update);
+
+    onMounted(() => setTimeout(() => scrollToActiveTab(), 0));
+    onUpdated(() => update());
+
+    expose({
+      scrollToActiveTab,
+      removeFocus
+    });
+
     return () => {
-      return h('div', {
-        ref: lui$,
-        class: ['l-tabs__nav-wrap']
+      const scrollBtn = scrollable.value
+        ? [
+            h(
+              'span',
+              {
+                class: ['l-tabs__nav-prev', scrollable.value.prev ? '' : 'is-disabled'],
+                onClick: scrollPrev
+              },
+              [h(Icon, {})]
+            ),
+            h(
+              'span',
+              {
+                class: ['l-tabs__nav-next', scrollable.value.next ? '' : 'is-disabled'],
+                onClick: scrollNext
+              },
+              [h(Icon, {})]
+            )
+          ]
+        : null;
+
+      const tabs = props.panes.map((pane, index) => {
+        const tabName = pane.props.name || pane.index || `${index}`;
+        const closable = pane.isClosable || props.editable;
+        pane.index = `${index}`;
+
+        const btnClose = closable
+          ? h(Icon, {
+              class: 'l-icon-close',
+              size: '12',
+              onClick: (ev: MouseEvent) => props.onTabRemove(pane, ev)
+            })
+          : null;
+
+        const tabLabelContent = pane.instance.slots.label?.() || pane.props.label;
+        const tabindex = pane.active ? 0 : -1;
+
+        return h(
+          'div',
+          {
+            class: {
+              'l-tabs__item': true,
+              [`is-${rootTabs.props.tabPosition}`]: true,
+              'is-active': pane.active,
+              'is-disabled': pane.props.disabled,
+              'is-closable': closable,
+              'is-focus': isFocus
+            },
+            id: `tab-${tabName}`,
+            key: `tab-${tabName}`,
+            'aria-controls': `pane-${tabName}`,
+            role: 'tab',
+            'aria-selected': pane.active,
+            ref: `tab-${tabName}`,
+            tabindex,
+            onFocus: () => setFocus(),
+            onBlur: () => removeFocus(),
+            onClick: (ev: MouseEvent) => {
+              removeFocus();
+              props.onTabClick(pane, tabName, ev);
+            },
+            onKeydown: (ev: KeyboardEvent) => {
+              if (closable && (ev.code === EVENT_CODE.delete || ev.code === EVENT_CODE.backspace)) {
+                props.onTabRemove(pane, ev);
+              }
+            }
+          },
+          [tabLabelContent, btnClose]
+        );
       });
+
+      return h(
+        'div',
+        {
+          ref: eui$,
+          class: ['l-tabs__nav-wrap', scrollable.value ? 'is-scrollable' : '', `is-${rootTabs.props.tabPosition}`]
+        },
+        [
+          scrollBtn,
+          h(
+            'div',
+            {
+              class: 'l-tabs__nav-scroll',
+              ref: navScroll$
+            },
+            [
+              h(
+                'div',
+                {
+                  class: [
+                    'l-tabs__nav',
+                    `is-${rootTabs.props.tabPosition}`,
+                    props.stretch && ['top', 'bottom'].includes(rootTabs.props.tabPosition) ? 'is-stretch' : ''
+                  ],
+                  ref: nav$,
+                  style: navStyle.value,
+                  role: 'tablist',
+                  onKeydown: changeTab
+                },
+                [
+                  !props.type
+                    ? h(TabBar, {
+                        tabs: [...props.panes]
+                      })
+                    : null,
+                  tabs
+                ]
+              )
+            ]
+          )
+        ]
+      );
     };
   }
 });
