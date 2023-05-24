@@ -15,6 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-guanbi1:before {
+  content: "\eca0";
+}
+
 .l-shang:before {
   content: "\e63c";
 }

@@ -246,7 +246,7 @@ export default create({
 
         const btnClose = closable
           ? h(Icon, {
-              class: 'l-icon-close',
+              class: 'l-guanbi1',
               size: '12',
               onClick: (ev: MouseEvent) => props.onTabRemove(pane, ev)
             })

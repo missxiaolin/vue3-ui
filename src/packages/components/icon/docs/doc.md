@@ -31,6 +31,13 @@ export default {
             handleCopy,
             iconfont: [
                 {
+                "icon_id": "6616997",
+                "name": "关闭",
+                "font_class": "guanbi1",
+                "unicode": "eca0",
+                "unicode_decimal": 60576
+                },
+                {
                 "icon_id": "1305406",
                 "name": "上",
                 "font_class": "shang",
