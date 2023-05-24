@@ -32,3 +32,4 @@ import '@/packages/components/watermark/style/watermark.scss';
 import '@/packages/components/trend-arrow/style/trend-arrow.scss';
 import '@/packages/components/collapse/style/collapse.scss';
 import '@/packages/components/panel/style/panel.scss';
+import '@/packages/components/statistic/style/statistic.scss';

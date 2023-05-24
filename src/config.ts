@@ -251,6 +251,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Statistic",
+            "type": "component",
+            "cName": "统计数据",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {

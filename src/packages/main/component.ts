@@ -24,6 +24,7 @@ import { Watermark } from '../components/watermark/index'
 import { TrendArrow } from '../components/trend-arrow/index'
 import { Collapse, CollapseItem, CollapseTransition } from '../components/collapse/index'
 import { Panel } from '../components/panel/index'
+import { Statistic } from '../components/statistic/index'
 
 
 export default [
@@ -61,5 +62,6 @@ export default [
     Collapse,
     CollapseItem,
     CollapseTransition,
-    Panel
+    Panel,
+    Statistic
 ]
