@@ -27,6 +27,7 @@ import { Panel } from '../components/panel/index'
 import { Statistic } from '../components/statistic/index'
 import { Timeline, TimelineItem } from '../components/timeline/index'
 import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index'
+import { Pagination } from '../components/pagination/index'
 
 
 export default [
@@ -71,5 +72,6 @@ export default [
     TabBar,
     TabPane,
     TabNav,
-    TimelineItem
+    TimelineItem,
+    Pagination
 ]

@@ -35,3 +35,4 @@ import '@/packages/components/panel/style/panel.scss';
 import '@/packages/components/statistic/style/statistic.scss';
 import '@/packages/components/timeline/style/timeline.scss';
 import '@/packages/components/tabs/style/tabs.scss';
+import '@/packages/components/pagination/style/pagination.scss';
