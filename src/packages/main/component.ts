@@ -25,7 +25,7 @@ import { TrendArrow } from '../components/trend-arrow/index'
 import { Collapse, CollapseItem, CollapseTransition } from '../components/collapse/index'
 import { Panel } from '../components/panel/index'
 import { Statistic } from '../components/statistic/index'
-import { Timeline } from '../components/timeline/index'
+import { Timeline, TimelineItem } from '../components/timeline/index'
 import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index'
 
 
@@ -70,5 +70,6 @@ export default [
     Tabs,
     TabBar,
     TabPane,
-    TabNav
+    TabNav,
+    TimelineItem
 ]

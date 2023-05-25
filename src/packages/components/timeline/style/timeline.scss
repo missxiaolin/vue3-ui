@@ -1,0 +1,107 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(timeline) {
+  @include set-component-css-var('timeline', $timeline);
+}
+
+@include b(timeline) {
+  margin: 0;
+  font-size: var(--l-font-size-base);
+  list-style: none;
+}
+
+
+
+
+
+@include b(timeline-item) {
+  position: relative;
+  padding-bottom: 20px;
+
+  @include e(wrapper) {
+    position: relative;
+    padding-left: 28px;
+    top: -3px;
+  }
+
+  @include e(tail) {
+    position: absolute;
+    left: 4px;
+    height: 100%;
+    border-left: 2px solid var(--l-timeline-node-color);
+  }
+
+  & .#{$namespace}-timeline-item__icon {
+    color: var(--l-color-primary-light-1);
+    font-size: var(--l-font-size-extra-small);
+    transform: scale(0.8);
+  }
+
+  @include e(node) {
+    position: absolute;
+    background-color: var(--l-timeline-node-color);
+    border-color: var(--l-timeline-node-color);
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include m(normal) {
+      left: -1px;
+      width: var(--l-timeline-node-size-normal);
+      height: var(--l-timeline-node-size-normal);
+    }
+    @include m(large) {
+      left: -5px;
+      width: var(--l-timeline-node-size-large);
+      height: var(--l-timeline-node-size-large);
+      .#{$namespace}-timeline-item__icon {
+        font-size: var(--e-font-size-small);
+        font-weight: bolder;
+      }
+    }
+    @include when(hollow) {
+      background: var(--l-color-white);
+      border-style: solid;
+      border-width: 2px;
+    }
+
+    @each $type in (primary, success, warning, danger, info) {
+      @include m($type) {
+        background-color: var(--l-color-#{$type});
+        border-color: var(--e-color-#{$type});
+        .#{$namespace}-timeline-item__icon {
+          color: var(--l-color-white);
+        }
+      }
+    }
+  }
+
+  @include e(dot) {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include e(content) {
+    color: var(--l-text-color-primary);
+  }
+
+  @include e(timestamp) {
+    color: var(--l-text-color-secondary);
+    line-height: 1;
+    font-size: var(--l-font-size-small);
+
+    @include when(top) {
+      margin-bottom: 8px;
+      padding-top: 4px;
+    }
+    @include when(bottom) {
+      margin-top: 8px;
+    }
+  }
+}
