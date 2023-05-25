@@ -25,7 +25,7 @@
         </dd>
       </dl>
     </slot>
-    <div :class="ns.m('body')" :style="bodyStyle" v-show="shrinkSwitch">
+    <div :class="ns.e('body')" :style="bodyStyle" v-show="shrinkSwitch">
       <slot></slot>
     </div>
   </div>
