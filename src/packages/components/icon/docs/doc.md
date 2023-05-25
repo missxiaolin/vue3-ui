@@ -31,6 +31,27 @@ export default {
             handleCopy,
             iconfont: [
                 {
+                "icon_id": "13639799",
+                "name": "左边",
+                "font_class": "zuobian1",
+                "unicode": "e604",
+                "unicode_decimal": 58884
+                },
+                {
+                "icon_id": "13639800",
+                "name": "右边",
+                "font_class": "youbian1",
+                "unicode": "e605",
+                "unicode_decimal": 58885
+                },
+                {
+                "icon_id": "17204046",
+                "name": "更多",
+                "font_class": "xianxingtubiaozhizuomoban-25",
+                "unicode": "e61c",
+                "unicode_decimal": 58908
+                },
+                {
                 "icon_id": "6616997",
                 "name": "关闭",
                 "font_class": "guanbi1",
