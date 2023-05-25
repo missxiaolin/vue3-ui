@@ -92,6 +92,81 @@ const activities = [
 </script>
 ```
 
+### ⾃定义标题、内容、节点样式
+可根据实际场景`slot` ⾃定义节点尺⼨、颜⾊，或直接使⽤图标。
+```vue demo
+<template>
+  <l-timeline>
+    <l-timeline-item
+      v-for="(activity, index) in activities"
+      :key="index"
+      :size="activity.size"
+      :icon="activity.icon"
+    >
+      <template #header>
+      <dl class="md-custom-timeline-header">
+        <dt>
+          {{activity.personnel}}({{activity.port}})<i>{{activity.statusDesc}}</i>
+        </dt>
+        <dd>
+          {{activity.timestamp}}
+        </dd>
+      </dl>
+      </template>
+      <div class="md-custom-timeline-content">
+        <dl>
+          <dt>审批意见:</dt>
+          <dd>{{ activity.content }}</dd>
+        </dl>
+      </div>
+      
+    </l-timeline-item>
+  </l-timeline>
+</template>
+
+<script lang="ts" setup>
+
+const activities = [
+  {
+    content: '这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是',
+    personnel: '查',
+    port: '销售',
+    statusDesc: '发起',
+    timestamp: '2018-04-03 20:46',
+    size: 'large',
+    icon: 'l-chenggong',
+  },
+  {
+    content: '这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是',
+    personnel: '查',
+    port: '销售',
+    statusDesc: '发起',
+    timestamp: '2018-04-03 20:46',
+    size: 'large',
+    icon: 'l-chenggong',
+  },
+  {
+    content: '这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是',
+    personnel: '查',
+    port: '销售',
+    statusDesc: '发起',
+    timestamp: '2018-04-03 20:46',
+    size: 'large',
+    icon: 'l-chenggong',
+  },
+  {
+    content: '这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是这是一条极限审批意见这是一条审批意见这是',
+    personnel: '查',
+    port: '销售',
+    statusDesc: '发起',
+    timestamp: '2018-04-03 20:46',
+    size: 'large',
+    icon: 'l-chenggong',
+  }
+]
+</script>
+```
+
 ### ⾃定义时间戳
 当内容在垂直⽅向上过⾼时，可将时间戳置于内容之上。
 ```vue demo
