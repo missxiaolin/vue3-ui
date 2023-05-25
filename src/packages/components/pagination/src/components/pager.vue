@@ -15,8 +15,8 @@
       @mouseenter="onMouseenter('left')"
       @mouseleave="quickPrevHover = false"
     >
-      <icon icon="l-icon-two-arrow-left" v-if="quickPrevHover"></icon>
-      <icon icon="l-icon-more" v-else></icon>
+      <icon icon="l-zuobian1" v-if="quickPrevHover"></icon>
+      <icon icon="l-xianxingtubiaozhizuomoban-25" v-else></icon>
     </li>
     <li
       v-for="pager in pagers"
@@ -34,8 +34,8 @@
       @mouseenter="onMouseenter('right')"
       @mouseleave="quickNextHover = false"
     >
-      <icon icon="l-icon-two-arrow-right" v-if="quickNextHover"></icon>
-      <icon icon="l-icon-more" v-else></icon>
+      <icon icon="l-youbian1" v-if="quickNextHover"></icon>
+      <icon icon="l-xianxingtubiaozhizuomoban-25" v-else></icon>
     </li>
     <li
       v-if="pageCount > 1"

@@ -9,6 +9,8 @@
   <div class="example-pagination-block">
     <div class="example-demonstration">当你只有几页的时候</div>
     <l-pagination layout="prev, pager, next" :total="50"></l-pagination>
+    <div class="example-demonstration">当你只有几页的时候</div>
+    <l-pagination layout="prev, pager, next" :total="1000"></l-pagination>
   </div>
 </template>
 ```
