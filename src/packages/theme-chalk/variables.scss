@@ -12,6 +12,10 @@
   --l-color-finish: #{$color-finish};
   --l-overlay-background-color: rgba(0, 0, 0, .2);
 
+  // 文本
+  --l-text-ellipsis-line-height: 1.6;
+  --l-active-opacity: 0.6;
+
   --l-color-primary: #{$color-primary};
   @for $i from 1 through 9 {
     @include set-css-color-type-light('primary', $i);
@@ -87,11 +91,6 @@
   --l-disabled-fill-base: var(--l-background-color-base);
   --l-disabled-color-base: var(--l-text-color-placeholder);
   --l-disabled-border-base: var(--l-border-color-light);
-
-  // 文本
-  --l-text-ellipsis-line-height: 1.6;
-  --l-text-ellipsis-action-color: #1989fa;
-  --l-active-opacity: 0.6;
 
   // --l-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);

@@ -9,7 +9,7 @@
     word-break: break-word;
     & [class*='#{$namespace}-ellipsis-span'] {
         cursor: pointer;
-        color: var(--l-text-ellipsis-action-color);
+        color: var(--l-color-primary);
 
         &:active {
             opacity: var(--l-active-opacity);
