@@ -15,6 +15,18 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-cuowu:before {
+  content: "\e601";
+}
+
+.l-zhengque:before {
+  content: "\e8ad";
+}
+
+.l-jinggao:before {
+  content: "\eb65";
+}
+
 .l-zuobian1:before {
   content: "\e604";
 }
