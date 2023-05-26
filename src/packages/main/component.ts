@@ -27,6 +27,7 @@ import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index';
 import { Pagination } from '../components/pagination/index';
 import { Dropdown } from '../components/dropdown/index';
 import { Progress } from '../components/progress/index';
+import { Message } from '../components/message/index'
 
 export default [
   Container,
@@ -73,5 +74,6 @@ export default [
   TimelineItem,
   Pagination,
   Dropdown,
-  Progress
+  Progress,
+  Message
 ];

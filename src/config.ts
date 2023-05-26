@@ -294,6 +294,19 @@ const config: any = {
           },
         ]
       }, {
+        "name": "反馈组件",
+        "children": [
+          {
+            "name": "Message",
+            "type": "component",
+            "cName": " 全局提示",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          },
+        ]
+      }, {
         "name": "工具组件",
         "children": [
           {

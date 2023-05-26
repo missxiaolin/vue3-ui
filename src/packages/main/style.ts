@@ -39,3 +39,4 @@ import '@/packages/components/tabs/style/tabs.scss';
 import '@/packages/components/pagination/style/pagination.scss';
 import '@/packages/components/dropdown/style/dropdown.scss';
 import '@/packages/components/progress/style/progress.scss';
+import '@/packages/components/message/style/message.scss';

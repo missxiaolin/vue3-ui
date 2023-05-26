@@ -48,8 +48,7 @@ setup(props, { emit }) {
 
 `;
 
-const docTep = `
-  ## ${fileName}
+const docTep = `## ${fileName}
 `
 const indexTep = `
 import { default as ${fileName} } from './src/${caseFileName}.vue'
