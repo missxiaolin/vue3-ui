@@ -197,6 +197,14 @@ const config: any = {
             "author": "lin",
             "show": true,
             "progress": "100%"
+          }, {
+            "name": "Dropdown",
+            "type": "component",
+            "cName": "下拉菜单",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "80%"
           },
         ]
       }, {
