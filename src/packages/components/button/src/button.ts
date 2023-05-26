@@ -30,7 +30,7 @@ export const buttonProps = {
   type: {
     type: String,
     values: buttonTypes,
-    default: 'default'
+    default: 'small',
   },
   size: useSizeProp,
   icon: {
