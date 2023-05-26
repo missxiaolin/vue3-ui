@@ -29,6 +29,7 @@ import { Timeline, TimelineItem } from '../components/timeline/index'
 import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index'
 import { Pagination } from '../components/pagination/index'
 import { Dropdown } from '../components/dropdown/index'
+import { Progress } from '../components/progress/index'
 
 
 export default [
@@ -75,5 +76,6 @@ export default [
     TabNav,
     TimelineItem,
     Pagination,
-    Dropdown
+    Dropdown,
+    Progress
 ]

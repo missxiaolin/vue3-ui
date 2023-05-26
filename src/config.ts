@@ -283,6 +283,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Progress",
+            "type": "component",
+            "cName": "进度",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "80%"
           },
         ]
       }, {
