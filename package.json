@@ -14,7 +14,8 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "vite --open --force"
+    "dev": "vite --open --force",
+    "tem": "node scripts/template"
   },
   "repository": {
     "type": "git",
