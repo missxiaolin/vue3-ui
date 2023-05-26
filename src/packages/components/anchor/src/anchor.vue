@@ -14,7 +14,7 @@
       </div>
     </transition>
     <div :class="`${ns.b()}__bar`" @click="visible = !visible">
-      <e-icon icon="e-icon-two-arrow-right"></e-icon>
+      <l-icon icon="l-youbian"></l-icon>
     </div>
   </div>
   <l-sticky v-else :offset="props.offsetTop">
