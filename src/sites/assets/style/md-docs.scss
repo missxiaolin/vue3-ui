@@ -68,8 +68,8 @@
 }
 
 .md-layout {
-  .e-row {
-    .e-col {
+  .l-row {
+    .l-col {
       background-color: #d3dce6;
       min-height: 20px;
     }
@@ -115,29 +115,29 @@
   // button{ margin-right: 20px;}
 }
 
-.e-table table {
+.l-table table {
   margin-top: 0;
 }
-.e-table .warning-row {
-  background-color: var(--e-color-warning-light);
+.l-table .warning-row {
+  background-color: var(--l-color-warning-light);
 }
-.e-table .success-row {
-  background-color: var(--e-color-success-lighter);
+.l-table .success-row {
+  background-color: var(--l-color-success-lighter);
 }
 
-.e-popper.is-customized {
+.l-popper.is-customized {
   /* Set padding to ensure the height is 32px */
   padding: 6px 12px;
   background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
 }
 
-.e-popper.is-customized .e-popper__arrow::before {
+.l-popper.is-customized .l-popper__arrow::before {
   background: linear-gradient(45deg, #b2e68d, #bce689);
   right: 0;
 }
 
 .singleton-tooltip {
-  transition: transform 0.3s var(--e-transition-function-fast-bezier);
+  transition: transform 0.3s var(--l-transition-function-fast-bezier);
 }
 
 /*   sticky  */
@@ -145,7 +145,7 @@
   text-align: center;
   height: 400px;
   border-radius: 4px;
-  background: var(--e-color-primary-light-9);
+  background: var(--l-color-primary-light-9);
 }
 
 .custom-content-format {
@@ -235,7 +235,7 @@
 .demo-image .block {
   padding: 30px 0;
   text-align: center;
-  border-right: solid 1px var(--e-border-color);
+  border-right: solid 1px var(--l-border-color);
   display: inline-block;
   width: 20%;
   box-sizing: border-box;
@@ -246,7 +246,7 @@
 }
 .demo-image .demonstration {
   display: block;
-  color: var(--e-text-color-secondary);
+  color: var(--l-text-color-secondary);
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -255,21 +255,21 @@
   height: 400px;
   overflow-y: auto;
 }
-.demo-image__lazy .e-image {
+.demo-image__lazy .l-image {
   display: block;
   min-height: 200px;
   margin-bottom: 10px;
 }
-.demo-image__lazy .e-image:last-child {
+.demo-image__lazy .l-image:last-child {
   margin-bottom: 0;
 }
 
 // -----
-.demo-progress .e-progress--line {
+.demo-progress .l-progress--line {
   margin-bottom: 15px;
   width: 350px;
 }
-.demo-progress .e-progress--circle {
+.demo-progress .l-progress--circle {
   margin-right: 15px;
 }
 .percentage-value {
@@ -291,21 +291,21 @@
   display: block;
 }
 
-.avatar-uploader .e-upload {
+.avatar-uploader .l-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: var(--e-transition-duration-fast);
-  -webkit-transition: var(--e-transition-duration-fast);
-  -moz-transition: var(--e-transition-duration-fast);
-  -ms-transition: var(--e-transition-duration-fast);
-  -o-transition: var(--e-transition-duration-fast);
+  transition: var(--l-transition-duration-fast);
+  -webkit-transition: var(--l-transition-duration-fast);
+  -moz-transition: var(--l-transition-duration-fast);
+  -ms-transition: var(--l-transition-duration-fast);
+  -o-transition: var(--l-transition-duration-fast);
 }
 
-.avatar-uploader .e-upload:hover {
-  border-color: var(--e-color-primary);
+.avatar-uploader .l-upload:hover {
+  border-color: var(--l-color-primary);
 }
 
 .e-icon.avatar-uploader-icon {
@@ -329,7 +329,7 @@
 .demo-basic .sub-title {
   margin-bottom: 10px;
   font-size: 14px;
-  color: var(--e-color-primary);
+  color: var(--l-color-primary);
 }
 .demo-basic .demo-basic--circle,
 .demo-basic .demo-basic--square {
@@ -338,13 +338,13 @@
   align-items: center;
 }
 .demo-basic .block:not(:last-child) {
-  border-right: 1px solid var(--e-color-primary);
+  border-right: 1px solid var(--l-color-primary);
 }
 .demo-basic .block {
   flex: 1;
 }
 .demo-basic .el-col:not(:last-child) {
-  border-right: 1px solid var(--e-color-primary);
+  border-right: 1px solid var(--l-color-primary);
 }
 
 .avatar-demo-fit {
@@ -372,15 +372,15 @@
   align-items: center;
 }
 //-------------tree--demo------start-----------
-.is-penultimate > .e-tree-node__content {
+.is-penultimate > .l-tree-node__content {
   color: red;
 }
 
-.e-tree-node.is-expanded.is-penultimate > .e-tree-node__children {
+.l-tree-node.is-expanded.is-penultimate > .l-tree-node__children {
   display: flex;
   flex-direction: row;
 }
-.is-penultimate > .e-tree-node__children > div {
+.is-penultimate > .l-tree-node__children > div {
   width: 25%;
 }
 //-------------tree--demo------end-----------

@@ -11,7 +11,7 @@
   &:focus {
     background: $color;
     border-color: $color;
-    color: var(--e-color-white);
+    color: var(--l-color-white);
   }
 
   &:active {
@@ -44,14 +44,14 @@
   &:active {
     background: var(--l-button-active-background-color);
     border-color: var(--l-button-active-border-color);
-    color: var(--e-button-active-font-color);
+    color: var(--l-button-active-font-color);
     outline: none;
   }
 
   &.is-active {
     background: var(--l-button-active-background-color);
     border-color: var(--l-button-active-border-color);
-    color: var(--e-button-active-font-color);
+    color: var(--l-button-active-font-color);
   }
 
   &.is-disabled {

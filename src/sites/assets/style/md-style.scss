@@ -161,7 +161,7 @@
     font-size: 14px;
     font-family: inherit;
     word-break: keep-all;
-    background-color: var(--e-color-primary-light-9);
+    background-color: var(--l-color-primary-light-9);
     border-radius: 4px;
     -webkit-font-smoothing: antialiased;
   }
@@ -178,8 +178,8 @@
   blockquote {
     margin: 16px 0px;
     padding: 16px;
-    background-color: var(--e-color-primary-light-9);
-    border-left: 4px solid var(--e-color-primary);
+    background-color: var(--l-color-primary-light-9);
+    border-left: 4px solid var(--l-color-primary);
     border-radius: 6px;
     p {
       color: #1a1a1a;

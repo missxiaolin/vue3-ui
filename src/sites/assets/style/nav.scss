@@ -65,11 +65,11 @@
             &.active {
               color: $doc-default-color !important;
               border-right: 3px solid $doc-default-color;
-              background-color: var(--e-color-primary-light-8);
+              background-color: var(--l-color-primary-light-8);
               border-radius: 3px 0 0 3px;
             }
             &.planned {
-              color: var(--e-color-info) !important;
+              color: var(--l-color-info) !important;
             }
 
             &:hover {

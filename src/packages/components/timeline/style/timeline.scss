@@ -90,7 +90,7 @@
       width: var(--l-timeline-node-size-large);
       height: var(--l-timeline-node-size-large);
       .#{$namespace}-timeline-item__icon {
-        font-size: var(--e-font-size-small);
+        font-size: var(--l-font-size-small);
         font-weight: bolder;
       }
     }
@@ -103,7 +103,7 @@
     @each $type in (primary, success, warning, danger, info) {
       @include m($type) {
         background-color: var(--l-color-#{$type});
-        border-color: var(--e-color-#{$type});
+        border-color: var(--l-color-#{$type});
         .#{$namespace}-timeline-item__icon {
           color: var(--l-color-white);
         }

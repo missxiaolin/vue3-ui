@@ -33,7 +33,7 @@
   <div style="background: #F5F6F9; padding: 20px; display: flex;">
     <l-scroll scrollId="test-container" :height="500" style="margin-right: 10px;"
       :scrollWrapStyle="{ scrollBehavior: 'smooth' }">
-      <e-anchor-point href="anchor-1" />
+      <l-anchor-point href="anchor-1" />
       <div style="height: 400px;background: red;">anchor1</div>
       <l-anchor-point href="anchor-2" />
       <div style="height: 400px;background: yellow;">anchor2</div>
