@@ -58,8 +58,8 @@
     <l-col :key="item" v-for="item in modes">
       <div class="empty-status-demo">
         <p>{{item}}</p>
-        <l-empty-status :mode="item">
-        </l-empty-status>
+        <l-empty :mode="item">
+        </l-empty>
       </div>
     </l-col>
   </l-row>
