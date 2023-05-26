@@ -122,3 +122,82 @@ Progress 组件可通过 `type` 属性来指定使用环形进度条，在环形
 </template>
 ```
 
+
+### 自定义内容
+通过默认插槽添加自定义内容。
+```vue demo
+<template>
+  <div class="demo-progress">
+    <l-progress :percentage="50">
+      <e-button type="text">Content</e-button>
+    </l-progress>
+    <l-progress
+      :text-inside="true"
+      :stroke-width="20"
+      :percentage="50"
+      status="exception"
+    >
+      <span>Content</span>
+    </l-progress>
+    <l-progress type="circle" :percentage="100" status="success">
+      <l-button type="success" icon="l-zhengque" circle />
+    </l-progress>
+    <l-progress type="dashboard" :percentage="80">
+      <template #default="{ percentage }">
+        <span class="percentage-value">{{ percentage }}%</span>
+        <span class="percentage-label">Progressing</span>
+      </template>
+    </l-progress>
+  </div>
+</template>
+
+```
+
+### 动画进度条
+使用 `intermediate` 属性来设置不确定的进度， `duration` 来控制动画持续时间。
+```vue demo
+<template>
+  <div class="demo-progress">
+    <l-progress :percentage="50" :indeterminate="true" />
+    <l-progress :percentage="100" :format="format" :indeterminate="true" />
+    <l-progress
+      :percentage="100"
+      status="success"
+      :indeterminate="true"
+      :duration="5"
+    />
+    <l-progress
+      :percentage="100"
+      status="warning"
+      :indeterminate="true"
+      :duration="1"
+    />
+    <l-progress :percentage="50" status="exception" :indeterminate="true" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
+</script>
+```
+
+
+## Progress 属性
+| 属性	| 说明	| 类型	| 可选值| 	默认值| 
+| -----| -----| ----| -----| -----| 
+| percentage| 	百分比，必填| 	number| 	0-100	| 0| 
+| type| 	进度条类型	| string| 	line/circle/dashboard	| line| 
+| stroke-width	| 进度条的宽度| 	number| 	—| 	6| 
+| text-inside| 	进度条显示文字内置在进度条内（仅 type 为 'line' 时可用）| 	boolean	| —	| false| 
+| status	| 进度条当前状态| 	string	| success/exception/warning	| —| 
+| indeterminate	| 是否为动画进度条| 	boolean	| -	| false| 
+| duration	| 控制动画进度条速度| 	number| 	-	| 3| 
+| color| 	进度条背景色 进度条背景色 | （会覆盖 status 状态颜色）| 	string/function/array| 	—	| ''| 
+| width	| 环形进度条画布宽度（只在 type 为 circle 或 dashboard 时可用）| 	number	| —	| 126| 
+| show-text	| 是否显示进度条文字内容| 	boolean| 	—	| true| 
+| stroke-linecap| 	circle/dashboard 类型路径两端的形状	| string| 	butt/round/square| 	round| 
+| format| 	指定进度条文字内容| 	function(percentage)| 	—| 	—| 
+## Progress 插槽
+| 插槽名| 	说明| 
+| ---| ----| 
+| default| 	自定义内容，参数为 { percentage }| 
