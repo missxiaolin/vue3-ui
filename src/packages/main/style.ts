@@ -9,6 +9,7 @@ import '@/packages/components/icon/style/icon.scss';
 import '@/packages/components/grid/style/col.scss';
 import '@/packages/components/grid/style/row.scss';
 import '@/packages/components/button/style/button.scss';
+import '@/packages/components/button/style/button-group.scss';
 import '@/packages/components/link/style/link.scss';
 import '@/packages/components/space/style/space.scss';
 import '@/packages/components/divider/style/divider.scss';
