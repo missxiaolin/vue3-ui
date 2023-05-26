@@ -15,6 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-jianshao:before {
+  content: "\e62f";
+}
+
 .l-cuowu:before {
   content: "\e601";
 }
