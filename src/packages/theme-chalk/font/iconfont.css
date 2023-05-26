@@ -15,6 +15,22 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-jinggao1:before {
+  content: "\e61b";
+}
+
+.l-chenggong1:before {
+  content: "\e8c3";
+}
+
+.l-shibai:before {
+  content: "\e8c5";
+}
+
+.l-wenhao_huabanfuben:before {
+  content: "\e631";
+}
+
 .l-jianshao:before {
   content: "\e62f";
 }

@@ -2,7 +2,7 @@ import { buildProps, definePropType } from '../../../utils/props';
 import type { Language } from '../../../locale';
 import type { ButtonConfigContext } from '../../button/src/button';
 
-export const configProviderProps = buildProps({
+export const ConfigProviderProps = buildProps({
   locale: {
     type: definePropType<Language>(Object)
   },
@@ -25,3 +25,10 @@ export const configProviderProps = buildProps({
     default: 'e'
   }
 } as const);
+
+import createComponent from '../../../utils/create';
+const { create } = createComponent('ConfigProvider');
+
+export default create({
+  props: ConfigProviderProps
+})

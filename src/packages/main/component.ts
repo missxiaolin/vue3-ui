@@ -1,3 +1,4 @@
+import { ConfigProvider } from '../components/config-provider/index'
 import { Container, Aside, Footer, Main, Header } from '../components/layout/index';
 import { Row, Col } from '../components/grid/index';
 import { Icon } from '../components/icon/index';
@@ -30,6 +31,7 @@ import { Progress } from '../components/progress/index';
 import { Message } from '../components/message/index'
 
 export default [
+  ConfigProvider,
   Container,
   Aside,
   Footer,

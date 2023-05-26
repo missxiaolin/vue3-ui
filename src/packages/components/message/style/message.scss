@@ -1,0 +1,110 @@
+@use 'sass:map';
+
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(message) {
+  @include set-component-css-var('message', $message);
+}
+
+@include b(message) {
+  min-width: var(--l-message-min-width);
+  box-sizing: border-box;
+  border-radius: var(--l-border-radius-base);
+  border-width: var(--l-border-width-base);
+  border-style: var(--l-border-style-base);
+  border-color: var(--l-border-color-lighter);
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background-color: var(--l-message-bg-color);
+  transition: opacity 0.3s, transform 0.4s, top 0.4s;
+  background-color: var(--l-message-bg-color);
+  transition: opacity var(--l-transition-duration), transform 0.4s, top 0.4s;
+  padding: var(--l-message-padding);
+  display: flex;
+  align-items: center;
+
+  @include when(center) {
+    justify-content: center;
+  }
+
+  @include when(closable) {
+    .#{$namespace}-message__content {
+      padding-right: 16px;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include m(info) {
+    .#{$namespace}-message__content {
+      color: var(--l-message-info-text-color);
+    }
+  }
+
+  @each $type in (success, info, warning, error) {
+    @include e($type) {
+      background-color: map.get($colors, $type, 'light-9');
+      border-color: map.get($colors, $type, 'light-8');
+      @if $type == info {
+        --l-message-text-color: var(--l-text-color-regular);
+      } @else {
+        --l-message-text-color: var(--l-color-#{$type});
+      }
+
+      .#{$namespace}-message__content {
+        color: var(--l-message-text-color);
+      }
+      .#{$namespace}-message__icon {
+        color: var(--l-message-text-color);
+      }
+    }
+  }
+
+  @include e(icon) {
+    margin-right: 10px;
+  }
+
+  .#{$namespace}-message__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+  }
+
+  @include e(content) {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+
+  & .#{$namespace}-message__closeBtn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--l-message-close-icon-color);
+    font-size: var(--l-message-close-size, map.get($message, 'close-size'));
+
+    &:focus {
+      outline-width: 0;
+    }
+    &:hover {
+      color: var(--l-message-close-hover-color);
+    }
+  }
+}
+
+.#{$namespace}-message-fade-enter-from,
+.#{$namespace}-message-fade-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
