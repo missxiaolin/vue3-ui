@@ -20,6 +20,44 @@
       display: block;
     }
   }
+  
+  @include m((circle, dashboard)) {
+    display: inline-block;
+
+    .#{$namespace}-progress__text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      transform: translate(0, -50%);
+
+      i {
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
+
+  @include m(without-text) {
+    .#{$namespace}-progress__text {
+      display: none;
+    }
+
+    .#{$namespace}-progress-bar {
+      padding-right: 0;
+      margin-right: 0;
+      display: block;
+    }
+  }
+
+  @include m(text-inside) {
+    .#{$namespace}-progress-bar {
+      padding-right: 0;
+      margin-right: 0;
+    }
+  }
 
   @include when(success) {
     .#{$namespace}-progress-bar__inner {
