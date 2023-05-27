@@ -1,6 +1,6 @@
+import { withInstallFunction } from '../../utils/with-install';
+import FMessage from './src/messageMethod';
 
-import { default as Message } from './src/message.vue'
+export const Message = withInstallFunction(FMessage, '$message');
 
-export {
-    Message
-}
+export default Message;

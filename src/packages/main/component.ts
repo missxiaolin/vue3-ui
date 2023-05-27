@@ -28,7 +28,7 @@ import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index';
 import { Pagination } from '../components/pagination/index';
 import { Dropdown } from '../components/dropdown/index';
 import { Progress } from '../components/progress/index';
-import { Message } from '../components/message/index'
+
 
 export default [
   ConfigProvider,
@@ -77,5 +77,4 @@ export default [
   Pagination,
   Dropdown,
   Progress,
-  Message
 ];

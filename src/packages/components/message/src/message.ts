@@ -69,3 +69,42 @@ export const MessageEmits = {
   click: () => true
 };
 export type MessageEmits = typeof MessageEmits;
+
+export const messageEmits = {
+  destroy: () => true,
+  click: () => true
+};
+export type MessageEmits = typeof messageEmits;
+
+export type MessageOptions = Omit<MessageProps, 'id'> & {
+  appendTo?: HTMLElement | string;
+};
+export type MessageOptionsTyped = Omit<MessageProps, 'type'>;
+
+export interface MessageHandle {
+  close: () => void;
+}
+
+export type MessageParams = Partial<MessageOptions> | string | VNode;
+export type MessageParamsTyped = Partial<MessageOptionsTyped> | string | VNode;
+
+export type MessageFn = ((options?: MessageParams) => MessageHandle) & { closeAll: () => void };
+
+export type MessageTypedFn = (options?: MessageParamsTyped) => MessageHandle;
+
+export interface Message extends MessageFn {
+  success: MessageTypedFn;
+  warning: MessageTypedFn;
+  error: MessageTypedFn;
+  info: MessageTypedFn;
+}
+
+export interface MessageQueueItem {
+  vm: VNode;
+}
+
+export type MessageQueue = MessageQueueItem[];
+
+export interface MessageConfigContext {
+  max?: number;
+}

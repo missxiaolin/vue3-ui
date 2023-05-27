@@ -1,5 +1,6 @@
 const version = 1.0;
 const INSTALLED_KEY = Symbol('INSTALLED_KEY');
+import type { App, Plugin } from 'vue';
 
 /**
  * 注册组件
