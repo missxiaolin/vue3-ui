@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/missxiaolin/vue3-ui#readme",
   "dependencies": {
+    "@popperjs/core": "^2.10.2",
     "sass": "^1.49.0",
     "vue": "^3.2.19",
     "vue-clipboard3": "^2.0.0",
