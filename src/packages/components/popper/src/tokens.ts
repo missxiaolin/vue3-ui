@@ -8,4 +8,12 @@ export type PopperInjectionContext = {
   popperInstanceRef: Ref<Instance | null>;
 };
 
-export const POPPER_INJECTION_KEY: InjectionKey<PopperInjectionContext> = Symbol('EPopper');
+export type PopperContentInjectionContext = {
+  arrowRef: Ref<HTMLElement | null>;
+  arrowOffset: Ref<number | undefined>;
+};
+
+export const POPPER_INJECTION_KEY: InjectionKey<PopperInjectionContext> = Symbol('LPopper');
+
+export const POPPER_CONTENT_INJECTION_KEY: InjectionKey<PopperContentInjectionContext> = Symbol('LPopperContent');
+

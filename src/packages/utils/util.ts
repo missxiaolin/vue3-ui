@@ -2,6 +2,8 @@ import { isString, hasOwn, isArray, camelize, isObject } from '@vue/shared';
 
 export { isString, hasOwn, isArray, camelize, isObject };
 
+export { isBoolean } from '@vueuse/core';
+
 export const isNumber = (val: unknown): val is number => typeof val === 'number';
 
 export const SCOPE = 'Util';
