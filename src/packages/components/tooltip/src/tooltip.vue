@@ -1,24 +1,28 @@
-
 <template>
-<div :class="ns.b()">
-  <slot></slot>
-</div>
+  <popper ref="popperRef">
+    <slot name="content">
+      <slot></slot>
+    </slot>
+  </popper>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { computed, ref, provide, toRef, readonly, unref } from 'vue';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
+import { Popper } from '../../popper/index';
 const { create } = createComponent('Tooltip');
 
 export default create({
-setup(props, { emit }) {
-  const ns = useNamespace('tooltip');
+  components: {
+    Popper
+  },
+  setup(props, { emit }) {
+    const ns = useNamespace('tooltip');
 
-  return {
-    ns
-  };
-}
+    return {
+      ns
+    };
+  }
 });
 </script>
-
