@@ -5,13 +5,11 @@
 <script lang="ts">
 import { computed } from 'vue';
 import createComponent from '../../../utils/create';
+import { visualHiddenProps } from './visual-hidden'
+
 const { create } = createComponent('VisuallyHidden');
 export default create({
-  props: {
-    style: {
-      type: [String, Object, Array]
-    }
-  },
+  props: visualHiddenProps,
   setup(props) {
     return {
       computedStyle: computed(() => {
