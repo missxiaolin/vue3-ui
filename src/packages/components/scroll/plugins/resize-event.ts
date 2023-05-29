@@ -1,11 +1,6 @@
 import { ElementObj } from '.';
 import isServer from '../../../utils/isServer';
 
-/**
- * @param mutationsList 
- * @param observer 
- * @param element 
- */
 export function resizeHandler(mutationsList: MutationRecord[], observer: any, element: ElementObj): void {
   const listeners = element.resizeListners || [];
   if (listeners.length) {
@@ -13,11 +8,6 @@ export function resizeHandler(mutationsList: MutationRecord[], observer: any, el
   }
 }
 
-/**
- * @param element 
- * @param fn 
- * @returns 
- */
 export const addResizeListener = (element: ElementObj, fn: Function): void => {
   if (isServer) return;
   if (!element.resizeListners) {
@@ -41,11 +31,6 @@ export const addResizeListener = (element: ElementObj, fn: Function): void => {
   element.resizeListners.push(fn);
 };
 
-/**
- * @param element 
- * @param fn 
- * @returns 
- */
 export const removeResizeListener = (element: ElementObj, fn: Function): void => {
   if (!element || !element.resizeListners) return;
   element.resizeListners.splice(element.resizeListners.indexOf(fn), 1);

@@ -1,11 +1,11 @@
 <template>
   <div
-    :class="`e-scrollbar-bar e-scrollbar-${direction}`"
+    :class="`l-scrollbar-bar e-scrollbar-${direction}`"
     @mousedown="handleBarMouseDown"
     :style="barStyle"
     ref="barRef"
   >
-    <div class="e-scrollbar-thumb" ref="thumbRef" @mousedown="handleThumbMouseDown" :style="thumbStyleObj"></div>
+    <div class="l-scrollbar-thumb" ref="thumbRef" @mousedown="handleThumbMouseDown" :style="thumbStyleObj"></div>
   </div>
 </template>
 
@@ -14,12 +14,43 @@ import { computed, ComputedRef, ref } from 'vue';
 import BAR_MAP from './utils';
 import { BarMap, BarMapItem } from './index.d';
 import createComponent from '../../../utils/create';
-import { BarProps } from './bar';
-
 const { componentName, create } = createComponent('ScrollbarBar');
 
 export default create({
-  props: BarProps,
+  props: {
+    parentRef: {
+      required: true
+    },
+    direction: {
+      type: String,
+      default: 'vertical' // 支出2个值 水平 horizontal 垂直 vertical
+    },
+    size: {
+      // thumb的宽度或高度
+      type: String
+    },
+    move: {
+      type: String
+    },
+    trigger: {
+      type: String,
+      default: 'hover' // hover 鼠标移动上去显示 always 一直显示 none 不显示
+    },
+    barStyle: {
+      // 设置轨道
+      type: Object,
+      default: () => ({
+        'background-color': ''
+      })
+    },
+    thumbStyle: {
+      // 设置滑块
+      type: Object,
+      default: () => ({
+        'background-color': 'rgba(0, 0, 0, 0.2)'
+      })
+    }
+  },
   setup(props: any) {
     const barRef = ref();
     const bar: ComputedRef<BarMapItem> = computed(() => (BAR_MAP as BarMap)[props.direction]);
