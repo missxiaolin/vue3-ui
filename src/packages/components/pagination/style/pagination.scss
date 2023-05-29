@@ -263,10 +263,10 @@
         color: var(--l-text-color-placeholder);
       }
 
-      .e-icon {
+      .l-icon {
         pointer-events: none;
         @extend .pagination-icon;
-        &.e-icon-more {
+        &.l-icon-more {
           font-size: 16px;
         }
       }
