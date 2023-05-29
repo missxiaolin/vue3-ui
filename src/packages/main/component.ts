@@ -77,7 +77,7 @@ export default [
   TimelineItem,
   Pagination,
   Dropdown,
-  // DropdownItem,
+  DropdownItem,
   DropdownMenu,
   Progress,
   Tooltip
