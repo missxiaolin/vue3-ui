@@ -18,7 +18,7 @@
   import { composeEventHandlers, whenMouse } from '../../../utils/dom';
   import DropdownItemImpl from './dropdown-item-impl.vue';
   import { useDropdown } from './useDropdown';
-  import { ECollectionItem as DropdownCollectionItem, dropdownItemProps } from './dropdown';
+  import { LCollectionItem as DropdownCollectionItem, dropdownItemProps } from './dropdown';
   import { DROPDOWN_INJECTION_KEY } from './tokens';
   
   import createComponent from '../../../utils/create';

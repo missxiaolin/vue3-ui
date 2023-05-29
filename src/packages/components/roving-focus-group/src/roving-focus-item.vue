@@ -11,7 +11,7 @@ import { composeEventHandlers } from '../../../utils/dom';
 import { EVENT_CODE } from '../../../utils/aria';
 import {
   ROVING_FOCUS_COLLECTION_INJECTION_KEY,
-  ECollectionItem as RovingFocusCollectionItem
+  LCollectionItem as RovingFocusCollectionItem
 } from './roving-focus-group';
 import { ROVING_FOCUS_GROUP_INJECTION_KEY, ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY } from './tokens';
 import { getFocusIntent, reorderArray, focusFirst } from './utils';

@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import RovingFocusGroupImpl from './roving-focus-group-impl.vue';
-import { ECollection as FocusGroupCollection } from './roving-focus-group';
+import { LCollection as FocusGroupCollection } from './roving-focus-group';
 
 import createComponent from '../../../utils/create';
 const { componentName, create } = createComponent('RovingFocusGroup');

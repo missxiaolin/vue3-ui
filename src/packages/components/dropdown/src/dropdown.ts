@@ -95,12 +95,12 @@ export const LAST_KEYS = [EVENT_CODE.up, EVENT_CODE.pageUp, EVENT_CODE.end];
 
 export const FIRST_LAST_KEYS = [...FIRST_KEYS, ...LAST_KEYS];
 
-const { ECollection, ECollectionItem, COLLECTION_INJECTION_KEY, COLLECTION_ITEM_INJECTION_KEY } =
+const { LCollection, LCollectionItem, COLLECTION_INJECTION_KEY, COLLECTION_ITEM_INJECTION_KEY } =
   createCollectionWithScope('Dropdown');
 
 export {
-  ECollection,
-  ECollectionItem,
+  LCollection,
+  LCollectionItem,
   COLLECTION_INJECTION_KEY as DROPDOWN_COLLECTION_INJECTION_KEY,
   COLLECTION_ITEM_INJECTION_KEY as DROPDOWN_COLLECTION_ITEM_INJECTION_KEY
 };

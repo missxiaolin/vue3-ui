@@ -3,7 +3,7 @@ import Collection from './collection.vue';
 import CollectionItem from './collection-item.vue';
 
 import type { InjectionKey } from 'vue';
-import type { ECollectionInjectionContext, ECollectionItemInjectionContext } from './tokens';
+import type { LCollectionInjectionContext, LCollectionItemInjectionContext } from './tokens';
 
 export const COLLECTION_ITEM_SIGN = `data-L-collection-item`;
 
@@ -11,15 +11,15 @@ export const COLLECTION_ITEM_SIGN = `data-L-collection-item`;
 export const createCollectionWithScope = (name: string) => {
   const COLLECTION_NAME = `L${name}Collection`;
   const COLLECTION_ITEM_NAME = `${COLLECTION_NAME}Item`;
-  const COLLECTION_INJECTION_KEY: InjectionKey<ECollectionInjectionContext> = Symbol(COLLECTION_NAME);
-  const COLLECTION_ITEM_INJECTION_KEY: InjectionKey<ECollectionItemInjectionContext> = Symbol(COLLECTION_ITEM_NAME);
+  const COLLECTION_INJECTION_KEY: InjectionKey<LCollectionInjectionContext> = Symbol(COLLECTION_NAME);
+  const COLLECTION_ITEM_INJECTION_KEY: InjectionKey<LCollectionItemInjectionContext> = Symbol(COLLECTION_ITEM_NAME);
 
-  const ECollection = {
+  const LCollection = {
     ...Collection,
     name: COLLECTION_NAME,
     setup() {
       const collectionRef = ref<HTMLElement | null>(null);
-      const itemMap: ECollectionInjectionContext['itemMap'] = new Map();
+      const itemMap: LCollectionInjectionContext['itemMap'] = new Map();
       const getItems = () => {
         const collectionE = unref(collectionRef);
 
@@ -40,7 +40,7 @@ export const createCollectionWithScope = (name: string) => {
     }
   };
 
-  const ECollectionItem = {
+  const LCollectionItem = {
     ...CollectionItem,
     name: COLLECTION_ITEM_NAME,
     setup(_, { attrs }) {
@@ -70,7 +70,7 @@ export const createCollectionWithScope = (name: string) => {
   return {
     COLLECTION_INJECTION_KEY,
     COLLECTION_ITEM_INJECTION_KEY,
-    ECollection,
-    ECollectionItem
+    LCollection,
+    LCollectionItem
   };
 };

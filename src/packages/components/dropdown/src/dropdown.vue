@@ -69,7 +69,7 @@ import { FocusTrap } from '../../focus-trap';
 import { RovingFocusGroup } from '../../roving-focus-group';
 import { addUnit } from '../../../utils/util';
 import { useNamespace, useSize } from '../../../hooks';
-import { ECollection as DropdownCollection, dropdownProps } from './dropdown';
+import { LCollection as DropdownCollection, dropdownProps } from './dropdown';
 import { DROPDOWN_INJECTION_KEY } from './tokens';
 
 import type { CSSProperties } from 'vue';
