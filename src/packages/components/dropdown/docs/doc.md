@@ -8,18 +8,18 @@
 ```vue demo
 <template>
   <l-dropdown>
-    <span class="e-dropdown-link">
+    <span class="l-dropdown-link">
       Dropdown List
-      <e-icon class="e-icon--right" icon="e-icon-lower">
-      </e-icon>
+      <l-icon class="l-icon--right" icon="l-icon-lower">
+      </l-icon>
     </span>
     <template #dropdown>
       <l-dropdown-menu>
-        <l-dropdown-item>Action 1</l-dropdown-item>
+        <!-- <l-dropdown-item>Action 1</l-dropdown-item>
         <l-dropdown-item>Action 2</l-dropdown-item>
         <l-dropdown-item>Action 3</l-dropdown-item>
         <l-dropdown-item disabled>Action 4</l-dropdown-item>
-        <l-dropdown-item divided>Action 5</l-dropdown-item>
+        <l-dropdown-item divided>Action 5</l-dropdown-item> -->
       </l-dropdown-menu>
     </template>
   </l-dropdown>

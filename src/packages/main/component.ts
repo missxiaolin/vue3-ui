@@ -26,7 +26,7 @@ import { Statistic } from '../components/statistic/index';
 import { Timeline, TimelineItem } from '../components/timeline/index';
 import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index';
 import { Pagination } from '../components/pagination/index';
-import { Dropdown } from '../components/dropdown/index';
+import { Dropdown, DropdownItem, DropdownMenu } from '../components/dropdown/index';
 import { Progress } from '../components/progress/index';
 import { Tooltip } from '../components/tooltip/index'
 
@@ -77,6 +77,8 @@ export default [
   TimelineItem,
   Pagination,
   Dropdown,
+  // DropdownItem,
+  DropdownMenu,
   Progress,
   Tooltip
 ];
