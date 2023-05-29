@@ -6,6 +6,10 @@ export { isBoolean } from '@vueuse/core';
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number';
 
+export function isUndefined(val: any): val is undefined {
+  return val === undefined;
+}
+
 export const SCOPE = 'Util';
 
 /**

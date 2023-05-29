@@ -19,6 +19,18 @@ export const on = function (
   }
 };
 
+/* istanbul ignore next */
+export const off = function (
+  element: HTMLElement | Document | Window,
+  event: string,
+  handler: EventListenerOrEventListenerObject,
+  useCapture = false
+): void {
+  if (element && event && handler) {
+    element?.removeEventListener(event, handler, useCapture);
+  }
+};
+
 /**
  * @param el
  * @param isVertical
@@ -144,3 +156,24 @@ export function removeClass(el: HTMLElement | Element, cls: string): void {
   const className = trimArr(curClass).join(' ');
   el.setAttribute('class', className);
 }
+
+/**
+ * @param theirsHandler
+ * @param oursHandler
+ * @param param2
+ * @returns
+ */
+export const composeEventHandlers = <E>(
+  theirsHandler?: (event: E) => boolean | void,
+  oursHandler?: (event: E) => void,
+  { checkForDefaultPrevented = true } = {}
+) => {
+  const handleEvent = (event: E) => {
+    const shouldPrevent = theirsHandler?.(event);
+
+    if (checkForDefaultPrevented === false || !shouldPrevent) {
+      return oursHandler?.(event);
+    }
+  };
+  return handleEvent;
+};
