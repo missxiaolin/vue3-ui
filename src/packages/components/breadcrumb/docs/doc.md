@@ -39,7 +39,7 @@
 
 |属性	|说明	|类型	|可选值	|默认值|
 |---- |----- |------ |---  |---- |
-| separator-icon | 图标分隔符的组件或组件名 | string / Component | -  | e-icon-right |
+| separator-icon | 图标分隔符的组件或组件名 | string / Component | -  | l-icon-right |
 
 ## Breadcrumb 插槽
 |名称|	说明| 子标签|
