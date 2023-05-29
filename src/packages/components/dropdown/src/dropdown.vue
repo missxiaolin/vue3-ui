@@ -24,9 +24,9 @@
       @hide="$emit('visible-change', false)"
     >
       <template #content>
-        <scroll ref="scrollbar" :wrap-style="wrapStyle" tag="ul" :view-class="ns.e('list')">
+        <l-scroll ref="scrollbar" :wrap-style="wrapStyle" tag="ul" :view-class="ns.e('list')">
           <focus-trap trapped @mount-on-focus="onMountOnFocus">
-            <roving-focus-group
+            <l-roving-focus-group
               :loop="loop"
               :current-tab-id="currentTabId"
               orientation="horizontal"
@@ -36,28 +36,26 @@
               <dropdown-collection>
                 <slot name="dropdown"></slot>
               </dropdown-collection>
-            </roving-focus-group>
+            </l-roving-focus-group>
           </focus-trap>
-        </scroll>
+        </l-scroll>
       </template>
       <template v-if="!splitButton" #default>
         <div :class="dropdownTriggerKls">
           <slot name="default" />
         </div>
       </template>
+      <template v-if="splitButton">
+        <l-button-group>
+          <l-button ref="referenceElementRef" :size="dropdownSize" :type="type" @click="handlerMainButtonClick">
+            <slot name="default" />
+          </l-button>
+          <l-button ref="triggeringElementRef" :size="dropdownSize" :type="type" :class="ns.e('caret-button')">
+            <l-icon :class="ns.e('icon')" icon="l-xia"></l-icon>
+          </l-button>
+        </l-button-group>
+      </template>
     </tooltip>
-    <template v-if="splitButton">
-      <button-group>
-        <button ref="referenceElementRef" :size="dropdownSize" :type="type" @click="handlerMainButtonClick">
-          <slot name="default" />
-        </button>
-        <button ref="triggeringElementRef" :size="dropdownSize" :type="type" :class="ns.e('caret-button')">
-          <icon :class="ns.e('icon')" icon="l-icon-lower">
-            <!-- <arrow-down /> -->
-          </icon>
-        </button>
-      </button-group>
-    </template>
   </div>
 </template>
 <script lang="ts">
@@ -71,7 +69,7 @@ import { FocusTrap } from '../../focus-trap';
 import { RovingFocusGroup } from '../../roving-focus-group';
 import { addUnit } from '../../../utils/util';
 import { useNamespace, useSize } from '../../../hooks';
-import { ECollection as EDropdownCollection, dropdownProps } from './dropdown';
+import { ECollection as DropdownCollection, dropdownProps } from './dropdown';
 import { DROPDOWN_INJECTION_KEY } from './tokens';
 
 import type { CSSProperties } from 'vue';
@@ -83,7 +81,7 @@ export default create({
     FocusTrap,
     ButtonGroup,
     Scroll,
-    EDropdownCollection,
+    DropdownCollection,
     Tooltip,
     [RovingFocusGroup.name]: RovingFocusGroup,
     Icon

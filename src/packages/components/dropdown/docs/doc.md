@@ -10,16 +10,16 @@
   <l-dropdown>
     <span class="l-dropdown-link">
       Dropdown List
-      <l-icon class="l-icon--right" icon="l-icon-lower">
+      <l-icon class="l-icon--right" icon="l-xia">
       </l-icon>
     </span>
     <template #dropdown>
       <l-dropdown-menu>
-        <!-- <l-dropdown-item>Action 1</l-dropdown-item>
+        <l-dropdown-item>Action 1</l-dropdown-item>
         <l-dropdown-item>Action 2</l-dropdown-item>
         <l-dropdown-item>Action 3</l-dropdown-item>
         <l-dropdown-item disabled>Action 4</l-dropdown-item>
-        <l-dropdown-item divided>Action 5</l-dropdown-item> -->
+        <l-dropdown-item divided>Action 5</l-dropdown-item>
       </l-dropdown-menu>
     </template>
   </l-dropdown>

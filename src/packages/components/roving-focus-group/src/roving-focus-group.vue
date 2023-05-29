@@ -1,7 +1,7 @@
 <template>
   <focus-group-collection>
     <roving-focus-group-impl v-bind="$attrs">
-      <slot />
+      <slot></slot>
     </roving-focus-group-impl>
   </focus-group-collection>
 </template>

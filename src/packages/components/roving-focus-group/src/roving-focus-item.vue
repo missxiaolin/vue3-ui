@@ -1,7 +1,7 @@
 <template>
-  <roving-focus-collection-item :id="id" :focusable="focusable" :active="active">
+  <l-roving-focus-collection-item :id="id" :focusable="focusable" :active="active">
     <slot />
-  </roving-focus-collection-item>
+  </l-roving-focus-collection-item>
 </template>
 
 <script lang="ts">
