@@ -4,7 +4,7 @@ import { useNamespace } from '../../../hooks';
 import type { SpaceProps } from './space';
 
 import type { CSSProperties, StyleValue } from 'vue';
-import type { ComponentSize } from '../../../utils/constants';
+import type { ComponentSize } from '../../../constants/event';
 
 const SIZE_MAP: Record<ComponentSize, number> = {
   small: 8,

@@ -4,9 +4,8 @@
 ```vue demo
 <template>
     <div>
-        <l-button type="primary" @click="show = true">显示遮罩层</l-button>
-        <l-overlay v-model:visible="show"></l-overlay>
-        
+      <l-button type="primary" @click="show = true">显示遮罩层</l-button>
+      <l-overlay v-model:visible="show"></l-overlay>
     </div>
 </template>
 

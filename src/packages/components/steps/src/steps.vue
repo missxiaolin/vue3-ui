@@ -10,7 +10,7 @@ import { StepsProps, StepsEmits } from './steps';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 import type { StepItemState } from './step.vue';
-import { CHANGE_EVENT } from '../../../utils/constants';
+import { CHANGE_EVENT } from '../../../constants/event';
 
 const { create } = createComponent('Steps');
 

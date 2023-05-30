@@ -18,7 +18,7 @@ import { buildProps, definePropType } from '../../../utils/props';
 import TabNav from './tab-nav';
 import { useNamespace } from '../../../hooks';
 import { Icon } from '../../icon/index';
-import { UPDATE_MODEL_EVENT, INPUT_EVENT } from '../../../utils/constants';
+import { UPDATE_MODEL_EVENT, INPUT_EVENT } from '../../../constants/event';
 import type { TabsPaneContext } from '../../../tokens/tabs';
 
 import { tabsRootContextKey } from '../../../tokens/tabs';

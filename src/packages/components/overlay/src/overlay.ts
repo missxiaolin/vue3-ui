@@ -1,6 +1,6 @@
 import { CSSProperties, PropType } from 'vue';
 import { buildProps } from '../../../utils/props';
-import { CLICK_EVENT } from '../../../constants/event';
+import { CLICK_EVENT, UPDATE_OVERLAY_EVENT } from '../../../constants/event';
 import { isNumber } from '../../../utils/util';
 
 export const OverlayProps = buildProps({
@@ -35,5 +35,6 @@ export const OverlayProps = buildProps({
 
 export const OverlayEmits = {
   [CLICK_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent,
+  [UPDATE_OVERLAY_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent,
 };
 export type OverlayEmits = typeof OverlayEmits;

@@ -4,7 +4,7 @@ import { PatchFlags, isFragment, isValidElementNode } from '../../../utils/vnode
 import { buildProps, definePropType } from '../../../utils/props';
 import { isArray, isNumber } from '../../../utils/util';
 
-import { componentSizes } from '../../../utils/constants';
+import { componentSizes } from '../../../constants/event';
 
 import Item from './item.vue';
 import { useSpace } from './use-space';

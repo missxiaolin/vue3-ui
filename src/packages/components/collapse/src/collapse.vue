@@ -18,7 +18,7 @@ import { ref, watch, provide, toRef } from 'vue';
 import createComponent from '../../../utils/create';
 import { useNamespace } from '../../../hooks';
 import { CollapseProps, CollapseEmits } from './collapse';
-import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../../utils/constants';
+import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../../constants/event';
 import type { CollapseProvider } from './collapse.type';
 
 const { create } = createComponent('Collapse');
