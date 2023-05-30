@@ -45,17 +45,17 @@
           <slot name="default" />
         </div>
       </template>
-      <template v-if="splitButton">
-        <l-button-group>
-          <l-button ref="referenceElementRef" :size="dropdownSize" :type="type" @click="handlerMainButtonClick">
-            <slot name="default" />
-          </l-button>
-          <l-button ref="triggeringElementRef" :size="dropdownSize" :type="type" :class="ns.e('caret-button')">
-            <l-icon :class="ns.e('icon')" icon="l-xia"></l-icon>
-          </l-button>
-        </l-button-group>
-      </template>
     </tooltip>
+    <template v-if="splitButton">
+      <l-button-group>
+        <l-button ref="referenceElementRef" :size="dropdownSize" :type="type" @click="handlerMainButtonClick">
+          <slot name="default" />
+        </l-button>
+        <l-button ref="triggeringElementRef" :size="dropdownSize" :type="type" :class="ns.e('caret-button')">
+          <l-icon :class="ns.e('icon')" icon="l-xia"></l-icon>
+        </l-button>
+      </l-button-group>
+    </template>
   </div>
 </template>
 <script lang="ts">
