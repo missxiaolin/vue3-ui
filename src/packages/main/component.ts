@@ -28,7 +28,7 @@ import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index';
 import { Pagination } from '../components/pagination/index';
 import { Dropdown, DropdownItem, DropdownMenu } from '../components/dropdown/index';
 import { Progress } from '../components/progress/index';
-import { Tooltip } from '../components/tooltip/index'
+import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index'
 
 
 export default [
@@ -80,5 +80,7 @@ export default [
   DropdownItem,
   DropdownMenu,
   Progress,
-  Tooltip
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
 ];
