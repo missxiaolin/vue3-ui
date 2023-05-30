@@ -21,7 +21,6 @@ export default create({
 
   setup(props) {
     const ns = useNamespace('divider');
-    console.log(ns.e('text'))
 
     const dividerStyle = computed(() => {
       return {

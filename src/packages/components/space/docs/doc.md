@@ -80,7 +80,7 @@ const size = ref('default')
 通过size传入自己定义的间隔数值 (数字类型)来设置 间距大小
 ```vue demo
 <template>
-  <l-slider v-model="size" />
+  <!-- <l-slider v-model="size" /> -->
   <l-space wrap :size="size">
     <l-button type="primary" v-for="i in 3" :key="i">button{{ i+1 }}</l-button>
   </l-space>
