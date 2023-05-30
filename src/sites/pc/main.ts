@@ -7,6 +7,10 @@ import UI from '../../packages/main/index';
 import '../../packages/main/style'
 
 const app = createApp(App);
-app.use(UI);
+app.use(UI, {
+    size: 'small',
+    zIndex: 2000
+    // locale: en,
+  });
 app.use(router);
 app.mount('#app');

@@ -1,6 +1,8 @@
+import { provideGlobalConfig } from '../hooks';
 const version = 1.0;
 const INSTALLED_KEY = Symbol('INSTALLED_KEY');
 import type { App, Plugin } from 'vue';
+import type { ConfigProviderContext } from '../tokens';
 
 /**
  * 注册组件
@@ -13,6 +15,8 @@ export const makeInstaller = (components: any) => {
 
     app[INSTALLED_KEY] = true;
     components.forEach((c: any) => app.use(c));
+    provideGlobalConfig(options, app, true);
+    app.config.globalProperties.$UI = options;
   };
   return {
     install,

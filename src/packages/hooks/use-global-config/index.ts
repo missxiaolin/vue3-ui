@@ -1,5 +1,6 @@
 import { inject, ref, computed, unref, provide, getCurrentInstance } from 'vue';
 import { configProviderContextKey } from '../../tokens';
+import { debugWarn, keysOf } from '../../utils/error';
 import type { MaybeRef } from '@vueuse/core';
 import type { Ref, App } from 'vue';
 
@@ -23,3 +24,45 @@ export function useGlobalConfig(key?: keyof ConfigProviderContext, defaultValue 
     return config;
   }
 }
+
+/**
+ * @param a 
+ * @param b 
+ * @returns 
+ */
+const mergeConfig = (a: ConfigProviderContext, b: ConfigProviderContext): ConfigProviderContext => {
+  const keys = [...new Set([...keysOf(a), ...keysOf(b)])];
+  const obj: any = {};
+  for (const key of keys) {
+    obj[key] = b[key] ?? a[key];
+  }
+  return obj;
+};
+
+/**
+ * @param config 
+ * @param app 
+ * @param global 
+ * @returns 
+ */
+export const provideGlobalConfig = (config: MaybeRef<ConfigProviderContext>, app?: App, global = false) => {
+  const inSetup = !!getCurrentInstance();
+  const oldConfig = inSetup ? useGlobalConfig() : undefined;
+
+  const provideFn = app?.provide ?? (inSetup ? provide : undefined);
+  if (!provideFn) {
+    debugWarn('provideGlobalConfig', 'provideGlobalConfig() can only be used inside setup().');
+    return;
+  }
+
+  const context = computed(() => {
+    const cfg = unref(config);
+    if (!oldConfig?.value) return cfg;
+    return mergeConfig(oldConfig.value, cfg);
+  });
+  provideFn(configProviderContextKey, context);
+  if (global || !globalConfig.value) {
+    globalConfig.value = context.value;
+  }
+  return context;
+};

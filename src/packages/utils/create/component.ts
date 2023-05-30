@@ -13,8 +13,8 @@ export function createComponent(name: string) {
 
   const useGlobalConfig = () => {
     const vm: any = getCurrentInstance();
-    if ('$LUI' in vm.proxy) {
-      return vm.proxy.$EMONSTER;
+    if ('$UI' in vm.proxy) {
+      return vm.proxy.$UI;
     }
     return {};
   };
