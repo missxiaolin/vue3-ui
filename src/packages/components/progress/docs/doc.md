@@ -129,7 +129,7 @@ Progress 组件可通过 `type` 属性来指定使用环形进度条，在环形
 <template>
   <div class="demo-progress">
     <l-progress :percentage="50">
-      <e-button type="text">Content</e-button>
+      <l-button type="text">Content</l-button>
     </l-progress>
     <l-progress
       :text-inside="true"

@@ -24,7 +24,7 @@ Panel 组件由 `title` 、 `body` 和  `footer` 组成。 `title`、`footer` �
       <span>panel name</span>
     </template>
     <template #panel>
-      <e-button type="text">Operation button</e-button>
+      <l-button type="text">Operation button</l-button>
     </template>
     <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
   </l-panel>
