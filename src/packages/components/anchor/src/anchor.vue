@@ -181,8 +181,6 @@ export default create({
     };
 
     const handleScrollTo = (link: string) => {
-      console.log('handleScrollTo==>', link);
-
       scrollToTop(link);
       // 如果区域不可滚动或者滚动行为不是smooth 手动设置当前link
       const { scrollHeight, clientHeight } = scrollContainer.value as HTMLElement;
@@ -199,7 +197,6 @@ export default create({
     useProvideAnchor({
       registerLink: (link: string) => {
         if (!state.links.includes(link)) {
-          console.log('link----', link);
           state.links.push(link);
         }
       },
@@ -247,7 +244,6 @@ export default create({
           scrollContainer.value = getScrollContainer(root.value!, true);
         }
         handleScroll();
-        console.log('scrollContainer.value----', scrollContainer.value, state.links, props);
       });
     });
 

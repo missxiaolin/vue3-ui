@@ -116,7 +116,6 @@ export default create({
     });
 
     const currentStatus = computed(() => {
-      console.log(props.status || internalStatus.value);
       return props.status || internalStatus.value;
     });
 

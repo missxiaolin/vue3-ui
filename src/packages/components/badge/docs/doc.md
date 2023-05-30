@@ -42,11 +42,11 @@
           <l-button size="small">comments</l-button>
         </l-badge>
       </l-col>
-      <el-col>
+      <l-col>
         <l-badge :value="30" :max="10">
           <l-button size="small">replies</l-button>
         </l-badge>
-      </el-col>
+      </l-col>
     </l-row>
   </div>
 </template>
