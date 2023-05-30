@@ -22,7 +22,7 @@ export const CollapseProps = buildProps({
 } as const);
 
 export const CollapseEmits = {
-  [CHANGE_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent,
-  [UPDATE_MODEL_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent
+  [CHANGE_EVENT]: Array,
+  [UPDATE_MODEL_EVENT]: Array
 };
 export type CollapseEmits = typeof CollapseEmits;
