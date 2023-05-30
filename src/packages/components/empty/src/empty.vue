@@ -36,10 +36,11 @@ export default create({
     const imageStyle = computed<CSSProperties>(() => ({
       width: props.imageSize ? `${props.imageSize}px` : ''
     }));
-
+    const emptyDescription = computed(() => props.description || '')
     return {
       ns,
-      imageStyle
+      imageStyle,
+      emptyDescription
     };
   }
 });
