@@ -312,6 +312,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Dialog",
+            "type": "component",
+            "cName": "对话框",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {

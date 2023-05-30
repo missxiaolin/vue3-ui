@@ -42,4 +42,4 @@ import '@/packages/components/progress/style/progress.scss';
 import '@/packages/components/message/style/message.scss';
 import '@/packages/components/tooltip/style/tooltip.scss';
 import '@/packages/components/popper/style/popper.scss';
-
+import '@/packages/components/dialog/style/dialog.scss';

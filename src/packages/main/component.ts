@@ -1,4 +1,4 @@
-import { ConfigProvider } from '../components/config-provider/index'
+import { ConfigProvider } from '../components/config-provider/index';
 import { Container, Aside, Footer, Main, Header } from '../components/layout/index';
 import { Row, Col } from '../components/grid/index';
 import { Icon } from '../components/icon/index';
@@ -28,8 +28,8 @@ import { Tabs, TabBar, TabPane, TabNav } from '../components/tabs/index';
 import { Pagination } from '../components/pagination/index';
 import { Dropdown, DropdownItem, DropdownMenu } from '../components/dropdown/index';
 import { Progress } from '../components/progress/index';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index'
-
+import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index';
+import { Dialog } from '../components/dialog/index';
 
 export default [
   ConfigProvider,
@@ -82,5 +82,6 @@ export default [
   Progress,
   Tooltip,
   TooltipContent,
-  TooltipTrigger
+  TooltipTrigger,
+  Dialog
 ];
