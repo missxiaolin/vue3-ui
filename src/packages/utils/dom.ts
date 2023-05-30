@@ -31,6 +31,18 @@ export const off = function (
   }
 };
 
+/* istanbul ignore next */
+export function hasClass(el: HTMLElement | Element, cls: string): boolean {
+  if (!el || !cls) return false;
+  if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
+  if (el.classList) {
+    return el.classList.contains(cls);
+  } else {
+    const className = el.getAttribute('class') || '';
+    return className.split(' ').includes(cls);
+  }
+}
+
 /**
  * @param el
  * @param isVertical

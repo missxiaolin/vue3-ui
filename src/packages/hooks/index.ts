@@ -13,3 +13,7 @@ export * from './use-id'
 export * from './use-model-toggle'
 export * from './use-common-props'
 export * from './use-prop'
+export * from './use-same-target'
+export * from './use-lockscreen'
+export { default as useRestoreActive } from './use-restore-active';
+export { default as useModal } from './use-modal';

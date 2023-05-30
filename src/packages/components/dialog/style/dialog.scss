@@ -1,0 +1,172 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/popup' as *;
+
+@include b(dialog) {
+  @include set-component-css-var('dialog', $dialog);
+
+  position: relative;
+  margin: var(--l-dialog-margin-top, 15vh) auto 50px;
+  background: var(--l-dialog-bg-color);
+  border-radius: var(--l-border-radius-medium);
+  box-shadow: var(--l-dialog-box-shadow);
+  box-sizing: border-box;
+  width: var(--l-dialog-width, 40%);
+  display: flex;
+  flex-flow: column;
+
+  @include when(fullscreen) {
+    --l-dialog-width: 100%;
+    // --e-dialog-margin-top: 0;
+    margin-bottom: 0;
+    height: calc(100vh - var(--l-dialog-margin-top));
+  }
+
+  @each $size in (large, default, medium, small, mini) {
+    @include m($size) {
+      width: map.get($dialog-width, $size);
+      min-width: 400px;
+    }
+  }
+
+  @include e(wrapper) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    margin: 0;
+  }
+
+  @include e(header) {
+    padding: var(--l-dialog-padding-primary);
+    padding-bottom: 0px;
+  }
+
+  @include e(headerbtn) {
+    position: absolute;
+    top: var(--l-dialog-padding-primary);
+    right: var(--l-dialog-padding-primary);
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: var(--l-message-close-size, map.get($message, 'close-size'));
+
+    .#{$namespace}-dialog__close {
+      color: var(--l-color-info);
+      font-size: inherit;
+    }
+
+    &:focus,
+    &:hover {
+      .#{$namespace}-dialog__close {
+        color: var(--l-color-primary);
+      }
+    }
+  }
+
+  @include e(title) {
+    line-height: var(--l-dialog-font-line-height);
+    font-size: var(--l-dialog-title-font-size);
+    color: var(--l-text-color-primary);
+  }
+
+  @include e(body) {
+    //
+    padding: calc(var(--l-dialog-padding-primary) - 10px) var(--l-dialog-padding-primary);
+    color: var(--l-text-color-regular);
+    font-size: var(--l-dialog-content-font-size);
+    word-break: break-all;
+    flex: 1;
+  }
+
+  @include e(footer) {
+    padding: var(--l-dialog-padding-primary);
+    padding-top: 0;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  // 内容居中布局
+  @include m(center) {
+    text-align: center;
+
+    @include e(body) {
+      text-align: initial;
+      padding: 25px calc(var(--l-dialog-padding-primary) + 5px) 30px;
+    }
+
+    @include e(footer) {
+      text-align: inherit;
+    }
+  }
+}
+
+.#{$namespace}-overlay-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.dialog-fade-enter-active {
+  animation: modal-fade-in var(--l-transition-duration);
+  .#{$namespace}-overlay-dialog {
+    animation: dialog-fade-in var(--l-transition-duration);
+  }
+}
+
+.dialog-fade-leave-active {
+  animation: modal-fade-out var(--l-transition-duration);
+  .#{$namespace}-overlay-dialog {
+    animation: dialog-fade-out var(--l-transition-duration);
+  }
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes modal-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
