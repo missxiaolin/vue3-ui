@@ -44,7 +44,7 @@
         <l-aside width="200px">Aside</l-aside>
         <l-container>
           <l-main>Main</l-main>
-          <e-footer>Footer</e-footer>
+          <l-footer>Footer</l-footer>
         </l-container>
       </l-container>
     </l-container>

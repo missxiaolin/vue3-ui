@@ -23,7 +23,7 @@ export default create({
         () =>
           (props.height
             ? {
-                '--e-footer-height': props.height
+                '--l-footer-height': props.height
               }
             : {}) as CSSProperties
       )
