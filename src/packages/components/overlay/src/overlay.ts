@@ -35,6 +35,6 @@ export const OverlayProps = buildProps({
 
 export const OverlayEmits = {
   [CLICK_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent,
-  [UPDATE_OVERLAY_EVENT]: (evt: MouseEvent) => evt instanceof MouseEvent,
+  [UPDATE_OVERLAY_EVENT]: false,
 };
 export type OverlayEmits = typeof OverlayEmits;

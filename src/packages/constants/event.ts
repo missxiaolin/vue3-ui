@@ -22,5 +22,3 @@ export type DatePickType = typeof datePickTypes[number];
 
 export const componentSizes = ['', 'default', 'large', 'medium', 'small', 'mini'] as const;
 export type ComponentSize = typeof componentSizes[number];
-
-// export default { UPDATE_MODEL_EVENT, CHANGE_EVENT, INPUT_EVENT };

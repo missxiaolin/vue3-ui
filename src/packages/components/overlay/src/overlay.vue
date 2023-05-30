@@ -12,6 +12,7 @@ import { useNamespace } from '../../../hooks';
 import createComponent from '../../../utils/create';
 import { useLockScroll } from '../../../utils/dom';
 import { OverlayEmits, OverlayProps } from './overlay';
+import { UPDATE_OVERLAY_EVENT } from '../../../constants/event'
 const { componentName, create } = createComponent('Overlay');
 
 export default create({
@@ -43,7 +44,7 @@ export default create({
     const onClick = (e: MouseEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
-        emit('update:visible', false);
+        emit(UPDATE_OVERLAY_EVENT, false);
       }
     };
 
