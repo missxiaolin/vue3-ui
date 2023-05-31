@@ -320,6 +320,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Drawer",
+            "type": "component",
+            "cName": "抽屉",
+            "desc": "",
+            "show": true,
+            "author": "",
+            "progress": "50%"
           },
         ]
       }, {

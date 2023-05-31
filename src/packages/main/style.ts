@@ -43,3 +43,4 @@ import '@/packages/components/message/style/message.scss';
 import '@/packages/components/tooltip/style/tooltip.scss';
 import '@/packages/components/popper/style/popper.scss';
 import '@/packages/components/dialog/style/dialog.scss';
+import '@/packages/components/drawer/style/drawer.scss';

@@ -30,6 +30,7 @@ import { Dropdown, DropdownItem, DropdownMenu } from '../components/dropdown/ind
 import { Progress } from '../components/progress/index';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index';
 import { Dialog } from '../components/dialog/index';
+import { Drawer } from '../components/drawer/index'
 
 export default [
   ConfigProvider,
@@ -83,5 +84,6 @@ export default [
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  Dialog
+  Dialog,
+  Drawer
 ];
