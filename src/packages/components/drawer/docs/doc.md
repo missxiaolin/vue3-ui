@@ -93,3 +93,123 @@ export default defineComponent({
 })
 </script>
 ```
+
+### 不添加标题
+
+当你不需要标题到时候, 你还可以去掉标题
+
+```vue demo
+<template>
+  <l-button type="primary" style="margin-left: 16px" @click="drawer = true">
+    open
+  </l-button>
+
+  <l-drawer v-model="drawer" title="I am the title" :with-header="false">
+    <span>Hi there!</span>
+  </l-drawer>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    return {
+      drawer: ref(false),
+    }
+  },
+})
+</script>
+```
+
+### 多层嵌套
+你可以像 Dialog 一样拥有多层嵌套的 Drawer
+
+如果你需要在不同图层中多个抽屉，你必须设置 append-to-body 属性到 true
+
+```vue demo
+<template>
+  <l-button type="primary" style="margin-left: 16px" @click="drawer = true">
+    open
+  </l-button>
+
+  <l-drawer v-model="drawer" title="I'm outer Drawer" size="50%">
+    <div>
+      <l-button @click="innerDrawer = true">Click me!</l-button>
+      <l-drawer
+        v-model="innerDrawer"
+        title="I'm inner Drawer"
+        :append-to-body="true"
+        :before-close="handleClose"
+      >
+        <p>_(:зゝ∠)_</p>
+      </l-drawer>
+    </div>
+  </l-drawer>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const drawer = ref(false)
+    const innerDrawer = ref(false)
+    const handleClose = (done) => {
+      done()
+    }
+    return {
+      drawer,
+      innerDrawer,
+      handleClose,
+    }
+  },
+})
+</script>
+```
+
+## Drawer 属性
+
+| 属性 | 说明  | 	类型 | 	可选值 | 默认值 |
+| ----------| -------------| -----| ----------------- | ------- |
+| model-value / v-model | 是否显示 Drawer  | boolean   | —    | false   |
+| append-to-body        | Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 **true**  | boolean | —                     | false   |
+| lock-scroll           | 是否在 Drawer 出现时将 body 滚动锁定  | boolean  | —                     | true    |
+| before-close          | 关闭前的回调，会暂停 Drawer 的关闭 | function(done)，done 用于关闭 Drawer | —                     | —       |
+| close-on-click-modal  | 是否可以通过点击 modal 关闭 Drawer    | boolean | —                     | true    |
+| close-on-press-escape | 是否可以通过按下 ESC 关闭 Drawer | boolean | —                     | true    |
+| open-delay            | Drawer 打开的延时时间，单位毫秒  | number  | —                     | 0       |
+| close-delay           | Drawer 关闭的延时时间，单位毫秒 | number | —                     | 0       |
+| custom-class          | Drawer 的自定义类名   | string    | —                     | —       |
+| destroy-on-close      | 控制是否在关闭 Drawer 之后将子元素全部销毁 | boolean    | -                     | false   |
+| modal                 | 是否需要遮罩层 | boolean | —                     | true    |
+| direction             | Drawer 打开的方向 | Direction  | rtl / ltr / ttb / btt | rtl     |
+| show-close            | 是否显示关闭按钮 | boolean  | —                     | true    |
+| size                  | Drawer 窗体的大小, 当使用 number 类型时, 以像素为单位, 当使用 string 类型时, 请传入 'x%', 否则便会以 number 类型解释 | number / string       | -                     | '30%'   |
+| title                 | Drawer 的标题，也可通过具名 slot （见下表）传入 | string     | —                     | —       |
+| withHeader            | 控制是否显示 header 栏, 默认为 true, 当此项为 false 时, title attribute 和 title slot 均不生效  | boolean  | -                     | true    |
+| modal-class           | 遮罩层的自定义类名 layer  | string  | -                     | -       |
+| z-index               | 设置 z-index  | number    | -                     | -       |
+| offset               | Drawer 打开方向的偏移量  | number / string   | -                     | 0     |
+
+## Drawer 插槽
+
+| 插槽名  | 说明          |
+| ----- | -------------------- |
+| —     | Drawer 的内容     |
+| title | Drawer 标题区的内容 |
+
+## Drawer 方法
+
+| 名称        | 说明                                                     |
+| ----------- | --------------------------------------------------------------- |
+| handleClose | 用于关闭 Drawer, 该方法会调用传入的 `before-close` 方法 |
+
+## Drawer 事件
+
+| 事件名称   | 说明 | 参数 |
+| -------   | ----- | ---- |
+| open | Drawer 打开的回调 | — |
+| opened | Drawer 打开动画时的回调 | — |
+| close | Drawer 关闭的回调 | — |
+| closed | Drawer 关闭动画结束时的回调 | — |
