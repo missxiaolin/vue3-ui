@@ -30,6 +30,10 @@ export const OverlayProps = buildProps({
   closeOnClickOverlay: { // 点击遮罩时是否关闭
     type: Boolean,
     default: true
+  },
+  modal: {
+    type: Boolean,
+    default: true
   }
 } as const);
 

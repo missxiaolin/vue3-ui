@@ -3,6 +3,7 @@
     <transition name="l-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave" @before-leave="beforeLeave">
       <overlay
         v-show="visible"
+        :modal="modal"
         :overlay-class="modalClass"
         :z-index="zIndex"
         @click="onModalClick"

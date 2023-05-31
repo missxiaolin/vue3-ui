@@ -25,7 +25,8 @@ export default create({
     const classes = computed(() => {
       return [
         ns.b(),
-        props.overlayClass || ""
+        props.overlayClass || "",
+        props.modal ? '' : ns.is('modal'), // 是否显示遮罩层
       ]
     });
 

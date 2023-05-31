@@ -1,4 +1,6 @@
-@use '../../../theme-chalk/mixins/mixins.scss' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/var' as *;
 
 .overlay-fade-enter-active,
 .overlay-fade-leave-active {
@@ -11,13 +13,16 @@
   opacity: 0;
 }
 
-.l-overlay {
+@include b(overlay) {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: var(--l-overlay-background-color);
+  @include when(modal) {
+    background: none !important;
+  }
 }
 
 @include b(overflow-hidden) {
