@@ -4,7 +4,6 @@ export const useSameTarget = (handleClick?: (e: MouseEvent) => void) => {
   if (!handleClick) {
     return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
   }
-
   let mousedownTarget = false;
   let mouseupTarget = false;
   // refer to this https://javascript.info/mouse-events-basics

@@ -1,8 +1,13 @@
 <template>
   <teleport to="body" :disabled="!appendToBody">
     <transition name="dialog-fade" @after-enter="afterEnter" @after-leave="afterLeave" @before-leave="beforeLeave">
-      <overlay v-model:visible="visible" :z-index="zIndex" :overlay-class="modalClass">
-        <div class="l-overlay-dialog">
+      <overlay v-show="visible" :close-on-click-overlay="false" :z-index="zIndex" :overlay-class="modalClass">
+        <div
+          class="l-overlay-dialog"
+          @click="overlayEvent.onClick"
+          @mousedown="overlayEvent.onMousedown"
+          @mouseup="overlayEvent.onMouseup"
+        >
           <div
             ref="dialogRef"
             v-trap-focus
