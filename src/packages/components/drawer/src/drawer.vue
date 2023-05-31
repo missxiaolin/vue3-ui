@@ -2,6 +2,8 @@
   <teleport to="body" :disabled="!appendToBody">
     <transition name="l-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave" @before-leave="beforeLeave">
       <overlay
+        :offset="offset"
+        :position="PD[direction]"
         v-show="visible"
         :modal="modal"
         :overlay-class="modalClass"

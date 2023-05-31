@@ -34,6 +34,7 @@ export default create({
       return {
         transitionDuration: `${props.duration}s`,
         zIndex: props.zIndex,
+        [props.position]: `${props.offset}px`,
         ...props.overlayStyle
       };
     });

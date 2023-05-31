@@ -1,7 +1,8 @@
 import { CSSProperties, PropType } from 'vue';
 import { buildProps } from '../../../utils/props';
 import { CLICK_EVENT, UPDATE_OVERLAY_EVENT } from '../../../constants/event';
-import { isNumber } from '../../../utils/util';
+
+type OverlayPosition = 'top' | 'right' | 'bottom' | 'left';
 
 export const OverlayProps = buildProps({
   visible: { // 是否显示
@@ -34,7 +35,15 @@ export const OverlayProps = buildProps({
   modal: {
     type: Boolean,
     default: true
-  }
+  },
+  position: {
+    type: String as PropType<OverlayPosition>,
+    default: 'right'
+  },
+  offset: {
+    type: [String, Number],
+    default: 0
+  },
 } as const);
 
 export const OverlayEmits = {
