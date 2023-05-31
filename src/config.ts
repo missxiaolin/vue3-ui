@@ -327,7 +327,15 @@ const config: any = {
             "desc": "",
             "show": true,
             "author": "",
-            "progress": "50%"
+            "progress": "100%"
+          }, {
+            "name": "message-box",
+            "type": "component",
+            "cName": "消息弹出框",
+            "desc": "",
+            "show": true,
+            "author": "",
+            "progress": "100%"
           },
         ]
       }, {
