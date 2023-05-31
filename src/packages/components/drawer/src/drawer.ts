@@ -17,7 +17,7 @@ export enum PD {
   btt = 'bottom'
 }
 
-export const DialogProps = {
+export const dialogProps = {
   appendToBody: {
     type: Boolean,
     default: false
@@ -96,7 +96,7 @@ export const DialogProps = {
 };
 
 export const drawerProps = {
-  ...DialogProps,
+  ...dialogProps,
   direction: {
     type: String as PropType<DrawerDirection>,
     default: 'rtl',
@@ -123,9 +123,9 @@ export const drawerProps = {
   }
 };
 
-export type DialogProps = ExtractPropTypes<typeof DialogProps>;
+export type DialogProps = ExtractPropTypes<typeof dialogProps>;
 
-export const DialogEmits = {
+export const dialogEmits = {
   open: () => true,
   opened: () => true,
   close: () => true,
@@ -133,4 +133,4 @@ export const DialogEmits = {
   [UPDATE_MODEL_EVENT]: (value: boolean) => typeof value === 'boolean'
 };
 
-export type DialogEmits = typeof DialogEmits;
+export type DialogEmits = typeof dialogEmits;

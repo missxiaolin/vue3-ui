@@ -1,7 +1,12 @@
 <template>
   <teleport to="body" :disabled="!appendToBody">
     <transition name="l-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave" @before-leave="beforeLeave">
-      <overlay v-show="visible">
+      <overlay
+        v-show="visible"
+        :overlay-class="modalClass"
+        :z-index="zIndex"
+        @click="onModalClick"
+      >
         <div
           ref="drawerRef"
           aria-modal="true"
@@ -39,14 +44,15 @@
 
 <script lang="ts">
 import { computed, ref } from 'vue';
-import createComponent from '../../../utils/create';
-import { useNamespace } from '../../../hooks';
-import { DialogProps, DialogEmits, PD } from './drawer';
+import { drawerProps, dialogEmits, PD } from './drawer';
 import { useDrawer } from './use-drawer';
-import type { SetupContext } from 'vue';
-import { Overlay } from '../../overlay/index';
-import { Icon } from '../../icon/index';
 
+import { Icon } from '../../icon/index';
+import { Overlay } from '../../overlay/index';
+
+import type { SetupContext } from 'vue';
+
+import createComponent from '../../../utils/create';
 const { create } = createComponent('Drawer');
 
 export default create({
@@ -54,13 +60,11 @@ export default create({
     Icon,
     Overlay
   },
-  props: DialogProps,
-  emits: DialogEmits,
+  props: drawerProps,
+  emits: dialogEmits,
   setup(props, ctx) {
-    const ns = useNamespace('drawer');
     const drawerRef = ref<HTMLElement>(null);
     return {
-      ns,
       ...useDrawer(props, ctx as SetupContext),
       drawerRef,
       isHorizontal: computed(() => props.direction === 'rtl' || props.direction === 'ltr'),

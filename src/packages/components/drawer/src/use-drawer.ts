@@ -8,11 +8,6 @@ import isServer from '../../../utils/isServer';
 import type { CSSProperties, SetupContext } from 'vue';
 import type { DialogEmits, DialogProps } from './drawer';
 
-/**
- * @param props 
- * @param param1 
- * @returns 
- */
 export const useDrawer = (props: DialogProps, { emit }: SetupContext<DialogEmits>) => {
   const rendered = ref(false);
   const visible = ref(false);
