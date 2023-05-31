@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { computed, ref } from 'vue';
-import { drawerProps, dialogEmits, PD } from './drawer';
+import { DrawerProps, DialogEmits, PD } from './drawer';
 import { useDrawer } from './use-drawer';
 
 import { Icon } from '../../icon/index';
@@ -60,8 +60,8 @@ export default create({
     Icon,
     Overlay
   },
-  props: drawerProps,
-  emits: dialogEmits,
+  props: DrawerProps,
+  emits: DialogEmits,
   setup(props, ctx) {
     const drawerRef = ref<HTMLElement>(null);
     return {
