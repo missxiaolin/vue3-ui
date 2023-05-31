@@ -1,3 +1,5 @@
-import { Message } from '../components/message/index'
+import { Message } from '../components/message/index';
 
-export default [Message]
+import { MessageBox } from '../components/message-box/index';
+
+export default [Message, MessageBox];

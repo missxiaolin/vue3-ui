@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/common/popup' as *;
+
+@include b(message-box) {
+  @include set-component-css-var('messagebox', $messagebox);
+}
