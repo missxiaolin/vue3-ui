@@ -1,0 +1,155 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+$directions: rtl, ltr, ttb, btt;
+
+@include b(drawer) {
+  @include set-component-css-var('drawer', $drawer);
+}
+
+@include b(drawer) {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: var(--l-drawer-bg-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+
+  transition: all var(--l-transition-duration);
+
+  @each $direction in $directions {
+    .#{$direction} {
+      transform: translate(0, 0);
+    }
+  }
+
+  &__header {
+    align-items: center;
+    color: var(--l-text-color-primary);
+    display: flex;
+    padding: var(--l-drawer-padding-primary);
+    padding-bottom: 0;
+    & > :first-child {
+      flex: 1;
+      font-weight: 600;
+      font-size: var(--l-font-size-large);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    flex: 1;
+    line-height: inherit;
+    font-size: 1rem;
+  }
+
+  &__close-btn {
+    border: none;
+    cursor: pointer;
+    font-size: var(--l-font-size-medium);
+    color: inherit;
+    background-color: transparent;
+    outline: none;
+    &:hover {
+      i {
+        color: var(--l-color-primary);
+      }
+    }
+    .#{$namespace}-icon {
+      font-size: inherit;
+      vertical-align: text-bottom;
+      color: var(--e-text-color-primary);
+    }
+  }
+
+  &__body {
+    flex: 1;
+    padding: var(--l-drawer-padding-primary);
+    overflow-y: scroll;
+    & > * {
+      box-sizing: border-box;
+    }
+  }
+
+  &.ltr,
+  &.rtl {
+    height: 100%;
+    top: 0;
+    bottom: 0;
+  }
+
+  &.ttb,
+  &.btt {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  &.ltr {
+    left: 0;
+  }
+
+  &.rtl {
+    right: 0;
+  }
+
+  &.ttb {
+    top: 0;
+  }
+
+  &.btt {
+    bottom: 0;
+  }
+}
+
+.#{$namespace}-drawer-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: all var(--l-transition-duration);
+  }
+
+  &-enter-from,
+  &-enter-active,
+  &-enter-to,
+  &-leave-from,
+  &-leave-active,
+  &-leave-to {
+    overflow: hidden !important;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    @each $direction in $directions {
+      .#{$direction} {
+        @if $direction == ltr {
+          transform: translateX(-100%);
+        }
+
+        @if $direction == rtl {
+          transform: translateX(100%);
+        }
+
+        @if $direction == ttb {
+          transform: translateY(-100%);
+        }
+
+        @if $direction == btt {
+          transform: translateY(100%);
+        }
+      }
+    }
+  }
+}
