@@ -12,6 +12,9 @@ export function isUndefined(val: any): val is undefined {
 
 export const SCOPE = 'Util';
 
+// reexport from lodash & vue shared
+export { isVNode } from 'vue';
+
 /**
  * @param value
  * @returns
