@@ -336,6 +336,14 @@ const config: any = {
             "show": true,
             "author": "",
             "progress": "100%"
+          }, {
+            "name": "Notification",
+            "type": "component",
+            "cName": "通知提示框",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "99%"
           },
         ]
       }, {
