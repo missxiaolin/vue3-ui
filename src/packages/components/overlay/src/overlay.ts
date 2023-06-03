@@ -1,5 +1,5 @@
 import { CSSProperties, PropType } from 'vue';
-import { buildProps } from '../../../utils/props';
+import { buildProps, definePropType } from '../../../utils/props';
 import { CLICK_EVENT, UPDATE_OVERLAY_EVENT } from '../../../constants/event';
 
 type OverlayPosition = 'top' | 'right' | 'bottom' | 'left';
@@ -22,7 +22,7 @@ export const OverlayProps = buildProps({
     default: true
   },
   overlayClass: { // 自定义遮罩类名
-    type: String,
+    type: definePropType<string | string[] | Record<string, boolean>>([String, Array, Object]),
     default: ''
   },
   overlayStyle: { // 自定义遮罩样式
