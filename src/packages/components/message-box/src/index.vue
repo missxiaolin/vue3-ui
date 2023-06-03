@@ -36,7 +36,7 @@
             <div class="l-message-box__container">
               <icon
                 v-if="iconComponent && !center && hasMessage"
-                class="e-message-box__status"
+                class="l-message-box__status"
                 :icon="iconTypeName"
               ></icon>
               <div v-if="hasMessage" class="l-message-box__message">
