@@ -47,7 +47,8 @@
               </div>
             </div>
             <div v-show="showInput" class="l-message-box__input">
-              <input type="text" v-model="inputValue" name="" id="" />
+              <!-- 等form 组件做完回到这里写 -->
+              <input style="border: solid 1px #ccc;" type="text" v-model="inputValue" name="" id="" />
               <div
                 class="l-message-box__errormsg"
                 :style="{
