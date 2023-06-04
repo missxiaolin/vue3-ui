@@ -343,7 +343,7 @@ const config: any = {
             "desc": "",
             "show": true,
             "author": "lin",
-            "progress": "99%"
+            "progress": "100%"
           },
         ]
       }, {

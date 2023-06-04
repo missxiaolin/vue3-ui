@@ -1,0 +1,138 @@
+@use 'sass:map';
+
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+@include b(notification) {
+  @include set-component-css-var('notification', $notification);
+}
+
+@include b(notification) {
+  display: flex;
+  position: fixed;
+  width: var(--l-notification-width);
+  padding: var(--l-notification-padding);
+  border-radius: var(--l-notification-radius);
+  box-sizing: border-box;
+  background-color: var(--l-notification-background-color);
+  box-shadow: var(--l-notification-shadow);
+  transition: opacity var(--l-transition-duration), transform var(--l-transition-duration),
+    left var(--l-transition-duration), right var(--l-transition-duration), top 0.4s, bottom var(--l-transition-duration);
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  z-index: 9999;
+
+  &.right {
+    right: 12px;
+  }
+  &.left {
+    left: 16px;
+  }
+  &.light {
+    box-shadow: var(--l-notification-shadow-light);
+    background-color: var(--l-notification-background-color-light);
+    border: 1px solid var(--l-notification-border-color-light);
+    .e-notification__title {
+      color: var(--l-notification-title-color-light);
+    }
+    .e-notification__content {
+      color: var(--l-notification-content-color-light);
+    }
+    .e-notification__closeBtn {
+      color: var(--l-notification-close-color-light);
+      &:hover {
+        color: var(--l-notification-close-hover-color-light);
+      }
+    }
+  }
+
+  @include e(group) {
+    margin-left: var(--l-notification-group-margin-left);
+    margin-right: var(--l-notification-group-margin-right);
+    width: 100%;
+  }
+
+  @include e(title) {
+    font-weight: bold;
+    font-size: var(--l-notification-title-font-size);
+    line-height: var(--l-notification-icon-size);
+    color: var(--l-notification-title-color);
+    margin: 0;
+  }
+
+  @include e(content) {
+    font-size: var(--l-notification-content-font-size);
+    line-height: 18px;
+    margin: 6px 0 0 0;
+    color: var(--l-notification-content-color);
+    text-align: justify;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include e(icon) {
+    margin-right: 5px;
+    height: var(--l-notification-icon-size);
+    width: var(--l-notification-icon-size);
+    font-size: var(--l-notification-icon-size);
+  }
+  @include e(info) {
+    height: var(--l-notification-icon-size);
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      height: 4px;
+      width: 4px;
+      background-color: var(--l-color-danger);
+      border-radius: 50%;
+    }
+  }
+
+  @include e(bar) {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include e(closeBtn) {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    cursor: pointer;
+    color: var(--l-notification-close-color);
+    font-size: var(--l-notification-close-font-size);
+
+    &:hover {
+      color: var(--l-notification-close-hover-color);
+    }
+  }
+
+  @each $type in (success, info, warning, error) {
+    @include m($type) {
+      --l-notification-icon-color: var(--l-color-#{$type});
+      color: var(--l-notification-icon-color);
+    }
+  }
+}
+
+.#{$namespace}-notification-fade-enter-from {
+  &.right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.#{$namespace}-notification-fade-leave-to {
+  opacity: 0;
+}
