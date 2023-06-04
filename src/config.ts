@@ -197,14 +197,6 @@ const config: any = {
             "author": "lin",
             "show": true,
             "progress": "100%"
-          }, {
-            "name": "Dropdown",
-            "type": "component",
-            "cName": "下拉菜单",
-            "desc": "",
-            "show": true,
-            "author": "lin",
-            "progress": "80%"
           },
         ]
       }, {
@@ -291,7 +283,7 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
-          },
+          }
         ]
       }, {
         "name": "反馈组件",
@@ -340,6 +332,14 @@ const config: any = {
             "name": "Notification",
             "type": "component",
             "cName": "通知提示框",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          }, {
+            "name": "Dropdown",
+            "type": "component",
+            "cName": "下拉菜单",
             "desc": "",
             "show": true,
             "author": "lin",
