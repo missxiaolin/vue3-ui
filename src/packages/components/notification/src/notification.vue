@@ -60,10 +60,10 @@ export default create({
     });
 
     const iconType: { [key: string]: string } = {
-      success: 'check-fill',
-      warning: 'mark-fill',
-      info: 'info',
-      error: 'fail-fill'
+      success: 'chenggong1',
+      warning: 'jinggao1',
+      info: 'wenhao_huabanfuben',
+      error: 'shibai'
     };
     const iconComponent = computed(() => {
       return iconType[props.type] || props.icon || '';
