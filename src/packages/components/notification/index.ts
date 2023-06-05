@@ -1,6 +1,4 @@
-
-import { default as Notification } from './src/notification.vue'
-
-export {
-    Notification
-}
+import { withInstallFunction } from '../../utils/with-install';
+import FNotify from './src/notify';
+export const Notification = withInstallFunction(FNotify, '$notify');
+export default Notification;
