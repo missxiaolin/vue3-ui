@@ -31,6 +31,7 @@ import { Progress } from '../components/progress/index';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index';
 import { Dialog } from '../components/dialog/index';
 import { Drawer } from '../components/drawer/index'
+import { Popover } from '../components/popover/index'
 
 export default [
   ConfigProvider,
@@ -86,4 +87,5 @@ export default [
   TooltipTrigger,
   Dialog,
   Drawer,
+  Popover
 ];

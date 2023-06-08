@@ -1,0 +1,45 @@
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(popover) {
+  @include set-component-css-var('popover', $popover);
+
+  &.#{$namespace}-popper {
+    background: var(--l-popover-background-color);
+    min-width: 150px;
+    border-radius: var(--l-popover-border-radius);
+    border: 1px solid var(--l-popover-border-color);
+    padding: var(--l-popover-padding);
+    z-index: var(--l-index-popper);
+    color: var(--l-text-color-regular);
+    line-height: 1.4;
+    text-align: justify;
+    font-size: var(--l-popover-font-size);
+    box-shadow: var(--l-box-shadow-light);
+    word-break: break-all;
+
+    @include m(plain) {
+      padding: var(--l-popover-padding-large);
+    }
+
+    @include e(title) {
+      color: var(--l-popover-title-font-color);
+      font-size: var(--l-popover-title-font-size);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    @include e(reference) {
+      &:focus:not(.focusing),
+      &:focus:hover {
+        outline-width: 0;
+      }
+    }
+
+    &:focus:active,
+    &:focus {
+      outline-width: 0;
+    }
+  }
+}

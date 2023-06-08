@@ -46,3 +46,4 @@ import '@/packages/components/dialog/style/dialog.scss';
 import '@/packages/components/drawer/style/drawer.scss';
 import '@/packages/components/message-box/style/message-box.scss';
 import '@/packages/components/notification/style/notification.scss';
+import '@/packages/components/popover/style/popover.scss';
