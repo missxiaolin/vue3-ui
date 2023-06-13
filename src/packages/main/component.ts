@@ -32,6 +32,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/i
 import { Dialog } from '../components/dialog/index';
 import { Drawer } from '../components/drawer/index'
 import { Popover } from '../components/popover/index'
+import { Popconfirm } from '../components/popconfirm/index'
 
 export default [
   ConfigProvider,
@@ -87,5 +88,6 @@ export default [
   TooltipTrigger,
   Dialog,
   Drawer,
-  Popover
+  Popover,
+  Popconfirm
 ];

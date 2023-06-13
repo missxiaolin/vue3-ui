@@ -352,6 +352,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Popconfirm",
+            "type": "component",
+            "cName": "气泡确认框",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {

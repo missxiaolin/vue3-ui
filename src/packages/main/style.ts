@@ -47,3 +47,4 @@ import '@/packages/components/drawer/style/drawer.scss';
 import '@/packages/components/message-box/style/message-box.scss';
 import '@/packages/components/notification/style/notification.scss';
 import '@/packages/components/popover/style/popover.scss';
+import '@/packages/components/popconfirm/style/popconfirm.scss';
