@@ -360,6 +360,14 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
+          }, {
+            "name": "Skeleton",
+            "type": "component",
+            "cName": "骨架屏",
+            "desc": "在需要等待加载内容的位置设置一个骨架屏",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
           },
         ]
       }, {

@@ -33,6 +33,7 @@ import { Dialog } from '../components/dialog/index';
 import { Drawer } from '../components/drawer/index'
 import { Popover } from '../components/popover/index'
 import { Popconfirm } from '../components/popconfirm/index'
+import { Skeleton } from '../components/skeleton/index'
 
 export default [
   ConfigProvider,
@@ -89,5 +90,6 @@ export default [
   Dialog,
   Drawer,
   Popover,
-  Popconfirm
+  Popconfirm,
+  Skeleton
 ];
