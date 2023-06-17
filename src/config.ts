@@ -390,7 +390,15 @@ const config: any = {
             "show": true,
             "author": "lin",
             "progress": "100%"
-          }
+          }, {
+            "name": "Video",
+            "type": "component",
+            "cName": "视频播放器",
+            "desc": "",
+            "show": true,
+            "author": "lin",
+            "progress": "100%"
+          },
         ]
       }, {
         "name": "工具组件",
