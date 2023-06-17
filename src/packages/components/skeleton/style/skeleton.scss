@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(skeleton) {
+  @include set-component-css-var('skeleton', $skeleton);
+}
+
+@mixin skeleton-color() {
+  background: linear-gradient(
+    90deg,
+    var(--l-skeleton-color) 25%,
+    var(--l-skeleton-to-color) 37%,
+    var(--l-skeleton-color) 63%
+  );
+  background-size: 400% 100%;
+  animation: #{$namespace}-skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes #{$namespace}-skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@include b(skeleton) {
+  width: 100%;
+  @each $unit in (first-line, paragraph) {
+    @include e($unit) {
+      height: 16px;
+      margin-top: 16px;
+      background: var(--l-skeleton-color);
+    }
+  }
+
+  @include when(animated) {
+    .#{$namespace}-skeleton__item {
+      @include skeleton-color();
+    }
+  }
+}

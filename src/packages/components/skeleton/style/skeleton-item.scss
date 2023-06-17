@@ -1,0 +1,86 @@
+@use 'sass:map';
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@include b(skeleton) {
+  --l-skeleton-circle-size: var(--l-avatar-size);
+}
+
+@mixin circle-size($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+@include b(skeleton) {
+  @include e(item) {
+    background: var(--l-skeleton-color);
+    display: inline-block;
+    height: 16px;
+    border-radius: var(--l-border-radius-base);
+    width: 100%;
+  }
+
+  @include e(circle) {
+    border-radius: 50%;
+
+    width: var(--l-skeleton-circle-size);
+    height: var(--l-skeleton-circle-size);
+    line-height: var(--l-skeleton-circle-size);
+  }
+
+  @include e(button) {
+    height: 40px;
+    width: 64px;
+    border-radius: 4px;
+  }
+
+  @include e(p) {
+    width: 100%;
+    @include when(last) {
+      width: 61%;
+    }
+
+    @include when(first) {
+      width: 33%;
+    }
+  }
+
+  @include e(text) {
+    width: 100%;
+    height: var(--l-font-size-small);
+  }
+
+  @include e(caption) {
+    height: var(--l-font-size-extra-small);
+  }
+
+  @include e(h1) {
+    height: var(--l-font-size-extra-large);
+  }
+
+  @include e(h3) {
+    height: var(--l-font-size-large);
+  }
+
+  @include e(h5) {
+    height: var(--l-font-size-medium);
+  }
+
+  @include e(image) {
+    width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+
+    svg {
+      color: var(--l-svg-monochrome-grey);
+      fill: currentColor;
+      width: 22%;
+      height: 22%;
+    }
+  }
+}
