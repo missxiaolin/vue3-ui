@@ -15,6 +15,14 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-tupian:before {
+  content: "\e67f";
+}
+
+.l-icons01:before {
+  content: "\e698";
+}
+
 .l-jinggao1:before {
   content: "\e61b";
 }
