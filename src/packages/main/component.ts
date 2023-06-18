@@ -34,6 +34,7 @@ import { Drawer } from '../components/drawer/index'
 import { Popover } from '../components/popover/index'
 import { Popconfirm } from '../components/popconfirm/index'
 import { Skeleton, SkeletonItem } from '../components/skeleton/index'
+import { Switch } from '../components/switch/index'
 
 export default [
   ConfigProvider,
@@ -92,5 +93,6 @@ export default [
   Popover,
   Popconfirm,
   Skeleton,
-  SkeletonItem
+  SkeletonItem,
+  Switch
 ];

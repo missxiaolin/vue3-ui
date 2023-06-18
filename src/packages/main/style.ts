@@ -50,3 +50,4 @@ import '@/packages/components/popover/style/popover.scss';
 import '@/packages/components/popconfirm/style/popconfirm.scss';
 import '@/packages/components/skeleton/style/skeleton.scss';
 import '@/packages/components/skeleton/style/skeleton-item.scss';
+import '@/packages/components/switch/style/switch.scss';
