@@ -29,3 +29,9 @@ export const useSize = (
       size.value || unref(fallback) || formItem?.size || form?.size || globalConfig.value || 'default'
   );
 };
+
+export const useDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
+  const disabled = useProp<boolean>('disabled');
+  const form = inject(elFormKey, undefined);
+  return computed(() => disabled.value || unref(fallback) || form?.disabled || false);
+};
