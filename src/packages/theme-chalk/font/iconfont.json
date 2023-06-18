@@ -6,6 +6,62 @@
   "description": "github vue ui 项目",
   "glyphs": [
     {
+      "icon_id": "582095",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "2076218",
+      "name": "播放2",
+      "font_class": "bofang",
+      "unicode": "e87c",
+      "unicode_decimal": 59516
+    },
+    {
+      "icon_id": "10933908",
+      "name": "返回",
+      "font_class": "fanhui1",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15313228",
+      "name": "video",
+      "font_class": "video",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "22978036",
+      "name": "音量1",
+      "font_class": "yinliang1",
+      "unicode": "e8a0",
+      "unicode_decimal": 59552
+    },
+    {
+      "icon_id": "22978040",
+      "name": "音量3",
+      "font_class": "yinliang3",
+      "unicode": "e8a1",
+      "unicode_decimal": 59553
+    },
+    {
+      "icon_id": "22978045",
+      "name": "音量2",
+      "font_class": "yinliang2",
+      "unicode": "e8a2",
+      "unicode_decimal": 59554
+    },
+    {
+      "icon_id": "25468361",
+      "name": "静音",
+      "font_class": "jingyin",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
       "icon_id": "658956",
       "name": "图片",
       "font_class": "tupian",

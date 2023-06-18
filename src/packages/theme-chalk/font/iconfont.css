@@ -15,6 +15,38 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-fanhui:before {
+  content: "\e641";
+}
+
+.l-bofang:before {
+  content: "\e87c";
+}
+
+.l-fanhui1:before {
+  content: "\e60d";
+}
+
+.l-video:before {
+  content: "\e61d";
+}
+
+.l-yinliang1:before {
+  content: "\e8a0";
+}
+
+.l-yinliang3:before {
+  content: "\e8a1";
+}
+
+.l-yinliang2:before {
+  content: "\e8a2";
+}
+
+.l-jingyin:before {
+  content: "\e63b";
+}
+
 .l-tupian:before {
   content: "\e67f";
 }
