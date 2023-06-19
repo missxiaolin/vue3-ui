@@ -66,6 +66,10 @@ EUI默认的排版模式有时不符合需求，此时可以通过一个具名sl
 ```vue demo
 <template>
   <l-space direction="vertical" alignment="flex-start">
+    <div>
+      <label style="margin-right: 16px">Switch Loading</label>
+      <l-switch v-model="loading" />
+    </div>
     <l-skeleton style="width: 240px" :loading="loading" animated>
       <template #template>
         <l-skeleton-item variant="image" style="width: 240px; height: 240px" />
@@ -210,6 +214,10 @@ export default defineComponent({
 ```vue demo 
 <template>
   <l-space direction="vertical" alignment="flex-start">
+    <div>
+      <label style="margin-right: 16px">Switch Loading</label>
+      <l-switch v-model="loading" />
+    </div>
     <l-skeleton
       style="width: 240px"
       :loading="loading"
