@@ -138,9 +138,9 @@
           </div>
           <!-- 音量 -->
           <div class="l-tool-item voluml-btn" v-if="props.controlBtns.includes('volume')">
-            <div class="l-tool-item-main voluml-box" style="width: 52px">
-              <div class="voluml-main" :class="{ 'is-muted': state.muted }">
-                <span class="voluml-text-size">{{ state.muted ? 0 : ~~(state.volume * 100) }}%</span>
+            <div class="l-tool-item-main volume-box" style="width: 52px">
+              <div class="volume-main" :class="{ 'is-muted': state.muted }">
+                <span class="volume-text-size">{{ state.muted ? 0 : ~~(state.volume * 100) }}%</span>
                 <!-- @change 如果修改音量则取消静音 -->
                 <l-video-slider
                   @change="state.muted = false"
@@ -155,11 +155,7 @@
               <l-icon
                 size="20"
                 :icon="`${
-                  state.volume == 0 || state.muted
-                    ? 'l-jingyin'
-                    : state.volume > 0.5
-                    ? 'l-yinliang2'
-                    : 'l-yinliang1'
+                  state.volume == 0 || state.muted ? 'l-jingyin' : state.volume > 0.5 ? 'l-yinliang2' : 'l-yinliang1'
                 }`"
               ></l-icon>
             </span>
