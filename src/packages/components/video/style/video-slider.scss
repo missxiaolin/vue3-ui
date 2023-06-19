@@ -39,7 +39,7 @@
         transform: translateX(-50%);
       }
     }
-    &:hover .e-slider__cursor {
+    &:hover .l-slider__cursor {
       display: block;
     }
     .l-slider__preload {
@@ -70,7 +70,7 @@
     .l-slider__runway {
       position: relative;
       height: 100%;
-      width: var(--e-video-slider-size);
+      width: var(--l-video-slider-size);
       margin: 0 6px;
       .l-slider__preload,
       .l-slider__bar,
