@@ -54,7 +54,7 @@ const { create } = createComponent('Contextmenu');
 
 export default create({
   components: {
-    VideoSlider
+    [VideoSlider.name]: VideoSlider
   },
   setup(props, { emit }) {
     const state = reactive({
