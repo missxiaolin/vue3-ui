@@ -156,17 +156,17 @@
                 size="20"
                 :icon="`${
                   state.volume == 0 || state.muted
-                    ? 'l-icon-voluml-mute'
+                    ? 'l-jingyin'
                     : state.volume > 0.5
-                    ? 'l-icon-voluml-up'
-                    : 'l-icon-voluml-down'
+                    ? 'l-yinliang2'
+                    : 'l-yinliang1'
                 }`"
               ></l-icon>
             </span>
           </div>
           <!-- 设置 -->
           <div class="l-tool-item setting-btn" v-if="props.controlBtns.includes('setting')">
-            <l-icon size="20" class="rotateHover" icon="l-icon-setting"></l-icon>
+            <l-icon size="20" class="rotateHover" icon="l-shezhi"></l-icon>
             <div class="l-tool-item-main">
               <ul class="speed-main">
                 <li>
@@ -190,7 +190,7 @@
             v-if="props.controlBtns.includes('pip')"
             @click="requestPictureInPictureHandle"
           >
-            <l-icon size="20" icon="l-icon-pip"></l-icon>
+            <l-icon size="20" icon="l-huazhonghua"></l-icon>
             <div class="l-tool-item-main">画中画</div>
           </div>
           <!-- 网页全屏 -->
@@ -199,7 +199,7 @@
             v-if="props.controlBtns.includes('pageFullScreen')"
             @click="state.webFullScreen = !state.webFullScreen"
           >
-            <l-icon size="20" icon="l-icon-web-screen"></l-icon>
+            <l-icon size="20" icon="l-wangyequanping"></l-icon>
             <div class="l-tool-item-main">网页全屏</div>
           </div>
           <!-- 全屏 -->
@@ -209,7 +209,7 @@
             @click="toggleFullScreenHandle"
           >
             <div class="l-tool-item-main">全屏</div>
-            <l-icon size="20" icon="l-icon-full-screen"></l-icon>
+            <l-icon size="20" icon="l-quanping"></l-icon>
           </div>
         </div>
       </div>

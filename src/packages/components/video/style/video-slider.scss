@@ -1,9 +1,9 @@
 .l-video-slider {
   position: relative;
   .l-slider__runway {
-    --e-video-slider-size: 100%;
+    --l-video-slider-size: 100%;
     width: 100%;
-    height: var(--e-video-slider-size);
+    height: var(--l-video-slider-size);
     background-color: #333333;
     position: relative;
     cursor: pointer;
@@ -39,7 +39,7 @@
         transform: translateX(-50%);
       }
     }
-    &:hover .l-slider__cursor {
+    &:hover .e-slider__cursor {
       display: block;
     }
     .l-slider__preload {

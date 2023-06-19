@@ -15,6 +15,23 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+
+.l-shezhi:before {
+  content: "\e70f";
+}
+
+.l-wangyequanping:before {
+  content: "\e67e";
+}
+
+.l-huazhonghua:before {
+  content: "\e86d";
+}
+
+.l-quanping:before {
+  content: "\ec13";
+}
+
 .l-pause:before {
   content: "\e87a";
 }
