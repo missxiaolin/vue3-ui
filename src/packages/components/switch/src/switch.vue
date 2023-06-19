@@ -22,7 +22,7 @@
       v-if="!inlinePrompt && (inactiveIcon || inactiveText)"
       :class="[ns.e('label'), ns.em('label', 'left'), ns.is('active', !checked)]"
     >
-      <e-icon v-if="inactiveIcon" :icon="'l-' + inactiveIcon"></e-icon>
+      <l-icon v-if="inactiveIcon" :icon="'l-' + inactiveIcon"></l-icon>
       <span v-if="!inactiveIcon && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
     <span ref="core" :class="ns.e('core')" :style="{ width: (width || 40) + 'px' }">
