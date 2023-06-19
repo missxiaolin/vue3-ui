@@ -15,11 +15,15 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-pause:before {
+  content: "\e87a";
+}
+
 .l-fanhui:before {
   content: "\e641";
 }
 
-.l-bofang:before {
+.l-play:before {
   content: "\e87c";
 }
 

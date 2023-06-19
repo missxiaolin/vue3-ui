@@ -34,6 +34,7 @@ import { Drawer } from '../components/drawer/index'
 import { Popover } from '../components/popover/index'
 import { Popconfirm } from '../components/popconfirm/index'
 import { Skeleton, SkeletonItem } from '../components/skeleton/index'
+import { Video } from '../components/video/index';
 import { Switch } from '../components/switch/index'
 
 export default [
@@ -94,5 +95,6 @@ export default [
   Popconfirm,
   Skeleton,
   SkeletonItem,
+  Video,
   Switch
 ];

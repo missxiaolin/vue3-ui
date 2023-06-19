@@ -55,6 +55,12 @@
           <ul class="icon_lists dib-box">
           
             <li class="dib">
+              <span class="icon iconfont">&#xe87a;</span>
+                <div class="name">暂停</div>
+                <div class="code-name">&amp;#xe87a;</div>
+              </li>
+          
+            <li class="dib">
               <span class="icon iconfont">&#xe641;</span>
                 <div class="name">返回</div>
                 <div class="code-name">&amp;#xe641;</div>
@@ -330,10 +336,10 @@
 <pre><code class="language-css"
 >@font-face {
   font-family: 'iconfont';
-  src: url('iconfont.woff2?t=1687062275060') format('woff2'),
-       url('iconfont.woff?t=1687062275060') format('woff'),
-       url('iconfont.ttf?t=1687062275060') format('truetype'),
-       url('iconfont.svg?t=1687062275060#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1687165435154') format('woff2'),
+       url('iconfont.woff?t=1687165435154') format('woff'),
+       url('iconfont.ttf?t=1687165435154') format('truetype'),
+       url('iconfont.svg?t=1687165435154#iconfont') format('svg');
 }
 </code></pre>
           <h3 id="-iconfont-">第二步：定义使用 iconfont 的样式</h3>
@@ -360,6 +366,15 @@
         <ul class="icon_lists dib-box">
           
           <li class="dib">
+            <span class="icon iconfont l-pause"></span>
+            <div class="name">
+              暂停
+            </div>
+            <div class="code-name">.l-pause
+            </div>
+          </li>
+          
+          <li class="dib">
             <span class="icon iconfont l-fanhui"></span>
             <div class="name">
               返回
@@ -369,11 +384,11 @@
           </li>
           
           <li class="dib">
-            <span class="icon iconfont l-bofang"></span>
+            <span class="icon iconfont l-play"></span>
             <div class="name">
               播放2
             </div>
-            <div class="code-name">.l-bofang
+            <div class="code-name">.l-play
             </div>
           </li>
           
@@ -775,6 +790,14 @@
           
             <li class="dib">
                 <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#l-pause"></use>
+                </svg>
+                <div class="name">暂停</div>
+                <div class="code-name">#l-pause</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
                   <use xlink:href="#l-fanhui"></use>
                 </svg>
                 <div class="name">返回</div>
@@ -783,10 +806,10 @@
           
             <li class="dib">
                 <svg class="icon svg-icon" aria-hidden="true">
-                  <use xlink:href="#l-bofang"></use>
+                  <use xlink:href="#l-play"></use>
                 </svg>
                 <div class="name">播放2</div>
-                <div class="code-name">#l-bofang</div>
+                <div class="code-name">#l-play</div>
             </li>
           
             <li class="dib">

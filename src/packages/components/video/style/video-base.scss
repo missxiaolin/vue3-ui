@@ -1,0 +1,374 @@
+.l-flex-x,
+.l-flex-y,
+.l-flex-center {
+  display: flex;
+}
+
+.l-flex-x {
+  align-items: center;
+}
+
+.l-flex-y {
+  justify-content: center;
+}
+
+.l-flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.l-pointer {
+  cursor: pointer;
+}
+
+.l-player-wrap {
+  --e-video-width: 100%;
+  --e-video-height: 100%;
+  position: relative;
+  overflow: hidden;
+  height: var(--e-video-height);
+  width: var(--e-video-width);
+  background-color: #000;
+
+  &.web-full-screen {
+    z-index: 9999999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .l-player-video {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    .l-player-video-poster {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .l-player-video-main {
+      width: 100%;
+      height: 100%;
+      transition: 0.2s;
+
+      &.video-mirror {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+  .l-player-control {
+    transition: 0.1s;
+    transform: translateY(40px);
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    color: #fff;
+
+    .l-control-progress {
+      width: 100%;
+      position: relative;
+      height: 10px;
+      cursor: pointer;
+
+      .l-progress-bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        transition: height 0.1s;
+        height: 3px;
+        z-index: 1;
+
+        // pointer-events: none;
+        //对 d-slider内的组件样式修改
+        .l-slider__runway {
+          transition: height 0.1s;
+          height: 100%;
+
+          .l-slider__bar::before {
+            transform: translateY(-50%) scale(0, 0);
+          }
+        }
+      }
+
+      &:hover {
+        .l-progress-bar {
+          height: 100%;
+
+          .l-slider__bar::before {
+            transform: translateY(-50%) scale(1, 1) !important;
+          }
+        }
+      }
+    }
+
+    .l-control-tool {
+      position: absolute;
+      padding: 0 10px;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      top: 10px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
+
+      .l-tool-bar {
+        display: flex;
+        height: 100%;
+
+        .l-tool-item {
+          position: relative;
+          height: 100%;
+          cursor: pointer;
+          text-align: center;
+          padding: 0 8px;
+          display: flex;
+          align-items: center;
+          font-size: 13px;
+
+          .l-tool-item-main {
+            position: absolute;
+            white-space: nowrap;
+            z-index: 2;
+            bottom: 98%;
+            left: 50%;
+            padding: 6px 16px;
+            box-sizing: border-box;
+            display: none;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 5px;
+            transform: translateX(-50%);
+          }
+
+          &:hover {
+            .l-tool-item-main {
+              display: flex;
+            }
+          }
+        }
+      }
+
+      // 时间
+      .l-tool-time {
+        font-size: 12px;
+        color: #fff;
+        font-weight: 300;
+
+        .total-time {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      // 音量
+      .volume-box {
+        height: 160px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .volume-main {
+          height: 90%;
+          display: flex;
+          width: 60px;
+          flex-direction: column;
+          align-items: center;
+
+          .volume-text-size {
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 400;
+          }
+
+          &.is-muted {
+            .l-slider__bar {
+              height: 0 !important;
+            }
+          }
+        }
+      }
+
+      .speed-main {
+        padding: 0 10px;
+
+        li {
+          cursor: pointer;
+          line-height: 34px;
+          font-size: 12px;
+          color: #fff;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &.speed-active {
+            color: var(--e-color-primary);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  &.l-player-wrap-hover {
+    .l-player-control {
+      transform: translateY(0px);
+    }
+  }
+}
+
+.l-player-state,
+.l-player-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.l-player-input {
+  width: 100%;
+  border: none;
+  opacity: 0;
+  cursor: default;
+}
+
+.l-play-btn {
+  width: 90px;
+  height: 90px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  z-index: 60;
+}
+
+// 黑幕
+.l-player-lightoff {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+// 关灯模式
+.is-lightoff {
+  z-index: 999998;
+}
+
+.l-fade-in-enter-active,
+.l-fade-in-leave-active {
+  transition: 0.5s;
+}
+.l-fade-in-enter-from,
+.l-fade-in-leave-to {
+  opacity: 0;
+}
+
+.l-scale-out-enter-active,
+.l-scale-out-leave-active {
+  transition: 0.3s;
+}
+.l-scale-out-leave-to {
+  transform: scale(1.3);
+  opacity: 0;
+}
+
+.rotateHover {
+  transition: 0.2s;
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.rotating {
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.l-player-top {
+  position: absolute;
+  font-size: 16px;
+  left: 0px;
+  top: 0;
+  right: 0px;
+  color: #fff;
+  display: flex;
+  padding: 0 20px;
+  height: 60px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), transparent);
+  justify-content: space-between;
+}
+
+.f50 {
+  font-size: 50px;
+}
+.f24 {
+  font-size: 24px;
+}
+.l-video-loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  color: #efefef;
+  text-align: center;
+  font-size: 13px;
+}

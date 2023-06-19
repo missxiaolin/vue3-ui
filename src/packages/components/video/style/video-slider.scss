@@ -1,0 +1,96 @@
+.l-video-slider {
+  position: relative;
+  .l-slider__runway {
+    --e-video-slider-size: 100%;
+    width: 100%;
+    height: var(--e-video-slider-size);
+    background-color: #333333;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    .l-slider__cursor,
+    .l-slider__preload,
+    .l-slider__bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    .l-slider__cursor {
+      display: none; //TODO
+      z-index: 1;
+      width: 1px;
+      background: #fff;
+      pointer-events: none;
+      .l-slider__tips {
+        pointer-events: none;
+        color: #fff;
+        position: absolute;
+        white-space: nowrap;
+        z-index: 2;
+        bottom: 14px;
+        left: 50%;
+        padding: 4px;
+        box-sizing: border-box;
+        display: block;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 3px;
+        transform: translateX(-50%);
+      }
+    }
+    &:hover .l-slider__cursor {
+      display: block;
+    }
+    .l-slider__preload {
+      background: #717171;
+    }
+    .l-slider__bar {
+      background: linear-gradient(to right, #52a0fd 0%, #00e2fa 80%, #00e2fa 100%);
+      &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        transition: 0.2s;
+        transform: translateY(-50%) scale(1, 1);
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 0 5px #409eff;
+      }
+    }
+  }
+  // 垂直模式
+  &.is-vertical {
+    height: 100%;
+    display: inline-block;
+    .l-slider__runway {
+      position: relative;
+      height: 100%;
+      width: var(--e-video-slider-size);
+      margin: 0 6px;
+      .l-slider__preload,
+      .l-slider__bar,
+      .l-slider__cursor {
+        bottom: 0;
+        top: auto;
+        width: 100%;
+      }
+      .l-slider__cursor {
+        height: 1px;
+      }
+      .l-slider__bar {
+        &::before {
+          top: -6px;
+          left: 50%;
+          width: 12px;
+          height: 12px;
+          transform: translateX(-50%) scale(1, 1);
+        }
+      }
+    }
+  }
+}

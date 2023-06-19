@@ -1,0 +1,123 @@
+.l-player-contextmenu,
+.l-player-dialog {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 50px;
+  width: 100%;
+  z-index: 5;
+}
+.l-player-contextmenu {
+  .l-player-copyText {
+    opacity: 0;
+  }
+  .l-player-contextmenu-body {
+    position: absolute;
+    border-radius: 5px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #efefef;
+    padding: 0;
+    text-align: left;
+    width: 130px;
+    box-sizing: border-box;
+    padding: 5px 0;
+    li {
+      padding: 8px 20px;
+      margin: 0;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+.l-player-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .l-player-dialog-body {
+    background-color: rgba(33, 33, 33, 0.9);
+    border-radius: 5px;
+    color: #fff;
+    min-width: 200px;
+    padding: 0 0 10px;
+    .l-player-dialog-title {
+      position: relative;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0;
+      padding: 12px 0px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin-bottom: 10px;
+      .icon-close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    // 快捷键说明
+    .l-player-hotkey-panel {
+      font-size: 12px;
+      color: #eee;
+      padding-right: 40px;
+      .l-player-hotkey-panel-item {
+        line-height: 26px;
+        span {
+          text-align: center;
+          display: inline-block;
+          width: 120px;
+        }
+        span:nth-child(2) {
+          color: #999;
+          width: 160px;
+        }
+      }
+    }
+    // 过滤镜
+    .l-player-filter-panel {
+      width: 320px;
+      padding: 0 20px;
+      .l-player-filter-reset {
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 3px 20px;
+        display: inline-block;
+        border-radius: 2px;
+        font-size: 12px;
+        background: rgba(133, 133, 133, 0.5);
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      }
+      .l-player-filter-panel-item {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        .filter-panel-slider {
+          width: 100%;
+          ::v-deep .l-slider__runway {
+            background-color: #999;
+            .l-slider__bar:before {
+              width: 8px;
+              height: 8px;
+              box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+          }
+        }
+        span {
+          font-size: 12px;
+          display: block;
+          width: 80px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,13 @@
   "description": "github vue ui 项目",
   "glyphs": [
     {
+      "icon_id": "2076214",
+      "name": "暂停",
+      "font_class": "pause",
+      "unicode": "e87a",
+      "unicode_decimal": 59514
+    },
+    {
       "icon_id": "582095",
       "name": "返回",
       "font_class": "fanhui",
@@ -15,7 +22,7 @@
     {
       "icon_id": "2076218",
       "name": "播放2",
-      "font_class": "bofang",
+      "font_class": "play",
       "unicode": "e87c",
       "unicode_decimal": 59516
     },
