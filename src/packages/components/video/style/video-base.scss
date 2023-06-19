@@ -38,12 +38,12 @@
 }
 
 .l-player-wrap {
-  --e-video-width: 100%;
-  --e-video-height: 100%;
+  --l-video-width: 100%;
+  --l-video-height: 100%;
   position: relative;
   overflow: hidden;
-  height: var(--e-video-height);
-  width: var(--e-video-width);
+  height: var(--l-video-height);
+  width: var(--l-video-width);
   background-color: #000;
 
   &.web-full-screen {
@@ -178,7 +178,7 @@
           }
 
           &:hover {
-            .l-tool-item-main {
+            .e-tool-item-main {
               display: flex;
             }
           }
@@ -218,7 +218,7 @@
           }
 
           &.is-muted {
-            .l-slider__bar {
+            .e-slider__bar {
               height: 0 !important;
             }
           }
@@ -357,7 +357,7 @@
 .f24 {
   font-size: 24px;
 }
-.l-video-loading {
+.l-loading {
   position: absolute;
   left: 0;
   right: 0;

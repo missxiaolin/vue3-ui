@@ -18,15 +18,15 @@ hls播放支持清晰度切换
 ```vue demo
 <template>
   <div>
-    <l-video v-bind="options" width="50%" poster='https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg'/>
+    <l-video v-bind="options" poster='https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg'/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
 const options = reactive({
-  width: '800px', //播放器高度
-  height: '450px', //播放器高度
+  width: '600px', //播放器高度
+  height: '300px', //播放器高度
   color: "#409eff", //主题色
   title: '', //视频名称
   src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
