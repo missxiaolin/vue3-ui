@@ -49,7 +49,7 @@
       <transition name="l-scall-out">
         <!-- 播放按钮 -->
         <div class="l-play-btn" v-show="state.playBtnState == 'play'">
-          <l-icon icon="l-bofang" :size="40"></l-icon>
+          <l-icon icon="l-play" :size="40"></l-icon>
         </div>
       </transition>
       <!-- 操作信息通知 -->

@@ -9,8 +9,8 @@
       {{ ~~(state.volume * 100) }}%
     </li>
     <li class="l-flex-center" v-show="state.handleType == 'playbackRate' || state.isMultiplesPlay">
-      <icon size="12" icon="l-bofang"></icon>
-      <icon size="12" icon="l-bofang" style="margin-right: 5px"></icon>5X速播放中
+      <icon size="12" icon="l-play"></icon>
+      <icon size="12" icon="l-play" style="margin-right: 5px"></icon>5X速播放中
     </li>
   </div>
 </template>
