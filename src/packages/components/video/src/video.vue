@@ -93,7 +93,7 @@
       <div class="l-control-tool" @click="inputFocusHandle">
         <div class="l-tool-bar">
           <div class="l-tool-item" @click="togglePlay">
-            <l-icon size="20" :icon="`l-${state.playBtnState}`"></l-icon>
+            <l-icon size="20" :icon="state.playBtnState == 'replay' ? 'l-play' : `l-${state.playBtnState}`"></l-icon>
           </div>
           <div class="l-tool-item l-tool-time audioTrack-btn" v-if="props.controlBtns.includes('audioTrack')">
             <span>{{ state.currentTime }}</span>
