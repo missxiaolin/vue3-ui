@@ -30,12 +30,13 @@ import { Dropdown, DropdownItem, DropdownMenu } from '../components/dropdown/ind
 import { Progress } from '../components/progress/index';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../components/tooltip/index';
 import { Dialog } from '../components/dialog/index';
-import { Drawer } from '../components/drawer/index'
-import { Popover } from '../components/popover/index'
-import { Popconfirm } from '../components/popconfirm/index'
-import { Skeleton, SkeletonItem } from '../components/skeleton/index'
+import { Drawer } from '../components/drawer/index';
+import { Popover } from '../components/popover/index';
+import { Popconfirm } from '../components/popconfirm/index';
+import { Skeleton, SkeletonItem } from '../components/skeleton/index';
 import { Video } from '../components/video/index';
-import { Switch } from '../components/switch/index'
+import { Avatar } from '../components/avatar/index';
+import { Switch } from '../components/switch/index';
 
 export default [
   ConfigProvider,
@@ -96,5 +97,6 @@ export default [
   Skeleton,
   SkeletonItem,
   Video,
+  Avatar,
   Switch
 ];
