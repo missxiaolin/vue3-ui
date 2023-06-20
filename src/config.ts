@@ -450,15 +450,16 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
-          }, {
-            "name": "Avatar",
-            "type": "component",
-            "cName": "头像",
-            "desc": "头像组件",
-            "show": true,
-            "author": "lin",
-            "progress": "100%"
           },
+          {
+            name: 'Avatar',
+            type: 'component',
+            cName: '头像',
+            desc: '头像组件',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }
         ]
       },
       {
