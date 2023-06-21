@@ -37,6 +37,7 @@ import { Skeleton, SkeletonItem } from '../components/skeleton/index';
 import { Video } from '../components/video/index';
 import { Avatar } from '../components/avatar/index';
 import { Image } from '../components/image/index';
+import { ImagePreview } from '../components/image-preview/index'
 import { Switch } from '../components/switch/index';
 
 export default [
@@ -100,5 +101,6 @@ export default [
   Video,
   Avatar,
   Image,
+  ImagePreview,
   Switch
 ];

@@ -15,6 +15,9 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-tupian2:before {
+  content: "\e695";
+}
 
 .l-shezhi:before {
   content: "\e70f";

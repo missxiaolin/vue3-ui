@@ -1,5 +1,20 @@
 <template>
-  <div :class="ns.b()"> </div>
+  <div ref="container" :class="[ns.b(), $attrs.class]" :style="containerStyle">
+    <slot v-if="loading" name="placeholder">
+      <div :class="ns.e('placeholder')"></div>
+    </slot>
+    <slot v-else-if="hasLoadError" name="error">
+      <div :class="ns.e('error')">{{ t('el.image.error') }}</div>
+    </slot>
+    <img
+      v-else
+      v-bind="attrs"
+      :src="src"
+      :style="imageStyle"
+      :class="[ns.e('inner'), preview ? ns.e('preview') : '']"
+    />
+     <!-- <ImagePreview /> -->
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,11 +36,29 @@ import createComponent from '../../../utils/create';
 const { create } = createComponent('Image');
 
 export default create({
-  setup(props, { emit }) {
+  components: {
+    ImagePreview
+  },
+  inheritAttrs: false,
+
+  props: imageProps,
+  emits: imageEmits,
+  setup(props, { emit, attrs: rawAttrs }) {
     const ns = useNamespace('image');
+    const attrs = useAttrs();
+    const { t } = useLocaleInject();
+    const loading = ref(true);
+    const hasLoadError = ref(false);
+
+    const containerStyle = computed(() => rawAttrs.style as StyleValue);
 
     return {
-      ns
+      ns,
+      attrs,
+      containerStyle,
+      t,
+      loading,
+      hasLoadError
     };
   }
 });
