@@ -461,14 +461,23 @@ const config: any = {
             progress: '100%'
           },
           {
-            "name": "Image",
-            "type": "component",
-            "cName": "图片",
-            "desc": "",
-            "show": true,
-            "author": "lin",
-            "progress": "100%"
+            name: 'Image',
+            type: 'component',
+            cName: '图片',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           },
+          {
+            name: 'image-preview',
+            type: 'component',
+            cName: '图片预览',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }
         ]
       },
       {

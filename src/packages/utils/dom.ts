@@ -83,6 +83,30 @@ export const getScrollContainer = (
   return parent;
 };
 
+export const isInContainer = (el: Element | undefined, container: Element | Window | undefined): boolean => {
+  if (isServer || !el || !container) return false;
+
+  const elRect = el.getBoundingClientRect();
+
+  let containerRect: Pick<DOMRect, 'top' | 'bottom' | 'left' | 'right'>;
+  if (container instanceof Element) {
+    containerRect = container.getBoundingClientRect();
+  } else {
+    containerRect = {
+      top: 0,
+      right: window.innerWidth,
+      bottom: window.innerHeight,
+      left: 0
+    };
+  }
+  return (
+    elRect.top < containerRect.bottom &&
+    elRect.bottom > containerRect.top &&
+    elRect.right > containerRect.left &&
+    elRect.left < containerRect.right
+  );
+};
+
 /* istanbul ignore next */
 // Here I want to use the type CSSProperties, but the definition for CSSProperties
 // has { [index: number]: string } in its type annotation, which does not satisfy the method
@@ -189,7 +213,6 @@ export const composeEventHandlers = <E>(
   };
   return handleEvent;
 };
-
 
 type WhenMouseHandler = (e: PointerEvent) => any;
 export const whenMouse = (handler: WhenMouseHandler): WhenMouseHandler => {
