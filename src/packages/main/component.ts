@@ -36,6 +36,7 @@ import { Popconfirm } from '../components/popconfirm/index';
 import { Skeleton, SkeletonItem } from '../components/skeleton/index';
 import { Video } from '../components/video/index';
 import { Avatar } from '../components/avatar/index';
+import { Image } from '../components/image/index';
 import { Switch } from '../components/switch/index';
 
 export default [
@@ -98,5 +99,6 @@ export default [
   SkeletonItem,
   Video,
   Avatar,
+  Image,
   Switch
 ];

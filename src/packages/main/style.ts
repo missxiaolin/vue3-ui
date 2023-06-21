@@ -55,3 +55,4 @@ import '@/packages/components/video/style/video-status.scss';
 import '@/packages/components/video/style/video-switch.scss';
 import '@/packages/components/switch/style/switch.scss';
 import '@/packages/components/avatar/style/avatar.scss';
+import '@/packages/components/image/style/image.scss';
