@@ -13,7 +13,7 @@
       :style="imageStyle"
       :class="[ns.e('inner'), preview ? ns.e('preview') : '']"
     />
-     <!-- <ImagePreview /> -->
+    <!-- <ImagePreview /> -->
   </div>
 </template>
 
@@ -78,6 +78,11 @@ export default create({
       return {};
     });
 
+    const preview = computed(() => {
+      const { previewSrcList } = props;
+      return Array.isArray(previewSrcList) && previewSrcList.length > 0;
+    });
+
     const containerStyle = computed(() => rawAttrs.style as StyleValue);
 
     const loadImage = () => {
@@ -111,7 +116,7 @@ export default create({
         img.setAttribute(key, value as string);
       });
       img.src = currentImageSrc;
-    }
+    };
 
     function handleLoad(e: Event, img: HTMLImageElement) {
       imgWidth.value = img.width;
@@ -126,12 +131,40 @@ export default create({
       emit('error', event);
     }
 
-    async function addLazyLoadListener() {
+    const lazyLoadHandler = useThrottleFn(handleLazyLoad, 200);
 
+    function handleLazyLoad() {
+      if (isInContainer(container.value, _scrollContainer.value)) {
+        loadImage();
+        removeLazyLoadListener();
+      }
+    }
+
+    async function addLazyLoadListener() {
+      if (!isClient) return;
+
+      await nextTick();
+
+      const { scrollContainer } = props;
+      if (isHtmlElement(scrollContainer)) {
+        _scrollContainer.value = scrollContainer;
+      } else if (isString(scrollContainer) && scrollContainer !== '') {
+        _scrollContainer.value = document.querySelector<HTMLElement>(scrollContainer) ?? undefined;
+      } else if (container.value) {
+        _scrollContainer.value = getScrollContainer(container.value);
+      }
+
+      if (_scrollContainer.value) {
+        stopScrollListener = useEventListener(_scrollContainer, 'scroll', lazyLoadHandler);
+        setTimeout(() => handleLazyLoad(), 100);
+      }
     }
 
     function removeLazyLoadListener() {
+      if (!isClient || !_scrollContainer.value || !lazyLoadHandler) return;
 
+      stopScrollListener();
+      _scrollContainer.value = undefined;
     }
 
     watch(
@@ -164,7 +197,9 @@ export default create({
       imageStyle,
       t,
       loading,
-      hasLoadError
+      hasLoadError,
+      preview,
+      container
     };
   }
 });
