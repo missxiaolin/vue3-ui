@@ -1,3 +1,5 @@
+import isServer from './isServer';
+
 import { isString, hasOwn, isArray, camelize, isObject } from '@vue/shared';
 
 export { isString, hasOwn, isArray, camelize, isObject };
@@ -54,3 +56,11 @@ export function myFixed(num: any, digit: number = 2) {
  * Maybe replace with [uuid](https://www.npmjs.com/package/uuid)
  */
 export const generateId = (): number => Math.floor(Math.random() * 10000);
+
+// drop IE and (Edge < 79) support
+// export const isIE
+// export const isEdge
+
+export const isFirefox = function (): boolean {
+  return !isServer && !!window.navigator.userAgent.match(/firefox/i);
+};
