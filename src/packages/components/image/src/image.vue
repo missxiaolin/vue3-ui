@@ -12,8 +12,24 @@
       :src="src"
       :style="imageStyle"
       :class="[ns.e('inner'), preview ? ns.e('preview') : '']"
+      @click="clickHandler"
     />
-    <!-- <ImagePreview /> -->
+    <template v-if="preview">
+      <image-preview
+        v-if="showViewer"
+        :z-index="zIndex"
+        :initial-index="imageIndex"
+        :url-list="previewSrcList"
+        :hide-on-click-modal="hideOnClickModal"
+        :teleported="teleported"
+        @close="closeViewer"
+        @switch="switchViewer"
+      >
+        <div v-if="$slots.viewer">
+          <slot name="viewer" />
+        </div>
+      </image-preview>
+    </template>
   </div>
 </template>
 
@@ -70,6 +86,8 @@ export default create({
     let stopScrollListener: () => void;
     let stopWheelListener: () => void;
 
+    const containerStyle = computed(() => rawAttrs.style as StyleValue);
+
     const imageStyle = computed<CSSProperties>(() => {
       const { fit } = props;
       if (isClient && fit) {
@@ -83,10 +101,22 @@ export default create({
       return Array.isArray(previewSrcList) && previewSrcList.length > 0;
     });
 
-    const containerStyle = computed(() => rawAttrs.style as StyleValue);
+    const teleported = computed(() => {
+      return props.appendToBody || props.previewTeleported;
+    });
+
+    const imageIndex = computed(() => {
+      const { previewSrcList, initialIndex } = props;
+      let previewIndex = initialIndex;
+      if (initialIndex > previewSrcList.length - 1) {
+        previewIndex = 0;
+      }
+      return previewIndex;
+    });
 
     const loadImage = () => {
       if (!isClient) return;
+
       // reset status
       loading.value = true;
       hasLoadError.value = false;
@@ -131,14 +161,14 @@ export default create({
       emit('error', event);
     }
 
-    const lazyLoadHandler = useThrottleFn(handleLazyLoad, 200);
-
     function handleLazyLoad() {
       if (isInContainer(container.value, _scrollContainer.value)) {
         loadImage();
         removeLazyLoadListener();
       }
     }
+
+    const lazyLoadHandler = useThrottleFn(handleLazyLoad, 200);
 
     async function addLazyLoadListener() {
       if (!isClient) return;
@@ -167,6 +197,43 @@ export default create({
       _scrollContainer.value = undefined;
     }
 
+    function wheelHandler(e: WheelEvent) {
+      if (!e.ctrlKey) return;
+
+      if (e.deltaY < 0) {
+        e.preventDefault();
+        return false;
+      } else if (e.deltaY > 0) {
+        e.preventDefault();
+        return false;
+      }
+    }
+
+    function clickHandler() {
+      // don't show viewer when preview is false
+      if (!preview.value) return;
+
+      stopWheelListener = useEventListener('wheel', wheelHandler, {
+        passive: false
+      });
+
+      // prevent body scroll
+      prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      showViewer.value = true;
+    }
+
+    function closeViewer() {
+      stopWheelListener?.();
+      document.body.style.overflow = prevOverflow;
+      showViewer.value = false;
+      emit('close');
+    }
+
+    function switchViewer(val: number) {
+      emit('switch', val);
+    }
+
     watch(
       () => props.src,
       () => {
@@ -191,15 +258,22 @@ export default create({
     });
 
     return {
-      ns,
       attrs,
-      containerStyle,
-      imageStyle,
-      t,
       loading,
       hasLoadError,
+      showViewer,
+      containerStyle,
+      imageStyle,
       preview,
-      container
+      imageIndex,
+      container,
+      ns,
+      teleported,
+
+      clickHandler,
+      closeViewer,
+      switchViewer,
+      t
     };
   }
 });
