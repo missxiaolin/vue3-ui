@@ -15,6 +15,31 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+
+.l-suoxiao2:before {
+  content: "\ec14";
+}
+
+.l-suoxiao1:before {
+  content: "\e616";
+}
+
+.l-sousuofangda:before {
+  content: "\ec32";
+}
+
+.l-xiangyouxuanzhuan:before {
+  content: "\e66a";
+}
+
+.l-xiangzuoxuanzhuan:before {
+  content: "\e66b";
+}
+
+.l-fangda:before {
+  content: "\e650";
+}
+
 .l-tupian2:before {
   content: "\e695";
 }

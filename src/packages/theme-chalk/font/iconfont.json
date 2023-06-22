@@ -6,6 +6,48 @@
   "description": "github vue ui 项目",
   "glyphs": [
     {
+      "icon_id": "4777227",
+      "name": "缩小",
+      "font_class": "suoxiao2",
+      "unicode": "ec14",
+      "unicode_decimal": 60436
+    },
+    {
+      "icon_id": "3977830",
+      "name": "缩小",
+      "font_class": "suoxiao1",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "5732758",
+      "name": "搜索放大",
+      "font_class": "sousuofangda",
+      "unicode": "ec32",
+      "unicode_decimal": 60466
+    },
+    {
+      "icon_id": "8229196",
+      "name": "向右旋转",
+      "font_class": "xiangyouxuanzhuan",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "8229197",
+      "name": "向左旋转",
+      "font_class": "xiangzuoxuanzhuan",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "12097431",
+      "name": "放大",
+      "font_class": "fangda",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
       "icon_id": "666891",
       "name": "图片",
       "font_class": "tupian2",
