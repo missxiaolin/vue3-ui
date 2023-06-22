@@ -356,7 +356,7 @@ export default create({
 
     const wrapperStyle = computed(() => {
       const style: objTy = {};
-      props.position && (style['--e-viewer-position'] = props.position);
+      props.position && (style['--l-viewer-position'] = props.position);
       return style as CSSProperties;
     });
 
