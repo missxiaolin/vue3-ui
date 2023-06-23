@@ -6,6 +6,20 @@
   "description": "github vue ui 项目",
   "glyphs": [
     {
+      "icon_id": "12661421",
+      "name": "显示",
+      "font_class": "xianshi_huaban",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "26847670",
+      "name": "隐藏",
+      "font_class": "yincang",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
       "icon_id": "4777227",
       "name": "缩小",
       "font_class": "suoxiao2",

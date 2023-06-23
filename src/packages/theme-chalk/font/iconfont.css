@@ -15,6 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.l-xianshi_huaban:before {
+  content: "\e66f";
+}
+
+.l-yincang:before {
+  content: "\e66c";
+}
 
 .l-suoxiao2:before {
   content: "\ec14";
