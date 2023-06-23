@@ -39,6 +39,7 @@ import { Avatar } from '../components/avatar/index';
 import { Image } from '../components/image/index';
 import { ImagePreview } from '../components/image-preview/index'
 import { Switch } from '../components/switch/index';
+import { Input } from '../components/input/index'
 
 export default [
   ConfigProvider,
@@ -102,5 +103,6 @@ export default [
   Avatar,
   Image,
   ImagePreview,
-  Switch
+  Switch,
+  Input
 ];
