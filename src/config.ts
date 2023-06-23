@@ -166,6 +166,15 @@ const config: any = {
             show: true,
             author: '',
             progress: '100%'
+          },
+          {
+            name: 'Input-number',
+            type: 'component',
+            cName: '数字输入',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },

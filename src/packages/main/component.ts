@@ -40,6 +40,7 @@ import { Image } from '../components/image/index';
 import { ImagePreview } from '../components/image-preview/index'
 import { Switch } from '../components/switch/index';
 import { Input } from '../components/input/index'
+import { InputNumber } from '../components/input-number/index'
 
 export default [
   ConfigProvider,
@@ -104,5 +105,6 @@ export default [
   Image,
   ImagePreview,
   Switch,
-  Input
+  Input,
+  InputNumber
 ];

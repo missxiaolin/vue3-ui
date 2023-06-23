@@ -58,3 +58,4 @@ import '@/packages/components/image/style/image.scss';
 import '@/packages/components/image-preview/style/image-preview.scss';
 import '@/packages/components/switch/style/switch.scss';
 import '@/packages/components/input/style/input.scss';
+import '@/packages/components/input-number/style/input-number.scss';
