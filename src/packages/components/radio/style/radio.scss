@@ -91,5 +91,8 @@
       border-color: var(--l-disabled-border-base);
       transform: translate(0, 2px);
     }
+    @include e(original) {
+        cursor: not-allowed;
+    }
   }
 }

@@ -30,3 +30,27 @@
     })  
 </script>
 ```
+
+## 禁用状态
+
+`disabled` 属性可以用来控制单选框的禁用状态.
+
+你只需要为单选框设置 `disabled` 属性就能控制其禁用状态。
+```vue demo
+<template>
+  <l-radio v-model="radio" disabled label="A">选项 A</l-radio>
+  <l-radio v-model="radio" disabled label="B">选项 B</l-radio>
+  <l-radio v-model="radio" label="C">选项 C</l-radio>
+  <l-radio v-model="radio" label="D">选项 D</l-radio>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    return {
+      radio: ref('A'),
+    }
+  },
+})
+</script>
+```
