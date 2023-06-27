@@ -37,10 +37,11 @@ import { Skeleton, SkeletonItem } from '../components/skeleton/index';
 import { Video } from '../components/video/index';
 import { Avatar } from '../components/avatar/index';
 import { Image } from '../components/image/index';
-import { ImagePreview } from '../components/image-preview/index'
+import { ImagePreview } from '../components/image-preview/index';
 import { Switch } from '../components/switch/index';
-import { Input } from '../components/input/index'
-import { InputNumber } from '../components/input-number/index'
+import { Input } from '../components/input/index';
+import { InputNumber } from '../components/input-number/index';
+import { Radio, RadioButton, RadioGroup } from '../components/radio';
 
 export default [
   ConfigProvider,
@@ -106,5 +107,8 @@ export default [
   ImagePreview,
   Switch,
   Input,
-  InputNumber
+  InputNumber,
+  Radio,
+  RadioButton,
+  RadioGroup
 ];

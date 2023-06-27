@@ -59,3 +59,6 @@ import '@/packages/components/image-preview/style/image-preview.scss';
 import '@/packages/components/switch/style/switch.scss';
 import '@/packages/components/input/style/input.scss';
 import '@/packages/components/input-number/style/input-number.scss';
+import '@/packages/components/radio/style/radio.scss';
+import '@/packages/components/radio/style/radioButton.scss';
+import '@/packages//components/radio/style/radioGroup.scss';
