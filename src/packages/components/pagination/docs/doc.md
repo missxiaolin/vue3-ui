@@ -56,6 +56,51 @@ const changeTotal = () => {
 </template>
 ```
 
+### 附加功能
+根据场景需要，可以添加其他功能模块。
+
+```vue demo
+<template>
+<div class="demo-pagination-block">
+    <div class="demonstration">Jump to</div>
+    <l-pagination
+      v-model:currentPage="currentPage3"
+      v-model:page-size="pageSize3"
+      :small="small"
+      :disabled="disabled"
+      :background="background"
+      layout="prev, pager, next, jumper"
+      :total="1000"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+    </l-pagination>
+</div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const currentPage1 = ref(5)
+const currentPage2 = ref(5)
+const currentPage3 = ref(5)
+const currentPage4 = ref(4)
+const pageSize2 = ref(100)
+const pageSize3 = ref(100)
+const pageSize4 = ref(100)
+const small = ref(false)
+const background = ref(false)
+const disabled = ref(false)
+
+const handleSizeChange = (val: number) => {
+  console.log(`${val} items per page`)
+}
+const handleCurrentChange = (val: number) => {
+  console.log(`current page: ${val}`)
+}
+</script>
+```
+
 
  ### 属性
 | 属性	| 说明	| 类型| 	可选值| 	默认值| 

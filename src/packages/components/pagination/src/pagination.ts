@@ -11,6 +11,7 @@ import Prev from './components/prev.vue';
 import Next from './components/next.vue';
 import Total from './components/total.vue';
 import Pager from './components/pager.vue';
+import Jumper from './components/jumper.vue';
 
 /**
  * It it user's responsibility to guarantee that the value of props.total... is number
@@ -18,7 +19,7 @@ import Pager from './components/pager.vue';
  * Otherwise we can reasonable infer that the corresponding field is absent
  */
 const isAbsent = (v: unknown): v is undefined => typeof v !== 'number';
-type LayoutKey = 'prev' | 'pager' | 'next' | '->' | 'total' | 'slot';
+type LayoutKey = 'prev' | 'pager' | 'next' | 'jumper' | '->' | 'total' | 'slot';
 
 export const PaginationProps = buildProps({
   total: Number,
@@ -221,6 +222,7 @@ export default create({
           prevText: props.prevText,
           onClick: prev
         }),
+        jumper: h(Jumper),
         pager: h(Pager, {
           currentPage: currentPageBridge.value,
           pageCount: pageCountBridge.value,
