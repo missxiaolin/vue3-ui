@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@include b(radio) {
+  @include set-component-css-var('radio', $radio);
+}
+
+@include b(radio) {
+  color: var(--l-radio-font-color);
+  font-weight: var(--l-radio-font-weight);
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  outline: none;
+  font-size: var(--l-font-size-base);
+  user-select: none;
+  height: map.get($radio-height, 'default');
+  user-select: none;
+  padding: 0 20px 0 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  @each $size in (medium, small, mini) {
+    &.#{$namespace}-radio--#{$size} {
+      height: map.get($radio-height, $size);
+    }
+  }
+  @include e(label) {
+    padding-left: 10px;
+  }
+  @include e(inner) {
+    border: var(--l-radio-input-border);
+    border-radius: var(--l-radio-input-border-radius);
+    width: var(--l-radio-input-width);
+    height: var(--l-radio-input-height);
+    background-color: var(--l-radio-input-background-color);
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    transform: translate(0, 2px);
+    &::after {
+      width: 4px;
+      height: 4px;
+      border-radius: var(--l-radio-input-border-radius);
+      background-color: var(--l-color-white);
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.15s ease-in;
+    }
+  }
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+  @include when(checked) {
+    color: var(--l-color-primary);
+    @include e(inner) {
+      border-color: var(--l-color-primary);
+      background: var(--l-color-primary);
+      transform: translate(0, 2px);
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    @include when(bordered) {
+      border: 1px solid var(--l-color-primary);
+    }
+  }
+  @include when(bordered) {
+    border: 1px solid #dcdfe6;
+  }
+  @include when(disabled) {
+    color: var(--l-text-color-placeholder);
+    cursor: not-allowed;
+    @include e(inner) {
+      background-color: var(--l-disabled-fill-base);
+      border-color: var(--l-disabled-border-base);
+      transform: translate(0, 2px);
+    }
+  }
+}
