@@ -104,3 +104,69 @@ export default defineComponent({
 })
 </script>
 ```
+
+## 竖向排列
+适用于在多个互斥的选项竖向排列的场景
+
+`l-radio-group`和`e-radio`组合实现单选组， `l-radio-group` 设置 `direction` 值为 `vertical` 即可竖向排列。
+```vue demo
+<template>
+  <div>
+    <l-radio-group direction="vertical" v-model="group">
+      <l-radio label="A">选项 A</l-radio>
+      <l-radio label="B">选项 B</l-radio>
+      <l-radio label="C">选项 C</l-radio>
+      <l-radio label="D">选项 D</l-radio>
+    </l-radio-group>
+  </div>
+
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const group = ref('A');
+    return {group}
+  },
+})
+</script>
+```
+
+## 带有边框
+设置 `border` 属性为 `true `可以渲染为带有边框的单选框。
+```vue demo
+<template>
+  <l-radio v-model="radio" border label="A">选项 A</l-radio>
+  <l-radio v-model="radio" border label="B">选项 B</l-radio>
+  <l-radio v-model="radio" border label="C">选项 C</l-radio>
+  <l-radio v-model="radio" border label="D">选项 D</l-radio>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const radio = ref('A');
+    return {radio}
+  },
+})
+</script>
+```
+## 不显示圆点
+设置 `dot` 属性为 `false `可以渲染为不带圆点单选框。
+```vue demo
+<template>
+  <l-radio v-model="radio" border label="A" :dot="false">选项 A</l-radio>
+  <l-radio v-model="radio" border label="B" :dot="false">选项 B</l-radio>
+  <l-radio v-model="radio" border label="C" :dot="false">选项 C</l-radio>
+  <l-radio v-model="radio" border label="D" :dot="false">选项 D</l-radio>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const radio = ref('A');
+    return {radio}
+  },
+})
+</script>
+```
