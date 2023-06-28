@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@include b(radio-group) {
+  font-size: 0;
+  display: inline-block;
+  &-vertical {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  & > .l-radio-button {
+    &:nth-of-type(1) {
+      border-radius: 5px 0 0 5px;
+      border-left: 1px solid #dcdfe6;
+    }
+    &:last-of-type {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}

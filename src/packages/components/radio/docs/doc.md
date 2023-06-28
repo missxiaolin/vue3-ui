@@ -170,3 +170,27 @@ export default defineComponent({
 })
 </script>
 ```
+
+## 按钮形式
+配合  `l-radio-group` 使用、只需要把 `e-radio` 元素换成 `l-radio-button` 元素即可， `size` 属性可用来控制单选框的大小。
+```vue demo
+<template>
+  <div>
+    <l-radio-group v-model="group">
+      <l-radio-button label="A">选项 A</l-radio-button>
+      <l-radio-button label="B">选项 B</l-radio-button>
+      <l-radio-button label="C">选项 C</l-radio-button>
+      <l-radio-button label="D">选项 D</l-radio-button>
+    </l-radio-group>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const group = ref('A');
+    return {group}
+  },
+})
+</script>
+```

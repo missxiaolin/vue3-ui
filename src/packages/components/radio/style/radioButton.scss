@@ -1,0 +1,100 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@include b(radio-button) {
+  @include set-component-css-var('radio', $radio);
+}
+@include b(radio-button) {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1;
+  vertical-align: middle;
+  background: var(--l-color-white);
+  border: 1px solid #dcdfe6;
+  font-weight: var(--l-button-font-weight, var(--l-font-weight-primary));
+  border-left: 0;
+  color: var(--l-color-primary);
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  transition: var(--l-transition-all);
+  user-select: none;
+  height: map.get($radio-height, 'default');
+  padding: 5px 20px;
+  font-size: var(--l-font-size-base);
+  @each $size in (medium, small, mini) {
+    &.#{$namespace}-radio-button--#{$size} {
+      height: map.get($radio-height, $size);
+    }
+  }
+  &__inner {
+    border: var(--l-radio-input-border);
+    border-radius: var(--l-radio-input-border-radius);
+    width: var(--l-radio-input-width);
+    height: var(--l-radio-input-height);
+    background-color: var(--l-radio-input-background-color);
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    transform: translate(0, 2px);
+  }
+  &__inner::after {
+    width: 4px;
+    height: 4px;
+    border-radius: var(--l-radio-input-border-radius);
+    background-color: var(--l-color-white);
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.15s ease-in;
+  }
+  &__original {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+  &.is-checked {
+    color: var(--l-radio-button-checked-text-color, var(--l-color-white));
+    background: var(--l-color-primary);
+    border-color: var(--l-color-primary);
+    .l-radio-button__inner {
+      border-color: var(--l-color-primary);
+      background: var(--l-color-primary);
+      transform: translate(0, 2px);
+    }
+    .l-radio-button__inner::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    &.is-bordered {
+      border: 1px solid var(--l-color-primary);
+    }
+  }
+  &.is-bordered {
+    border: 1px solid var(--l-text-color-placeholder);
+  }
+  &.is-disabled {
+    color: var(--l-text-color-placeholder);
+    cursor: not-allowed;
+    .l-radio-button__inner {
+      background-color: var(--l-disabled-fill-base);
+      border-color: var(--l-disabled-border-base);
+      transform: translate(0, 2px);
+    }
+  }
+}
