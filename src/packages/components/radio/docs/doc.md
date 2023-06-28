@@ -54,3 +54,53 @@ export default defineComponent({
 })
 </script>
 ```
+
+## change 事件
+
+`change` 属性可以用来获取选中值
+```vue demo
+<template>
+  <l-radio v-model="radio" @change="modelChange" label="A">选项 A</l-radio>
+  <l-radio v-model="radio" label="B">选项 B</l-radio>
+  <l-radio v-model="radio" label="C">选项 C</l-radio>
+  <l-radio v-model="radio" label="D">选项 D</l-radio>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const radio = ref('A');
+    const modelChange = (val) => {
+        console.log("val==>",val)
+    }
+    return {radio,modelChange}
+  },
+})
+</script>
+```
+
+## 单选框组
+适用于在多个互斥的选项中选择的场景
+
+`l-radio-group`和`e-radio`组合实现单选组， 为 `l-radio-group` 绑定v-model，再为 每一个 `l-radio` 设置好 `label` 属性即可。
+```vue demo
+<template>
+  <div>
+    <l-radio-group v-model="group">
+      <l-radio label="A">选项 A</l-radio>
+      <l-radio label="B">选项 B</l-radio>
+      <l-radio label="C">选项 C</l-radio>
+      <l-radio label="D">选项 D</l-radio>
+    </l-radio-group>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const group = ref('A');
+    return {group}
+  },
+})
+</script>
+```

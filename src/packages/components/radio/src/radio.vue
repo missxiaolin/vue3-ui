@@ -65,23 +65,29 @@ export default create({
   emits: [UPDATE_MODEL_EVENT, 'change'],
   setup(props, { emit }) {
     const radioRef = ref<HTMLInputElement>();
+    const radioGroup: any = inject('radioGroupKey', undefined);
+    const isGroup = computed(() => !!radioGroup);
     const focus = ref(false);
     const { size, disabled, label, name, border, dot } = toRefs(props);
     const modelValue = computed({
       get() {
-        return props.modelValue!;
+        return isGroup.value ? radioGroup!.modelValue : props.modelValue!;
       },
       set(val) {
-        emit(UPDATE_MODEL_EVENT, val);
+        if (isGroup.value) {
+          radioGroup!.changeEvent(val);
+        } else {
+          emit(UPDATE_MODEL_EVENT, val);
+        }
         radioRef.value!.checked = props.modelValue === props.label;
       }
     });
     const nameValue = name.value || ref('');
     const radioSize = computed(() => {
-      return size.value;
+      return radioGroup?.size || size.value;
     });
     const radioDisabled = computed(() => {
-      return disabled.value;
+      return radioGroup && radioGroup.disabled ? radioGroup.disabled : disabled.value;
     });
 
     const handleChange = () => {
@@ -102,6 +108,7 @@ export default create({
       nameValue,
       modelValue,
       tabIndex,
+      radioGroup,
       radioRef,
       border,
       handleChange
