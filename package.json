@@ -15,7 +15,10 @@
   ],
   "scripts": {
     "dev": "vite --open --force",
+    "doc:build": "vite build",
     "tem": "node scripts/template",
+    "generate:css": "vite build --config vite.config.build.css.ts",
+    "build:lib": "vite build --config vite.config.build.ts",
     "generate:files": "node scripts/generate-ui.js"
   },
   "repository": {
