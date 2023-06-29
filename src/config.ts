@@ -184,6 +184,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Checkbox',
+            type: 'component',
+            cName: '复选框',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },

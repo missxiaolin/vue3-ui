@@ -42,6 +42,7 @@ import { Switch } from '../components/switch/index';
 import { Input } from '../components/input/index';
 import { InputNumber } from '../components/input-number/index';
 import { Radio, RadioButton, RadioGroup } from '../components/radio';
+import { Checkbox, CheckboxGroup } from '../components/checkbox';
 
 export default [
   ConfigProvider,
@@ -110,5 +111,7 @@ export default [
   InputNumber,
   Radio,
   RadioButton,
-  RadioGroup
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup
 ];

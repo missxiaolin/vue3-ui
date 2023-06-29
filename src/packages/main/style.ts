@@ -62,3 +62,5 @@ import '@/packages/components/input-number/style/input-number.scss';
 import '@/packages/components/radio/style/radio.scss';
 import '@/packages/components/radio/style/radioButton.scss';
 import '@/packages//components/radio/style/radioGroup.scss';
+import '@/packages/components/checkbox/style/checkbox.scss';
+import '@/packages/components/checkbox/style/checkboxGroup.scss';
