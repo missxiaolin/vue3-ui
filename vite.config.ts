@@ -6,6 +6,7 @@ import path from 'path'
 
 
 const resolve = path.resolve;
+
 export default defineConfig({
     base: '/',
     server: {
