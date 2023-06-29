@@ -15,7 +15,8 @@
   ],
   "scripts": {
     "dev": "vite --open --force",
-    "tem": "node scripts/template"
+    "tem": "node scripts/template",
+    "generate:files": "node scripts/generate-ui.js"
   },
   "repository": {
     "type": "git",
@@ -29,14 +30,15 @@
   "homepage": "https://github.com/missxiaolin/vue3-ui#readme",
   "dependencies": {
     "@popperjs/core": "^2.10.2",
-    "sass": "^1.49.0",
+    "@vueuse/core": "^7.1.2",
     "hls.js": "^1.1.5",
-    "vue": "^3.2.19",
-    "vue-clipboard3": "^2.0.0",
-    "vue-router": "^4.0.11",
+    "line-reader": "^0.4.0",
     "lodash": "^4.17.21",
     "lodash-unified": "^1.0.2",
-    "@vueuse/core": "^7.1.2"
+    "sass": "^1.49.0",
+    "vue": "^3.2.19",
+    "vue-clipboard3": "^2.0.0",
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@types/node": "^17.0.10",
