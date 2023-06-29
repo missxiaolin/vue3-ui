@@ -194,3 +194,83 @@ export default defineComponent({
 })
 </script>
 ```
+
+
+## change事件
+配合  `e-radio-group` 使用、 `change` 事件触发
+```vue demo
+<template>
+  <div>
+    <l-radio-group v-model="group" @change="modelChange">
+      <l-radio-button label="A">选项 A</l-radio-button>
+      <l-radio-button label="B">选项 B</l-radio-button>
+      <l-radio-button label="C">选项 C</l-radio-button>
+      <l-radio-button label="D">选项 D</l-radio-button>
+    </l-radio-group>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+  setup() {
+    const group = ref('A');
+    const modelChange = (val) => {
+        console.log("val==>",val)
+    }
+    return {group,modelChange}
+  },
+})
+</script>
+```
+
+
+
+### Radio 属性
+
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+| mode-value / v-model | 选中项绑定值 | string / number / boolean | — | —|
+| label | 单选框对应的值 | string / number / boolean |	— | —|
+| disabled | 是否禁用单选框 |	boolean | — | false |
+| size | Radio 的尺寸 |	string | 	medium / small / mini | — |
+| name | 原生 name 属性 |	string | — | — |
+| border | 是否显示边框  | boolean | — | false |
+
+
+
+### Radio 事件
+| 事件名 | 说明	|	回调参数 |
+|---- |----- |------ |
+| change | 绑定值变化时触发的事件 | 选中的 Radio label 值 |
+
+
+### Radio 插槽
+| 插槽名 | 说明 |
+|---- | ------ |
+| — | 自定义默认内容 |
+
+
+### RadioGroup 属性
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+| mode-value / v-model | 选中项绑定值 | string / number / boolean | — | —|
+| disabled | 是否禁用单选框 |	boolean | — | false |
+| size | Radio 的尺寸 |	string | 	medium / small / mini | — |
+| direction | Radio 的排列方向 |	string | vertical/transverse	 | transverse |
+
+### RadioGroup 插槽
+| 插槽名	|说明	| 子标签 |
+|---- |----- |---- |
+| — | 自定义默认内容 | Radio / Radio-button |
+
+### Radio-button 属性
+|属性	|说明	|类型	|可选值	|默认值|
+|---- |----- |------ |---  |---- |
+| label | radio 的 value | string / number  | — | —|
+| disabled | 是否禁用单选框 |	boolean | — | false |
+| name | 原生 name 属性 |	string | — | — |
+
+### Radio-button 插槽
+| 插槽名 | 说明 |
+|---- | ------ |
+| — | 自定义默认内容 |
