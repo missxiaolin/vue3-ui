@@ -59,8 +59,8 @@ export default defineConfig({
     },
     lib: {
       entry: 'src/packages/main/index.ts',
-      name: 'eui',
-      fileName: 'eui',
+      name: 'lui',
+      fileName: 'lui',
       formats: ['es', 'umd']
     }
   }
