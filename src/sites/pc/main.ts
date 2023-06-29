@@ -5,6 +5,7 @@ import '../assets/style/index.scss'
 
 import UI from '../../packages/main/index';
 import '../../packages/main/style'
+import '../../packages/theme-chalk/variables.scss';
 
 const app = createApp(App);
 app.use(UI, {
