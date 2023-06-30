@@ -20,7 +20,7 @@
     "generate:css": "vite build --config vite.config.build.css.ts",
     "build:libs:all": "vite build --config vite.config.build.ts",
     "build:libs:json": "node scripts/component-json",
-    "build:libs:batches": "vite build --config vite.config.build.disperse.ts",
+    "build:libs:components": "vite build --config vite.config.build.disperse.ts",
     "generate:files": "node scripts/generate-ui.js"
   },
   "repository": {
