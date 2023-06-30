@@ -18,7 +18,8 @@
     "doc:build": "vite build",
     "tem": "node scripts/template",
     "generate:css": "vite build --config vite.config.build.css.ts",
-    "build:lib": "vite build --config vite.config.build.ts",
+    "build:libs:all": "vite build --config vite.config.build.ts",
+    "build:libs:batches": "vite build --config vite.config.build.disperse.ts",
     "generate:files": "node scripts/generate-ui.js"
   },
   "repository": {
