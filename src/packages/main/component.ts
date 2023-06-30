@@ -2,7 +2,7 @@ import { ConfigProvider } from '../components/config-provider/index';
 import { Container, Aside, Footer, Main, Header } from '../components/layout/index';
 import { Row, Col } from '../components/grid/index';
 import { Icon } from '../components/icon/index';
-import { Button, ButtonGroup } from '../components/button';
+import { Button, ButtonGroup } from '../components/button/index';
 import { Link } from '../components/link/index';
 import { Space } from '../components/space/index';
 import { Divider } from '../components/divider/index';
@@ -41,8 +41,8 @@ import { ImagePreview } from '../components/image-preview/index';
 import { Switch } from '../components/switch/index';
 import { Input } from '../components/input/index';
 import { InputNumber } from '../components/input-number/index';
-import { Radio, RadioButton, RadioGroup } from '../components/radio';
-import { Checkbox, CheckboxGroup } from '../components/checkbox';
+import { Radio, RadioButton, RadioGroup } from '../components/radio/index';
+import { Checkbox, CheckboxGroup } from '../components/checkbox/index';
 
 export default [
   ConfigProvider,
