@@ -21,8 +21,7 @@ async function loadComponent(file) {
         let matchString = matched[2];
         matchString = matchString.replace(/\.\.\//g, ''); // 移除所有的 "../"
         let arr = matchString.split('/');
-        // input[arr[1]] = `./src/${matchString}`
-        input = input + `"${arr[1]}": "./src/${matchString}",`;
+        input = input + `"${arr[1]}": "./src/packages/${matchString}",`;
       } else {
         // console.log('没有匹配到字符串');
       }
