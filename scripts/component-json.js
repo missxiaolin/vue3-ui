@@ -3,12 +3,18 @@ const fs = require('fs-extra');
 const readline = require('linebyline');
 const { resolve, join, basename } = require('path');
 const OUTPUT_PATH = join(__dirname, '../src/packages/components.json');
+const OUTPUT_CSS_PATH = join(__dirname, '../src/packages/build-css.js');
 const fg = require('fast-glob');
 
 const comPath = join(__dirname, '../src/packages/main/component.ts');
 const pluginPath = join(__dirname, '../src/packages/main/plugin.ts');
-let input = `{`;
+const cssPath = join(__dirname, '../src/packages/main/style.ts');
+let input = `{\n`;
 
+/**
+ * js 模块 打包文件写入
+ * @param {*} file 
+ */
 async function loadComponent(file) {
   let rl = readline(file);
   let status = 0;
@@ -21,7 +27,7 @@ async function loadComponent(file) {
         let matchString = matched[2];
         matchString = matchString.replace(/\.\.\//g, ''); // 移除所有的 "../"
         let arr = matchString.split('/');
-        input = input + `"${arr[1]}": "./src/packages/${matchString}",`;
+        input = input + `"${arr[1]}": "./src/packages/${matchString}",\n`;
       } else {
         // console.log('没有匹配到字符串');
       }
@@ -39,4 +45,16 @@ async function loadComponent(file) {
   });
 }
 
-loadComponent(comPath);
+/**
+ * css 打包文件写入
+ * @param {*} file 
+ */
+async function loadCssComponent(file) {
+  fs.outputFile(OUTPUT_CSS_PATH, input, 'utf8', () => {
+    console.log(`css列表 文件写入成功`);
+  });
+}
+
+// loadComponent(comPath);
+
+loadCssComponent(cssPath)
