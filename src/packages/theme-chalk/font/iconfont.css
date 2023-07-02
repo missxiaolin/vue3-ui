@@ -1,19 +1,10 @@
 @font-face {
-  font-family: "l-font"; /* Project id 4054851 */
-  src: url('iconfont.woff2?t=1683534366364') format('woff2'),
-       url('iconfont.woff?t=1683534366364') format('woff'),
-       url('iconfont.ttf?t=1683534366364') format('truetype'),
-       url('iconfont.svg?t=1683534366364#iconfont') format('svg');
+  font-family: 'l-font';  /* Project id 4054851 */
+  src: url('//at.alicdn.com/t/c/font_4054851_le4r49cthb.woff2?t=1688303539371') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4054851_le4r49cthb.woff?t=1688303539371') format('woff'),
+       url('//at.alicdn.com/t/c/font_4054851_le4r49cthb.ttf?t=1688303539371') format('truetype'),
+       url('//at.alicdn.com/t/c/font_4054851_le4r49cthb.svg?t=1688303539371#iconfont') format('svg');
 }
-
-
-/* .iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
 
 .l-xianshi_huaban:before {
   content: "\e66f";
