@@ -1,0 +1,45 @@
+{
+	"name": "lui-plus",
+	"version": "0.3.5",
+	"description": "vue组件",
+	"main": "lui.umd.js",
+	"module": "lui.es.js",
+	"style": "theme-chalk/style.css",
+	"typings": "index.d.ts",
+	"private": false,
+	"lisence": "MIT",
+	"keywords": [
+		"vue3",
+		"vite",
+		"typeScript",
+		"vue3 component",
+		"component library"
+	],
+	"author": "EMONSTER",
+	"homepage": "",
+	"dependencies": {
+		"@popperjs/core": "^2.10.2",
+		"@vueuse/core": "^7.1.2",
+		"axios": "^1.3.3",
+		"dayjs": "^1.10.7",
+		"hls.js": "^1.1.5",
+		"lodash": "^4.17.21",
+		"lodash-unified": "^1.0.2",
+		"normalize-wheel-es": "^1.1.0",
+		"unbuild": "^1.2.1",
+		"vue-clipboard3": "^2.0.0"
+	},
+	"devDependencies": {
+		"@types/lodash": "^4.14.178",
+		"@types/lodash-es": "^4.17.6",
+		"@types/node": "*",
+		"csstype": "^2.6.19",
+		"vue-router": "^4.0.12"
+	},
+	"web-types": "web-types.json",
+	"browserslist": [
+		"> 1%",
+		"not ie 11",
+		"not op_mini all"
+	]
+}
