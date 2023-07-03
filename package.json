@@ -18,10 +18,10 @@
     "doc:build": "vite build",
     "tem": "node scripts/template",
     "generate:css": "vite build --config vite.config.build.css.ts",
-    "build:libs:all": "vite build --config vite.config.build.ts && node scripts/generate-themes && vite build --config vite.config.build.css.ts && npm run build:locale",
+    "build:libs:all": "vite build --config vite.config.build.ts && node scripts/generate-themes && vite build --config vite.config.build.css.ts && npm run build:locale && npm run generate:pck",
     "build:libs:json": "node scripts/component-json",
     "build:locale": "vite build --config vite.config.build.locale.ts",
-    "build:libs:components": "vite build --config vite.config.build.disperse.ts && node scripts/generate-themes && vite build --config vite.config.build.css.ts && npm run build:locale",
+    "build:libs:components": "vite build --config vite.config.build.disperse.ts && node scripts/generate-themes && vite build --config vite.config.build.css.ts && npm run build:locale && npm run generate:pck",
     "generate:files": "node scripts/generate-ui.js",
     "generate:pck": "node scripts/generate-package.js"
   },
