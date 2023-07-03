@@ -108,3 +108,33 @@ export default defineComponent ({
 })
 </script>
 ```
+
+## 多选框组
+`<l-checkbox-group>` 和 `<l-checkbox>` 配合使用即可
+```vue demo
+<template>
+    <div>
+        <l-checkbox-group v-model="checkList"  @change="groupChange">
+            <l-checkbox  label="tired"></l-checkbox>
+            <l-checkbox  label="emo"></l-checkbox>
+            <l-checkbox  label="happy"></l-checkbox>
+            <l-checkbox  label="funny"></l-checkbox>
+        </l-checkbox-group>
+    </div>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+export default defineComponent ({
+    setup() {
+        const groupChange = (val) => {
+            console.log("groupChange变化后的值：",val)
+        }
+        return{
+            groupChange,
+            checkList: ref(['tired']),
+        }
+    }
+})
+</script>
+```
+

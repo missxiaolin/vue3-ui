@@ -51,19 +51,25 @@
 import { UPDATE_MODEL_EVENT } from '../../../constants/event';
 import { ref, toRefs, computed, inject, watch, onMounted } from 'vue';
 import createComponent from '../../..//utils/create';
-import { checkboxProps } from './checkbox';
+import { checkboxProps, ICheckboxGroupInstance } from './checkbox';
 const { create } = createComponent('Checkbox');
 export default create({
   components: {},
   props: checkboxProps,
   emits: [UPDATE_MODEL_EVENT, 'change'],
   setup(props, { emit }) {
+    const checkboxGroup = inject<ICheckboxGroupInstance>('checkboxGroupKey', {});
+    const isGroup = computed(() => checkboxGroup && checkboxGroup?.name === 'checkboxGroup');
     const model = computed({
       get() {
-        return props.modelValue! ?? ref(false);
+        return isGroup.value ? checkboxGroup!.modelValue : props.modelValue! ?? ref(false);
       },
       set(val: unknown) {
-        emit(UPDATE_MODEL_EVENT, val);
+        if (isGroup.value && Array.isArray(val)) {
+          checkboxGroup?.changeEvent?.(val);
+        } else {
+          emit(UPDATE_MODEL_EVENT, val);
+        }
       }
     });
     const isChecked = computed<boolean>(() => {
@@ -75,15 +81,15 @@ export default create({
       }
     });
     const isDisabled = computed(() => {
-      return props.disabled!;
+      return isGroup.value && checkboxGroup && checkboxGroup.disabled! ? checkboxGroup.disabled! : props.disabled!;
     });
 
     const isBordered = computed(() => {
-      return props.border!;
+      return isGroup.value && checkboxGroup && checkboxGroup.border! ? checkboxGroup.border! : props.border!;
     });
 
     const checkboxSize = computed(() => {
-      const temCheckboxSize = props.size;
+      const temCheckboxSize = props.size || checkboxGroup.size;
       return temCheckboxSize;
     });
 
