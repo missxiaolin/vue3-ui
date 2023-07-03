@@ -7,10 +7,10 @@
 
 ```vue demo
 <template>
-    <l-check-box v-model="checked"   label="tired"></l-check-box>
-    <l-check-box v-model="checked1" size="medium" label="emo"></l-check-box>
-    <l-check-box v-model="checked2" size="small"  label="happy"></l-check-box>
-    <l-check-box v-model="checked3" size="mini"   label="funny"></l-check-box>
+    <l-checkbox v-model="checked"   label="tired"></l-checkbox>
+    <l-checkbox v-model="checked1" size="medium" label="emo"></l-checkbox>
+    <l-checkbox v-model="checked2" size="small"  label="happy"></l-checkbox>
+    <l-checkbox v-model="checked3" size="mini"   label="funny"></l-checkbox>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
