@@ -3,7 +3,7 @@ export type AnyFunction<T> = (...args: any[]) => T;
 export const checkboxSize = ['medium', 'small', 'mini'] as const;
 export const checkboxProps = {
   modelValue: {
-    type: [Boolean, Number, String],
+    type: [Boolean, Number, String, Array],
     default: () => undefined
   },
   name: {
@@ -30,3 +30,12 @@ export const checkboxProps = {
   disabled: Boolean,
   indeterminate: Boolean
 };
+export interface ICheckboxGroupInstance {
+    name?: string;
+    modelValue?: ComputedRef;
+    disabled?: ComputedRef<boolean>;
+    border?: ComputedRef<boolean>;
+    size?: ComputedRef<string>;
+    changeEvent?: AnyFunction<any>;
+  }
+  
