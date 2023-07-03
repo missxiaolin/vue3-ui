@@ -3,7 +3,7 @@
 
 ## 基础用法
 
-在 `<l-check-box>` 元素中使用 `v-model` 绑定变量即可。
+在 `<l-checkbox>` 元素中使用 `v-model` 绑定变量即可。
 
 ```vue demo
 <template>

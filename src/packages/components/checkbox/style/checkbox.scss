@@ -1,0 +1,223 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@include b(checkbox) {
+  color: var(--l-checkbox-text-color);
+  font-weight: var(--l-checkbox-font-weight);
+  font-size: var(--l-font-size-base);
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+  height: map.get($checkbox-height, 'default');
+  & + & {
+    margin-left: 30px;
+  }
+  @include e(input) {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #d2d6de;
+    border-radius: 2px;
+    background-color: var(--l-checkbox-bg-color);
+    z-index: var(--l-index-normal);
+    transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
+      background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
+    &::after {
+      box-sizing: content-box;
+      content: '';
+      border: 1px solid #ffffff;
+      border-left: 0;
+      border-top: 0;
+      height: 7px;
+      left: 4px;
+      position: absolute;
+      top: 1px;
+      transform: rotate(45deg) scaleY(0);
+      width: 3px;
+      transition: transform 0.15s ease-in 0.05s;
+      transform-origin: center;
+    }
+    &:hover {
+      border-color: var(--l-color-primary);
+    }
+  }
+  @include e(inner) {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    position: relative;
+    @include when(indeterminate) {
+      .#{$namespace}-checkbox__input {
+        background-color: rgb(255, 255, 255);
+        border-color: var(--l-color-primary);
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          background: linear-gradient(270deg, #2ed0bc 0%, #29c1c2 100%);
+          transform: scale(0.5);
+          left: 0;
+          right: 0;
+          top: 1px;
+          bottom: 1px;
+        }
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  @include e(label) {
+    color: #333740;
+    font-size: 14px;
+    padding-left: 6px;
+  }
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    margin: 0;
+    width: 0;
+    height: 0;
+    z-index: -1;
+  }
+  @include when(checked) {
+    .#{$namespace}-checkbox__input {
+      background: linear-gradient(270deg, #2ed0bc 0%, #29c1c2 100%);
+      border-color: var(--l-color-primary);
+      &::after {
+        transform: rotate(45deg) scaleY(1);
+      }
+      &:hover {
+        border-color: var(--l-color-primary);
+      }
+    }
+    .#{$namespace}-checkbox__label {
+      color: var(--l-color-primary);
+    }
+    @include when(disabled) {
+      .#{$namespace}-checkbox__input {
+        background: rgb(242, 246, 252);
+        border-color: rgb(220, 223, 230);
+        &::after {
+          border-color: rgb(192, 196, 204);
+        }
+      }
+    }
+    &.e-checkbox.is-bordered .e-checkbox__input {
+      border-color: transparent var(--l-color-primary) var(--l-color-primary) transparent;
+    }
+  }
+  @include when(disabled) {
+    @include when(bordered) {
+      &:hover {
+        border-color: rgb(220, 223, 230);
+      }
+    }
+    .#{$namespace}-checkbox__input {
+      background-color: rgb(237, 242, 252);
+      border-color: rgb(220, 223, 230);
+      cursor: not-allowed;
+      &:hover {
+        border-color: #d2d6de;
+      }
+    }
+    .#{$namespace}-checkbox__label {
+      color: #d2d6de;
+      cursor: not-allowed;
+    }
+  }
+
+  @include when(bordered) {
+    padding: map.get($checkbox-bordered-padding, 'default');
+    border-radius: calc(var(--l-border-radius-base) - 2px);
+    border: var(--l-border-base);
+    box-sizing: border-box;
+    &.is-checked {
+      border-color: var(--l-color-primary);
+    }
+    &:hover {
+      border-color: var(--l-color-primary);
+    }
+    @include when(checked) {
+      &:hover {
+        border-color: var(--l-color-primary);
+      }
+    }
+    .#{$namespace}-checkbox__label {
+      padding: 0;
+    }
+    @include e(inner) {
+      white-space: nowrap;
+      cursor: pointer;
+      outline: none;
+      display: inline-flex;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    @include e(input) {
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 8px 8px 12px 12px;
+      border-color: transparent transparent transparent transparent;
+      width: 0px;
+      height: 0px;
+      background-color: var(--l-checkbox-bg-color);
+      z-index: var(--l-index-normal);
+      transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
+        background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
+      &::after {
+        box-sizing: content-box;
+        content: '';
+        border: 1px solid #ffffff;
+        border-left: 0;
+        border-top: 0;
+        height: 7px;
+        left: 0;
+        position: absolute;
+        top: 0px;
+        width: 3px;
+        transition: transform 0.15s ease-in 0.05s;
+        transform-origin: center;
+      }
+      @include when(disabled) {
+        background-color: transparent;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+    }
+    @include when(disabled) {
+      @include when(checked) {
+        border-color: rgba(0, 0, 0, 0.2);
+        &:hover {
+          border-color: rgba(0, 0, 0, 0.2);
+        }
+        @include e(input) {
+          border-color: transparent rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) transparent;
+          &::after {
+            border-color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  @each $size in (medium, small, mini) {
+    &.#{$namespace}-checkbox--#{$size} {
+      height: map.get($checkbox-height, $size);
+    }
+  }
+}
