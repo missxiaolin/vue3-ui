@@ -118,7 +118,7 @@ TIP: 尽可能的将 count 的大小保持在最小状态, 即使是假的 UI, D
 ```vue demo
 <template>
   <l-space direction="vertical" alignment="flex-start">
-    <e-button type="primary" @click="setLoading">Click me to reload</e-button>
+    <l-button type="primary" @click="setLoading">Click me to reload</l-button>
     <l-skeleton style="width: 240px" :loading="loading" animated :count="3">
       <template #template>
         <l-skeleton-item variant="image" style="width: 400px; height: 267px" />

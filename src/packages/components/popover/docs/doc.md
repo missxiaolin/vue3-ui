@@ -107,7 +107,7 @@ const onClickOutside = () => {
   <div style="display: flex; align-items: center">
     <l-popover placement="right" :width="400" trigger="click">
       <template #reference>
-        <e-button style="margin-right: 16px">Click to activate</e-button>
+        <l-button style="margin-right: 16px">Click to activate</l-button>
       </template>
       <l-button>按钮</l-button>
     </l-popover>
