@@ -276,6 +276,225 @@ export default defineComponent ({
 </script>
 ```
 
+### 自动补全输入框
+根据输入内容提供对应的输入建议
+
+
+`Autodcomplete` 组件提供输入建议。 `fetch-suggestions` 属性是返回建议输入的方法。 在此示例中， `querySearch(queryString, cb)` 返回建议通过 `cb(data)` 自动完成建议。
+```vue demo
+<template>
+  <l-row class="demo-autocomplete text-center" :cols="2" form labelWidth="120px">
+    <l-col label="list suggestions when activated">
+      <l-autocomplete
+        v-model="state1"
+        :fetch-suggestions="querySearch"
+        class="inline-input"
+        placeholder="Please Input"
+        @select="handleSelect"
+      />
+    </l-col>
+    <l-col label="list suggestions on input">
+      <l-autocomplete
+        v-model="state2"
+        :fetch-suggestions="querySearch"
+        :trigger-on-focus="false"
+        class="inline-input"
+        placeholder="Please Input"
+        @select="handleSelect"
+      />
+    </l-col>
+  </l-row>
+</template>
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue'
+
+interface RestaurantItem {
+  value: string
+  link: string
+}
+
+const state1 = ref('')
+const state2 = ref('')
+
+const restaurants = ref<RestaurantItem[]>([])
+const querySearch = (queryString: string, cb: any) => {
+  const results = queryString
+    ? restaurants.value.filter(createFilter(queryString))
+    : restaurants.value
+  // call callback function to return suggestions
+  cb(results)
+}
+const createFilter = (queryString: string) => {
+  return (restaurant: RestaurantItem) => {
+    return (
+      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+    )
+  }
+}
+const loadAll = () => {
+  return [
+    { value: 'vue', link: 'https://github.com/vuejs/vue' },
+    { value: 'element', link: 'https://github.com/ElemeFE/element' },
+    { value: 'cooking', link: 'https://github.com/ElemeFE/cooking' },
+    { value: 'mint-ui', link: 'https://github.com/ElemeFE/mint-ui' },
+    { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
+    { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
+    { value: 'babel', link: 'https://github.com/babel/babel' },
+  ]
+}
+
+const handleSelect = (item: RestaurantItem) => {
+  console.log(item)
+}
+
+onMounted(() => {
+  restaurants.value = loadAll()
+})
+</script>
+
+```
+
+### 自定义模板
+可自定义输入建议的显示
+
+使用 `scoped` 插槽 自定义建议项。 该 `scope` 的参数为 `item`，表示当前输入建议对象。
+```vue demo
+<template>
+  <l-autocomplete
+    v-model="state"
+    :fetch-suggestions="querySearch"
+    popper-class="my-autocomplete"
+    placeholder="Please input"
+    @select="handleSelect"
+  >
+    <template #suffix>
+      <l-icon class="e-input__icon" @click="handleIconClick">
+      </l-icon>
+    </template>
+    <template #default="{ item }">
+      <div class="value">{{ item.value }}</div>
+      <span class="link">{{ item.link }}</span>
+    </template>
+    <template #bottom>
+      <div :data-close="isClose">
+        <l-button>清空历史</l-button>
+        <l-button>关闭历史</l-button>
+      </div>
+    </template>
+  </l-autocomplete>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue'
+
+interface LinkItem {
+  value: string
+  link: string
+}
+
+const state = ref('')
+const links = ref<LinkItem[]>([])
+const isClose = ref(true);
+
+const querySearch = (queryString: string, cb) => {
+  const results = queryString
+    ? links.value.filter(createFilter(queryString))
+    : links.value
+  // call callback function to return suggestion objects
+  cb(results)
+}
+const createFilter = (queryString) => {
+  return (restaurant) => {
+    return (
+      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+    )
+  }
+}
+const loadAll = () => {
+  return [
+    { value: 'vue', link: 'https://github.com/vuejs/vue' },
+    { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
+    { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
+    { value: 'babel', link: 'https://github.com/babel/babel' },
+  ]
+}
+const handleSelect = (item: LinkItem) => {
+  console.log(item)
+}
+
+const handleIconClick = (ev: Event) => {
+  console.log(ev)
+}
+
+onMounted(() => {
+  links.value = loadAll()
+})
+</script>
+
+```
+
+### 远程搜索
+从服务端搜索数据
+```vue demo
+<template>
+  <l-autocomplete
+    v-model="state"
+    :fetch-suggestions="querySearchAsync"
+    placeholder="Please input"
+    @select="handleSelect"
+  />
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue'
+
+const state = ref('')
+
+interface LinkItem {
+  value: string
+  link: string
+}
+
+const links = ref<LinkItem[]>([])
+
+const loadAll = () => {
+  return [
+    { value: 'vue', link: 'https://github.com/vuejs/vue' },
+    { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
+    { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
+    { value: 'babel', link: 'https://github.com/babel/babel' },
+  ]
+}
+
+let timeout: NodeJS.Timeout
+const querySearchAsync = (queryString: string, cb: (arg: any) => void) => {
+  const results = queryString
+    ? links.value.filter(createFilter(queryString))
+    : links.value
+
+  clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    cb(results)
+  }, 3000 * Math.random())
+}
+const createFilter = (queryString: string) => {
+  return (restaurant: LinkItem) => {
+    return (
+      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+    )
+  }
+}
+
+const handleSelect = (item: LinkItem) => {
+  console.log(item)
+}
+
+onMounted(() => {
+  links.value = loadAll()
+})
+</script>
+```
+
 ### 输入长度限制
 使用 `maxlength` 和 `minlength` 属性, 来控制输入内容的最大字数和最小字数。 "字符数"使用JavaScript字符串长度来衡量。 为文本或文本输入类型设置 `maxlength` prop可以限制输入值的长度。 允许你通过设置 `show-word-limit` 到 `true` 来显示剩余字数。
 ```vue demo
