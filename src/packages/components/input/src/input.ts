@@ -17,6 +17,10 @@ export const inputProps = buildProps({
     type: String,
     default: 'text'
   },
+  modelModifiers: {
+    type: definePropType<Function>(undefined),
+    default: () => ({})
+  },
   resize: {
     type: String,
     values: ['none', 'both', 'horizontal', 'vertical']

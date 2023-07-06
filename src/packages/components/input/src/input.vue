@@ -301,6 +301,15 @@ export default create({
           value = value.trim();
         }
       } catch (error) {}
+      if (props.modelModifiers.phone) {
+        // 非1开头无法输入
+        value = value.startsWith('1') ? value : '';
+        // 非数字置为空
+        value = value.replace(/\D/g, '').substring(0, 11);
+        if (event.target) {
+          (event.target as TargetElement).value = value;
+        }
+      }
       emit(UPDATE_MODEL_EVENT, value);
       emit('input', value);
 
