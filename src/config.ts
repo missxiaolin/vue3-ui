@@ -194,15 +194,6 @@ const config: any = {
             author: 'lin',
             progress: '100%'
           },
-          {
-            name: 'AutoComplete',
-            type: 'component',
-            cName: '自动填充',
-            desc: '',
-            show: true,
-            author: 'lin',
-            progress: '100%'
-          }
         ]
       },
       {
