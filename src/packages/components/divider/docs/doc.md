@@ -13,6 +13,15 @@
 </template>
 ```
 
+```vue demo
+<template>
+  <div>
+    <l-divider>标题</l-divider>
+  </div>
+</template>
+```
+
+
 ## Divider 属性
 
 | 属性       | 说明    | 类型   | 可选值  | 	默认值    |
