@@ -44,6 +44,7 @@ import { InputNumber } from '../components/input-number/index';
 import { Radio, RadioButton, RadioGroup } from '../components/radio/index';
 import { Checkbox, CheckboxGroup } from '../components/checkbox/index';
 import { Autocomplete } from '../components/autocomplete/index'
+import { Select } from '../components/select/index'
 
 export default [
   ConfigProvider,
@@ -115,5 +116,6 @@ export default [
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  Autocomplete
+  Autocomplete,
+  Select
 ];

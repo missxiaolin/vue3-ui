@@ -194,6 +194,15 @@ const config: any = {
             author: 'lin',
             progress: '100%'
           },
+          {
+            name: 'Select',
+            type: 'component',
+            cName: '选择器',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }
         ]
       },
       {
