@@ -13,3 +13,5 @@ export type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 export type TimeoutHandle = ReturnType<typeof global.setTimeout>;
 
 export type ComponentSize = 'large' | 'medium' | 'small' | 'mini';
+
+export type CustomizedHTMLElement<T> = HTMLElement & T;

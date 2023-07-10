@@ -16,6 +16,7 @@ export * from './use-same-target'
 export * from './use-lockscreen'
 export * from './use-draggable';
 export * from './use-form-item'
+export { default as useFocus } from './use-focus';
 export { default as useAttrs } from './use-attrs';
 export { default as useThrottleRender } from './use-throttle-render';
 export { default as useRestoreActive } from './use-restore-active';
