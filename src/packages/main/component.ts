@@ -44,6 +44,7 @@ import { InputNumber } from '../components/input-number/index';
 import { Radio, RadioButton, RadioGroup } from '../components/radio/index';
 import { Checkbox, CheckboxGroup } from '../components/checkbox/index';
 import { Autocomplete } from '../components/autocomplete/index'
+import { Tag } from '../components/tag/index'
 import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index'
 
 export default [
@@ -117,6 +118,7 @@ export default [
   Checkbox,
   CheckboxGroup,
   Autocomplete,
+  Tag,
   Select,
   Option,
   SelectDropdown,

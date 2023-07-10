@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/variables' as *;
+
+@include b(tag) {
+  @include set-component-css-var('tag', $tag);
+}
+
+$tagTypes: primary, success, warning, info, danger;
+$tagEffects: light, fill, plain;
+$tagSizes: medium, base, small, mini;
+
+// 设置主题颜色
+@mixin tagTheme($bgColorWeight, $textColorWeight, $borderColorWeight, $hoverColorWeight, $tagType) {
+  --l-tag-bg-color: #{mix(map.get($colors, $tagType, 'base'), $color-white, $bgColorWeight)};
+  --l-tag-text-color: #{mix(map.get($colors, $tagType, 'base'), $color-white, $textColorWeight)};
+  --l-tag-border-color: #{mix(map.get($colors, $tagType, 'base'), $color-white, $borderColorWeight)};
+  --l-tag-hover-color: #{mix(map.get($colors, $tagType, 'base'), $color-white, $hoverColorWeight)};
+}
+
+@include b(tag) {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  // font-weight: var(--l-tag-font-weight);
+  border-radius: var(--l-tag-radius);
+  border: 1px solid;
+  color: var(--l-tag-text-color);
+  border-color: transparent;
+  background-color: var(--l-tag-bg-color);
+  & + .l-tag {
+    margin-left: 8px;
+  }
+  // 尺寸大小
+  @each $size in $tagSizes {
+    @include e($size) {
+      padding: map.get($tag-padding, $size);
+      font-size: map.get($tag-font-size, $size);
+      line-height: map.get($tag-font-size, $size) + 4px;
+      .#{$namespace}-tag__icon {
+        .l-icon {
+          --l-icon-font-size: #{map.get($tag-font-size, $size)};
+        }
+      }
+    }
+  }
+  // 主题 & 类型
+  @each $effect in $tagEffects {
+    @include e($effect) {
+      @each $type in $tagTypes {
+        @include m($type) {
+          // 边框
+          @if $effect == light {
+            @include tagTheme(10%, 100%, 50%, 100%, $type);
+            @include when(hit) {
+              border-color: var(--l-tag-border-color);
+            }
+            .#{$namespace}-tag__icon {
+              .l-icon {
+                --l-icon-font-color: #{map.get($colors, $type, base)};
+              }
+              &:hover {
+                .l-icon {
+                  --l-icon-font-color: #{mix(map.get($colors, $type, base), $color-white, 50%)};
+                }
+              }
+            }
+          } @else if $effect == fill {
+            @include tagTheme(100%, 0%, 100%, 50%, $type);
+            @include when(hit) {
+              border-color: var(--l-tag-border-color);
+            }
+            .#{$namespace}-tag__icon {
+              .l-icon {
+                --l-icon-font-color: #{$color-white};
+              }
+              &:hover {
+                .l-icon {
+                  --l-icon-font-color: #{mix(map.get($colors, $type, 'base'), $color-white, 50%)};
+                }
+              }
+            }
+          } @else if $effect == plain {
+            @include tagTheme(0%, 100%, 50%, 50%, $type);
+            border-color: var(--l-tag-border-color);
+            .#{$namespace}-tag__icon {
+              .l-icon {
+                --l-icon-font-color: #{map.get($colors, $type, base)};
+              }
+              &:hover {
+                .l-icon {
+                  --l-icon-font-color: #{mix(map.get($colors, $type, base), $color-white, 50%)};
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 关闭按钮
+  @include e(icon) {
+    padding-left: 4px;
+    cursor: pointer;
+  }
+}

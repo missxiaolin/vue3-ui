@@ -65,6 +65,7 @@ import '@/packages/components/radio/style/radioGroup.scss';
 import '@/packages/components/checkbox/style/checkbox.scss';
 import '@/packages/components/checkbox/style/checkboxGroup.scss';
 import '@/packages/components/autocomplete/style/autocomplete.scss';
+import '@/packages/components/tag/style/tag.scss';
 import '@/packages/components/select/style/select.scss';
 import '@/packages/components/select/style/select-option.scss';
 import '@/packages/components/select/style/option-group.scss';
