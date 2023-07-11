@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+
+@include b(select-dropdown) {
+  @include e(item) {
+    font-size: map.get($select, 'font-size');
+    // 20 as the padding of option item, 12 as the size of ✓ icon size
+    padding: 0 #{20 + 12}px 0 10px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: map.get($select-option, 'color');
+    height: map.get($select-option, 'height');
+    line-height: map.get($select-option, 'height');
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin: 0 8px;
+    cursor: pointer;
+
+    @include when(disabled) {
+      color: map.get($select-option, 'disabled-color');
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--l-color-white);
+      }
+    }
+
+    &:hover {
+      background-color: map.get($select-option, 'hover-background');
+    }
+
+    &.selected {
+      color: map.get($select-option, 'selected-font-color');
+      font-weight: bold;
+      &::after {
+        position: absolute;
+        right: 10px;
+        font-family: 'e-font';
+        content: '\e645';
+        font-size: 12px;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
+  }
+}

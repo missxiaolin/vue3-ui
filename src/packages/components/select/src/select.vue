@@ -1,24 +1,583 @@
-
 <template>
-<div :class="ns.b()">
-  
-</div>
+  <div ref="selectWrapper" v-click-outside:[popperPaneRef]="handleClose" :class="wrapperKls" @click.stop="toggleMenu">
+    <l-tooltip
+      ref="tooltipRef"
+      v-model:visible="dropMenuVisible"
+      placement="bottom-start"
+      :teleported="compatTeleported"
+      :popper-class="[nsSelect.e('popper'), popperClass]"
+      :fallback-placements="['bottom-start', 'top-start', 'right', 'left']"
+      :effect="effect"
+      pure
+      trigger="click"
+      :transition="`${nsSelect.namespace.value}-zoom-in-top`"
+      :stop-popper-mouse-event="false"
+      :gpu-acceleration="false"
+      persistent
+      @show="handleMenuEnter"
+    >
+      <template #default>
+        <div :class="['select-trigger', labelInsideClass]">
+          <label v-if="label" :class="[labelClass]">{{ label }}</label>
+
+          <div v-if="multiple" ref="tags" :class="nsSelect.e('tags')" :style="selectTagsStyle">
+            <span v-if="collapseTags && selected.length">
+              <l-tag
+                :closable="!selectDisabled && !selected[0].isDisabled"
+                :size="collapseTagSize"
+                :hit="selected[0].hitState"
+                :type="tagType"
+                disable-transitions
+                @close="deleteTag($event, selected[0])"
+              >
+                <span :class="nsSelect.e('tags-text')" :style="{ maxWidth: inputWidth - 123 + 'px' }">{{
+                  selected[0].currentLabel
+                }}</span>
+              </l-tag>
+              <l-tag
+                v-if="selected.length > 1"
+                :closable="false"
+                :size="collapseTagSize"
+                :type="tagType"
+                disable-transitions
+              >
+                <span :class="nsSelect.e('tags-text')">+ {{ selected.length - 1 }}</span>
+              </l-tag>
+            </span>
+            <!-- <div> -->
+            <transition v-if="!collapseTags" @after-leave="resetInputHeight">
+              <span
+                :style="{
+                  marginLeft: prefixWidth && selected.length ? `${prefixWidth}px` : ''
+                }"
+              >
+                <l-tag
+                  v-for="item in selected"
+                  :key="getValueKey(item)"
+                  :closable="!selectDisabled && !item.isDisabled"
+                  :size="collapseTagSize"
+                  :hit="item.hitState"
+                  :type="tagType"
+                  disable-transitions
+                  @close="deleteTag($event, item)"
+                >
+                  <span :class="nsSelect.e('tags-text')" :style="{ maxWidth: inputWidth - 75 + 'px' }">{{
+                    item.currentLabel
+                  }}</span>
+                </l-tag>
+              </span>
+            </transition>
+            <!-- </div> -->
+            <input
+              v-if="filterable"
+              ref="input"
+              v-model="query"
+              type="text"
+              :class="[nsSelect.e('input'), nsSelect.is(selectSize)]"
+              :disabled="selectDisabled"
+              :autocomplete="autocomplete"
+              :style="{
+                marginLeft: (prefixWidth && !selected.length) || tagInMultiLine ? `${prefixWidth}px` : '',
+                flexGrow: 1,
+                width: `${inputLength / (inputWidth - 32)}%`,
+                maxWidth: `${inputWidth - 42}px`
+              }"
+              @focus="handleFocus"
+              @blur="handleBlur"
+              @keyup="managePlaceholder"
+              @keydown="resetInputState"
+              @keydown.down.prevent="navigateOptions('next')"
+              @keydown.up.prevent="navigateOptions('prev')"
+              @keydown.esc.stop.prevent="visible = false"
+              @keydown.enter.stop.prevent="selectOption"
+              @keydown.delete="deletePrevTag"
+              @keydown.tab="visible = false"
+              @compositionstart="handleComposition"
+              @compositionupdate="handleComposition"
+              @compositionend="handleComposition"
+              @input="debouncedQueryChange"
+            />
+          </div>
+          <l-input
+            :id="id"
+            ref="reference"
+            v-model="selectedLabel"
+            type="text"
+            :placeholder="currentPlaceholder"
+            :name="name"
+            :autocomplete="autocomplete"
+            :size="selectSize"
+            :disabled="selectDisabled"
+            :readonly="readonly"
+            :validate-event="false"
+            :class="[nsSelect.is('focus', visible)]"
+            :tabindex="multiple && filterable ? -1 : undefined"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @input="debouncedOnInputChange"
+            @paste="debouncedOnInputChange"
+            @compositionstart="handleComposition"
+            @compositionupdate="handleComposition"
+            @compositionend="handleComposition"
+            @keydown.down.stop.prevent="navigateOptions('next')"
+            @keydown.up.stop.prevent="navigateOptions('prev')"
+            @keydown.enter.stop.prevent="selectOption"
+            @keydown.esc.stop.prevent="visible = false"
+            @keydown.tab="visible = false"
+            @mouseenter="inputHovering = true"
+            @mouseleave="inputHovering = false"
+          >
+            <template v-if="$slots.prefix" #prefix>
+              <div style="height: 100%; display: flex; justify-content: center; align-items: center">
+                <slot name="prefix"></slot>
+              </div>
+            </template>
+            <template #suffix>
+              <l-icon
+                v-if="iconComponent"
+                v-show="!showClose"
+                :class="['l-select__caret', 'l-input__icon', iconReverse]"
+                :icon="iconComponent"
+              ></l-icon>
+              <l-icon
+                v-if="showClose && clearIcon"
+                class="l-select__caret l-input__icon"
+                @click="handleClearClick"
+                :icon="clearIcon"
+              ></l-icon>
+            </template>
+          </l-input>
+        </div>
+      </template>
+      <template #content>
+        <l-select-menu>
+          <l-scroll
+            v-show="options.size > 0 && !loading"
+            ref="scrollbar"
+            tag="ul"
+            max-height="270px"
+            :canOnLoad="canScrollLoad"
+            @load="onScrollLoad"
+            :finished="scrollFinished"
+            :finishedText="loadFinishedText"
+            :class="[
+              nsSelect.is('empty', !allowCreate && query && filteredOptionsCount === 0),
+              nsSelect.b('scroll-container')
+            ]"
+          >
+            <l-option v-if="showNewOption" :value="query" :created="true" />
+            <slot></slot>
+          </l-scroll>
+          <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.size === 0))">
+            <slot v-if="$slots.empty" name="empty"></slot>
+            <p v-else :class="nsSelect.be('dropdown', 'empty')">{{ emptyText }}</p>
+          </template>
+        </l-select-menu>
+      </template>
+    </l-tooltip>
+  </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import {
+  toRefs,
+  defineComponent,
+  onMounted,
+  onBeforeUnmount,
+  nextTick,
+  reactive,
+  provide,
+  computed,
+  unref,
+  toRaw,
+  ref
+} from 'vue';
+import { ClickOutside } from '../../../directives';
+import { useFocus, useLocaleInject, useNamespace } from '../../../hooks';
+import { Input } from '../../../components/input';
+import { Tooltip } from '../../../components/tooltip';
+import { useTooltipContentProps } from '../../../components/tooltip';
+import { Scroll } from '../../../components/scroll';
+import { Tag } from '../../../components/tag';
+import { tagProps } from '../../../components/tag';
+import { Icon } from '../../../components/icon';
+import { useDeprecateAppendToBody } from '../../../components/popper';
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event';
+import { addResizeListener, removeResizeListener, isValidComponentSize } from '../../../utils/resize-event';
+import Option from './option.vue';
+import SelectMenu from './select-dropdown.vue';
+import { useSelect, useSelectStates } from './useSelect';
+import { selectKey } from './token';
+
+import type { PropType, Component } from 'vue';
+import type { ComponentSize } from '../../../constants/event';
+import type { SelectContext } from './token';
+
 import createComponent from '../../../utils/create';
-import { useNamespace } from '../../../hooks';
-const { create } = createComponent('Select');
+const { create, componentName } = createComponent('Select');
 
 export default create({
-setup(props, { emit }) {
-  const ns = useNamespace('select');
+  componentName: componentName,
+  components: {
+    [Input.name]: Input,
+    [SelectMenu.name]: SelectMenu,
+    [Option.name]: Option,
+    [Tag.name]: Tag,
+    [Scroll.name]: Scroll,
+    [Tooltip.name]: Tooltip,
+    [Icon.name]: Icon
+  },
+  directives: { ClickOutside },
+  props: {
+    name: String,
+    id: String,
+    modelValue: {
+      type: [Array, String, Number, Boolean, Object],
+      default: undefined
+    },
+    autocomplete: {
+      type: String,
+      default: 'off'
+    },
+    automaticDropdown: Boolean,
+    size: {
+      type: String as PropType<ComponentSize>,
+      validator: isValidComponentSize
+    },
+    effect: {
+      type: String as PropType<'light' | 'dark' | string>,
+      default: 'light'
+    },
+    disabled: Boolean,
+    clearable: Boolean,
+    filterable: Boolean,
+    allowCreate: Boolean,
+    loading: Boolean,
+    popperClass: {
+      type: String,
+      default: ''
+    },
+    remote: Boolean,
+    loadingText: String,
+    noMatchText: String,
+    noDataText: String,
+    remoteMethod: Function,
+    filterMethod: Function,
+    multiple: Boolean,
+    multipleLimit: {
+      type: Number,
+      default: 0
+    },
+    placeholder: {
+      type: String
+    },
+    defaultFirstOption: Boolean,
+    reserveKeyword: {
+      type: Boolean,
+      default: true
+    },
+    valueKey: {
+      type: String,
+      default: 'value'
+    },
+    collapseTags: Boolean,
+    popperAppendToBody: {
+      type: Boolean,
+      default: undefined
+    },
+    teleported: useTooltipContentProps.teleported,
+    clearIcon: {
+      type: [String, Object] as PropType<string | Component>,
+      default: 'e-icon-circle-close'
+    },
+    fitInputWidth: {
+      type: Boolean,
+      default: false
+    },
+    suffixIcon: {
+      type: [String, Object] as PropType<string | Component>,
+      default: 'e-icon-lower'
+    },
+    // eslint-disable-next-line vue/require-prop-types
+    tagType: { ...tagProps.type, default: 'info' },
+    label: {
+      type: String
+    },
+    scrollLoad: {
+      type: Boolean,
+      default: false
+    },
+    finished: {
+      type: Boolean
+    },
+    finishedText: {
+      type: String
+    }
+  },
+  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'remove-tag', 'clear', 'visible-change', 'focus', 'blur', 'load'],
 
-  return {
-    ns
-  };
-}
+  setup(props, ctx) {
+    const nsSelect = useNamespace('select');
+    const nsInput = useNamespace('input');
+    const { t } = useLocaleInject();
+    const states = useSelectStates(props);
+
+    const labelClass = ref('');
+
+    const labelInsideClass = computed(() => {
+      labelClass.value = 'label-adsorbent-top';
+      return props.label && `l-input-inside-label`;
+    });
+
+    const {
+      optionsArray,
+      selectSize,
+      readonly,
+      handleResize,
+      collapseTagSize,
+      debouncedOnInputChange,
+      debouncedQueryChange,
+      deletePrevTag,
+      deleteTag,
+      deleteSelected,
+      handleOptionSelect,
+      scrollToOption,
+      setSelected,
+      resetInputHeight,
+      managePlaceholder,
+      showClose,
+      selectDisabled,
+      iconComponent,
+      iconReverse,
+      showNewOption,
+      emptyText,
+      toggleLastOptionHitState,
+      resetInputState,
+      handleComposition,
+      onOptionCreate,
+      onOptionDestroy,
+      handleMenuEnter,
+      handleFocus,
+      blur,
+      handleBlur,
+      handleClearClick,
+      handleClose,
+      toggleMenu,
+      selectOption,
+      getValueKey,
+      navigateOptions,
+      dropMenuVisible,
+
+      reference,
+      input,
+      tooltipRef,
+      tags,
+      selectWrapper,
+      scrollbar,
+      queryChange,
+      groupQueryChange
+    } = useSelect(props, states, ctx);
+
+    const { focus } = useFocus(reference);
+
+    const {
+      inputWidth,
+      selected,
+      inputLength,
+      filteredOptionsCount,
+      visible,
+      softFocus,
+      selectedLabel,
+      hoverIndex,
+      query,
+      inputHovering,
+      currentPlaceholder,
+      menuVisibleOnFocus,
+      isOnComposition,
+      isSilentBlur,
+      options,
+      cachedOptions,
+      optionsCount,
+      prefixWidth,
+      tagInMultiLine
+    } = toRefs(states);
+
+    const wrapperKls = computed(() => {
+      const classList = [nsSelect.b()];
+      const _selectSize = unref(selectSize);
+      if (_selectSize) {
+        classList.push(nsSelect.m(_selectSize));
+      }
+      if (props.disabled) {
+        classList.push(nsSelect.m('disabled'));
+      }
+      return classList;
+    });
+
+    const selectTagsStyle = computed(() => ({
+      maxWidth: `${unref(inputWidth) - 32}px`,
+      width: '100%'
+    }));
+
+    provide(
+      selectKey,
+      reactive({
+        props,
+        options,
+        optionsArray,
+        cachedOptions,
+        optionsCount,
+        filteredOptionsCount,
+        hoverIndex,
+        handleOptionSelect,
+        onOptionCreate,
+        onOptionDestroy,
+        selectWrapper,
+        selected,
+        setSelected,
+        queryChange,
+        groupQueryChange
+      }) as unknown as SelectContext
+    );
+
+    onMounted(() => {
+      states.cachedPlaceHolder = currentPlaceholder.value = props.placeholder || t('e.select.placeholder');
+      if (props.multiple && Array.isArray(props.modelValue) && props.modelValue.length > 0) {
+        currentPlaceholder.value = '';
+      }
+      addResizeListener(selectWrapper.value as any, handleResize);
+      // if (reference.value && reference.value.$el) {
+      //   const sizeMap = {
+      //     large: 36,
+      //     default: 32,
+      //     small: 30
+      //   };
+      //   const input = reference.value.input as HTMLInputElement;
+      //   states.initialInputHeight = input.getBoundingClientRect().height || sizeMap[selectSize.value];
+      // }
+      if (props.remote && props.multiple) {
+        resetInputHeight();
+      }
+      nextTick(() => {
+        if (!reference.value) return;
+        if (reference.value.$el) {
+          inputWidth.value = reference.value.$el.getBoundingClientRect().width;
+        }
+        if (ctx.slots.prefix) {
+          const inputChildNodes = reference.value.$el.childNodes;
+          const input = (Array.from(inputChildNodes) as HTMLElement[]).filter((item) => item.tagName === 'INPUT')[0];
+          const prefix = reference.value.$el.querySelector(`.${nsInput.e('prefix')}`);
+          prefixWidth.value = Math.max(prefix.getBoundingClientRect().width + 5, 30);
+          if (states.prefixWidth) {
+            input.style.paddingLeft = `${Math.max(states.prefixWidth, 30)}px`;
+          }
+        }
+      });
+      setSelected();
+    });
+
+    onBeforeUnmount(() => {
+      removeResizeListener(selectWrapper.value as any, handleResize);
+    });
+
+    if (props.multiple && !Array.isArray(props.modelValue)) {
+      ctx.emit(UPDATE_MODEL_EVENT, []);
+    }
+    if (!props.multiple && Array.isArray(props.modelValue)) {
+      ctx.emit(UPDATE_MODEL_EVENT, '');
+    }
+
+    const popperPaneRef = computed(() => {
+      return tooltipRef.value?.popperRef?.contentRef;
+    });
+
+    const { compatTeleported } = useDeprecateAppendToBody(componentName, 'popperAppendToBody');
+
+    const canScrollLoad = computed(() => {
+      return props.scrollLoad;
+    });
+    const scrollFinished = computed(() => {
+      return props.finished;
+    });
+    const loadFinishedText = computed(() => {
+      return props.finishedText;
+    });
+    const onScrollLoad = (done: Function) => {
+      ctx.emit('load', done);
+    };
+
+    return {
+      tagInMultiLine,
+      prefixWidth,
+      selectSize,
+      readonly,
+      handleResize,
+      collapseTagSize,
+      debouncedOnInputChange,
+      debouncedQueryChange,
+      deletePrevTag,
+      deleteTag,
+      deleteSelected,
+      handleOptionSelect,
+      scrollToOption,
+      inputWidth,
+      selected,
+      inputLength,
+      filteredOptionsCount,
+      visible,
+      softFocus,
+      selectedLabel,
+      hoverIndex,
+      query,
+      inputHovering,
+      currentPlaceholder,
+      menuVisibleOnFocus,
+      isOnComposition,
+      isSilentBlur,
+      options,
+      resetInputHeight,
+      managePlaceholder,
+      showClose,
+      selectDisabled,
+      iconComponent,
+      iconReverse,
+      showNewOption,
+      emptyText,
+      toggleLastOptionHitState,
+      resetInputState,
+      handleComposition,
+      handleMenuEnter,
+      handleFocus,
+      blur,
+      handleBlur,
+      handleClearClick,
+      handleClose,
+      toggleMenu,
+      selectOption,
+      getValueKey,
+      navigateOptions,
+      dropMenuVisible,
+      focus,
+
+      reference,
+      input,
+      tooltipRef,
+      popperPaneRef,
+      tags,
+      selectWrapper,
+      scrollbar,
+
+      wrapperKls,
+      selectTagsStyle,
+      compatTeleported,
+      nsSelect,
+      labelInsideClass,
+      labelClass,
+      canScrollLoad,
+      onScrollLoad,
+      scrollFinished,
+      loadFinishedText
+    };
+  }
 });
 </script>
-
