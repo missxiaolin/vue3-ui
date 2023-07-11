@@ -1,6 +1,3 @@
+export { default as Tag } from './src/tag.vue';
 
-import { default as Tag } from './src/tag.vue'
-
-export {
-    Tag
-}
+export * from './src/tag';

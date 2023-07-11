@@ -1,0 +1,13 @@
+export const componentSizes = ['', 'default', 'small', 'large'] as const;
+
+export type ComponentSize = typeof componentSizes[number];
+
+export const componentSizeMap = {
+  large: 40,
+  default: 32,
+  small: 32
+} as const;
+
+export const getComponentSize = (size?: ComponentSize) => {
+  return componentSizeMap[size || 'default'];
+};
