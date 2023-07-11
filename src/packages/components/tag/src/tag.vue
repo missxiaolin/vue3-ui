@@ -2,14 +2,14 @@
   <div v-if="disableTransitions" :class="classes" :style="{ backgroundColor: color }" @click="handleClick">
     <slot></slot>
     <span v-if="closable" class="l-tag__icon" @click="handleClose">
-      <e-icon icon="l-icon-close" :size="iconSize"> </e-icon>
+      <l-icon icon="l-guanbi1" :size="iconSize"> </l-icon>
     </span>
   </div>
   <transition v-else name="l-zoom-in">
     <div :class="classes" :style="{ backgroundColor: color }" @click="handleClick">
       <slot></slot>
       <span v-if="closable" class="l-tag__icon" @click.stop="handleClose">
-        <l-icon icon="l-icon-close" :size="iconSize"> </l-icon>
+        <l-icon icon="l-guanbi1" :size="iconSize"> </l-icon>
       </span>
     </div>
   </transition>
