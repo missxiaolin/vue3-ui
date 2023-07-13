@@ -202,6 +202,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Slider',
+            type: 'component',
+            cName: '滑动选择',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },
@@ -524,14 +533,14 @@ const config: any = {
             progress: '100%'
           },
           {
-            "name": "Tag",
-            "type": "component",
-            "cName": "标签",
-            "desc": "",
-            "show": true,
-            "author": "lin",
-            "progress": "100%"
-          },
+            name: 'Tag',
+            type: 'component',
+            cName: '标签',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          }
         ]
       },
       {

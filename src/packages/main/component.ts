@@ -46,6 +46,7 @@ import { Checkbox, CheckboxGroup } from '../components/checkbox/index';
 import { Autocomplete } from '../components/autocomplete/index'
 import { Tag } from '../components/tag/index'
 import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index'
+import { Slider } from '../components/slider/index'
 
 export default [
   ConfigProvider,
@@ -122,5 +123,6 @@ export default [
   Select,
   Option,
   SelectDropdown,
-  OptionGroup
+  OptionGroup,
+  Slider
 ];
