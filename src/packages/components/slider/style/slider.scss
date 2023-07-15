@@ -1,0 +1,206 @@
+@use 'sass:map';
+@use '../../../theme-chalk/common/var' as *;
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/utils' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+
+$slider-height: () !default;
+$slider-height: map.merge(
+  (
+    'large': 40px,
+    'default': 32px,
+    'small': 24px
+  ),
+  $slider-height
+);
+@include b(slider) {
+  @include set-component-css-var('slider', $slider);
+}
+@include b(slider) {
+  width: 100%;
+  height: map.get($slider-height, 'default');
+  display: flex;
+  align-items: center;
+
+  @include e(runway) {
+    flex: 1;
+    height: var(--l-slider-height);
+    background-color: var(--l-slider-runway-bg-color);
+    border-radius: var(--l-slider-border-radius);
+    position: relative;
+    cursor: pointer;
+
+    &.show-input {
+      margin-right: 30px;
+      width: auto;
+    }
+
+    &.is-disabled {
+      cursor: default;
+
+      .#{$namespace}-slider__bar {
+        background-color: var(--l-slider-disabled-color);
+      }
+
+      .#{$namespace}-slider__button {
+        border-color: var(--l-slider-disabled-color);
+      }
+
+      .#{$namespace}-slider__button-wrapper {
+        &:hover,
+        &.hover {
+          cursor: not-allowed;
+        }
+
+        &.dragging {
+          cursor: not-allowed;
+        }
+      }
+
+      .#{$namespace}-slider__button {
+        &:hover,
+        &.hover,
+        &.dragging {
+          transform: scale(1);
+        }
+
+        &:hover,
+        &.hover {
+          cursor: not-allowed;
+        }
+
+        &.dragging {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  @include e(input) {
+    flex-shrink: 0;
+    width: 130px;
+  }
+
+  @include e(bar) {
+    height: var(--l-slider-height);
+    background-color: var(--l-slider-main-bg-color);
+    border-top-left-radius: var(--l-slider-border-radius);
+    border-bottom-left-radius: var(--l-slider-border-radius);
+    position: absolute;
+  }
+
+  @include e(button-wrapper) {
+    height: var(--l-slider-button-wrapper-size);
+    width: var(--l-slider-button-wrapper-size);
+    position: absolute;
+    z-index: 1;
+    top: var(--l-slider-button-wrapper-offset);
+    transform: translateX(-50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+    outline: none;
+    @include utils-vertical-center;
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  @include e(button) {
+    display: inline-block;
+    width: var(--l-slider-button-size);
+    height: var(--l-slider-button-size);
+    vertical-align: middle;
+    border: solid 2px var(--l-slider-main-bg-color);
+    background-color: var(--l-color-white);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: var(--l-transition-duration-fast);
+    user-select: none;
+
+    &:hover,
+    &.hover,
+    &.dragging {
+      transform: scale(1.2);
+    }
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  @include e(stop) {
+    position: absolute;
+    height: var(--l-slider-height);
+    width: var(--l-slider-height);
+    border-radius: var(--l-border-radius-circle);
+    background-color: var(--l-slider-stop-bg-color);
+    transform: translateX(-50%);
+  }
+
+  @include e(marks) {
+    top: 0;
+    left: 12px;
+    width: 18px;
+    height: 100%;
+
+    @include e(marks-text) {
+      position: absolute;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: var(--l-color-info);
+      margin-top: 15px;
+    }
+  }
+
+  @include when(vertical) {
+    position: relative;
+    height: 100%;
+    flex: 0;
+
+    .#{$namespace}-slider__runway {
+      width: var(--l-slider-height);
+      height: 100%;
+      margin: 0 16px;
+    }
+    .#{$namespace}-slider__bar {
+      width: var(--l-slider-height);
+      height: auto;
+      border-radius: 0 0 3px 3px;
+    }
+    .#{$namespace}-slider__button-wrapper {
+      top: auto;
+      left: var(--l-slider-button-wrapper-offset);
+      transform: translateY(50%);
+    }
+    .#{$namespace}-slider__stop {
+      transform: translateY(50%);
+    }
+
+    @include e(marks-text) {
+      margin-top: 0;
+      left: 15px;
+      transform: translateY(50%);
+    }
+  }
+
+  @each $size in (large, small) {
+    @include m($size) {
+      height: map.get($slider-height, $size);
+      @include e(runway) {
+      }
+    }
+  }
+}
