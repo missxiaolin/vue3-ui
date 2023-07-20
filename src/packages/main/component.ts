@@ -47,6 +47,7 @@ import { Autocomplete } from '../components/autocomplete/index'
 import { Tag } from '../components/tag/index'
 import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index'
 import { Slider } from '../components/slider/index'
+import { Mention } from '../components/mention/index'
 
 export default [
   ConfigProvider,
@@ -124,5 +125,6 @@ export default [
   Option,
   SelectDropdown,
   OptionGroup,
-  Slider
+  Slider,
+  Mention
 ];

@@ -72,3 +72,4 @@ import '@/packages/components/select/style/option-group.scss';
 import '@/packages/components/select/style/option-item.scss';
 import '@/packages/components/select/style/select-dropdown.scss';
 import '@/packages/components/slider/style/slider.scss';
+import '@/packages/components/mention/style/mention.scss';

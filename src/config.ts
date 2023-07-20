@@ -211,6 +211,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Mention',
+            type: 'component',
+            cName: '提及',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },
