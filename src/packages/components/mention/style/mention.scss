@@ -1,0 +1,449 @@
+@use 'sass:map';
+
+@use '../../../theme-chalk/mixins/mixins' as *;
+@use '../../../theme-chalk/mixins/var' as *;
+@use '../../../theme-chalk/common/var' as *;
+
+@mixin inset-prepend-border($color) {
+  box-shadow: 1px 0 0 0 $color inset, 0 1px 0 0 $color inset, 0 -1px 0 0 $color inset;
+}
+
+@mixin inset-append-border($color) {
+  box-shadow: 0 1px 0 0 $color inset, 0 -1px 0 0 $color inset, -1px 0 0 0 $color inset;
+}
+
+@mixin inset-prepend-input-border($color) {
+  box-shadow: 1px 0 0 0px $color inset, 1px 0 0 0px $color, 0px 1px 0 0px $color inset, 0px -1px 0 0px $color inset !important;
+}
+
+@mixin inset-append-input-border($color) {
+  box-shadow: -1px 0 0 0px $color, -1px 0 0 0px $color inset, 0px 1px 0 0px $color inset, 0px -1px 0 0px $color inset !important;
+}
+
+@mixin mixed-input-border($color) {
+  box-shadow: 0 0 0 1px $color inset;
+}
+
+@include b(mention) {
+  @include set-component-css-var('input', $input);
+}
+
+@include b(mention-textarea) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: var(--l-font-size-base);
+
+  @include e(inner) {
+    position: relative;
+    display: block;
+    resize: vertical;
+    padding: 5px 15px;
+    min-height: 80px;
+    max-height: 200px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--l-input-text-color, map.get($input, 'text-color'));
+    background-color: var(--l-input-bg-color, map.get($input, 'bg-color'));
+    background-image: none;
+    @include inset-input-border(var(--l-input-border-color, map.get($input, 'border-color')));
+    border-radius: var(--l-input-border-radius, map.get($input, 'border-radius'));
+    transition: var(--l-transition-box-shadow);
+    border: none;
+    overflow-y: auto;
+    &:empty:before {
+      content: attr(placeholder);
+      display: block;
+      color: var(--l-input-placeholder-color, map.get($input, 'placeholder-color'));
+    }
+    &:focus {
+      content: none;
+    }
+
+    // &::placeholder {
+    //   color: var(--l-input-placeholder-color, map.get($input, 'placeholder-color'));
+    // }
+
+    &:hover {
+      @include inset-input-border(var(--l-input-hover-border-color));
+    }
+
+    &:focus {
+      outline: none;
+      @include inset-input-border(var(--l-input-focus-border-color));
+    }
+  }
+
+  & .#{$namespace}-mention-textarea__count {
+    color: var(--l-color-info);
+    background: var(--l-color-white);
+    position: absolute;
+    font-size: 12px;
+    line-height: 14px;
+    bottom: 5px;
+    right: 10px;
+  }
+
+  @include when(disabled) {
+    .#{$namespace}-mention-textarea__inner {
+      background-color: map.get($input-disabled, 'fill');
+      border-color: map.get($input-disabled, 'border');
+      color: map.get($input-disabled, 'text-color');
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: map.get($input-disabled, 'placeholder-color');
+      }
+    }
+  }
+
+  @include e(suffix) {
+    display: inline-flex;
+
+    position: absolute;
+    height: 100%;
+    right: map.get($input-padding-horizontal, 'default');
+    top: 0;
+    text-align: center;
+    color: var(--l-input-icon-color, map.get($input, 'icon-color'));
+    transition: all var(--l-transition-duration);
+    pointer-events: none;
+  }
+
+  @include e(suffix-inner) {
+    pointer-events: all;
+    display: inline-flex;
+  }
+
+  & .#{$namespace}-mention-input__icon {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--l-transition-duration);
+    font-size: 16px;
+  }
+  @include when(exceed) {
+    .#{$namespace}-mention-textarea__inner {
+      border-color: var(--l-color-danger);
+    }
+
+    .#{$namespace}-mention-textarea__count {
+      color: var(--l-color-danger);
+    }
+  }
+}
+
+@include b(mention-input) {
+  @include set-component-css-var('input', $input);
+
+  position: relative;
+  font-size: var(--l-font-size-base);
+  // display: inline-flex;
+  width: 100%;
+  line-height: map.get($input-height, 'default');
+  // @include scroll-bar;
+
+  & .#{$namespace}-mention-input__clear {
+    color: var(--l-input-icon-color);
+    font-size: map.get($input-font-size, 'default');
+    cursor: pointer;
+    transition: var(--l-transition-color);
+    margin-left: 8px;
+
+    &:hover {
+      color: var(--l-input-clear-hover-color);
+    }
+  }
+
+  & .#{$namespace}-mention-input__count {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    color: var(--l-color-info);
+    font-size: 12px;
+
+    .#{$namespace}-mention-input__count-inner {
+      background: $color-white;
+      line-height: initial;
+      display: inline-block;
+      padding: 0 5px;
+    }
+  }
+
+  @include e(inner) {
+    position: relative;
+    -webkit-appearance: none;
+    background-color: var(--l-input-bg-color, map.get($input, 'bg-color'));
+    background-image: none;
+    border-radius: var(--l-input-border-radius, map.get($input, 'border-radius'));
+    box-sizing: border-box;
+    color: var(--l-input-text-color, map.get($input, 'text-color'));
+    display: inline-block;
+    font-size: inherit;
+    height: map.get($input-height, 'default');
+    line-height: map.get($input-height, 'default');
+    outline: none;
+    padding: 0 map.get($input-padding-horizontal, 'default')-$border-width-base;
+    transition: var(--l-transition-box-shadow);
+    width: 100%;
+    @include inset-input-border(var(--l-input-border-color, map.get($input, 'border-color')));
+    border: none;
+    &:empty:before {
+      content: attr(placeholder);
+      display: block;
+      color: var(--l-input-placeholder-color, map.get($input, 'placeholder-color'));
+    }
+    &:focus {
+      content: none;
+    }
+    // &::placeholder {
+    //   color: var(--l-input-placeholder-color, map.get($input, 'placeholder-color'));
+    // }
+
+    &:hover {
+      @include inset-input-border(var(--l-input-hover-border-color));
+    }
+
+    &:focus {
+      outline: none;
+      @include inset-input-border(var(--l-input-focus-border-color));
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  @include e(suffix) {
+    display: inline-flex;
+
+    position: absolute;
+    height: 100%;
+    right: map.get($input-padding-horizontal, 'default');
+    top: 0;
+    text-align: center;
+    color: var(--l-input-icon-color, map.get($input, 'icon-color'));
+    transition: all var(--l-transition-duration);
+    pointer-events: none;
+  }
+
+  @include e(suffix-inner) {
+    pointer-events: all;
+    display: inline-flex;
+  }
+
+  & .#{$namespace}-mention-input__icon {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--l-transition-duration);
+    font-size: 16px;
+  }
+
+  @include e(validateIcon) {
+    pointer-events: none;
+  }
+
+  @include when(active) {
+    .#{$namespace}-mention-input__inner {
+      outline: none;
+      box-shadow: 0 0 0 1px var(--l-input-focus-border, map.get($input, 'focus-color')) inset;
+    }
+  }
+
+  @include when(disabled) {
+    .#{$namespace}-mention-input__inner {
+      background-color: map.get($input-disabled, 'fill');
+      box-shadow: 0 0 0 1px map.get($input-disabled, 'border') inset;
+      color: map.get($input-disabled, 'text-color');
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: map.get($input-disabled, 'placeholder-color');
+      }
+    }
+
+    .#{$namespace}-mention-input__icon {
+      cursor: not-allowed;
+    }
+  }
+
+  @include when(exceed) {
+    .#{$namespace}-mention-input__inner {
+      box-shadow: 0 0 0 1px var(--l-color-danger) inset;
+    }
+
+    .#{$namespace}-mention-input__suffix {
+      .#{$namespace}-mention-input__count {
+        color: var(--l-color-danger);
+      }
+    }
+  }
+
+  $input-padding-size-with-extra-icon: calc(
+    5px + map.get($input-font-size, 'default') + map.get($input-padding-horizontal, 'default')
+  );
+
+  @include m(suffix) {
+    .#{$namespace}-mention-input__inner {
+      padding-right: $input-padding-size-with-extra-icon;
+    }
+
+    @include m(password-clear) {
+      .#{$namespace}-mention-input__inner {
+        padding-right: 55px;
+      }
+    }
+  }
+
+  @each $size in (large, default, medium, small, mini) {
+    @include m($size) {
+      font-size: map.get($input-font-size, $size);
+      line-height: map.get($input-height, $size) - 2;
+
+      @include e(inner) {
+        height: map.get($input-height, $size);
+        line-height: map.get($input-height, $size);
+        padding: 0 map.get($input-padding-horizontal, $size)-$border-width-base;
+      }
+
+      .#{$namespace}-mention-input__icon {
+        line-height: map.get($input-height, $size);
+      }
+
+      $input-padding-size-with-extra-icon: calc(
+        5px + map.get($input-font-size, $size) + map.get($input-padding-horizontal, $size)
+      );
+
+      &.#{$namespace}-input--prefix {
+        .#{$namespace}-mention-input__inner {
+          padding-left: $input-padding-size-with-extra-icon;
+        }
+      }
+
+      &.#{$namespace}-input--suffix {
+        .#{$namespace}-mention-input__inner {
+          padding-right: $input-padding-size-with-extra-icon;
+        }
+      }
+
+      @include e(prefix) {
+        left: map.get($input-padding-horizontal, $size) - 4px;
+      }
+
+      @include e(suffix) {
+        right: map.get($input-padding-horizontal, $size) - 4px;
+      }
+    }
+  }
+}
+
+@include b(mention-container) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  display: block;
+  padding: 5px;
+  z-index: 100;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+
+  & ul.select {
+    padding: 0;
+    list-style: none;
+    max-width: 300px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    max-height: 300px;
+    min-width: 240px;
+    overflow: auto;
+    /*滚动条整体部分,必须要设置*/
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+      background-color: #e9ecf1;
+    }
+    // /*滚动条的轨道*/
+    // &::-webkit-scrollbar-track{
+    //   // box-shadow: inset 0 0 5px rgba(0,0,0,.3);
+    //   background-color: #E9ECF1;;
+    // }
+    // /*滚动条的滑块按钮*/
+    // &::-webkit-scrollbar-thumb{
+    //   border-radius: 10px;
+    //   background-color: #E9ECF1;;
+    //   // box-shadow: inset 0 0 5px #000;
+    // }
+    // /*滚动条的上下两端的按钮*/
+    // &::-webkit-scrollbar-button{
+    //   height: 0px; width: 0;
+    // }
+
+    li {
+      cursor: pointer;
+      font-size: 14px;
+      padding: 10px 20px;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #606266;
+      line-height: 18px;
+      box-sizing: border-box;
+      cursor: pointer;
+      &.highlight {
+        background: #f5f7fa;
+      }
+      &.no-match {
+        cursor: default;
+      }
+
+      span {
+        display: block;
+        color: var(--l-text-color-regular);
+      }
+    }
+  }
+  & .menu-highlighted {
+    font-weight: bold;
+  }
+}
+
+@include b(todo) {
+  &-to {
+    background: #e6f7ff;
+    padding: 0 4px;
+    color: #1890ff;
+    display: inline-block;
+    cursor: default;
+    white-space: nowrap;
+    height: 20px;
+    padding: 0 5px;
+    line-height: 19px;
+    border-radius: 2px;
+    // user-select: none;
+  }
+  &-follower {
+    background: #fff7e6;
+    padding: 0 4px;
+    color: #fa8c16;
+    display: inline-block;
+    cursor: default;
+    white-space: nowrap;
+    height: 20px;
+    padding: 0 5px;
+    line-height: 19px;
+    border-radius: 2px;
+    // user-select: none;
+  }
+}

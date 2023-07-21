@@ -1,0 +1,580 @@
+<template></template>
+<script lang="ts">
+import './utils';
+import MentionEvents from './mentionEvents';
+import MentionMenuEvents from './mentionMenuEvents';
+import MentionRange from './mentionRange';
+import MentionSearch from './mentionSearch';
+// import panel from './date-panel.vue';
+// import Vue from 'vue';
+import createComponent from '../../../utils/create';
+const { create } = createComponent('MentionRender');
+export default create({
+  setup(props) {
+    const getMention = () => {
+      return class Mention {
+        constructor({
+          members = null,
+          loadingItemTemplate = null,
+          iframe = null,
+          selectClass = 'highlight',
+          containerClass = 'l-mention-container',
+          itemClass = '',
+          trigger = '@',
+          autocompleteMode = false,
+          autocompleteSeparator = null,
+          selectTemplate = null,
+          menuItemTemplate = null,
+          key = 'key',
+          value = 'value',
+          collection = null,
+          menuContainer = null,
+          noMatchTemplate = null,
+          requireLeadingSpace = true,
+          allowSpaces = false,
+          replaceTextSuffix = null,
+          positionMenu = true,
+          spaceSelectsMatch = false,
+          searchOpts = {
+            pre: '<span>',
+            post: '</span>',
+            skip: false // true 将跳过本地搜索，在进行服务器端搜索时很有用
+          },
+          menuItemLimit = null,
+          menuShowMinLength = 0,
+          vue = null
+        }) {
+          this.autocompleteMode = autocompleteMode;
+          this.autocompleteSeparator = autocompleteSeparator;
+          this.menuSelected = 0;
+          this.current = {};
+          this.inputEvent = false;
+          this.isActive = false;
+          this.menuContainer = menuContainer;
+          this.allowSpaces = allowSpaces;
+          this.replaceTextSuffix = replaceTextSuffix;
+          this.positionMenu = positionMenu;
+          this.hasTrailingSpace = false;
+          this.spaceSelectsMatch = spaceSelectsMatch;
+
+          if (this.autocompleteMode) {
+            trigger = '';
+            allowSpaces = false;
+          }
+          this.vue = vue;
+          if (members) {
+            this.collection = [
+              {
+                // symbol that starts the lookup
+                trigger: trigger,
+
+                // is it wrapped in an iframe
+                iframe: iframe,
+
+                // class applied to selected item
+                selectClass: selectClass,
+
+                // class applied to the Container
+                containerClass: containerClass,
+
+                // class applied to each item
+                itemClass: itemClass,
+
+                // function called on select that retuns the content to insert
+                selectTemplate: (selectTemplate || Mention.defaultSelectTemplate).bind(this),
+
+                // function called that returns content for an item
+                menuItemTemplate: (menuItemTemplate || Mention.defaultMenuItemTemplate).bind(this),
+
+                // function called when menu is empty, disables hiding of menu.
+                noMatchTemplate: ((t) => {
+                  if (typeof t === 'string') {
+                    if (t.trim() === '') return null;
+                    return t;
+                  }
+                  if (typeof t === 'function') {
+                    return t.bind(this);
+                  }
+
+                  return (
+                    noMatchTemplate ||
+                    function () {
+                      return '<li>No Match Found!</li>';
+                    }.bind(this)
+                  );
+                })(noMatchTemplate),
+
+                // column to search against in the object
+                lookup: key,
+
+                // column that contains the content to insert by default
+                fillAttr: value,
+
+                // array of objects or a function returning an array of objects
+                values: members,
+
+                // useful for when values is an async function
+                loadingItemTemplate: loadingItemTemplate,
+
+                requireLeadingSpace: requireLeadingSpace,
+
+                searchOpts: searchOpts,
+
+                menuItemLimit: menuItemLimit,
+
+                menuShowMinLength: menuShowMinLength
+              }
+            ];
+          } else if (collection) {
+            if (this.autocompleteMode) console.warn('Mention in autocomplete mode does not work for collections');
+            this.collection = collection.map((item: any) => {
+              return {
+                trigger: item.trigger || trigger,
+                iframe: item.iframe || iframe,
+                selectClass: item.selectClass || selectClass,
+                containerClass: item.containerClass || containerClass,
+                itemClass: item.itemClass || itemClass,
+                selectTemplate: (item.selectTemplate || Mention.defaultSelectTemplate).bind(this),
+                menuItemTemplate: (item.menuItemTemplate || Mention.defaultMenuItemTemplate).bind(this),
+                // function called when menu is empty, disables hiding of menu.
+                noMatchTemplate: ((t) => {
+                  if (typeof t === 'string') {
+                    if (t.trim() === '') return null;
+                    return t;
+                  }
+                  if (typeof t === 'function') {
+                    return t.bind(this);
+                  }
+
+                  return (
+                    noMatchTemplate ||
+                    function () {
+                      return '<li>No Match Found!</li>';
+                    }.bind(this)
+                  );
+                })(noMatchTemplate),
+                lookup: item.key || key,
+                fillAttr: item.value || value,
+                values: item.members,
+                loadingItemTemplate: item.loadingItemTemplate,
+                requireLeadingSpace: item.requireLeadingSpace,
+                searchOpts: item.searchOpts || searchOpts,
+                menuItemLimit: item.menuItemLimit || menuItemLimit,
+                menuShowMinLength: item.menuShowMinLength || menuShowMinLength
+              };
+            });
+          } else {
+            throw new Error('[Mention] No collection specified.');
+          }
+
+          new MentionRange(this);
+          new MentionEvents(this);
+          new MentionMenuEvents(this);
+          new MentionSearch(this);
+        }
+
+        get isActive() {
+          return this._isActive;
+        }
+
+        set isActive(val) {
+          if (this._isActive != val) {
+            this._isActive = val;
+            if (this.current.element) {
+              let noMatchEvent = new CustomEvent(`mention-active-${val}`);
+              this.current.element.dispatchEvent(noMatchEvent);
+            }
+          }
+        }
+
+        static defaultSelectTemplate(item) {
+          if (typeof item === 'undefined') return `${this.current.collection.trigger}${this.current.mentionText}`;
+          if (this.range.isContentEditable(this.current.element)) {
+            return (
+              '<span class="mention-mention">' +
+              (this.current.collection.trigger + item.original[this.current.collection.fillAttr]) +
+              '</span>'
+            );
+          }
+
+          return this.current.collection.trigger + item.original[this.current.collection.fillAttr];
+        }
+
+        static defaultMenuItemTemplate(matchItem) {
+          return matchItem.string;
+        }
+
+        static inputTypes() {
+          return ['TEXTAREA', 'INPUT'];
+        }
+
+        triggers() {
+          return this.collection.map((config) => {
+            return config.trigger;
+          });
+        }
+
+        attach(el) {
+          if (!el) {
+            throw new Error('[Mention] Must pass in a DOM node or NodeList.');
+          }
+
+          // Check if it is a jQuery collection
+          // if (typeof jQuery !== "undefined" && el instanceof jQuery) {
+          //   el = el.get();
+          // }
+
+          // Is el an Array/Array-like object?
+          if (el.constructor === NodeList || el.constructor === HTMLCollection || el.constructor === Array) {
+            let length = el.length;
+            for (var i = 0; i < length; ++i) {
+              this._attach(el[i]);
+            }
+          } else {
+            this._attach(el);
+          }
+        }
+
+        _attach(el) {
+          if (el.hasAttribute('data-mention')) {
+            console.warn('Mention was already bound to ' + el.nodeName);
+          }
+
+          this.ensureEditable(el);
+          this.events.bind(el);
+          el.setAttribute('data-mention', true);
+        }
+
+        ensureEditable(element) {
+          if (Mention.inputTypes().indexOf(element.nodeName) === -1) {
+            if (!element.contentEditable) {
+              throw new Error('[Mention] Cannot bind to ' + element.nodeName + ', not contentEditable');
+            }
+          }
+        }
+
+        createMenu(containerClass) {
+          let wrapper = this.range.getDocument().createElement('div');
+
+          wrapper.className = containerClass;
+          if (this.current.collection.trigger === '//') {
+            // let myPanel = Vue.extend(panel);
+            // var component = new myPanel({mention: this}).$mount();
+            // this.current.collection.date = component.date;
+            // wrapper.appendChild(component.$el);
+          } else {
+            let ul = this.range.getDocument().createElement('ul');
+            ul.classList.add('select');
+            wrapper.appendChild(ul);
+          }
+
+          if (this.menuContainer) {
+            return this.menuContainer.appendChild(wrapper);
+          }
+
+          return this.range.getDocument().body.appendChild(wrapper);
+        }
+        distoryMenu(child) {
+          if (this.menuContainer) {
+            return this.menuContainer.removeChild(child);
+          }
+          this.range.getDocument().body.removeChild(child);
+        }
+        showMenuFor(element, scrollTo, fromActiveLink) {
+          // Only proceed if menu isn't already shown for the current element & mentionText
+          if (
+            this.isActive &&
+            this.current.element === element &&
+            this.current.mentionText === this.currentMentionTextSnapshot &&
+            !fromActiveLink
+          ) {
+            return;
+          }
+          // if(fromActiveLink && ['@', '@@'].includes(this.current.collection.trigger)){
+          //     return
+          // }
+          this.currentMentionTextSnapshot = this.current.mentionText;
+
+          // create the menu if it doesn't exist.
+          // if (!this.menu) {
+          if (this.menu) {
+            this.menuEvents.unbind(this.menu);
+            this.distoryMenu(this.menu);
+          }
+
+          this.menu = this.createMenu(this.current.collection.containerClass);
+          element.mentionMenu = this.menu;
+          this.menuEvents.bind(this.menu);
+          // }
+
+          this.isActive = true;
+          this.menuSelected = 0;
+
+          if (!this.current.mentionText) {
+            this.current.mentionText = '';
+          }
+
+          const processValues = (values) => {
+            // Mention may not be active any more by the time the value callback returns
+            if (!this.isActive) {
+              return;
+            }
+            const str = fromActiveLink ? '' : this.current.mentionText;
+            let items = this.search.filter(str, values, {
+              pre: this.current.collection.searchOpts.pre || '<span>',
+              post: this.current.collection.searchOpts.post || '</span>',
+              skip: this.current.collection.searchOpts.skip,
+              extract: (el) => {
+                if (typeof this.current.collection.lookup === 'string') {
+                  return el[this.current.collection.lookup];
+                } else if (typeof this.current.collection.lookup === 'function') {
+                  return this.current.collection.lookup(el, this.current.mentionText);
+                } else {
+                  throw new Error('Invalid lookup attribute, lookup must be string or function.');
+                }
+              }
+            });
+            if (this.current.collection.menuItemLimit) {
+              items = items.slice(0, this.current.collection.menuItemLimit);
+            }
+
+            this.current.filteredItems = items;
+
+            let ul = this.menu.querySelector('ul.select');
+            setTimeout(() => {
+              this.range.positionMenuAtCaret(scrollTo);
+            });
+            if (this.current.collection.trigger === '//') {
+              if (this.current.mentionText !== '' && !fromActiveLink) {
+                this.hideMenu();
+              }
+              return;
+            }
+            if (!items.length) {
+              let noMatchEvent = new CustomEvent('mention-no-match', {
+                detail: this.menu
+              });
+              this.current.element.dispatchEvent(noMatchEvent);
+              this.hideMenu();
+              // if (
+              //     (typeof this.current.collection.noMatchTemplate === 'function' &&
+              //         !this.current.collection.noMatchTemplate()) ||
+              //     !this.current.collection.noMatchTemplate
+              // ) {
+              //     this.hideMenu();
+              // } else {
+              //     typeof this.current.collection.noMatchTemplate === 'function'
+              //         ? (ul.innerHTML = this.current.collection.noMatchTemplate())
+              //         : (ul.innerHTML = this.current.collection.noMatchTemplate);
+              // }
+
+              return;
+            }
+
+            ul.innerHTML = '';
+            let fragment = this.range.getDocument().createDocumentFragment();
+
+            items.forEach((item, index) => {
+              let li = this.range.getDocument().createElement('li');
+              li.setAttribute('data-index', index);
+              li.className = this.current.collection.itemClass;
+              li.addEventListener('mousemove', (e) => {
+                let [li, index] = this._findLiTarget(e.target);
+                if (e.movementY !== 0) {
+                  this.events.setActiveLi(index);
+                }
+              });
+              if (this.menuSelected === index) {
+                li.classList.add(this.current.collection.selectClass);
+              }
+              li.innerHTML = this.current.collection.menuItemTemplate(item);
+              fragment.appendChild(li);
+            });
+            ul.appendChild(fragment);
+          };
+          if (typeof this.current.collection.values === 'function') {
+            if (this.current.collection.loadingItemTemplate) {
+              this.menu.querySelector('ul.select').innerHTML = this.current.collection.loadingItemTemplate;
+              // this.range.positionMenuAtCaret(scrollTo);
+              setTimeout(() => {
+                this.range.positionMenuAtCaret(scrollTo);
+              });
+            }
+
+            this.current.collection.values(this.current.mentionText, processValues);
+          } else {
+            processValues(this.current.collection.values);
+          }
+        }
+
+        _findLiTarget(el) {
+          if (!el) return [];
+          const index = el.getAttribute('data-index');
+          return !index ? this._findLiTarget(el.parentNode) : [el, index];
+        }
+
+        showMenuForCollection(element, collectionIndex) {
+          if (element !== document.activeElement) {
+            this.placeCaretAtEnd(element);
+          }
+
+          this.current.collection = this.collection[collectionIndex || 0];
+          this.current.externalTrigger = true;
+          this.current.element = element;
+          if (element.isContentEditable) this.insertTextAtCursor(this.current.collection.trigger);
+          else this.insertAtCaret(element, this.current.collection.trigger);
+
+          this.showMenuFor(element, null, 'fromActiveLink');
+        }
+
+        // TODO: make sure this works for inputs/textareas
+        placeCaretAtEnd(el) {
+          el.focus();
+          if (typeof window.getSelection != 'undefined' && typeof document.createRange != 'undefined') {
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          } else if (typeof document.body.createTextRange != 'undefined') {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(el);
+            textRange.collapse(false);
+            textRange.select();
+          }
+        }
+
+        // for contenteditable
+        insertTextAtCursor(text) {
+          var sel, range, html;
+          sel = window.getSelection();
+          range = sel.getRangeAt(0);
+          range.deleteContents();
+          var textNode = document.createTextNode(text);
+          range.insertNode(textNode);
+          range.selectNodeContents(textNode);
+          range.collapse(false);
+          sel.removeAllRanges();
+          sel.addRange(range);
+          // 获取 selection
+          const selection = sel;
+          this.anchorNode = {
+            offset: selection.getRangeAt(0).startOffset,
+            text: selection.anchorNode
+          };
+        }
+
+        // for regular inputs
+        insertAtCaret(textarea, text) {
+          var scrollPos = textarea.scrollTop;
+          var caretPos = textarea.selectionStart;
+
+          var front = textarea.value.substring(0, caretPos);
+          var back = textarea.value.substring(textarea.selectionEnd, textarea.value.length);
+          textarea.value = front + text + back;
+          caretPos = caretPos + text.length;
+          textarea.selectionStart = caretPos;
+          textarea.selectionEnd = caretPos;
+          textarea.focus();
+          textarea.scrollTop = scrollPos;
+        }
+
+        hideMenu() {
+          if (this.menu) {
+            this.menu.style.cssText = 'display: none;';
+            this.isActive = false;
+            this.menuSelected = 0;
+            this.current = {};
+          }
+        }
+
+        selectItemAtIndex(index, originalEvent, date, customSelection) {
+          if (index === 'date') {
+            const dateNumber = new Date(date.replace(/-/g, '/')).getTime();
+            content = `<span contentEditable="false" class="fg-todo-due-date" value=${dateNumber}>${date}</span>`;
+            this.replaceText(content, originalEvent, { key: 'date', value: 'date' }, customSelection);
+            return;
+          }
+          index = parseInt(index);
+          if (typeof index !== 'number' || isNaN(index)) return;
+          let item = this.current.filteredItems[index];
+          let content = this.current.collection.selectTemplate(item);
+          if (content !== null) this.replaceText(content, originalEvent, item);
+        }
+
+        replaceText(content, originalEvent, item, customSelection) {
+          this.range.replaceTriggerText(content, true, true, originalEvent, item, customSelection);
+        }
+
+        _append(collection, newValues, replace) {
+          if (typeof collection.values === 'function') {
+            throw new Error('Unable to append to values, as it is a function.');
+          } else if (!replace) {
+            collection.values = collection.values.concat(newValues);
+          } else {
+            collection.values = newValues;
+          }
+        }
+
+        append(collectionIndex, newValues, replace) {
+          let index = parseInt(collectionIndex);
+          if (typeof index !== 'number') throw new Error('please provide an index for the collection to update.');
+
+          let collection = this.collection[index];
+
+          this._append(collection, newValues, replace);
+        }
+
+        appendCurrent(newValues, replace) {
+          if (this.isActive) {
+            this._append(this.current.collection, newValues, replace);
+          } else {
+            throw new Error('No active state. Please use append instead and pass an index.');
+          }
+        }
+
+        detach(el) {
+          if (!el) {
+            throw new Error('[Mention] Must pass in a DOM node or NodeList.');
+          }
+
+          // Check if it is a jQuery collection
+          // if (typeof jQuery !== "undefined" && el instanceof jQuery) {
+          //   el = el.get();
+          // }
+
+          // Is el an Array/Array-like object?
+          if (el.constructor === NodeList || el.constructor === HTMLCollection || el.constructor === Array) {
+            let length = el.length;
+            for (var i = 0; i < length; ++i) {
+              this._detach(el[i]);
+            }
+          } else {
+            this._detach(el);
+          }
+        }
+
+        _detach(el) {
+          this.events.unbind(el);
+          if (el.mentionMenu) {
+            this.menuEvents.unbind(el.mentionMenu);
+          }
+
+          setTimeout(() => {
+            el.removeAttribute('data-mention');
+            this.isActive = false;
+            if (el.mentionMenu) {
+              el.mentionMenu.remove();
+            }
+          });
+        }
+      };
+    };
+
+    return {
+      getMention
+    };
+  }
+});
+</script>
