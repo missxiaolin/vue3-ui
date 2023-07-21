@@ -1,0 +1,54 @@
+declare var window: any;
+
+if (!Array.prototype.find) {
+    Array.prototype.find = function (predicate: any) {
+      if (this === null) {
+        throw new TypeError('Array.prototype.find called on null or undefined');
+      }
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+      var list = Object(this);
+      var length = list.length >>> 0;
+      var thisArg = arguments[1];
+      var value;
+  
+      for (var i = 0; i < length; i++) {
+        value = list[i];
+        if (predicate.call(thisArg, value, i, list)) {
+          return value;
+        }
+      }
+      return undefined;
+    };
+  }
+  
+  if (typeof window !== 'undefined' && typeof window.CustomEvent !== 'function') {
+    function CustomEvent(event: any, params: any) {
+      params = params || {
+        bubbles: false,
+        cancelable: false,
+        detail: undefined
+      };
+      var evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+      return evt;
+    }
+  
+    if (typeof window.Event !== 'undefined') {
+      CustomEvent.prototype = window.Event.prototype;
+    }
+  
+    window.CustomEvent = CustomEvent;
+  }
+  export const addHours = (hours: any, date: any, min = 0, sec = 0) => {
+    let newDate = date || new Date();
+    newDate.setHours(hours, min, sec);
+    return newDate;
+  };
+  export const addDays = (days: any, date: any) => {
+    let newDate = date || new Date();
+    newDate.setDate(newDate.getDate() + days);
+    return newDate;
+  };
+  
