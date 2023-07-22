@@ -220,6 +220,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Tree',
+            type: 'component',
+            cName: '树型控件',
+            desc: '用清晰的层级结构展示信息，可展开或折叠。',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },

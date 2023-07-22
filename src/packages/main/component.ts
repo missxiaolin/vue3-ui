@@ -48,6 +48,7 @@ import { Tag } from '../components/tag/index'
 import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index'
 import { Slider } from '../components/slider/index'
 import { Mention } from '../components/mention/index'
+import { Tree } from '../components/tree/index'
 
 export default [
   ConfigProvider,
@@ -126,5 +127,6 @@ export default [
   SelectDropdown,
   OptionGroup,
   Slider,
-  Mention
+  Mention,
+  Tree
 ];
