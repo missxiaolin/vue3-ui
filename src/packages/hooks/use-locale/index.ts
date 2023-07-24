@@ -62,3 +62,40 @@ export const useLocaleInject = () => {
     }
   );
 };
+
+export const useLocale = () => {
+  const vm = getCurrentInstance()!;
+  const props = vm.props as {
+    locale: Language;
+  };
+
+  const locale = computed(() => props.locale || ZHCN);
+  const lang = computed(() => locale.value.name);
+
+  const _translator = (...args: any[]) => {
+    const [path, option] = args;
+    return translate(path, option, locale.value);
+  };
+
+  const t = (...args: any[]) => {
+    return _translator(...args);
+  };
+
+  const provides = {
+    locale,
+    lang,
+    t
+  } as LocaleContext;
+
+  // this could be broken if someone tries to do following:
+
+  /**
+   * <config-provider :locale="lang1">
+   *   <config-provider :locale="lang2">
+   *     Something calls modal component.
+   *   </config-provider>
+   * </config-provider>
+   */
+  localeObjCache = provides;
+  provide(LocaleInjectionKey, provides);
+};
