@@ -229,6 +229,15 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Cascader',
+            type: 'component',
+            cName: '级联选择',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },

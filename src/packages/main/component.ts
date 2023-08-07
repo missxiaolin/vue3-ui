@@ -49,6 +49,7 @@ import { Select, Option, SelectDropdown, OptionGroup } from '../components/selec
 import { Slider } from '../components/slider/index'
 import { Mention } from '../components/mention/index'
 import { Tree } from '../components/tree/index'
+import { Cascader } from '../components/cascader/index'
 
 export default [
   ConfigProvider,
@@ -128,5 +129,6 @@ export default [
   OptionGroup,
   Slider,
   Mention,
-  Tree
+  Tree,
+  Cascader
 ];

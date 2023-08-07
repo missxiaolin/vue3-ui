@@ -74,3 +74,4 @@ import '@/packages/components/select/style/select-dropdown.scss';
 import '@/packages/components/slider/style/slider.scss';
 import '@/packages/components/mention/style/mention.scss';
 import '@/packages/components/tree/style/tree.scss';
+import '@/packages/components/cascader/style/cascader.scss';
