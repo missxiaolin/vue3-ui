@@ -54,8 +54,8 @@
     <template v-if="!isLeaf">
       <l-icon
         v-if="node.loading"
-        class="is-loading e-cascader-node__postfix"
-        icon="l-icon-loading-line"
+        class="is-loading l-cascader-node__postfix"
+        icon="l-loading_line"
         size="14"
       ></l-icon>
       <l-icon v-else class="arrow-right l-cascader-node__postfix" size="14" icon="l-youbian"></l-icon>
