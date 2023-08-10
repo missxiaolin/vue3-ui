@@ -75,3 +75,4 @@ import '@/packages/components/slider/style/slider.scss';
 import '@/packages/components/mention/style/mention.scss';
 import '@/packages/components/tree/style/tree.scss';
 import '@/packages/components/cascader/style/cascader.scss';
+import '@/packages/components/cascader-panel/style/cascader-panel.scss';

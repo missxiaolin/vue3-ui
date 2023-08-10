@@ -6,6 +6,16 @@ export { isString, hasOwn, isArray, camelize, isObject };
 
 export { isBoolean } from '@vueuse/core';
 
+/**
+ * @param val 
+ * @returns 
+ */
+export function isEmpty(val: unknown): boolean {
+  if ((!val && val !== 0) || (isArray(val) && !val.length) || (isObject(val) && !Object.keys(val).length)) return true;
+
+  return false;
+}
+
 export const isNumber = (val: unknown): val is number => typeof val === 'number';
 
 export function isUndefined(val: any): val is undefined {

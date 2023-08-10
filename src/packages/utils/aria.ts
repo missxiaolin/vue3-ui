@@ -1,3 +1,5 @@
+import type { Nullable } from './types';
+
 export const EVENT_CODE = {
   tab: 'Tab',
   enter: 'Enter',
@@ -27,6 +29,36 @@ export const obtainAllFocusableElements = (element: HTMLElement): HTMLElement[] 
   return Array.from(element.querySelectorAll<HTMLElement>(FOCUSABLE_ELEMENT_SELECTORS)).filter(
     (item: HTMLElement) => isFocusable(item) && isVisible(item)
   );
+};
+
+/**
+ * @param el 
+ * @returns 
+ */
+export const isLeaf = (el: HTMLElement) => !el.getAttribute('aria-owns');
+
+/**
+ * @param el 
+ * @param distance 
+ * @param elClass 
+ * @returns 
+ */
+export const getSibling = (el: HTMLElement, distance: number, elClass: string): Nullable<Element> => {
+  const { parentNode } = el;
+  if (!parentNode) return null;
+  const siblings = parentNode.querySelectorAll(elClass);
+  const index = Array.prototype.indexOf.call(siblings, el);
+  return siblings[index + distance] || null;
+};
+
+/**
+ * @param el 
+ * @returns 
+ */
+export const focusNode = (el: HTMLElement) => {
+  if (!el) return;
+  el.focus();
+  !isLeaf(el) && el.click();
 };
 
 /**

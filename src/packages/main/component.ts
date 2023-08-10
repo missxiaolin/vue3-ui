@@ -43,13 +43,14 @@ import { Input } from '../components/input/index';
 import { InputNumber } from '../components/input-number/index';
 import { Radio, RadioButton, RadioGroup } from '../components/radio/index';
 import { Checkbox, CheckboxGroup } from '../components/checkbox/index';
-import { Autocomplete } from '../components/autocomplete/index'
-import { Tag } from '../components/tag/index'
-import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index'
-import { Slider } from '../components/slider/index'
-import { Mention } from '../components/mention/index'
-import { Tree } from '../components/tree/index'
-import { Cascader } from '../components/cascader/index'
+import { Autocomplete } from '../components/autocomplete/index';
+import { Tag } from '../components/tag/index';
+import { Select, Option, SelectDropdown, OptionGroup } from '../components/select/index';
+import { Slider } from '../components/slider/index';
+import { Mention } from '../components/mention/index';
+import { Tree } from '../components/tree/index';
+import { Cascader } from '../components/cascader/index';
+import { CascaderPanel } from '../components/cascader-panel/index';
 
 export default [
   ConfigProvider,
@@ -130,5 +131,6 @@ export default [
   Slider,
   Mention,
   Tree,
-  Cascader
+  Cascader,
+  CascaderPanel
 ];
