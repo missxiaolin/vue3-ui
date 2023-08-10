@@ -12,10 +12,10 @@
   >
     <l-cascader-node v-for="node in nodes" :key="node.uid" :node="node" :menu-id="menuId" @expand="handleExpand" />
     <div v-if="isLoading" class="l-cascader-menu__empty-text">
-      <l-icon size="14" class="is-loading" icon="l-icon-loading-line"></l-icon>
+      <l-icon size="14" class="is-loading" icon="l-icon-loading"></l-icon>
       {{ t('el.cascader.loading') }}
     </div>
-    <div v-else-if="isEmpty" class="e-cascader-menu__empty-text">{{ t('el.cascader.noData') }}</div>
+    <div v-else-if="isEmpty" class="l-cascader-menu__empty-text">{{ t('el.cascader.noData') }}</div>
     <svg v-else-if="panel?.isHoverMenu" ref="hoverZone" class="l-cascader-menu__hover-zone" />
   </l-scroll>
 </template>
@@ -37,7 +37,7 @@ import createComponent from '../../../utils/create';
 const { create } = createComponent('CascaderMenu');
 export default create({
   components: {
-    Icon,
+    [Icon.name]: Icon,
     Scroll,
     LCascaderNode
   },
