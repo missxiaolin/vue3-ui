@@ -51,6 +51,7 @@ import { Mention } from '../components/mention/index';
 import { Tree } from '../components/tree/index';
 import { Cascader } from '../components/cascader/index';
 import { CascaderPanel } from '../components/cascader-panel/index';
+import { TimePicker } from '../components/time-picker/index'
 
 export default [
   ConfigProvider,
@@ -132,5 +133,6 @@ export default [
   Mention,
   Tree,
   Cascader,
-  CascaderPanel
+  CascaderPanel,
+  TimePicker
 ];

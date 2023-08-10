@@ -76,3 +76,4 @@ import '@/packages/components/mention/style/mention.scss';
 import '@/packages/components/tree/style/tree.scss';
 import '@/packages/components/cascader/style/cascader.scss';
 import '@/packages/components/cascader-panel/style/cascader-panel.scss';
+import '@/packages/components/time-picker/style/time-picker.scss';
