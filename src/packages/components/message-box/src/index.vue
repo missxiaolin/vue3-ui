@@ -48,7 +48,7 @@
             </div>
             <div v-show="showInput" class="l-message-box__input">
               <!-- 等form 组件做完回到这里写 -->
-              <input style="border: solid 1px #ccc;" type="text" v-model="inputValue" name="" id="" />
+              <input style="border: solid 1px #ccc" type="text" v-model="inputValue" name="" id="" />
               <div
                 class="l-message-box__errormsg"
                 :style="{
@@ -217,8 +217,32 @@ export default create({
 
     const iconTypeName = computed(() => {
       const type = state.type;
+      if (!type) {
+        return '';
+      }
+      if (type == 'success') {
+        return 'l-chenggong1';
+      }
+      let str = '';
+      switch (type) {
+        case 'success':
+          str = 'l-chenggong1';
+          break;
+        case 'warning':
+          str = 'l-jinggao1';
+          break;
+        case 'info':
+          str = 'l-jinggao1';
+          break;
+        case 'error':
+          str = 'l-shibai';
+          break;
+        default:
+          str = '';
+      }
+
+      return str;
       // return type && TypeComponentsMap[type]
-      return type ? `l-${type}` : '';
     });
 
     const btnSize = useSize(
