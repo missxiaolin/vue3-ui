@@ -15,7 +15,7 @@
     @keydown.down.prevent="onLeftKeyDown"
     @keydown.up.prevent="onRightKeyDown"
   >
-    <e-tooltip
+    <l-tooltip
       ref="tooltip"
       v-model:visible="tooltipVisible"
       placement="top"
@@ -28,7 +28,7 @@
         <span>{{ formatValue }}</span>
       </template>
       <div :class="[ns.e('button'), { hover: hovering, dragging }]" />
-    </e-tooltip>
+    </l-tooltip>
   </div>
 </template>
 

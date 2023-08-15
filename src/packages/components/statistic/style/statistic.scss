@@ -15,7 +15,7 @@
   flex-direction: var(--l-statistic-column);
   padding: var(--l-statistic-padding);
   font-weight: var(--l-statistic-font-weight);
-  // color:  var(--e-text-color-regular);
+  // color:  var(--l-text-color-regular);
   color: var(--l-statistic-font-color-regular, map.get($statistic, 'font-color-regular'));
 
   & + & {

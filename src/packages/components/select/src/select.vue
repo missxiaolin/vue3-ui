@@ -288,7 +288,7 @@ export default create({
     teleported: useTooltipContentProps.teleported,
     clearIcon: {
       type: [String, Object] as PropType<string | Component>,
-      default: 'e-icon-circle-close'
+      default: 'l-guanbi'
     },
     fitInputWidth: {
       type: Boolean,
@@ -296,7 +296,7 @@ export default create({
     },
     suffixIcon: {
       type: [String, Object] as PropType<string | Component>,
-      default: 'e-icon-lower'
+      default: 'l-xia'
     },
     // eslint-disable-next-line vue/require-prop-types
     tagType: { ...tagProps.type, default: 'info' },

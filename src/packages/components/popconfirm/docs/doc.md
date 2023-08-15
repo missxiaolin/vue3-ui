@@ -23,7 +23,7 @@
   <l-popconfirm
     confirm-button-text="OK"
     cancel-button-text="No, Thanks"
-    icon="e-icon-mark-fill"
+    icon="l-icon-mark-fill"
     icon-color="red"
     title="Are you sure to delete this?"
   >
@@ -44,7 +44,7 @@
   <l-popconfirm
     confirm-button-text="Yes"
     cancel-button-text="No"
-    icon="e-icon-mark-fill"
+    icon="l-icon-mark-fill"
     icon-color="red"
     title="Are you sure to delete this?"
     @confirm="confirmEvent"

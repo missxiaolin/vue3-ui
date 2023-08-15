@@ -607,7 +607,7 @@ export const useSelect = (props: any, states: States, ctx: any) => {
     }
 
     if (tooltipRef.value && target) {
-      const menu = tooltipRef.value?.popperRef?.contentRef?.querySelector?.('.e-scrollbar-wrap');
+      const menu = tooltipRef.value?.popperRef?.contentRef?.querySelector?.('.l-scrollbar-wrap');
       if (menu) {
         scrollIntoView(menu as HTMLElement, target);
       }

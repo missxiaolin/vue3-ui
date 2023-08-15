@@ -3,7 +3,7 @@
       <!-- {{ t('el.pagination.goto') }} -->
       <l-input
         size="mini"
-        class="e-pagination__editor is-in-pagination"
+        class="l-pagination__editor is-in-pagination"
         :min="1"
         :max="pageCount"
         :disabled="disabled"
