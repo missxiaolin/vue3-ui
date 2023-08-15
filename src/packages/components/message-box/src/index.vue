@@ -220,9 +220,6 @@ export default create({
       if (!type) {
         return '';
       }
-      if (type == 'success') {
-        return 'l-chenggong1';
-      }
       let str = '';
       switch (type) {
         case 'success':
