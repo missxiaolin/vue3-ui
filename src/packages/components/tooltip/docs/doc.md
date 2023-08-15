@@ -274,7 +274,7 @@ const visible = ref(false)
 
 | 属性    | 说明      | 类型    | 可选值     | 默认值         |
 | ----   | --------- | ------ | --------- | ------------  |
-| append-to | 指示 Tooltip 的内容将附加在哪一个网页元素上  | CSSSeector \ HTMLeement | —  | #e-popper-container-[randomValue] |
+| append-to | 指示 Tooltip 的内容将附加在哪一个网页元素上  | CSSSeector \ HTMLeement | —  | #l-popper-container-[randomValue] |
 | append-to-body (deprecated)   | Tooltip 的内容是否附加在 document.body 元素上   boolean | true / false     ｜true  |
 | effect | Tooltip 主题，Element Plus 内置了 dark / light 两种主题  | string  | string  | dark |
 | content | display content, can be overridden by `slot#content`                                                                                                         | String                     | —                                                                                                         | —                                                       |

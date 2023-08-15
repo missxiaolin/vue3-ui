@@ -218,7 +218,7 @@
           }
 
           &.is-muted {
-            .e-slider__bar {
+            .l-slider__bar {
               height: 0 !important;
             }
           }
@@ -239,7 +239,7 @@
           }
 
           &.speed-active {
-            color: var(--e-color-primary);
+            color: var(--l-color-primary);
             font-weight: bold;
           }
         }
