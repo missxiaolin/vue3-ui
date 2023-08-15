@@ -34,13 +34,13 @@
     box-shadow: var(--l-notification-shadow-light);
     background-color: var(--l-notification-background-color-light);
     border: 1px solid var(--l-notification-border-color-light);
-    .e-notification__title {
+    .l-notification__title {
       color: var(--l-notification-title-color-light);
     }
-    .e-notification__content {
+    .l-notification__content {
       color: var(--l-notification-content-color-light);
     }
-    .e-notification__closeBtn {
+    .l-notification__closeBtn {
       color: var(--l-notification-close-color-light);
       &:hover {
         color: var(--l-notification-close-hover-color-light);

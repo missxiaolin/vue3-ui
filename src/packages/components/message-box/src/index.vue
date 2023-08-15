@@ -218,7 +218,7 @@ export default create({
     const iconTypeName = computed(() => {
       const type = state.type;
       // return type && TypeComponentsMap[type]
-      return type ? `e-icon-${type}` : '';
+      return type ? `l-${type}` : '';
     });
 
     const btnSize = useSize(

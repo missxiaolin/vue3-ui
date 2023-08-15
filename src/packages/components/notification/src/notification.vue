@@ -18,14 +18,14 @@
         :class="typeClass"
         :icon="`l-${iconComponent}`"
       ></l-icon>
-      <div class="e-notification__group">
-        <div class="e-notification__title" v-text="title"></div>
-        <div v-show="message" class="e-notification__content" :style="!!title ? undefined : { margin: 0 }">
+      <div class="l-notification__group">
+        <div class="l-notification__title" v-text="title"></div>
+        <div v-show="message" class="l-notification__content" :style="!!title ? undefined : { margin: 0 }">
           <div v-if="!dangerouslyUseHTMLString">{{ message }}</div>
           <div v-else v-html="message"></div>
         </div>
         <slot></slot>
-        <div v-show="showBar" class="e-notification__bar">
+        <div v-show="showBar" class="l-notification__bar">
           <l-button type="primary" @click="onBtnClick" size="mini">{{ btnText }}</l-button>
         </div>
         <l-icon v-show="showClose" icon="l-guanbi1" class="l-notification__closeBtn" @click.stop="close"></l-icon>

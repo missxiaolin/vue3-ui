@@ -34,7 +34,7 @@
       <span :class="nsInput.e('suffix-inner')">
         <template v-if="!showClear || !isWordLimitVisible">
           <slot name="suffix"></slot>
-          <e-icon v-if="suffixIcon" :class="nsInput.e('icon')" :icon="suffixIcon"></e-icon>
+          <l-icon v-if="suffixIcon" :class="nsInput.e('icon')" :icon="suffixIcon"></l-icon>
         </template>
         <l-icon
           v-if="showClear"
@@ -50,7 +50,7 @@
     </span>
     <!-- <slot name="menuItem" :row="props.members">11</slot> -->
 
-    <e-mention-render ref="mention" />
+    <l-mention-render ref="mention" />
   </div>
 </template>
 <script lang="ts">
@@ -246,7 +246,7 @@ export default create({
       // example of alternative callback
       // inputOrTextarea.value = root.value?.children[0] as any;
       if (!inputOrTextarea.value) {
-        throw new Error('[e-mention] cannot find a suitable element to attach to.');
+        throw new Error('[l-mention] cannot find a suitable element to attach to.');
       }
       // inputOrTextarea.value.addEventListener('tribute-replaced', e => {
       //     e.target?.dispatchEvent(new Event('input', { bubbles: true }))
