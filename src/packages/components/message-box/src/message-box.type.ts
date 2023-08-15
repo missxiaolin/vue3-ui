@@ -25,8 +25,8 @@ export declare interface MessageBoxState {
   inputValue: string;
   inputPlaceholder: string;
   inputType: string;
-  inputPattern: RegExp;
-  inputValidator: MessageBoxInputValidator;
+  inputPattern: RegExp | null;
+  inputValidator: MessageBoxInputValidator | null;
   inputErrorMessage: string;
   showConfirmButton: boolean;
   showCancelButton: boolean;
