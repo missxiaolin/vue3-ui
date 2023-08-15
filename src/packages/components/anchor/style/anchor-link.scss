@@ -24,7 +24,7 @@
     position: relative;
     color: var(--l-text-color-secondary);
   }
-  a.e-anchor-link-title-active {
+  a.l-anchor-link-title-active {
     color: var(--l-text-color-primary);
   }
   @include b(anchor-link) {

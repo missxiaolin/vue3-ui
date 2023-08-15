@@ -33,7 +33,7 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit, slots }) {
-    // ({ '--e-aside-width': '6px' } as CSSProperties);
+    // ({ '--l-aside-width': '6px' } as CSSProperties);
     const colAttrs = toRefs(props);
     // 接收 Row 传下来的数据
     const parentAttrs = inject<any>('colAttrs', undefined);

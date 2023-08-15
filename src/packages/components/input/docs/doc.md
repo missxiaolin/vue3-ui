@@ -124,31 +124,31 @@ export default defineComponent ({
   </l-row>
   <l-row :cols="4">
     <l-col>
-      <l-input v-model="value" clearable placeholder="please input" suffix-icon="e-icon-search" size="large"></l-input>
+      <l-input v-model="value" clearable placeholder="please input" suffix-icon="l-icon-search" size="large"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="medium" placeholder="please input" suffix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="medium" placeholder="please input" suffix-icon="l-icon-search"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="small" placeholder="please input" suffix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="small" placeholder="please input" suffix-icon="l-icon-search"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="mini" placeholder="please input" suffix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="mini" placeholder="please input" suffix-icon="l-icon-search"></l-input>
     </l-col>
   </l-row>
 
   <l-row :cols="4">
     <l-col>
-      <l-input v-model="value" clearable placeholder="please input" prefix-icon="e-icon-search" size="large"></l-input>
+      <l-input v-model="value" clearable placeholder="please input" prefix-icon="l-icon-search" size="large"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="medium" placeholder="please input" prefix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="medium" placeholder="please input" prefix-icon="l-icon-search"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="small" placeholder="please input" prefix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="small" placeholder="please input" prefix-icon="l-icon-search"></l-input>
     </l-col>
     <l-col>
-      <l-input v-model="value" clearable size="mini" placeholder="please input" prefix-icon="e-icon-search"></l-input>
+      <l-input v-model="value" clearable size="mini" placeholder="please input" prefix-icon="l-icon-search"></l-input>
     </l-col>
   </l-row>
 </template>
