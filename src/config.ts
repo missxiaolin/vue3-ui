@@ -247,6 +247,24 @@ const config: any = {
             show: true,
             author: 'lin',
             progress: '100%'
+          },
+          {
+            name: 'Date-Picker',
+            type: 'component',
+            cName: '日期选择器',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
+          },
+          {
+            name: 'Date-Time-Picker',
+            type: 'component',
+            cName: '日期时间选择器',
+            desc: '',
+            show: true,
+            author: 'lin',
+            progress: '100%'
           }
         ]
       },
