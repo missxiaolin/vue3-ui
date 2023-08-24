@@ -1,6 +1,6 @@
 
-import { default as Date-Picker } from './src/date-picker.vue'
+import { default as DatePicker } from './src/date-picker.vue'
 
 export {
-    Date-Picker
+    DatePicker
 }
