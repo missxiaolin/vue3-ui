@@ -1,0 +1,52 @@
+@use '../mixins/mixins' as *;
+@use '../common/var' as *;
+
+@include b(year-table) {
+  font-size: 12px;
+  margin: -1px;
+  border-collapse: collapse;
+
+  .#{$namespace}-icon {
+    color: var(--l-datepicker-icon-color);
+  }
+
+  td {
+    text-align: center;
+    padding: 20px 3px;
+    cursor: pointer;
+
+    &.today {
+      .cell {
+        color: var(--l-color-primary);
+        font-weight: bold;
+      }
+    }
+
+    &.disabled .cell {
+      background-color: var(--l-bg-color);
+      cursor: not-allowed;
+      color: var(--l-text-color-placeholder);
+
+      &:hover {
+        color: var(--l-text-color-placeholder);
+      }
+    }
+
+    .cell {
+      width: 48px;
+      height: 32px;
+      display: block;
+      line-height: 32px;
+      color: var(--l-datepicker-text-color);
+      margin: 0 auto;
+
+      &:hover {
+        color: var(--l-datepicker-hover-text-color);
+      }
+    }
+
+    &.current:not(.disabled) .cell {
+      color: var(--l-datepicker-active-color);
+    }
+  }
+}
