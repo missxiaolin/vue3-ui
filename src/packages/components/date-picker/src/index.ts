@@ -39,7 +39,7 @@ const getPanel = function (type: IDatePickerType) {
   return DatePickPanel;
 };
 
-import createComponent from '@eui/utils/create';
+import createComponent from '../../../utils/create';
 const { create, useGlobalConfig } = createComponent('DatePicker');
 
 export default create({
@@ -56,7 +56,7 @@ export default create({
     provide(ROOT_PICKER_INJECTION_KEY, {
       ctx
     });
-    const commonPicker = ref(null);
+    const commonPicker: any = ref(null);
     const refProps = {
       ...props,
       focus: (focusStartInput = true) => {
@@ -75,10 +75,10 @@ export default create({
           format,
           type: props.type,
           ref: commonPicker,
-          'onUpdate:modelValue': (value) => ctx.emit('update:modelValue', value)
+          'onUpdate:modelValue': (value: any) => ctx.emit('update:modelValue', value)
         },
         {
-          default: (scopedProps) => h(getPanel(props.type), scopedProps),
+          default: (scopedProps: any) => h(getPanel(props.type), scopedProps),
           'range-separator': () => renderSlot(ctx.slots, 'range-separator')
         }
       );
