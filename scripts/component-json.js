@@ -19,7 +19,9 @@ let css = `{\n`;
 async function loadComponent(file) {
   let rl = readline(file);
   let status = 0;
+  
   rl.on('line', function (line, lineCount, byteCount) {
+    // console.log('line------>', line)
     line = line.replace(/#.*$/g, '').trim();
     if (line.indexOf('components') != -1) {
       let pattern = /from '(\.\.\/)?([^']+)'/;
@@ -32,7 +34,7 @@ async function loadComponent(file) {
       } else {
         // console.log('没有匹配到字符串');
       }
-    } else if (line === '];') {
+    } else if (line === '];' || line == 'export default [];' || line == 'export default [  ]') {
       // 结束
       if (file.indexOf('src/packages/main/component') !== -1) {
         loadComponent(pluginPath)

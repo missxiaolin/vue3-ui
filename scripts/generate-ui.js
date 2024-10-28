@@ -26,6 +26,14 @@ let STYLE_IMPORT_STR = ``;
 let STYLE_IMPORT_LIST = `{
 `;
 
+let EXPORT_NAME = ``;
+let EXPORT_IMPOR = ``;
+
+
+let EXPORT_DESIGN = []
+let EXPORT_DESIGN_COMPONENT_LIST =  {};
+
+
 /**
  * 是文件
  * @param filePath 文件路径
@@ -45,7 +53,6 @@ const isFile = async (filePath) =>
 const loadComponent = async (folders, index, comList = []) => {
   const filePath = `${package_dir}${folders[index]}/index.ts`;
   const isExis = await isFile(resolve(__dirname, `${filePath}`));
-
   if (!folders[index]) {
     return henerateFile();
   }
@@ -66,7 +73,13 @@ const loadComponent = async (folders, index, comList = []) => {
         `${line}`.replace(/\{([^\}]+)\}(.*)/g, ($1, $2, $3, $4) => {
           // 获取组件名称
           const name = ($2.split('defaultas')[1] || '').trim();
+          // console.log(name);
           comList.push(name);
+          if (EXPORT_DESIGN) {
+            EXPORT_DESIGN.push(`"${name}"`)
+          }
+          
+          // EXPORT_NAME += `export ${name};\n`;
           `${$3}`.replace(/\".([^\"]+)\"(.*)/g, ($11, $22, $33, $44) => {
             // 获取组件路径
             COMPONENT_LIST += ` ${name}: 'components/${folders[index]}${$22}',\n`;
@@ -88,6 +101,12 @@ const loadComponent = async (folders, index, comList = []) => {
       if (comList && comList.length) {
         // 合并入 components.ts 导入
         IMPORT_STR += `import { ${comList.join(',')} } from '../components/${folders[index]}';\n`;
+        EXPORT_IMPOR += `export { ${comList.join(',')} } from '../components/${folders[index]}';\n`;
+        comList && comList.forEach(item => {
+          let obj = {}
+          obj.component = `xxxxx/packages/_es/${folders[index]}`
+          EXPORT_DESIGN_COMPONENT_LIST[item] = obj
+        })
         // 合并入  components.ts  完整导出列表
         COMPONENT_PACKAGES = COMPONENT_PACKAGES.concat(comList);
       }
@@ -130,6 +149,18 @@ export default [ ${PLUGIN_PACKAGES} ]
 ${STYLE_IMPORT_STR}
 `;
 
+  const exportFile = `${EXPORT_IMPOR}
+`;
+console.log(EXPORT_DESIGN_COMPONENT_LIST)
+  const EXPORT_DESIGN_CONTENT = `export const DSSIGN_COMPONENT = ${JSON.stringify(EXPORT_DESIGN_COMPONENT_LIST)} \n export default [\n${EXPORT_DESIGN}\n]`
+  // component-design.ts
+  fs.outputFile(resolve(__dirname, '../src/packages/main/component-design.ts'), EXPORT_DESIGN_CONTENT, 'utf8', () => {
+    console.log(`组件按需 文件写入成功-new`);
+  });
+  fs.outputFile(resolve(__dirname, '../src/packages/main/component-auto.ts'), exportFile, 'utf8', () => {
+    console.log(`组件按需 文件写入成功`);
+  });
+  
   fs.outputFile(resolve(__dirname, '../src/packages/main/component.ts'), componentsFiles, 'utf8', () => {
     console.log(`组件列表 文件写入成功`);
   });
@@ -140,6 +171,7 @@ ${STYLE_IMPORT_STR}
   fs.outputFile(resolve(__dirname, '../src/packages/main/style.ts'), stylesFiles, 'utf8', () => {
     console.log(`组件样式 文件写入成功`);
   });
+
   //   let buildStylesFiles = `
   // 'use strict'
   // module.exports =  ${STYLE_IMPORT_LIST}}
