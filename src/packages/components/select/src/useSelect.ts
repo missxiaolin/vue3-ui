@@ -303,7 +303,7 @@ export const useSelect = (props: any, states: States, ctx: any) => {
       const input = reference.value.$el.querySelector('input') as HTMLInputElement;
       originClientHeight = originClientHeight || (input.clientHeight > 0 ? input.clientHeight + 2 : 0);
       const _tags = tags.value;
-      debugger;
+      // debugger;
       const gotSize = getComponentSize(selectSize.value);
 
       const sizeInMap =
