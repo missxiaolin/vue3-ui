@@ -14,7 +14,7 @@
       <l-link href="" target="_blank">default</l-link>
     </l-col>
     <l-col>
-      <l-link href="https://eboss.qa.enmonster.com" target="_blank" type="primary">primary</l-link>
+      <l-link href="xl.com" target="_blank" type="primary">primary</l-link>
     </l-col>
     <l-col>
       <l-link type="success">success</l-link>

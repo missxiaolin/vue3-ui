@@ -156,7 +156,7 @@ const options = reactive({
   src: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8", //视频源
   type: 'mp4', //视频类型
 })
-//src: "https://static.enmonster.com/big/aba/1456162994093568000", //视频源
+//src: "https://static.com/big/aba/1456162994093568000", //视频源
   // type: 'm3u8', //视频类型
 </script>
 ```
