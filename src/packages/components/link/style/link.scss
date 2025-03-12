@@ -71,7 +71,7 @@
       --l-link-text-color: var(--l-color-#{$type});
 
       --l-link-hover-text-color: var(--l-color-#{$type}-light-3);
-      --l-link-disabled-font-color: var(--k-color-#{$type}-light-5);
+      --l-link-disabled-font-color: var(--l-color-#{$type}-light-5);
 
       &:after {
         border-color: var(--l-link-text-color);
