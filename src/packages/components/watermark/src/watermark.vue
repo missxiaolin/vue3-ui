@@ -22,10 +22,11 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     let ns = useNamespace('watermark');
+
     const state = reactive({
       base64Url: ''
     });
-    const { fullPage } = toRefs(props)
+    const { fullPage } = toRefs(props);
     const {
       zIndex,
       gapX,
@@ -41,7 +42,7 @@ export default create({
       fontWeight,
       fontColor,
       fontSize,
-      fontFamily,
+      fontFamily
     } = props;
 
     const init = () => {
