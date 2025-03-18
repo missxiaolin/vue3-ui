@@ -12,22 +12,23 @@ import { useNamespace } from '../../../hooks';
 import createComponent from '../../../utils/create';
 import { useLockScroll } from '../../../utils/dom';
 import { OverlayEmits, OverlayProps } from './overlay';
-import { UPDATE_OVERLAY_EVENT } from '../../../constants/event'
+import { UPDATE_OVERLAY_EVENT } from '../../../constants/event';
 const { componentName, create } = createComponent('Overlay');
 
 export default create({
   props: OverlayProps,
   emits: OverlayEmits,
   setup(props, { emit }) {
-    const ns = useNamespace('overlay')
+    const ns = useNamespace('overlay');
+
     const [lock, unlock] = useLockScroll(() => props.lockScroll);
 
     const classes = computed(() => {
       return [
         ns.b(),
-        props.overlayClass || "",
-        props.modal ? '' : ns.is('modal'), // 是否显示遮罩层
-      ]
+        props.overlayClass || '',
+        props.modal ? '' : ns.is('modal') // 是否显示遮罩层
+      ];
     });
 
     const style: ComputedRef = computed(() => {
